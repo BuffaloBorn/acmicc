@@ -36,6 +36,7 @@
 	    <script src="app/js/scriptaculous.js?load=effects" type="text/javascript"></script>
 	    <script src="app/js/lightbox.js" type="text/javascript"></script>
 		<script src="app/js/iasautosave.js" type="text/javascript"></script>
+		<script src="app/js/popupiasdiary.js" type="text/javascript" ></script>
 	</head>
 	
 	<script language="Javascript">
@@ -64,7 +65,7 @@
 	}
 	//-->
 	
-	
+	window.onunload = resetCookieToClose;
 	</script>
 
 	<body id="mainbody" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" onLoad="init();"  bgcolor="#CFE1EB" >

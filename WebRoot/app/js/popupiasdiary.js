@@ -5,8 +5,11 @@ var iasdiaryAutoSaveWin = null;
 var gChangesWereMade = false;
 var gSaveClicked = false;
 var gTabClick = false;
-var gValidationFirst = false;
+var gPopup3 = false;
 var gPushActivity = false;
+var gValidationFirst = false;
+var gClosePopup = false; 
+var gWorklistClick = false;
 
 var expDays = 1; // number of days the cookie should last
 
@@ -15,60 +18,94 @@ exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
 
 function runUnloadValidation() 
 {
-	
+
 	if (gChangesWereMade == true && gSaveClicked == false) 
 	{
 		event.returnValue = ("Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or click 'Cancel' to return to this page to save the changes made.");
 		
-		gValidationFirst=true;
+		gValidationFirst = true;
+		gClosePopup = false;
+	}
+	else
+	{
+		gValidationFirst = false;
 	}
 }
 
 function runUnloadCloseIasDiary()
 {
-	
-	if (iasdiary && gTabClick == false)
-	{
-		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
-	}
-	
 	var iaspopup = getCookie('iaspopup');
 	
 	if((iaspopup == 'open') && (gTabClick == false))
 	{
 		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
+		gClosePopup = true;
+		gTabClick =true;
 	}
 }
 
 function runCloseIasDiaryUnload()
 {	
-	if((gTabClick == false) && (gValidationFirst == true) && (iasdiary))
-	{
 	
+	var iaspopup = getCookie('iaspopup');			
+	
+	
+	//2.4 -- no changes, invoke worklist and pop ups Popup 2	
+	if((iaspopup == 'open') && (gValidationFirst == true) && (gChangesWereMade == false))
+	{
 		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
-		
-			runIasdiaryInt();
-			closeIasdiary();
-	}
-	
-	
-	var iaspopup = getCookie('iaspopup');
-	
-	if((iaspopup == 'open') && (gTabClick == false))
-	{
-		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");	
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		deleteCookie('iaspopup');
+		//deleteCookie('iaspopup');
+	}
+	
+	if((iaspopup == 'open') && (gChangesWereMade == true) && (gWorklistClick == true))
+	{
+		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
+		
+		runIasdiaryInt();
+		closeIasdiary();
+		//deleteCookie('iaspopup');
+	}
+	
+	
+	if((iaspopup == 'open') && (gTabClick == false) && (gValidationFirst == true))
+	{
+		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
+		
+		runIasdiaryInt();
+		closeIasdiary();
+		//deleteCookie('iaspopup');
+	
+	}
+	
+	if((iaspopup == 'open') && (gPushActivity == true))
+	{
+		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
+		
+		runIasdiaryInt();
+		closeIasdiary();
+		//deleteCookie('iaspopup');
+	}
+	
+	if(gClosePopup)
+	{
+		runIasdiaryInt();
+		closeIasdiary();
 	}
 
+}
+
+function setWorklistFlag()
+{
+	gTabClick = false;
+	gWorklistClick = true;
 }
 
 function setCloseIasDiaryUnloadFlags()
 {
 	gTabClick = true;
-	gValidationFirst = false;
 	gPushActivity = true;
 }
 
@@ -139,7 +176,7 @@ function initializeVar() {
 		{
 			runIasdiary();
 			closeIasdiary();
-			deleteCookie('iaspopup');
+			//deleteCookie('iaspopup');
 		}
 
 	}
@@ -347,8 +384,6 @@ function addListeners()
 	  var domain = (argc > 4) ? argv[4] : null;
 	  var secure = (argc > 5) ? argv[5] : false;
 	  
-	  deleteCookie(name);
-	  
 	  document.cookie = name + "=" + escape (value) +
 	    ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
 	    ((path == null) ? "" : ("; path=" + path)) +
@@ -383,5 +418,21 @@ function addListeners()
   		var cval = getCookie (name);
   		document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
 	}		
+	
+	function closeDeleteCookie()
+	{
+		self.close();
+		//deleteCookie('iaspopup');
+	}
+	
+	function resetCookieToClose()
+	{
+		setCookie('iaspopup', 'close',exp);
+	}
+	
+	function removeIasCookie()
+	{
+		deleteCookie('iaspopup');
+	}
 	
 	//window.setInterval(function() { getCookie('child') == 'closed' ? self.close() : ''; }, 1000);
