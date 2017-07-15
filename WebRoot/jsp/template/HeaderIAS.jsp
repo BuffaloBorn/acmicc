@@ -54,7 +54,7 @@
 							&nbsp;
 						</td> 
 						<td align="right" class="small_legend">
-							<a href="javascript:closeDeleteCookie()">
+							<a href="#" onclick="javascript:runPageValidationLink()">
 								Close
 							</a>
 							&nbsp;&nbsp;

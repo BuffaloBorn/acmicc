@@ -312,15 +312,15 @@ public class RiderMainForm extends ActionForm {
 	public void validateForm(FormActionContext ctx) 
 	{
 		FieldCheckCustom.validateTextBox(this.getRIDER_TEXT_ONE(), ctx, "RIDER_TEXT_ONE", "250");
-		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_ONE(), ctx, "RIDER_TEXT_ONE", "five", 50,5 );
+		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_ONE(), ctx, "RIDER_TEXT_ONE", "5", 50,5 );
 		FieldCheckCustom.validateTextBox(this.getRIDER_TEXT_TWO(), ctx, "RIDER_TEXT_TWO", "250");
-		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_TWO(), ctx, "RIDER_TEXT_TWO", "five", 50,5);
+		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_TWO(), ctx, "RIDER_TEXT_TWO", "5", 50,5);
 		FieldCheckCustom.validateTextBox(this.getRIDER_TEXT_THREE(), ctx, "RIDER_TEXT_THREE", "250");
-		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_THREE(), ctx, "RIDER_TEXT_THREE", "five",50, 5);
+		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_THREE(), ctx, "RIDER_TEXT_THREE", "5",50, 5);
 		FieldCheckCustom.validateTextBox(this.getRIDER_TEXT_FOUR(), ctx, "RIDER_TEXT_FOUR", "250");
-		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_FOUR(), ctx, "RIDER_TEXT_FOUR", "five",50, 5);
+		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_FOUR(), ctx, "RIDER_TEXT_FOUR", "5",50, 5);
 		FieldCheckCustom.validateTextBox(this.getRIDER_TEXT_FIVE(), ctx, "RIDER_TEXT_FIVE", "250");
-		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_FIVE(), ctx, "RIDER_TEXT_FIVE", "five", 50, 5);
+		FieldCheckCustom.validateTextBoxLineLimit(this.getRIDER_TEXT_FIVE(), ctx, "RIDER_TEXT_FIVE", "5", 50, 5);
 	}
 
 

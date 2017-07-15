@@ -221,7 +221,7 @@
 						<forms:plaintext label="form.iasdiary.std.letter.std.event" property="std_event" />
 					</forms:row>
 					<forms:row>
-						<forms:text label="form.iasdiary.std.letter.description" property="description" maxlength="60" size="60" colspan="1" />
+						<forms:plaintext label="form.iasdiary.std.letter.description" property="description" />
 						<forms:select id="attachmentid"	label="form.iasdiary.std.letter.attachment" property="attachment" size="1" disabled="true">
 							<base:options property="attachmentOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>	
@@ -249,6 +249,10 @@
 						<forms:select id="statusid" label="form.iasdiary.std.letter.status" property="status" size="1">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
+						<forms:plaintext label="form.iasdiary.std.letter.requested" property="requested" />
+						<forms:plaintext label="form.iasdiary.event.portamedic.response.date" property="respn_date" />
+					</forms:row>
+					<forms:row>
 						<c:set var="form" value="${stdLetterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
@@ -262,13 +266,6 @@
 								</forms:select>
 							</c:otherwise>
 						</c:choose>
-						<!--<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" />-->
-						<forms:plaintext label="form.iasdiary.event.portamedic.response.date" property="respn_date" />
-					</forms:row>
-					<forms:row>
-						<forms:select id="second_requestid" label="form.iasdiary.std.letter.second.request" property="second_request" size="1">
-							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
-						</forms:select>
 					</forms:row>
 					<forms:row>
 						<forms:textarea  id="letterTextArea" label="form.iasdiary.std.letter.letterTextArea" style="font-family: courier new" property="letterTextArea" cols="75" rows="14" maxlength="4500" valign="top" readonly="true"/>		

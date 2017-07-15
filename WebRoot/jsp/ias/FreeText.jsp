@@ -9,6 +9,8 @@
 <script language='JavaScript' src='fw/html/jscript/calendar_res.js'></script>
 <script language='JavaScript' src='fw/html/jscript/calendar.js'></script>
 
+
+
 <%	
 	String modify = null;
 	
@@ -36,6 +38,8 @@ for (var i = 0; i <= locs.length; i++){
  }
 textbox.value = str
 }
+
+
 </script>
 
 
@@ -100,8 +104,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back"/>	
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -167,7 +171,7 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnBack">
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -235,8 +239,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -285,7 +289,7 @@ textbox.value = str
 						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIasChangesWereMade=true" styleId="freetextstatus">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />
+						<forms:plaintext label="form.iasdiary.freeText.requested" property="requested" />	
 						<forms:plaintext label="form.iasdiary.event.portamedic.response.date" property="respn_date"/>												 
 					</forms:row>
 					<forms:row>					
@@ -308,12 +312,12 @@ textbox.value = str
 						</forms:select>
 					</forms:row>	
 					<forms:row>			
-						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIasChangesWereMade=true" readonly="true"/></pre>	
+						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" readonly="true"/></pre>	
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

@@ -158,7 +158,7 @@ function runIasdiaryInt()
 	
 	if (window.focus) 
 	{
-		iasdiary.focus();
+		//iasdiary.focus();
 	}
 
 	return false;			
