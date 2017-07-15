@@ -468,7 +468,7 @@ public class FreeTextAction extends CCAction {
 	 */
 	public void save_onClick(FormActionContext ctx) throws Exception {
 		FreeTextForm form = (FreeTextForm) ctx.form();
-		
+		form.save();
 		form.validateForm(ctx);
 	
 		if (ctx.hasErrors())
@@ -487,7 +487,7 @@ public class FreeTextAction extends CCAction {
 	 */
 	public void edit_onClick(FormActionContext ctx) throws Exception {
 		FreeTextForm form = (FreeTextForm) ctx.form();
-		
+		form.save();
 		form.validateForm(ctx);
 	
 		if (ctx.hasErrors())

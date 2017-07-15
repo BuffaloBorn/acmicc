@@ -1,6 +1,47 @@
 var iasdiary = null;
 var iasdiaryAutoSaveWin = null;
+var gChangesWereMade = false;
+var gSaveClicked = false;
+var gTabClick = false;
+var gValidationFirst = false;
 
+function runUnloadValidation() 
+{
+	
+	if (gChangesWereMade == true && gSaveClicked == false) {
+		 	event.returnValue = ("Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or click 'Cancel' to return to this page to save the changes made.");
+		
+		if (iasdiary)
+		{	
+		 	gTabClick =false;
+			gValidationFirst=true;
+		}
+		
+	}
+}
+
+function runUnloadCloseIasDiary()
+{
+	if (iasdiary && gTabClick == false)
+	{
+		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
+	}
+}
+
+function runCloseIasDiaryUnload()
+{
+	
+	if(gTabClick == false)
+	{
+		if (gValidationFirst == true)
+		{
+			alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
+		}
+		
+			runIasdiary();
+			closeIasdiary();
+	}
+}
 function runIasdiary()
 {
 	url = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
@@ -14,7 +55,7 @@ function runIasdiary()
 	if(null == iasdiary || iasdiary.closed)
 	{
 		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
-		iasdiary =window.open(url,'name',options);
+		iasdiary =window.open(url,'iasdiaryname',options);
 	}
 	else
 	{

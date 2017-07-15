@@ -251,9 +251,9 @@
 						</forms:select>
 					</forms:row>
 					<forms:row>	
-						<forms:plaintext label="form.iasdiary.event.portamedic.requested" property="request"/>				
+						<forms:text label="form.iasdiary.event.portamedic.requested" property="request" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');"/>				
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');"/>
-						<forms:select id="responseindid" label="form.iasdiary.event.portamedic.response.ind" property="response" size="1">
+						<forms:select id="responseindid" label="form.iasdiary.event.portamedic.response.ind" property="response" size="1" disabled="true">
 								<base:options property="responseIndOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 					</forms:row>
@@ -340,9 +340,9 @@
 						</forms:select>
 					</forms:row>
 					<forms:row>	
-						<forms:plaintext label="form.iasdiary.event.portamedic.requested" property="request"/>				
+						<forms:text label="form.iasdiary.event.portamedic.requested" property="request" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');"/>				
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-						<forms:select id="responseindid" label="form.iasdiary.event.portamedic.response.ind" property="response" size="1">
+						<forms:select id="responseindid" label="form.iasdiary.event.portamedic.response.ind" property="response" size="1" disabled="true">
 								<base:options property="responseIndOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 					</forms:row>

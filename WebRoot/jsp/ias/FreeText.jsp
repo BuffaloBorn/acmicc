@@ -223,7 +223,7 @@ textbox.value = str
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIASChangesWereMade=true"/>								
 					</forms:row>
 					<forms:row>					
-						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request">
+						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request" disabled="true">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />
@@ -256,8 +256,12 @@ textbox.value = str
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.freeText.description" property="description" />
-						<forms:plaintext label="form.iasdiary.freeText.memoind" property="memoind" />
-						<forms:plaintext label="form.iasdiary.freeText.attachment" property="attachment" />						
+						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIASChangesWereMade=true" styleId="freetextmemoid" disabled="true">
+							<base:options property="memoindOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>
+						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIASChangesWereMade=true" styleId="freetextattachment" disabled="true">
+							<base:options property="attachmentOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>						
 					</forms:row>
 					<forms:row>
 						<forms:html label="form.iasdiary.freeText.Recipient">
@@ -286,11 +290,24 @@ textbox.value = str
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIASChangesWereMade=true"/>												 
 					</forms:row>
 					<forms:row>					
-						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request">
-							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
-						</forms:select>
+						<c:set var="form" value="${freeTextForm}"/>
+						<c:choose>
+							<c:when test='${form.second_request == "N"}'>
+								<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request">
+									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+								</forms:select>
+							</c:when>
+							<c:otherwise>
+								<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request" disabled="true">
+									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+								</forms:select>
+							</c:otherwise>
+						</c:choose>
+						
 						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />			
-						<forms:plaintext label="form.iasdiary.freeText.free.form.ind" property="freeformind" />
+						<forms:select id="freeformid" label="form.iasdiary.freeText.free.form.ind" property="freeformind" size="1" onchange="gIASChangesWereMade=true" styleId="freetextfreeformind" disabled="true">
+							<base:options property="freeformIndOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>
 					</forms:row>	
 					<forms:row>			
 						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>	

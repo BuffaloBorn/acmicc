@@ -53,7 +53,6 @@ public class FreeTextForm extends ActionForm {
 	private String remLines ="";
 	private String remChars="";
 	private String hiddenfreeTextArea="";
-	private String autoSave ="";
 	
 	public FreeTextForm() {
 		super();
@@ -307,14 +306,6 @@ public class FreeTextForm extends ActionForm {
 		this.policyno = policyno;
 	}
 	
-	public String getAutoSave() {
-		return autoSave;
-	}
-
-	public void setAutoSave(String autoSave) {
-		this.autoSave = autoSave;
-	}
-
 	public void clear(){
 		this.setDescription("");
 		this.setEvent_id("");
@@ -332,7 +323,6 @@ public class FreeTextForm extends ActionForm {
 		this.setFreeformind("");
 		this.setMemoind("");
 		this.setPolicyno("");
-		this.setAutoSave("");
 	}
 
 
@@ -354,7 +344,6 @@ public class FreeTextForm extends ActionForm {
 		this.setSecond_request(this.getSecond_request());
 		this.setStatus(this.getStatus());
 		this.setStd_event(this.getStd_event());
-		this.setAutoSave("false");
 	}
 	
 	

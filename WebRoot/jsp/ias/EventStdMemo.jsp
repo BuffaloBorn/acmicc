@@ -28,7 +28,8 @@
 	
 	function selectFocus()
 	{
-		document.frmEventStdMemo.eventStdMemoRecipientStyleId.focus();
+		  var txtArea = document.getElementById("stdletterTextArea");
+		  textArea.focus();
 	
 	}
 	
@@ -185,7 +186,7 @@
 							</tr>
 						</table>
 					 </forms:html>
-					 <forms:html label="form.iasdiary.event.std.memo.memoid" join="true">	
+					 <forms:html label="form.iasdiary.event.std.memo.memoid">	
 	 					<ctrl:plaintext property="memoid" />
 					 </forms:html>
 					 <forms:row>
@@ -254,12 +255,22 @@
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.event.std.memo.requested" property="requested" />
-						<forms:text label="form.iasdiary.event.std.memo.response.date" property="respn_date" maxlength="10" size="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" />
+						<forms:plaintext label="form.iasdiary.event.std.memo.response.date" property="respn_date"/>
 					</forms:row>
 					<forms:row>
-						<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1">
-							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
-						</forms:select>
+					<c:set var="form" value="${eventStdMemoForm}"/>
+					<c:choose>
+						<c:when test='${form.second_request == "N"}'>
+							<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1">
+								<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+							</forms:select>
+						</c:when>
+						<c:otherwise>
+							<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1" disabled="true">
+								<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+							</forms:select>
+						</c:otherwise>						
+					</c:choose>
 						<forms:plaintext label="form.iasdiary.event.std.memo.form.id" property="application_formid" />
 						<forms:plaintext label="form.iasdiary.event.std.memo.free.form.ind" property="freeformind" />
 					</forms:row>

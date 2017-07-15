@@ -53,10 +53,10 @@
 						</table>
 					</forms:html>
 					<forms:row>			
-						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />			
+						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />
 						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
-						</forms:select>
+						</forms:select>			
 						<forms:plaintext label="form.iasdiary.letter.requested" property="requested" colspan="1" />
 						<forms:plaintext label="form.iasdiary.letter.attach" property="attach" colspan="1" />
 					</forms:row>
@@ -181,9 +181,19 @@
 					</forms:html>
 					<forms:row>			
 						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />	
-						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
-							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
-						</forms:select>
+						<c:set var="form" value="${letterForm}"/>
+						<c:choose>
+							<c:when test='${form.second_request == "N"}'>
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
+									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+								</forms:select>
+							</c:when>
+							<c:otherwise>
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" disabled="true">
+									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+								</forms:select>
+							</c:otherwise>
+						</c:choose>
 						<forms:plaintext label="form.iasdiary.letter.requested" property="requested" colspan="1" />
 						<forms:plaintext label="form.iasdiary.letter.attach" property="attach" colspan="1" />
 					</forms:row>
@@ -245,9 +255,19 @@
 					</forms:html>
 					<forms:row>			
 						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />			
-						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
-							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
-						</forms:select>
+						<c:set var="form" value="${letterForm}"/>
+						<c:choose>
+							<c:when test='${form.second_request == "N"}'>
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
+									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+								</forms:select>	
+							</c:when>
+							<c:otherwise>
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" disabled="true">
+									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
+								</forms:select>
+							</c:otherwise>
+						</c:choose>
 						<forms:plaintext label="form.iasdiary.letter.requested" property="requested" colspan="1" />
 						<forms:plaintext label="form.iasdiary.letter.attach" property="attach" colspan="1" />
 					</forms:row>

@@ -35,7 +35,7 @@ function openAmendmentWindow(eventCode)
 	        	</forms:select>
 	        	<forms:buttonsection default="btnCreateEvent">
 	        		<forms:button base="buttons.src.def2" name="btnCreateEvent" text="form.iasdiary.std.event.create.event" title="form.iasdiary.std.event.create.event" />
-	        		<forms:button base="buttons.src.def2" name="btnBackToDiary" text="button.title.back" title="button.title.back" onmouseup="javascript:removeAutoSavePopUpEC();"/>
+	        		<forms:button base="buttons.src.def2" name="btnBackToDiary" text="button.title.back" title="button.title.back" />
 	        	</forms:buttonsection>
 			</forms:row>	
 		</forms:html>

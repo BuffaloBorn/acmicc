@@ -15,7 +15,7 @@ public class WSPersonTypesCodesCall {
 	{
 		TreeMap localTMap = new TreeMap();
 		
-		TreeMap map = LookupTableServiceClient.GetLookupTableMap("Person Status");
+		TreeMap map = LookupTableServiceClient.GetLookupTableMap("Person Type");
 		
 		String key;
 		 Set set= map.keySet (  ) ; 
@@ -26,7 +26,7 @@ public class WSPersonTypesCodesCall {
 	     {  
 	    	
 	    	  key = iter.next().toString();
-	    	 localTMap.put(key, key+ ": " + map.get ( key  ));
+	    	 localTMap.put(key, key);
 	      }  
 		
 		

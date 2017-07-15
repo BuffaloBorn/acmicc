@@ -8,29 +8,19 @@
 
 	function SetTextAreaCursor() {
 
-        var txtArea = document.getElementById("myText");
+        var txtArea = document.getElementById("freeTextArea");
 
         var oRange = txtArea.createTextRange();
-
- 
-
+        
         txtArea.focus();
-
-        
-
-        
 
         //Emtpy Line
 
         var regExg = /\r\n\r\n/im;
 
-        
-
         //Find first empty line.
 
         matches = regExg.exec(txtArea.value);
-
- 
 
         if (matches != null && matches.length > 0) {
 
@@ -100,8 +90,8 @@
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">
-				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" styleId="updateId" onmouseup="javascript:doOnClick();"/>		
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back"  onmouseup="javascript:removeAutoSavePopUp();"/>
+				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" styleId="updateId"/>		
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back"  />
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>
@@ -158,8 +148,8 @@
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">
-				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" styleId="updateId" onmouseup="javascript:doOnClick();"/>
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
+				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" styleId="updateId" />
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>
