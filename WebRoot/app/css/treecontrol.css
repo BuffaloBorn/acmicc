@@ -1,0 +1,239 @@
+/* ==========================================
+** TreeControl
+**
+** Acronym's
+** ------------------------------------------
+** tc     = TreeControl
+** tlodd  = odd row
+** tleven = even row
+** ti     = tree item
+** tis    = selected tree item
+** tol    = outline
+** ==========================================
+*/
+
+
+/* ====================================================
+** Style 1 ( the class .tc was replayed by .myClass1)
+** ====================================================
+*/
+
+/* TreeControl */
+.myClass1 {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	border : none;
+}
+
+.myClass1 TD {
+	border : none;
+}
+
+/* odd rows */
+.myClass1 .tlodd TR {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #FFFFFF;
+}
+
+.myClass1 .tlodd TD {
+	border-bottom : 1px solid #DCE8EB;
+}
+
+/* even rows */
+.myClass1 .tleven TR {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #F3F4F5;
+	border : none;
+}
+
+.myClass1 .tleven TD {
+	border-bottom : 1px solid  #DCE8EB;
+}
+
+
+/* Tree Control Item */
+.myClass1 .ti {
+	width : 100%;
+	padding-left : 4px;
+}
+
+.myClass1 .ti A {
+	color : #000000;
+	padding-left : 4px;
+	text-decoration : none;
+}
+
+/* Selected Tree Control Item */
+.myClass1 .tis {
+	width : 100%;
+	padding-left : 4px;
+	background-color : #FEA217;
+}
+
+.myClass1 .tis A {
+	color : #FFFFFF;
+	padding-left : 4px;
+	font-weight : normal;
+	text-decoration : none;
+}
+
+/* Tree Outline */
+.myClass1 .tol TD  {
+	padding-left : 0;
+}
+
+/* ====================================================
+** Style 2 ( the class .tc was replayed by .myClass2)
+** ====================================================
+*/
+
+/* TreeControl */
+.myClass2 {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	border : none;
+}
+
+.myClass2 TD {
+	border : none;
+}
+
+/* odd rows */
+.myClass2 .tlodd TR {
+	font-family : Arial;
+	font-size : 8pt;
+	line-height: 18px;
+	font-weight : normal;
+	vertical-align: middle;
+}
+
+.myClass2 .tlodd TD {
+	border-bottom : none;
+	background-color: transparent;
+}
+
+/* even rows */
+.myClass2 .tleven TR {
+	font-family : Arial;
+	font-size : 8pt;
+	line-height: 18px;
+	font-weight : normal;
+	vertical-align: middle;
+}
+
+.myClass2 .tleven TD {
+	border-bottom : none;
+	background-color: transparent;
+}
+
+/* Tree Control Item */
+.myClass2 .ti {
+	width : 100%;
+	padding-left : 4px;
+}
+
+.myClass2 .ti A {
+	color : #000000;
+	padding-left : 4px;
+	text-decoration : none;
+}
+
+/* Selected Tree Control Item */
+.myClass2 .tis {
+	width : 100%;
+	padding-left : 4px;
+}
+
+.myClass2 .tis A {
+	color : #FFFFFF;
+	padding-left : 4px;
+	font-weight : normal;
+	text-decoration : none;
+	background-color : #FEA217;
+}
+
+/* Tree Outline */
+.myClass2 .tol TD  {
+	padding-left : 0;
+}
+
+
+/* ====================================================
+** Style 2 ( the class .tc was replayed by .myClass3)
+** ====================================================
+*/
+
+/* TreeControl */
+.myClass3 {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	border : none;
+}
+
+.myClass3 TD {
+	border : none;
+}
+
+/* odd rows */
+.myClass3 .tlodd TR {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #FFFFFF;
+}
+
+.myClass3 .tlodd TD {
+	border-bottom : none;
+	background-color: yellow;
+}
+
+/* even rows */
+.myClass3 .tleven TR {
+	font-family : Arial;
+	font-size : 10pt;
+	font-weight : normal;
+	background-color : transparent;
+}
+
+.myClass3 .tleven TD {
+	border-bottom : none;
+	background-color: green;
+}
+
+/* Tree Control Item */
+.myClass3 .ti {
+	width : 100%;
+	padding-left : 4px;
+}
+
+.myClass3 .ti A {
+	color : #000000;
+	padding-left : 4px;
+	text-decoration : none;
+}
+
+/* Selected Tree Control Item */
+.myClass3 .tis {
+	width : 100%;
+	padding-left : 4px;
+}
+
+.myClass3 .tis A {
+	color : #FFFFFF;
+	padding-left : 4px;
+	font-weight : normal;
+	background-color : #FEA217;
+	text-decoration : none;
+}
+
+/* Tree Outline */
+.myClass3 .tol TD  {
+	padding-left : 0;
+}

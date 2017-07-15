@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<data-sources />
+	<!-- Form Beans -->
+	<form-beans>
+		<!-- Dummy Form without function -->
+		<form-bean name="emptyForm"
+			type="com.epm.acmi.struts.form.EmptyForm" />
+		<!-- Logon -->
+		<form-bean name="logonForm"
+			type="com.epm.acmi.struts.form.LogonActionForm" />
+		<!-- Work List Form -->
+		<form-bean name="workListForm"
+			type="com.epm.acmi.struts.form.WorkListForm" />
+		<!-- Document MetaData Form -->
+		<form-bean name="docMetaDataForm"
+			type="com.epm.acmi.struts.form.DocumentMetaDataForm" />
+		<form-bean name="docUpdateMetaDataForm"
+			type="com.epm.acmi.struts.form.DocumentMetaDataForm" />
+		<!-- Memos and Amend Form -->
+		<form-bean name="MemosAmendForm"
+			type="com.epm.acmi.struts.form.MemosAmendForm" />
+		<!-- Shared Information  Form -->
+		<form-bean name="SharedInfoForm"
+			type="com.epm.acmi.struts.form.SharedInfoForm" />
+		<!-- NBWS Details Form -->
+		<form-bean name="NBWSDetailsForm"
+			type="com.epm.acmi.struts.form.NBWSDetailsForm" />
+		<!-- Case Notes  Form -->
+		<form-bean name="CaseNotesForm"
+			type="com.epm.acmi.struts.form.CaseNotesForm" />
+		<!-- Case Notes  Form -->
+		<form-bean name="ReassignTaskForm"
+			type="com.epm.acmi.struts.form.ReassignTaskForm" />
+		<form-bean name="userRoleForm"
+			type="com.epm.acmi.struts.form.UserRoleForm" />
+		<form-bean name="prevPolicyForm"
+			type="com.epm.acmi.struts.form.PrevPolicyForm" />
+		<form-bean name="medRecForm"
+			type="com.epm.acmi.struts.form.MedRecForm" />
+		<form-bean name="tInterviewForm" 
+			type="com.epm.acmi.struts.form.TelInterviewForm" />
+		<form-bean name="activatePendingForm"
+			type="com.epm.acmi.struts.form.ActivatePendingForm" />	
+			
+		<form-bean name="activateIASForm" type="com.epm.acmi.struts.form.ActivateIASForm" />	
+		<form-bean name="letterForm" type="com.epm.acmi.struts.form.LetterForm"/>
+		<form-bean name="stdLetterForm" type="com.epm.acmi.struts.form.StandardLetterForm"/>
+    	<form-bean name="browsePoliciesForm" type="com.epm.acmi.struts.form.BrowsePoliciesForm" />
+    	<form-bean name="freeTextForm" type="com.epm.acmi.struts.form.FreeTextForm" />
+    	<form-bean name="eventStdMemoForm" type="com.epm.acmi.struts.form.EventStdMemoForm" />
+    	<form-bean name="browsePolicyCertPersonForm" type="com.epm.acmi.struts.form.BrowsePolicyCertPersonForm" />
+    	<form-bean name="eventPortamedicForm" type="com.epm.acmi.struts.form.EventPortamedicForm" />
+    	<form-bean name="policyExtendedCommentsMainForm" type="com.epm.acmi.struts.form.PolicyExtendedCommentsMainForm" />
+    	<form-bean name="policyPersonMainForm" type="com.epm.acmi.struts.form.PolicyPersonMainForm" />
+    	<form-bean name="amendmentMainForm" type="com.epm.acmi.struts.form.AmendmentMainForm" />
+    	<form-bean name="policyPersonCoverageMainForm" type="com.epm.acmi.struts.form.PolicyPersonCoverageMainForm" />
+    	<form-bean name="underwritingNotesMainForm" type="com.epm.acmi.struts.form.UnderwritingNotesMainForm" />
+    	<form-bean name="personCompanyMainForm" type="com.epm.acmi.struts.form.PersonCompanyMainForm" />
+    	<form-bean name="riderMainForm" type="com.epm.acmi.struts.form.RiderMainForm" />
+   		<form-bean name="subStdCoverageMainForm" type="com.epm.acmi.struts.form.SubStdCoverageMainForm" />
+    	<form-bean name="personCompanyBrowseForm" type="com.epm.acmi.struts.form.PersonCompanyBrowseForm" />
+		<form-bean name="standardEventCodesForm" type="com.epm.acmi.struts.form.StandardEventCodesForm" />
+		<form-bean name="memoIdCodesForm" type="com.epm.acmi.struts.form.MemoIdCodesForm" />
+		<form-bean name="riderCodesForm" type="com.epm.acmi.struts.form.RiderCodesForm" />
+		<form-bean name="policyConditionCodesMainForm" type="com.epm.acmi.struts.form.PolicyConditionCodesMainForm" />	
+	</form-beans>
+
+	<!-- Global Exceptions -->
+	<global-exceptions></global-exceptions>
+
+	<!-- Global Forwards -->
+	<global-forwards>
+		<forward name="logon" path="/logon.do" redirect="true" />
+	</global-forwards>
+
+
+	<action-mappings>
+
+		<!-- ################################# -->
+		<!-- #    About                      # -->
+		<!-- ################################# -->
+		<action path="/about" name="emptyForm"
+			type="com.epm.acmi.struts.action.CCForwardAction"
+			input="/jsp/about/About.jsp" />
+
+			
+		<!-- ################################# -->
+		<!-- #    Main                       # -->
+		<!-- ################################# -->
+		<action path="/main" name="emptyForm" scope="request"
+			validate="false" type="com.epm.acmi.struts.action.CCForwardAction"
+			input="/jsp/main/Main.jsp" />
+
+
+		<!-- ################################# -->
+		<!-- #    Login                      # -->
+		<!-- ################################# -->
+		<action path="/logon" name="logonForm" scope="request"
+			validate="true" type="com.epm.acmi.struts.action.LogonAction"
+			input="/jsp/login/Login.jsp">
+			<!--	<forward name="success" path="/main/tabsetBrowse.do" /> -->
+			<forward name="success" path="/main/secondarytabsetBrowse.do" />
+			<forward name="failure" path="/logon.do" />
+		</action>
+
+
+		<!-- ################################# -->
+		<!-- #    Logout                     # -->
+		<!-- ################################# -->
+		<action path="/logout"
+			type="com.epm.acmi.struts.action.LogoutAction"
+			input="/jsp/login/Login.jsp">
+
+			<forward name="success" path="/logon.do" redirect="true" />
+		</action>
+
+		<!-- ################################# -->
+		<!-- #    DBReset                    # -->
+		<!-- ################################# -->
+		<action path="/reset"
+			type="com.epm.acmi.struts.action.CCResetAction">
+		</action>
+
+
+
+		<!-- ################################# -->
+		<!-- #    Work List Page             # -->
+		<!-- ################################# -->
+
+		<action path="/worklist" name="workListForm" scope="session"
+			validate="false" attribute="workListForm"
+			type="com.epm.acmi.struts.action.WorkListAction"
+			input="/jsp/main/SecondaryMain.jsp">
+			<forward name="success" path="/main/tabsetBrowse.do" />
+			<forward name="failure" path="/logon.do" />
+			<!--	<forward name="login" path="/logon" /> -->
+		</action>
+
+
+
+		<!-- ################################# -->
+		<!-- #    Main Tab Set               # -->
+		<!-- ################################# -->
+
+		<action path="/main/tabsetBrowse" name="emptyForm"
+			type="com.epm.acmi.struts.action.MainTabSetBrowseAction"
+			input="/jsp/main/Main.jsp">
+
+			<forward name="tab1" path="/main/iuauser.do"
+				redirect="true" />
+			<forward name="tab2" path="/main/actpend.do"
+				redirect="true" />
+			<forward name="tab3" path="/main/reassign.do"
+				redirect="true" />
+			<forward name="tab4" path="/main/docexep.do"
+				redirect="true" />
+		</action>
+
+
+
+		<action path="/main/secondarytabsetBrowse" name="emptyForm"
+			type="com.epm.acmi.struts.action.MainTabSetBrowseAction"
+			input="/jsp/main/SecondaryMain.jsp">
+
+			<forward name="tab5" path="/worklist.do"
+				redirect="true" />
+			<forward name="tab2" path="/secondarymain/actpend.do"
+				redirect="true" />
+			<forward name="tab3" path="/secondarymain/reassign.do"
+				redirect="true" />
+			<forward name="tab4" path="/secondarymain/docexep.do"
+				redirect="true" />
+		</action>
+
+		<action path="/main/iuauser" name="emptyForm"
+			type="com.epm.acmi.struts.action.IUAUserAction"
+			input="/jsp/main/Main.jsp">
+			<forward name="view" path="/main/viewdoc.do?LUCID={0}"
+				redirect="true" />
+			<forward name="edit"
+				path="/main/appdocs/update.do?LUCID={0}" redirect="true" />
+			<forward name="delete" path="/main/iuauser.do?LUCID={0}"
+				redirect="true" />
+			<forward name="tab14" path="/iuauser/caseNotes.do"
+				redirect="true" />
+			<forward name="tab114" path="/nbs/memosAmend.do"
+				redirect="true" />
+			<forward name="tab115" path="/nbs/sharedInfo.do"
+				redirect="true" />
+			<forward name="tab111" path="/nbs/details.do"
+				redirect="true" />
+		</action>
+
+
+		<action path="/main/iuauser/nbws" name="emptyForm"
+			type="com.epm.acmi.struts.action.NBWSAction"
+			input="/jsp/main/Main.jsp">
+			<forward name="tab14" path="/iuauser/caseNotes.do"
+				redirect="true" />
+			<forward name="tab114" path="/nbs/memosAmend.do"
+				redirect="true" />
+			<forward name="tab115" path="/nbs/sharedInfo.do"
+				redirect="true" />
+			<forward name="tab111" path="/nbs/details.do"
+				redirect="true" />
+			<forward name="tab116" path="/jsp/nbws/TeleInterview.jsp"
+				redirect="true" />
+		</action>
+
+
+		<action path="/main/actpend" name="activatePendingForm"
+			type="com.epm.acmi.struts.action.ActivatePendingAction"
+			input="/jsp/main/Main.jsp">
+		</action>
+
+		<action attribute="activateIASForm" input="/jsp/main/Main.jsp" name="activateIASForm" path="/main/iasdiary" type="com.epm.acmi.struts.action.ActivateIASAction" />
+
+		<action path="/main/reassign" name="ReassignTaskForm"
+			scope="session" validate="true" attribute="ReassignTaskForm"
+			type="com.epm.acmi.struts.action.ReassignAction"
+			input="/jsp/main/Main.jsp">
+		</action>
+
+		<action path="/main/reassign1" name="ReassignTaskForm"
+			scope="session" validate="true" attribute="ReassignTaskForm"
+			type="com.epm.acmi.struts.action.ReassignAction"
+			input="/jsp/main/Main.jsp">
+		</action>
+
+		<action path="/main/reassign2" name="ReassignTaskForm"
+			scope="session" validate="true" attribute="ReassignTaskForm"
+			type="com.epm.acmi.struts.action.ReassignAction"
+			input="/jsp/main/Main.jsp">
+		</action>
+
+		<action path="/main/docexep" name="emptyForm"
+			type="com.epm.acmi.struts.action.DocExepAction"
+			input="/jsp/main/Main.jsp">
+			<forward name="view" path="/main/viewdoc.do?LUCID={0}"
+				redirect="true" />
+			<forward name="edit"
+				path="/main/docexep/update.do?LUCID={0}" redirect="true" />
+			<forward name="delete" path="/main/docexep.do?LUCID={0}"
+				redirect="true" />
+		</action>
+
+		<action path="/secondarymain/actpend" name="activatePendingForm"
+			type="com.epm.acmi.struts.action.ActivatePendingAction"
+			input="/jsp/main/SecondaryMain.jsp">
+		</action>
+
+		<action path="/iuauser/StandardLetterErrAutoSave" name="stdLetterForm"  attribute="stdLetterForm" type="com.epm.acmi.struts.action.StandardLetterErrAutoSave" input="/jsp/ias/ErrAutoSave.jsp" />
+		
+
+		<action attribute="activateIASForm" input=".display.ias.iasdiary"	name="activateIASForm" path="/iuauser/iasdiary"	type="com.epm.acmi.struts.action.ActivateIASAction">
+			<forward name="browsePolicyCertPerson" path="/iuauser/browsePolicyCertPerson.do" redirect="true" />
+			<forward name="browsePolicies" path="/iuauser/browsePolicies.do?keyInsured={0}&amp;comingFrom=PD" redirect="true" />
+			<forward name="letter" path="/iuauser/letter.do" redirect="true" />
+			<forward name="personCompanyMain" path="/iuauser/personCompanyMain.do" redirect="true" />
+			<forward name="eventPortamedic" path="/iuauser/eventPortamedic.do" redirect="true" />
+			<forward name="freeText" path="/iuauser/freeText.do"/>
+			<forward name="stdlet" path="/iuauser/stdLetter.do"	redirect="true" />
+			<forward name="policyPersonCoverageMain" path="/iuauser/policyPersonCoverageMain.do" redirect="true" />
+			<forward name="Main"  path="/iuauser/underwritingNotesMain.do " redirect="true" />
+			<forward name="riderMain" path="/iuauser/riderMain.do"	redirect="true" />
+			<forward name="eventStdMemo" path="/iuauser/eventStdMemo.do" redirect="true" />
+			<forward name="policyPersonMainEdit" path="/iuauser/policyPersonMain.do?modify=edit" redirect="true" />
+			<forward name="policyPersonMainDisplay" path="/iuauser/policyPersonMain.do?modify=display" redirect="true" />
+			<forward name="subStdCoverageMain" path="/iuauser/subStdCoverageMain.do" redirect="true" />
+			<forward name="personCompanyBrowse" path="/iuauser/personCompanyBrowse.do" redirect="true" />
+			<forward name="stdEventCode" path="/iuauser/stdEventCode.do?showFocus=true"/>
+			<forward name="memoIdCodes" path="/iuauser/memoIdCodes"/>
+			<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+			<forward name="amendmentwarning" path="/iuauser/iasdiary.do?amendmentwarning=true" redirect="true" />
+			<forward name="amendmenterror" path="/iuauser/iasdiary.do?amendmenterror=true" redirect="true" />
+			<forward name="underwritingNotesEdit" path="/iuauser/underwritingNotesMain.do?modify=edit" redirect="true"/>
+			<forward name="underwritingNotesCreate" path="/iuauser/underwritingNotesMain.do?modify=create" redirect="true"/>
+			<forward name="underwritingNotesDisplay" path="/iuauser/underwritingNotesMain.do?modify=display" redirect="true"/>
+			<forward name="amendmentEdit" path="/iuauser/amendmentMain.do?modify=edit" redirect="true"/>
+			<forward name="amendmentCreate" path="/iuauser/amendmentMain.do?modify=create" redirect="true"/>
+			<forward name="amendmentDisplay" path="/iuauser/amendmentMain.do?modify=display" redirect="true"/>
+			<forward name="policyExtendedCommentsEdit"	path="/iuauser/policyExtendedCommentsMain.do?modify=edit&amp;autoSavePopUp=true" redirect="true" />
+			<forward name="policyExtendedCommentsCreate" path="/iuauser/policyExtendedCommentsMain.do?modify=create&amp;autoSavePopUp=true" redirect="true" />
+			<forward name="policyExtendedCommentsDisplay" path="/iuauser/policyExtendedCommentsMain.do?modify=display" redirect="true" />
+			<forward name="conditionCodes" path="/iuauser/policyConditionCodesMain.do?personid={0}&amp;policyid={1}&amp;comingFrom=PD&amp;fillform=true&amp;proformAction=P" redirect="true" />
+		</action>
+
+		<action path="/iuauser/stdLetter" name="stdLetterForm"  attribute="stdLetterForm" type="com.epm.acmi.struts.action.StandardLetterAction" input=".display.ias.stdletter" scope="session">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+      		<forward name="memoIdHelp" path="/iuauser/memoIdCodes.do?comingFrom={0}&amp;eventid={1}"/>
+    	</action>
+    	
+    	<action path="/iuauser/stdLetterCreate" name="stdLetterForm"  attribute="stdLetterForm" type="com.epm.acmi.struts.action.StandardLetterAction" input=".create.ias.stdletter">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+			<forward name="memoIdHelp" path="/iuauser/memoIdCodes.do?comingFrom={0}&amp;eventid={1}"/>
+    	</action>
+		
+		<action path="/iuauser/letterCreate" name="letterForm" attribute="letterForm" input=".create.ias.letter" type="com.epm.acmi.struts.action.LetterAction" >
+			<forward name="back" path="/iuauser/iasdiary.do"/>
+			<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+		</action>
+		
+		<action path="/iuauser/letter" name="letterForm" attribute="letterForm" input=".display.ias.letter" type="com.epm.acmi.struts.action.LetterAction" >
+			<forward name="back" path="/iuauser/iasdiary.do"/>
+			<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+		</action>
+	
+	 	<action path="/iuauser/freeText" name="freeTextForm" attribute="freeTextForm" input=".display.ias.freetext" type="com.epm.acmi.struts.action.FreeTextAction">
+			<forward name="back" path="/iuauser/iasdiary.do" />
+			<forward name="failure" path="/iuauser/freeText.do" />
+			<forward name="EditWithStatus" path="/iuauser/freeTextWithStatus.do?eventid={0}&amp;action=edit&amp;modify=editWithStatus"/>
+			<forward name="memoIdHelp" path="/iuauser/memoIdCodes.do?comingFrom={0}&amp;eventid={1}"/>
+			<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+			<forward  name="showPopup" path="/iuauser/freeText.do?showPopup=false" redirect="true" />
+	 	</action>	
+	 	
+	 	<action path="/iuauser/freeTextCreate" name="freeTextForm" attribute="freeTextForm" input=".create.ias.freetext" type="com.epm.acmi.struts.action.FreeTextAction" validate="true">
+			<forward name="createrFreeText" path=".create.ias.freetext"/>
+			<forward name="create" path="/iuauser/freetextCreate.do?policyno={0}&amp;eventcode={1}"/>
+			<forward name="errorEdit"   path="/iuauser/freeTextEditError.do?modify=edit" redirect="true"/>
+			<forward name="errorEditWithStatus"   path="/iuauser/freeTextEditError.do?modify=editWithStatus" redirect="true"/>
+			<forward name="errorCreate"  path="/iuauser/freeTextCreateError.do?modify=create" redirect="true"/>
+			<forward name="back" path="/iuauser/iasdiary.do" />
+			<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+			<forward name="memoIdHelp" path="/iuauser/memoIdCodes.do?comingFrom={0}&amp;eventid={1}"/>
+	 	</action>	
+	 	
+		<action path="/iuauser/eventPortamedicCreate" name="eventPortamedicForm" attribute="eventPortamedicForm" input=".create.ias.eventportamedic"   type="com.epm.acmi.struts.action.EventPortamedicAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="personidHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}" redirect="true"/>
+    	</action>
+	
+		<action path="/iuauser/eventPortamedic" name="eventPortamedicForm" attribute="eventPortamedicForm" input=".display.ias.eventportamedic"   type="com.epm.acmi.struts.action.EventPortamedicAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="personidHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}" redirect="true"/>
+    	</action>
+	
+		<action path="/iuauser/eventStdMemo"  name="eventStdMemoForm" attribute="eventStdMemoForm" input=".display.ias.eventstdmemo" type="com.epm.acmi.struts.action.EventStdMemoAction">
+	      <forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+	      <forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+    	</action>
+    	
+    	<action path="/iuauser/eventStdMemoCreate"  name="eventStdMemoForm" attribute="eventStdMemoForm" input=".create.ias.eventstdmemo" type="com.epm.acmi.struts.action.EventStdMemoAction">
+	      <forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+	      <forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
+    	</action>
+    	
+    	<action path="/iuauser/browsePolicyCertPerson" name="browsePolicyCertPersonForm" attribute="browsePolicyCertPersonForm" input=".display.ias.browse.policy.cert.person.main" type="com.epm.acmi.struts.action.BrowsePolicyCertPersonAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+      		<forward name="freeTextCreateBack" path="/iuauser/freeTextCreate.do?action=edit&amp;back=true" redirect="true" />
+      		<forward name="freeTextEdit" path="/iuauser/freeText.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="freeTextEditBack" path="/iuauser/freeText.do?action=edit&amp;back=true&amp;event=ft" redirect="true" />
+			<forward name="eventPortamedicCreate" path="/iuauser/eventPortamedicCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventPortamedicCreateBack" path="/iuauser/eventPortamedicCreate.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="eventPortamedicEdit" path="/iuauser/eventPortamedic.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventPortamedicEditBack" path="/iuauser/eventPortamedic.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="letterCreate" path="/iuauser/letterCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="letterCreateBack" path="/iuauser/letterCreate.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="letterEdit" path="/iuauser/letter.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />         		      		
+			<forward name="letterEditBack" path="/iuauser/letter.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?personid={0}&amp;person_name={1}&amp;action=edit" redirect="true" />
+			<forward name="stdletterCreateBack" path="/iuauser/stdLetterCreate.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="stdLetterEdit" path="/iuauser/stdLetter.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="stdLetterEditBack" path="/iuauser/stdLetter.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="eventStdMemoCreate" path="/iuauser/eventStdMemoCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventStdMemoCreateBack" path="/iuauser/eventStdMemoCreate.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="eventStdMemoEdit" path="/iuauser/eventStdMemo.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventStdMemoEditBack" path="/iuauser/eventStdMemo.do?action=edit&amp;back=true" redirect="true" />
+	    </action>
+	    
+	    <action path="/iuauser/memoIdCodes" name="memoIdCodesForm" attribute="memoIdCodesForm" input=".display.ias.memo.codes.main" type="com.epm.acmi.struts.action.MemoIdCodesAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="edit" path="/iuauser/freetextCreate.do?action=edit"/>
+      		<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do?memoid={0}&amp;action=edit&amp;eventid={1}" redirect="true" />
+      		<forward name="freeTextCreateBack" path="/iuauser/freeTextCreate.do?action=edit&amp;back=true" redirect="true" />
+      		<forward name="freeTextEdit" path="/iuauser/freeText.do?memoid={0}&amp;action=edit&amp;eventid={1}" redirect="true" />
+      		<forward name="freeTextEditBack" path="/iuauser/freeText.do?action=edit&amp;back=true" redirect="true" />
+      		<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?memoid={0}&amp;action=edit" redirect="true" />
+			<forward name="stdletterCreateBack" path="/iuauser/stdLetterCreate.do?action=edit&amp;back=true" redirect="true" />
+			<forward name="stdletterEdit" path="/iuauser/stdLetter.do?memoid={0}&amp;action=edit&amp;eventid={1}&amp;modify=show" redirect="true" />
+			<forward name="stdletterEditBack" path="/iuauser/stdLetter.do?action=edit&amp;back=true" redirect="true" />
+	    </action>
+
+		<action path="/iuauser/browsePolicies"  attribute="browsePoliciesForm" name="browsePoliciesForm" input=".display.ias.browse.policies.main" type="com.epm.acmi.struts.action.BrowsePoliciesAction">
+		     <forward name="back" path="/iuauser/iasdiary.do" />
+    	</action>
+	
+	
+		<action path="/iuauser/policyExtendedCommentsMain"  name="policyExtendedCommentsMainForm"  attribute="policyExtendedCommentsMainForm" input=".display.ias.policy.extended.comments.main"   type="com.epm.acmi.struts.action.PolicyExtendedCommentsMainAction" scope="session">
+ 		    <forward  name="back" path="/iuauser/iasdiary.do" redirect="true" />
+ 		    <forward  name="autoSave" path="/iuauser/policyExtendedCommentsMain.do?showPopup=true" redirect="true" />
+ 		     <forward  name="showPopup" path="/iuauser/policyExtendedCommentsMain.do?showPopup=false" redirect="true" />
+    	</action>
+	
+		<action path="/iuauser/policyPersonMain" name="policyPersonMainForm" attribute="policyPersonMainForm" input=".display.ias.policy.person.main"   type="com.epm.acmi.struts.action.PolicyPersonMainAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+      		<forward name="riderEdit" path="/iuauser/riderMain.do?personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
+      		<forward name="riderCreate" path="/iuauser/riderMain.do?personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
+      		<forward name="riderDisplay" path="/iuauser/riderMain.do?personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=display" redirect="true" />
+      		<forward name="coverageDisplay" path="/iuauser/policyPersonCoverageMain.do?personid={0}&amp;modify=display" redirect="true" />
+      		<forward name="coverageEdit" path="/iuauser/policyPersonCoverageMain.do?personid={0}&amp;modify=edit" redirect="true" />
+      		<forward name="conditionCodes" path="/iuauser/policyConditionCodesMain.do?personid={0}&amp;policyid={1}&amp;comingFrom=PP&amp;fillform=true&amp;modify=edit&amp;proformAction=M" redirect="true" />
+      		<forward name="policyPersonMainEdit" path="/iuauser/policyPersonMain.do?modify=edit&amp;input=false"  redirect="true" />
+    	</action>
+    	
+    	<action path="/iuauser/riderMain" name="riderMainForm" attribute="riderMainForm" input=".display.ias.policy.rider.main"  type="com.epm.acmi.struts.action.RiderMainAction">
+    		<forward name="backDisplay" path="/iuauser/policyPersonMain.do?modify=display" redirect="true" />
+    		<forward name="backEdit" path="/iuauser/policyPersonMain.do?modify=edit" redirect="true" />
+    		<forward name="riderHelpCreate" path="/iuauser/browseRiderCodes.do?riderPos={0}&amp;personid={1}&amp;actionstatus=create" redirect="true"/>
+    		<forward name="riderHelpEdit" path="/iuauser/browseRiderCodes.do?riderPos={0}&amp;personid={1}&amp;actionstatus=edit" redirect="true"/>
+    		<forward name="riderCreate" path="/iuauser/riderMain.do?modify=create" redirect="true" />
+    		<forward name="riderEditError" path="/iuauser/riderMain.do?modify=edit&amp;isError=true" redirect="true" />
+    		<forward name="back" path="/iuauser/policyPersonMain.do" redirect="true" />
+    	</action>
+    	
+    	<action path="/iuauser/browseRiderCodes" name="riderCodesForm" attribute="riderCodesForm" input=".display.ias.policy.rider.codes"  type="com.epm.acmi.struts.action.RiderCodesAction">
+    		<forward name="back" path="/iuauser/riderMain.do" redirect="true" />
+    		<forward name="self" path="/iuauser/browseRiderCodes.do?riderPos={0}&amp;personid={1}&amp;actionstatus={2}" redirect="true"/> 
+    		<forward name="riderMaintNoCodeOneCreate" path="/iuauser/riderMain.do?riderPos=One&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
+    		<forward name="riderMaintNoCodeOneEdit" path="/iuauser/riderMain.do?riderPos=One&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
+    		<forward name="riderMaintNoCodeTwoCreate" path="/iuauser/riderMain.do?riderPos=Two&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
+    		<forward name="riderMaintNoCodeTwoEdit" path="/iuauser/riderMain.do?riderPos=Two&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
+			<forward name="riderMaintNoCodeThreeCreate" path="/iuauser/riderMain.do?riderPos=Three&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
+			<forward name="riderMaintNoCodeThreeEdit" path="/iuauser/riderMain.do?riderPos=Three&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
+    		<forward name="riderMaintNoCodeFourCreate" path="/iuauser/riderMain.do?riderPos=Four&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
+    		<forward name="riderMaintNoCodeFourEdit" path="/iuauser/riderMain.do?riderPos=Four&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
+    		<forward name="riderMaintNoCodeFiveCreate" path="/iuauser/riderMain.do?riderPos=Five&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
+    		<forward name="riderMaintNoCodeFiveEdit" path="/iuauser/riderMain.do?riderPos=Five&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
+    		<forward name="riderMaintWithCodeCreate" path="/iuauser/riderMain.do?riderCode={0}&amp;riderPos={1}&amp;personid={2}&amp;textrequired={3}&amp;modify=create" redirect="true" />
+    		<forward name="riderMaintWithCodeEdit" path="/iuauser/riderMain.do?riderCode={0}&amp;riderPos={1}&amp;personid={2}&amp;textrequired={3}&amp;modify=edit" redirect="true" />
+    	</action>
+    	
+    	<action path="/iuauser/policyPersonCoverageMain" name="policyPersonCoverageMainForm"  attribute="policyPersonCoverageMainForm" input=".display.ias.policy.person.coverage.main" type="com.epm.acmi.struts.action.PolicyPersonCoverageMainAction">
+      		<forward name="back" path="/iuauser/policyPersonMain.do" redirect="true" />
+      		<forward name="backDisplay" path="/iuauser/policyPersonMain.do?modify=display" redirect="true" />
+      		<forward name="backEdit" path="/iuauser/policyPersonMain.do?modify=edit" redirect="true" />
+      		<forward name="subStdCoverageMainDisplay" path="/iuauser/subStdCoverageMain.do?personid={0}&amp;coveragecode={1}&amp;displaydate={2}&amp;fillform=true&amp;modify=display" redirect="true" />
+      		<forward name="subStdCoverageMainEdit" path="/iuauser/subStdCoverageMain.do?personid={0}&amp;coveragecode={1}&amp;displaydate={2}&amp;fillform=true&amp;modify=edit" redirect="true" />
+      		<forward name="policyPersonCoverageMainDisplay" path="/iuauser/policyPersonCoverageMain.do?loadList=false&amp;modify=display" redirect="true" />
+      		<forward name="policyPersonCoverageMainEdit" path="/iuauser/policyPersonCoverageMain.do?loadList=false&amp;modify=edit" redirect="true" />
+    	</action>
+	
+		<action path="/iuauser/policyConditionCodesMain" name="policyConditionCodesMainForm"  attribute="policyConditionCodesMainForm" input=".display.ias.policy.condition.codes.main"	type="com.epm.acmi.struts.action.PolicyConditionCodesMainAction">
+			<forward name="backPolicyPersonMain" path="/iuauser/policyPersonMain.do" redirect="true" />
+			<forward name="backPolicyDiary" path="/iuauser/iasdiary.do" redirect="true" />
+		</action>
+	
+	
+		<action path="/iuauser/amendmentMain" attribute="amendmentMainForm" input=".display.ias.amendment.main" name="amendmentMainForm"  type="com.epm.acmi.struts.action.AmendmentMainAction">
+		    <forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+    	</action>
+		
+		<action path="/iuauser/underwritingNotesMain" name="underwritingNotesMainForm" attribute="underwritingNotesMainForm" input=".display.ias.underwriting.notes.main" type="com.epm.acmi.struts.action.UnderwritingNotesMainAction">
+    		 <forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+    	</action>
+    	
+    	<action path="/iuauser/personCompanyMain" name="personCompanyMainForm" attribute="personCompanyMainForm" input="/jsp/ias/PersonCompanyMainMain.jsp" type="com.epm.acmi.struts.action.PersonCompanyMainAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+    	</action>
+
+		<action path="/iuauser/subStdCoverageMain" name="subStdCoverageMainForm"  attribute="subStdCoverageMainForm" input=".display.ias.sub.std.coverage.main"	type="com.epm.acmi.struts.action.SubStdCoverageMainAction">
+			<forward name="back" path="/iuauser/policyPersonCoverageMain.do" redirect="true" />
+			<forward name="backDisplay" path="/iuauser/policyPersonCoverageMain.do?modify=display" redirect="true" />
+			<forward name="backEdit" path="/iuauser/policyPersonCoverageMain.do?modify=edit" redirect="true" />
+			<forward name="coverageDisplay" path="/iuauser/policyPersonCoverageMain.do?personid={0}&amp;modify=display" redirect="true" />
+			<forward name="coverageEdit" path="/iuauser/policyPersonCoverageMain.do?personid={0}&amp;modify=edit" redirect="true" />
+			<forward name="subStdCoverage" path="/iuauser/subStdCoverageMain.do?personid={0}&amp;coveragecode={1}&amp;fillform=false" redirect="true" />
+			<forward name="subStdCoverageMainEdit" path="/iuauser/subStdCoverageMain.do?modify=edit" redirect="true" />
+		</action>
+		
+		<action path="/iuauser/personCompanyBrowse" name="personCompanyBrowseForm" attribute="personCompanyBrowseForm" input="/jsp/ias/PersonCompanyBrowseMain.jsp" type="com.epm.acmi.struts.action.PersonCompanyBrowseAction">
+      		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
+    	</action>
+    	
+    	<action path="/iuauser/amendmentCreate" type="org.apache.struts.actions.ForwardAction" parameter=".create.ias.amendment"/>
+    	<action path="/iuauser/freetextCreate" type="org.apache.struts.actions.ForwardAction" parameter=".create.ias.freetext"/>
+    	<action path="/iuauser/eventstdmemoCreate" type="org.apache.struts.actions.ForwardAction" parameter=".create.ias.eventstdmemo"/>
+    	<action path="/iuauser/lettercreate" type="org.apache.struts.actions.ForwardAction" parameter=".create.ias.letter"/>
+    	<action path="/iuauser/stdletterCreate" type="org.apache.struts.actions.ForwardAction" parameter=".create.ias.stdletter"/>
+    	<action path="/iuauser/stdEventCodeError" type="org.apache.struts.actions.ForwardAction" parameter=".acmi.ias.base"/>
+    	<action path="/iuauser/stdEventCodeWithPolicy" type="org.apache.struts.actions.ForwardAction" parameter=".acmi.ias.base"/>
+	   	<action path="/iuauser/freeTextEditError" type="org.apache.struts.actions.ForwardAction" parameter=".create.ias.freetext"/>
+	   	
+		<action path="/iuauser/freeTextCreateError" name="freeTextForm" attribute="freeTextForm" input=".create.ias.freetext" type="com.epm.acmi.struts.action.FreeTextAction" /> 	
+	    		
+    	<action path="/iuauser/stdEventCode" name="standardEventCodesForm" attribute="standardEventCodesForm" input=".acmi.ias.create.base" type="com.epm.acmi.struts.action.StandardEventCodesAction" >
+    		<forward name="amendmentCreate" path="/iuauser/amendmentCreate.do" redirect="true" />
+   			<forward name="eventportamedicCreate" path="/iuauser/eventPortamedicCreate.do?eventcode={0}&amp;action=edit&amp;actiontype=create" redirect="true" />
+   			<forward name="eventstdmemoCreate" path="/iuauser/eventstdmemoCreate.do" redirect="true" />
+   			<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do" redirect="true" />
+   			<forward name="letterCreate" path="/iuauser/letterCreate.do" redirect="true" />
+			<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?eventcode={0}&amp;action=edit" redirect="true" />
+			<forward name="back" path="/iuauser/stdEventCode.do" redirect="true" />
+			<forward name="stdEventCodeWithPolicy" path="/iuauser/stdEventCodeWithPolicy.do?policyno={0}&amp;productid={1}&amp;keyinsured={2}" redirect="true" />
+			<forward name="stdEventCodeError" path="/iuauser/stdEventCode.do?policyno={0}" redirect="true" />
+			<forward name="diary"  path="/iuauser/iasdiary.do?modify=create" redirect="true" />
+    	</action>
+
+		<action path="/secondarymain/reassign" name="ReassignTaskForm"
+			scope="session" validate="true" attribute="ReassignTaskForm"
+			type="com.epm.acmi.struts.action.ReassignAction"
+			input="/jsp/main/SecondaryMain.jsp">
+		</action>
+
+		<action path="/secondarymain/reassign1" name="ReassignTaskForm"
+			scope="session" validate="true" attribute="ReassignTaskForm"
+			type="com.epm.acmi.struts.action.ReassignAction"
+			input="/jsp/main/SecondaryMain.jsp">
+		</action>
+
+		<action path="/secondarymain/reassign2" name="ReassignTaskForm"
+			scope="session" validate="true" attribute="ReassignTaskForm"
+			type="com.epm.acmi.struts.action.ReassignAction"
+			input="/jsp/main/SecondaryMain.jsp">
+		</action>
+
+		<action path="/secondarymain/docexep" name="emptyForm"
+			type="com.epm.acmi.struts.action.DocExepAction"
+			input="/jsp/main/SecondaryMain.jsp">
+			<forward name="view" path="/main/viewdoc.do?LUCID={0}"
+				redirect="true" />
+			<forward name="edit"
+				path="/main/docexep/update.do?LUCID={0}" redirect="true" />
+			<forward name="delete" path="/main/docexep.do?LUCID={0}"
+				redirect="true" />
+		</action>
+
+		<action path="/main/docexep/update" name="docMetaDataForm"
+			scope="session"
+			type="com.epm.acmi.struts.action.DocMetaDataDispAction"
+			input="/jsp/cms/DocumentMetaDataPanel.jsp">
+			<forward name="docexep" path="/main/docexep.do"
+				redirect="true" />
+			<forward name="cancel" path="/main/docexep.do"
+				redirect="true" />
+		</action>
+
+		<action path="/main/appdocs/update" name="docMetaDataForm"
+			scope="session"
+			type="com.epm.acmi.struts.action.AppDocsMetaDataAction"
+			input="/jsp/cms/AppDocsMetaDataPanel.jsp">
+			<forward name="appdocs" path="/main/docexep.do"
+				redirect="true" />
+			<forward name="cancel" path="/main/docexep.do"
+				redirect="true" />
+		</action>
+
+
+		<action path="/main/nbw/upload" name="docUpdateMetaDataForm"
+			scope="request"
+			type="com.epm.acmi.struts.action.UploadDocumentAction"
+			input="/jsp/cms/UploadDocument.jsp">
+			<!-- <forward name="docexep"    path="/main/docexep.do?ctrl=maintabset&action=TabClick&param=tab4"   redirect="true"/> -->
+			<forward name="docexep" path="/main/docexep.do"
+				redirect="true" />
+		</action>
+
+		<action path="/main/viewdoc"
+			type="com.epm.acmi.struts.action.ViewDocumentAction">
+		</action>
+
+
+		<action path="/nbs/memosAmend" name="MemosAmendForm"
+			scope="session" validate="true" attribute="MemosAmendForm"
+			input="/jsp/nbws/MemoAmmendments.jsp"
+			type="com.epm.acmi.struts.action.MemosAmendAction">
+			<forward name="success" path="/main/iuauser/nbws.do" />
+			<forward name="failure" path="/logon" />
+		</action>
+
+
+		<action path="/nbs/sharedInfo" name="SharedInfoForm"
+			scope="session" validate="true" attribute="SharedInfoForm"
+			input="/jsp/nbws/SharedInformation.jsp"
+			type="com.epm.acmi.struts.action.SharedInfoAction">
+			<forward name="success" path="/main/iuauser/nbws.do" />
+			<forward name="failure" path="/logon" />
+		</action>
+
+
+		<action path="/nbs/details" name="NBWSDetailsForm"
+			scope="session" validate="true" attribute="NBWSDetailsForm"
+			input="/jsp/main/Main.jsp"
+			type="com.epm.acmi.struts.action.NBWSDetailsAction">
+			<forward name="success" path="/main/iuauser/nbws.do" />
+			<forward name="failure" path="/logon" />
+		</action>
+
+
+
+		<action path="/iuauser/caseNotes" name="CaseNotesForm"
+			scope="session" validate="true" attribute="CaseNotesForm"
+			input="/jsp/nbws/CaseNotesContent.jsp"
+			type="com.epm.acmi.struts.action.CaseNotesAction">
+			<forward name="success" path="/main/iuauser.do" />
+			<forward name="failure" path="/logon" />
+		</action>
+
+		<!-- ################################# -->
+		<!-- #    User Role Assignment             # -->
+		<!-- ################################# -->
+		<action path="/userRoleAssign" name="userRoleForm"
+			type="com.epm.acmi.struts.action.UserBrowseAction"
+			input="/jsp/userrole/userRoleAssignContent.jsp" />
+
+
+		<!-- ################################# -->
+		<!-- #    Prev Policy Page	 		 # -->
+		<!-- ################################# -->
+		
+		<action path="/prevPolicyAction" name="prevPolicyForm"
+			type="com.epm.acmi.struts.action.PrevPolicyAction"/>	
+		
+		
+		<!-- ################################# -->
+		<!-- #    Medical Records Page	     # -->
+		<!-- ################################# -->
+		
+		<action path="/medRecAction" name="medRecForm"
+			type="com.epm.acmi.struts.action.MedRecAction"/>
+
+
+	    <!-- ################################# -->
+		<!-- #   Telephone Interview  Page	     # -->
+		<!-- ################################# -->
+		
+		<action path="/telInterviewAction" name="tInterviewForm"
+			type="com.epm.acmi.struts.action.TelInterviewAction"
+		/>
+
+		<!-- ################################# -->
+		<!-- #    Modules                    # -->
+		<!-- ################################# -->
+
+		<action path="/listcontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/treelistcontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/treecontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/tabsetcontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/tabbarcontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/schedulercontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/menucontrol"
+			type="org.apache.struts.actions.SwitchAction" />
+		<action path="/formelements"
+			type="org.apache.struts.actions.SwitchAction" />
+
+	</action-mappings>
+	<!-- RequestProcessor -->
+	<controller nocache="true"
+		processorClass="com.epm.acmi.struts.action.CCRequestProcessor" />
+
+	<message-resources parameter="ApplicationResources" />
+	<message-resources parameter="FrameworkResources"
+		key="com.cc.framework.message" />
+	<!-- Struts Validator PlugIn -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/config/validator-rules.xml, /WEB-INF/config/validation.xml" />
+	</plug-in>
+	
+	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
+  		<set-property property="definitions-config" value="/WEB-INF/config/tiles-defs.xml" />
+  		<set-property property="definitions-debug" value="2" />
+  		<set-property property="definitions-parser-details" value="2" />
+  		<set-property property="definitions-parser-validate" value="true" />
+	</plug-in>
+
+
+</struts-config>

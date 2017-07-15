@@ -1,0 +1,372 @@
+/* ==========================================
+** Styles for myTreeListControl1
+**
+** Acronym's
+** ------------------------------------------
+**
+** ==========================================
+*/
+
+/* ListHeader */
+.myTreeListControl1 .tlch {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : bold;
+	color : #FFFFFF;
+	background-color : #FFFFFF;
+	width : 100%;
+	padding: 2px;
+	margin-bottom: 2px;
+}
+
+/* ListControl Body */
+.myTreeListControl1 .tlcb {
+	padding-top: 2px;
+}
+
+/* header (level 0) */
+.myTreeListControl1 .tlcb .header, .myTreeListControl1 .tlcb .header TD, .myTreeListControl1 .tlcb .header TD A {
+	font-family : Arial;
+	font-size : 9pt;
+	font-weight : bold;
+	background-color : #80ADBA;
+	color : #FFFFFF;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 20px;
+	vertical-align : middle;
+}
+
+/* header1 (level 1) */
+.myTreeListControl1 .tlcb .header1, .myTreeListControl1 .tlcb .header1 TD, .myTreeListControl1 .tlcb .header1 TD A {
+	font-family : Arial;
+	font-size : 9pt;
+	font-weight : normal;
+	background-color : #80ADBA;
+	color : #FFFFFF;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 20px;
+	vertical-align : middle;
+}
+
+/* header2 (level 2) */
+.myTreeListControl1 .tlcb .header2, .myTreeListControl1 .tlcb .header2 TD, .myTreeListControl1 .tlcb .header2 TD A {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #80ADBA;
+	color : #FFFFFF;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 20px;
+	vertical-align : middle;
+}
+
+/* even rows */
+.myTreeListControl1 .tlcb .even {
+	background-color : #EDEFF0;
+}
+
+.myTreeListControl1 .tlcb .evens {
+	background-color : #FFCC99;
+}
+
+.myTreeListControl1 .tlcb .even td, .myTreeListControl1 .tlcb .evens td {
+	font-family : Arial;
+	font-size : 8pt;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 18px;
+	vertical-align: middle;
+}
+
+
+/* even row tree column */
+.myTreeListControl1 .tlcb .even tr td, .tlc .tlcb .evens tr td {
+	padding-left : 0px;
+	padding-right : 0px;
+}
+
+/* odd rows */
+.myTreeListControl1 .tlcb .odd  {
+	background-color : #FFFFFF;
+}
+
+.myTreeListControl1 .tlcb .odds  {
+	background-color : #FFCC99;
+}
+
+.myTreeListControl1 .tlcb .odd  td, .myTreeListControl1 .tlcb .odds  td {
+	font-family : Arial;
+	font-size : 8pt;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 18px;
+	vertical-align: middle;
+}
+
+.tlc .tlcb .ti .feact {
+	padding-left : 6px;
+	color: blue;
+	cursor: pointer;
+	cursor: hand;
+}
+
+/* odd row tree column */
+.myTreeListControl1 .tlcb .odd tr td, .myTreeListControl1 .tlcb .odds tr td {
+	padding-left : 0px;
+	padding-right : 0px;
+}
+
+/* Hyperlinks */
+.myTreeListControl1 .tlcb tr td a {
+	font-family : Arial;
+	font-size : 8pt;
+	text-decoration : none;
+	color : #0000FF;
+}
+
+/* Caption */
+.myTreeListControl1 .tlch .c {
+	font-family : Arial;
+	font-size : 9pt;
+	font-weight : bold;
+	background-color : #005A6B;
+	color: #FFFFFF;
+}
+
+/* Detail */
+.myTreeListControl1 .tlch .d {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #005A6B;
+	color: #FFFFFF;
+}
+
+
+/* Page thumb */
+.myTreeListControl1 .tlch .pg {
+	font-family : Arial;
+	font-size : 12px;
+	font-weight : bold;
+	color : black;
+	text-decoration : underline;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.myTreeListControl1 .tlch .pgsep {
+	font-family : Arial;
+	font-size : 12px;
+	font-weight : bold;
+	color : black;
+}
+
+/* Page thumb */
+.myTreeListControl1 .tlch. pg:hover {}
+
+/* Page thumb selected */
+.myTreeListControl1 .tlch .pgs {
+	font-family : Arial;
+	font-size : 12px;
+	font-weight : bold;
+	color : orange;
+	cursor: pointer;
+	cursor: hand;
+	text-decoration : underline;
+}
+
+/* ==========================================
+** Styles for myTreeListControl1
+**
+** Acronym's
+** ------------------------------------------
+**
+** ==========================================
+*/
+
+/* ListHeader */
+.myTreeListControl2 .tlch {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : bold;
+	color : #FFFFFF;
+	background-color : #FFFFFF;
+	width : 100%;
+	padding: 2px;
+	margin-bottom: 2px;
+}
+
+/* ListControl Body */
+.myTreeListControl2 .tlcb {
+	background-color : #FFFFE1;
+	border: 2px outset silver;
+}
+
+/* header (level 0) */
+.myTreeListControl2 .tlcb .header, .myTreeListControl2 .tlcb .header TD, .myTreeListControl2 .tlcb .header TD A {
+	font-family : Arial;
+	font-size : 10pt;
+	font-weight : bold;
+	background-color : #FFE794;
+	color : black;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 25px;
+	vertical-align : middle;
+	border-bottom: 2px solid gray;
+}
+
+/* header1 (level 1) */
+.myTreeListControl2 .tlcb .header1, .myTreeListControl2 .tlcb .header1 TD, .myTreeListControl2 .tlcb .header1 TD A {
+	font-family : Arial;
+	font-size : 9pt;
+	font-weight : normal;
+	background-color : #80ADBA;
+	color : #FFFFFF;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 25px;
+	vertical-align : middle;
+}
+
+/* header2 (level 2) */
+.myTreeListControl2 .tlcb .header2, .myTreeListControl2 .tlcb .header2 TD, .myTreeListControl2 .tlcb .header2 TD A {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #80ADBA;
+	color : #FFFFFF;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 25px;
+	vertical-align : middle;
+}
+
+/* even rows */
+.myTreeListControl2 .tlcb .even {
+	/* background-color : #EDEFF0; */
+}
+
+.myTreeListControl2 .tlcb .evens {
+	background-color : #FFCC99;
+}
+
+.myTreeListControl2 .tlcb .even td, .myTreeListControl2 .tlcb .evens td {
+	font-family : Arial;
+	font-size : 8pt;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 25px;
+	vertical-align: middle;
+	border-bottom: 1px dotted gray;
+}
+
+.myTreeListControl2 .tlcb .even  td td {
+	border: none;
+}
+
+/* even row tree column */
+.myTreeListControl2 .tlcb .even tr td, .tlc .tlcb .evens tr td {
+	padding-left : 0px;
+	padding-right : 0px;
+}
+
+/* odd rows */
+.myTreeListControl2 .tlcb .odd  {
+	/* background-color : #FFFFFF; */
+}
+
+.myTreeListControl2 .tlcb .odds  {
+	background-color : #FFCC99;
+}
+
+.myTreeListControl2 .tlcb .odd  td, .myTreeListControl2 .tlcb .odds  td {
+	font-family : Arial;
+	font-size : 8pt;
+	padding-left : 5px;
+	padding-right : 5px;
+	height : 25px;
+	vertical-align: middle;
+	border-bottom: 1px dotted gray;
+}
+
+.myTreeListControl2 .tlcb .odd  td td {
+	border: none;
+}
+
+.tlc .tlcb .ti .feact {
+	padding-left : 6px;
+	color: blue;
+	cursor: pointer;
+	cursor: hand;
+}
+
+/* odd row tree column */
+.myTreeListControl2 .tlcb .odd tr td, .myTreeListControl2 .tlcb .odds tr td {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+/* Hyperlinks */
+.myTreeListControl2 .tlcb tr td a {
+	font-family : Arial;
+	font-size : 8pt;
+	text-decoration : none;
+	color : #0000FF;
+}
+
+/* Caption */
+.myTreeListControl2 .tlch .c {
+	font-family : Arial;
+	font-size : 9pt;
+	font-weight : bold;
+	background-color : #005A6B;
+	color: #FFFFFF;
+}
+
+/* Detail */
+.myTreeListControl2 .tlch .d {
+	font-family : Arial;
+	font-size : 8pt;
+	font-weight : normal;
+	background-color : #005A6B;
+	color: #FFFFFF;
+}
+
+
+/* Page thumb */
+.myTreeListControl2 .tlch .pg {
+	font-family : Arial;
+	font-size : 12px;
+	font-weight : bold;
+	color : black;
+	text-decoration : underline;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.myTreeListControl2 .tlch .pgsep {
+	font-family : Arial;
+	font-size : 12px;
+	font-weight : bold;
+	color : black;
+}
+
+/* Page thumb */
+.myTreeListControl2 .tlch. pg:hover {}
+
+/* Page thumb selected */
+.myTreeListControl2 .tlch .pgs {
+	font-family : Arial;
+	font-size : 12px;
+	font-weight : bold;
+	color : orange;
+	cursor: pointer;
+	cursor: hand;
+	text-decoration : underline;
+}
+
+

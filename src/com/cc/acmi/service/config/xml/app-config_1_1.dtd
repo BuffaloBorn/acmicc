@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT application-config (datasource, pathmap?, security?)>
+<!ATTLIST application-config
+	version			CDATA #REQUIRED
+>
+
+<!ELEMENT datasource EMPTY>
+<!ATTLIST datasource
+	url				CDATA #REQUIRED
+	driver			CDATA #REQUIRED
+	user			CDATA #REQUIRED
+	password		CDATA #REQUIRED
+>
+
+<!ELEMENT pathmap (path*)>
+
+<!ELEMENT path EMPTY>
+<!ATTLIST path
+	virtname		CDATA #REQUIRED
+	path			CDATA #REQUIRED
+	translate		(true | false) #REQUIRED
+>
+
+<!ELEMENT security (role*)>
+
+<!ELEMENT permission EMPTY>
+<!ATTLIST permission
+	code			CDATA #REQUIRED
+	granted			(true | false) #IMPLIED
+>
+
+<!ELEMENT role (permission*)>
+<!ATTLIST role
+	code			CDATA #REQUIRED
+	name			CDATA #REQUIRED
+	inverse			(true | false) #IMPLIED
+>
