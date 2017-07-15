@@ -44,7 +44,7 @@ public class StandardEventCodesAction  extends CCAction {
 			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
 			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
 			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
+			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create&autoSavePopUp=true" );
 			flag = false;
 		}
 		

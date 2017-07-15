@@ -107,7 +107,6 @@ public class PolicyPersonMainForm extends ActionForm {
 		
 		TreeMap status = new TreeMap();
 		
-		status.put(" ", " ");
 		status.put("Y", "Yes");
 		status.put("N", "No");
 		

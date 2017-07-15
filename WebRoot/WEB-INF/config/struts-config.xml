@@ -271,7 +271,7 @@
 			<forward name="policyPersonMainDisplay" path="/iuauser/policyPersonMain.do?modify=display" redirect="true" />
 			<forward name="subStdCoverageMain" path="/iuauser/subStdCoverageMain.do" redirect="true" />
 			<forward name="personCompanyBrowse" path="/iuauser/personCompanyBrowse.do" redirect="true" />
-			<forward name="stdEventCode" path="/iuauser/stdEventCode.do?showFocus=true"/>
+			<forward name="stdEventCode" path="/iuauser/stdEventCode.do?showFocus=true&amp;autoSavePopUp=true"/>
 			<forward name="memoIdCodes" path="/iuauser/memoIdCodes"/>
 			<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
 			<forward name="amendmentwarning" path="/iuauser/iasdiary.do?amendmentwarning=true" redirect="true" />

@@ -21,7 +21,7 @@
 <script LANGUAGE="JavaScript" TYPE="text/javascript">
 
 	
-function mask(str,textbox,loc,delim){
+function mask(str,textbox,loc,delim){	
 var locs = loc.split(',');
 
 for (var i = 0; i <= locs.length; i++){
@@ -39,52 +39,62 @@ textbox.value = str
 }
 </script>
 
-<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<script LANGUAGE="JavaScript" TYPE="text/javascript"><!--
 	function doOnClick()
 	{
 		gIASSaveClicked=true;
 	}
 	
-	function changeDropDownToInput(elemid)
+	function replaceDropDown()
 	{
-		var dropdownParent =null;
-		var dropdown =null;
+	
+		var j;
+		var el;
 		var newTextField = document.createElement("INPUT");
 		var selectedValue =null;
-		var lastChild =null;
-
-		var dropdown = document.getElementById(elemid);
-
-		dropdownParent = dropdown.parentNode;
-		selectedValue = dropdown.options[dropdown.selectedIndex].innerText;
-		newTextField.value = selectedValue;
-		newTextField.size = selectedValue.length;
-		lastChild = dropdownParent.lastChild;
-		dropdownParent.appendChild(newTextField);
-		dropdownParent.removeChild(lastChild);
+	
+		var alldropdowns = document.getElementsByTagName('select');
+			for (var i = 0; i < alldropdowns.length; i++){                      
+			      var dropdownname = alldropdowns[i].id; 
+			      changeDropDownToInput(dropdownname);	
+			}
+			
+			var frms = document.getElementsByTagName('form');
+			
+			for (var i = 0; i < frms.length; i++) {	
+				for (j = frms[i].elements.length - 1; j > 0; j--) 
+				{
+					var el = frms[i].elements[j];
+					if (el.nodeName.toLowerCase() == 'select') 
+					{
+						el.parentNode.removeChild(el);
+					}
+				}
+			}	
 	}
-
+	
 	function removeAutoSavePopUp()
 	{
-
-		window.detachEvent('onunload', autoSavePopUpTrue);
+		
+		if(!window.detachEvent('onunload', autoSavePopUpTrue))
+		{
+			window.detachEvent('onunload', autoSavePopUpTrue);
+		}
 		
 		if (gIASChangesWereMade == true && gIASSaveClicked == false) 
-		{
-			changeDropDownToInput("freetextstatus");
-			changeDropDownToInput("freetextsecond_request");
-
+		{	
+			replaceDropDown()
 			lightboxPopup('divLogin2', true);
 		}
 		else
 		{	
 			goBtnBack();
 		}
-
+		
 		//return false;
 	}
 	
-</script>
+--></script>
 
 <c:if test='${sessionScope.IASModify == "create"}'>
 	<div align="center">
@@ -99,10 +109,10 @@ textbox.value = str
 					</forms:row>
 					<forms:row>
 						<forms:text label="form.iasdiary.freeText.description" property="description" maxlength="60" size="60" colspan="1" styleId="descriptionStyleId" onchange="gIASChangesWereMade=true"/>				
-						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIASChangesWereMade=true" styleId="memoind">
 							<base:options property="memoindOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIASChangesWereMade=true" styleId="freetextattachmentid">
 							<base:options property="attachmentOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>	
 					</forms:row>
@@ -128,18 +138,18 @@ textbox.value = str
 						</forms:html>					
 					</forms:row>
 					<forms:row>
-						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true" styleId="freetextstatus">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.requested" property="requested" />	
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIASChangesWereMade=true"/>								
 					</forms:row>
 					<forms:row>					
-						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />
-						<forms:select id="freeformid" label="form.iasdiary.freeText.free.form.ind" property="freeformind" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="freeformid" label="form.iasdiary.freeText.free.form.ind" property="freeformind" size="1" onchange="gIASChangesWereMade=true" styleId="freetextfreeformind">
 							<base:options property="freeformIndOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 					</forms:row>
@@ -149,7 +159,7 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnSave">
 					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -235,10 +245,10 @@ textbox.value = str
 					</forms:row>
 					<forms:row>
 						<forms:text label="form.iasdiary.freeText.description" property="description" maxlength="60" size="60" colspan="1" styleId="descriptionStyleId" onchange="gIASChangesWereMade=true"/>				
-						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIASChangesWereMade=true" styleId="freetextmemoid">
 							<base:options property="memoindOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIASChangesWereMade=true" styleId="freetextattachment">
 							<base:options property="attachmentOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>	
 					</forms:row>
@@ -271,11 +281,11 @@ textbox.value = str
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIASChangesWereMade=true"/>								
 					</forms:row>
 					<forms:row>					
-						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />
-						<forms:select id="freeformid" label="form.iasdiary.freeText.free.form.ind" property="freeformind" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="freeformid" label="form.iasdiary.freeText.free.form.ind" property="freeformind" size="1" onchange="gIASChangesWereMade=true" styleId="freetextfreeformind">
 							<base:options property="freeformIndOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 					</forms:row>
@@ -285,7 +295,7 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
 					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -327,7 +337,7 @@ textbox.value = str
 							<ctrl:plaintext property="memoid" />
 						</forms:html>		
 					</forms:row>
-					<forms:row>
+					<forms:row>												
 						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true" styleId="freetextstatus">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
@@ -347,7 +357,7 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
 					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

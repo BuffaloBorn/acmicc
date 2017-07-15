@@ -6,8 +6,6 @@
 
 <script language="Javascript">
 
-window.onload=selectFocus;
-
 function openAmendmentWindow(eventCode)
 {
 	var stdEvtcode =  eventCode.options[eventCode.selectedIndex].value
@@ -28,6 +26,14 @@ function openAmendmentWindow(eventCode)
 	</script>
 </c:if>
 
+<script language="Javascript">
+	function removeAutoSavePopUpEC()
+	{	
+		window.detachEvent('onunload', autoSavePopUpTrue);
+		return false;
+	}	
+</script>
+
 <html:form action="/iuauser/stdEventCode" styleId="frmStandardEventCodesMain" >
 	<forms:form formid="stdevtcodes" type="edit" width="920">
 		<forms:html align="center">
@@ -37,7 +43,7 @@ function openAmendmentWindow(eventCode)
 	        	</forms:select>
 	        	<forms:buttonsection default="btnCreateEvent">
 	        		<forms:button base="buttons.src.def2" name="btnCreateEvent" text="form.iasdiary.std.event.create.event" title="form.iasdiary.std.event.create.event" />
-	        		<forms:button base="buttons.src.def2" name="btnBackToDiary" text="button.title.back" title="button.title.back" />
+	        		<forms:button base="buttons.src.def2" name="btnBackToDiary" text="button.title.back" title="button.title.back" onmouseup="javascript:removeAutoSavePopUpEC();"/>
 	        	</forms:buttonsection>
 			</forms:row>	
 		</forms:html>

@@ -24,7 +24,6 @@ import com.cc.framework.adapter.struts.FormActionContext;
 import com.cc.framework.ui.control.ControlRequestContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.FreeTextForm;
-import com.epm.acmi.struts.form.PolicyExtendedCommentsMainForm;
 import com.isdiary.entirex.WSFreeTextMaintCall;
 import com.isdiary.entirex.WSMemoTextCall;
 import com.softwarag.extirex.webservice.freetextmaint.client.MUEFMMWINOUT_PARMS;
@@ -607,6 +606,10 @@ public class FreeTextAction extends CCAction {
 		
 		ctx.forwardByName("memoIdHelp", "FT", form.getEvent_id());
 		
+	}
+	
+	public void update_onClick(FormActionContext ctx) throws Exception {
+		log.debug("update was callec " + classAction);
 	}
 	
 	public void handleControlAction(ControlRequestContext ctx, Object aobj[])

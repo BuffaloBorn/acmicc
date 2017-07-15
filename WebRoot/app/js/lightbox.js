@@ -92,3 +92,21 @@ function lightboxPopup(inPopupID, inPopupVisible) {
   }
 
 } // End lightboxPopup().
+
+function changeDropDownToInput(elemid)
+{
+	var dropdownParent =null;
+	var dropdown =null;
+	var newTextField = document.createElement("INPUT");
+	var selectedValue =null;
+	var lastChild =null;
+	
+	var dropdown = document.getElementById(elemid);
+	
+	dropdownParent = dropdown.parentNode;
+	selectedValue = dropdown.options[dropdown.selectedIndex].innerText;
+	newTextField.value = selectedValue;
+	newTextField.size = selectedValue.length;
+	firstChild = dropdownParent.firstChild;
+	dropdownParent.appendChild(newTextField); 			
+}

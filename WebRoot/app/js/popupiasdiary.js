@@ -13,7 +13,7 @@ function runIasdiary()
 
 	if(null == iasdiary || iasdiary.closed)
 	{
-		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=yes,location=no,directories=no,status=yes,menubar=yes,scrollbars=yes,resizable=yes';
+		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
 		iasdiary =window.open(url,'name',options);
 	}
 	else

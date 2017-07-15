@@ -67,7 +67,7 @@
 
 	<c:if test='${param.showPopup == "false"}'>
 		<script type="text/javascript">
-			function lightboxPopupDivLoginTrue() {lightboxPopup('divLogin', true);}
+			function lightboxPopupDivLoginTrue() {lightboxPopup('divLogin', true); replaceDropDown();}
 			window.attachEvent('onload', lightboxPopupDivLoginTrue);
 		</script>
 	</c:if>
@@ -124,7 +124,7 @@
 				self.close();
 			}
 			
-			function updateBtnClick()
+			function updateBtnClick(close)
 			{
 				
 				<% 
@@ -137,6 +137,7 @@
 							{
 				%>
 								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
+								alert("help");
 				<%			}
 							
 							if(modifyStatus2.substring(0,4).equalsIgnoreCase("edit"))
@@ -154,6 +155,7 @@
 							{
 				%>
 				    			document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
+				    			alert("help");
 				<%			}
 							
 							if(IASModify2.substring(0,4).equalsIgnoreCase("edit"))
@@ -169,54 +171,13 @@
 				
 				document.forms('<%=(String) session.getAttribute("currentPageForm")%>').submit();
 				
-				
-				self.close();
-				return false;
+				if(close == true)
+				{
+					self.close();
+				}
+				return true;
 			}
 			
-			function goUpdateBtnClick()
-			{
-				<% 
-						String IASModify = (String) session.getAttribute("IASModify");
-						String modifyStatus = (String) pageContext.getAttribute("modifyStatus");
-						
-						if (modifyStatus != null)
-						{
-							if(modifyStatus.equalsIgnoreCase("create"))
-							{
-				%>
-								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
-				<%			}
-							
-							if(modifyStatus.substring(0,4).equalsIgnoreCase("edit"))
-							{
-				%>
-								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnEditHidden.value = 'clicked';
-				<%			}	
-							
-						}
-						
-						if (IASModify != null)
-						{
-						
-							if(IASModify.equalsIgnoreCase("create"))
-							{
-				%>
-				    			document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
-				<%			}
-							
-							if(IASModify.substring(0,4).equalsIgnoreCase("edit"))
-							{
-				%>
-							   document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnEditHidden.value = 'clicked';
-				<%			}	
-						
-						}
-				%>
-				
-				document.forms('<%=(String) session.getAttribute("currentPageForm")%>').submit();
-				return false;
-			}
 			
 			function goBtnBack()
 			{
@@ -327,7 +288,7 @@
 						</tr>
 						<tr>
 							<td style="padding-top:5px;">
-								<ctrl:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" width="90" onclick="javascript:return updateBtnClick();"/>							
+								<ctrl:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" width="90" onclick="javascript:return updateBtnClick(true);"/>							
 							</td>
 							<td style="padding-top:5px;">
 								<ctrl:button styleId="btnClose" name="btnClose" text="form.iasdiary.no.update" title="form.iasdiary.no.update" width="90" onclick="javascript:closeWin();"/>
@@ -348,6 +309,7 @@
     <!-- ***** Login                                                   ***** -->
     <!-- ******************************************************************* -->
     <div id="divLogin2" class="cssLightboxPopup" style="width:200px;height:100px;display:none;">
+    <html:form action="/iuauser/freeText" styleId="frmFreeText">
       <forms:form type="display" caption="form.iasdiary.dialog.information" formid="frmDialog" width="100%">
 				<forms:html>
 					<table cellspacing="7" cellpadding="0" border="0">
@@ -367,16 +329,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="padding-top:5px;">
-								<ctrl:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" width="90" onclick="javascript:return goUpdateBtnClick();"/>							
-							</td>
-							<td style="padding-top:5px;">
-								<ctrl:button styleId="btnClose" name="btnClose" text="form.iasdiary.no.update" title="form.iasdiary.no.update" width="90" onclick="javascript:goBtnBack();"/>
-							</td>
+							<forms:buttonsection>
+								<forms:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" />
+								<forms:button name="btnClose" text="form.iasdiary.no.update" title="form.iasdiary.no.update" />	
+							</forms:buttonsection>	
 						</tr>
 					</table>
 				</forms:html>
 			</forms:form>
+		</html:form>
     </div>
     <div id="divLogin2_Shadow0" class="cssLightboxShadow0" style="width:200px;height:100px;"></div>
     <div id="divLogin2_Shadow1" class="cssLightboxShadow1" style="width:200px;height:100px;"></div>
