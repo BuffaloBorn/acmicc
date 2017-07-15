@@ -104,8 +104,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onclick="runPageValidation(this)"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -171,7 +171,7 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnBack">
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -239,8 +239,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -316,9 +316,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />
-					<forms:button base="buttons.src.def2" name="btnReset" text="button.title.close" title="button.title.close"  onclick="runPageValidationLink()"/>
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
