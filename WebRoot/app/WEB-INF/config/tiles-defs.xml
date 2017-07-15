@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<!--
+     This is a blank Tiles definition file with a commented example.
+-->
+
+<tiles-definitions>
+
+    <!-- sample tiles definitions
+    <definition name=".mainLayout" path="/common/layouts/classicLayout.jsp">
+        <put name="title"  value="Sample Page Title" />
+        <put name="header" value="/common/header.jsp" />
+        <put name="menu"   value=".mainMenu" />
+        <put name="footer" value="/common/footer.jsp" />
+        <put name="body"   value=".portal.body" />
+    </definition>
+
+    <definition name=".mainMenu" path="/common/layouts/vboxLayout.jsp" >
+        <putList name="list" >
+            <add value=".menu.links" />
+            <add value=".menu.taglib.references" />
+            <add value=".menu.printer.friendly" />
+            <add value=".menu.old.documents" />
+      </putList>
+    </definition>
+
+    <definition name="aPage" extends=".mainLayout">
+        <put name="title"  value="Another Title" />
+        <put name="body"   value=".aPage.body" />
+    </definition>
+
+    end samples -->
+    
+    <definition name=".acmi.ias.base" path="/jsp/template/MainIAS.jsp">
+		<put name="title" value="ACMI IUA Process System" />
+		<put name="header" value="/jsp/template/HeaderIAS.jsp"/>
+		<put name="content" value="/jsp/ias/Blank.jsp" />
+		<put name="footer" value="/jsp/template/Footer.jsp"/>		
+	</definition>
+	
+	<definition name=".acmi.ias.create.base" path="/jsp/template/MainIAS.jsp">
+		<put name="title" value="ACMI IUA Process System" />
+		<put name="header" value="/jsp/template/HeaderIAS.jsp"/>
+		<put name="selectEvent" value="/jsp/ias/StandardEventCodes.jsp" />
+		<put name="content" value="/jsp/ias/Blank.jsp" />
+		<put name="footer" value="/jsp/template/Footer.jsp"/>		
+	</definition>
+	
+	<definition name=".create.ias.eventportamedic" extends=".acmi.ias.create.base">
+		<put name="content" value="/jsp/ias/EventPortamedic.jsp"/>
+	</definition>
+	
+	<definition name=".create.ias.eventstdmemo" extends=".acmi.ias.create.base">
+		<put name="content" value="/jsp/ias/EventStdMemo.jsp"/>
+	</definition>
+	
+	<definition name=".create.ias.freetext" extends=".acmi.ias.create.base">
+		<put name="content" value="/jsp/ias/FreeText.jsp"/>
+	</definition>
+	
+	<definition name=".create.ias.letter" extends=".acmi.ias.create.base">
+		<put name="content" value="/jsp/ias/Letter.jsp"/>
+	</definition>
+	
+	<definition name=".create.ias.stdletter" extends=".acmi.ias.create.base">
+		<put name="content" value="/jsp/ias/StandardLetter.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.stdletter" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/StandardLetter.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.freetext" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/FreeText.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.eventportamedic" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/EventPortamedic.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.eventstdmemo" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/EventStdMemo.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.letter" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/Letter.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.iasdiary" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/cms/SecondaryMain_Tab_Page5.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.policy.person.coverage.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/PolicyPersonCoverageMain.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.policy.person.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/PolicyPersonMain.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.policy.rider.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/RiderMain.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.policy.condition.codes.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/PolicyConditionCodesMain.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.sub.std.coverage.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/SubStdCoverageMain.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.policy.rider.codes" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/BrowseRiderCodes.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.browse.policy.cert.person.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/BrowsePolicyCertPerson.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.memo.codes.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/MemoCodes.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.browse.policies.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/BrowsePolicies.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.policy.extended.comments.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/PolicyExtendedCommentsMain.jsp"/>
+	</definition>
+	
+	<definition name=".display.ias.underwriting.notes.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/UnderwritingNotesMain.jsp"/>
+	</definition>
+	
+	
+	<definition name=".display.ias.amendment.main" extends=".acmi.ias.base">
+		<put name="content" value="/jsp/ias/AmendmentMain.jsp"/>
+	</definition>
+
+    <definition name="${YOUR_DEFINITION_HERE}">
+    </definition>
+
+</tiles-definitions>

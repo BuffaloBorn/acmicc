@@ -473,7 +473,8 @@ public class ActivateIASAction extends CCAction{
 		if (StdEventCode.equalsIgnoreCase("PROP")) 
 		{
 			log.debug("std event:" + StdEventCode);
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
+			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("LETTER")) 

@@ -282,7 +282,7 @@ textbox.value = str
 						</forms:html>		
 					</forms:row>
 					<forms:row>												
-						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIasChangesWereMade=true" styleId="freetextstatus" disabled="true">
+						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIasChangesWereMade=true" styleId="freetextstatus">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />

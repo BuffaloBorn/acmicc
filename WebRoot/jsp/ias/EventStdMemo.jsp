@@ -7,7 +7,7 @@
 
 <script LANGUAGE="JavaScript" TYPE="text/javascript">
 
-	window.onload=selectFocus;
+	//window.onload=selectFocus;
 
 	function mask(str,textbox,loc,delim){
 	var locs = loc.split(',');
@@ -236,8 +236,8 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9"/>
-									<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
+									<ctrl:plaintext  property="recipient_id"/>
+									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
 							<tr>
