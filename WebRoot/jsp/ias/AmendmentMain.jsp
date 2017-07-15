@@ -64,7 +64,7 @@
 	        		<span style="font-family:Arial; font-size:12px;">
 	            		Need&nbsp;
 	            	</span>
-	        		<ctrl:select property="wrong_app" size="1">
+	        		<ctrl:select property="wrong_app" size="1" disabled="true">
 	            			<base:options property="wrongAppOptions" keyProperty="key" labelProperty="value" />
 	        		</ctrl:select>	
 	        		<span style="font-family:Arial; font-size:12px;">
@@ -131,7 +131,7 @@
 	        		<span style="font-family:Arial; font-size:12px;">
 	            		Need&nbsp;
 	            	</span>
-	        		<ctrl:select property="wrong_app" size="1">
+	        		<ctrl:select property="wrong_app" size="1" disabled="true">
 	            			<base:options property="wrongAppOptions" keyProperty="key" labelProperty="value" />
 	        		</ctrl:select>	
 	        		<span style="font-family:Arial; font-size:12px;">

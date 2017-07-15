@@ -72,7 +72,7 @@
 		</script>
 	</c:if>
 	
-	<c:if test='${param.autoSavePopUp == "true"}'>
+	<c:if test='${param.autoSavePopUp == "false"}'>
 		<script type="text/javascript">
 	  		function autoSavePopUpTrue() {autoSavePopUp();}
 	  		window.attachEvent('onunload', autoSavePopUpTrue);
@@ -178,6 +178,11 @@
 				return true;
 			}
 			
+			function testo()
+			{
+				document.getElementById('roleaction').name='btnEdit';
+				document.forms('<%=(String) session.getAttribute("currentPageForm")%>').submit();
+			}
 			
 			function goBtnBack()
 			{
@@ -309,8 +314,9 @@
     <!-- ***** Login                                                   ***** -->
     <!-- ******************************************************************* -->
     <div id="divLogin2" class="cssLightboxPopup" style="width:200px;height:100px;display:none;">
-    <html:form action="/iuauser/freeText" styleId="frmFreeText">
-      <forms:form type="display" caption="form.iasdiary.dialog.information" formid="frmDialog" width="100%">
+    	 <forms:form type="display" caption="form.iasdiary.dialog.information" formid="frmDialog" width="100%">
+				<input type='hidden' id='roleaction' name='' value='x'>
+				<input type='button' value="hit me" onclick="testo()">
 				<forms:html>
 					<table cellspacing="7" cellpadding="0" border="0">
 						<tr>
@@ -329,15 +335,16 @@
 							</td>
 						</tr>
 						<tr>
-							<forms:buttonsection>
-								<forms:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" />
-								<forms:button name="btnClose" text="form.iasdiary.no.update" title="form.iasdiary.no.update" />	
-							</forms:buttonsection>	
+							<td style="padding-top:5px;">
+								<ctrl:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" width="90" onclick="javascript:return updateBtnClick(false);"/>							
+							</td>
+							<td style="padding-top:5px;">
+								<ctrl:button styleId="btnClose" name="btnClose" text="form.iasdiary.no.update" title="form.iasdiary.no.update" width="90" onclick="javascript:goBtnBack();"/>
+							</td>
 						</tr>
 					</table>
 				</forms:html>
 			</forms:form>
-		</html:form>
     </div>
     <div id="divLogin2_Shadow0" class="cssLightboxShadow0" style="width:200px;height:100px;"></div>
     <div id="divLogin2_Shadow1" class="cssLightboxShadow1" style="width:200px;height:100px;"></div>

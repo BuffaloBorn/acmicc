@@ -8,12 +8,26 @@
 var gChangesWereMade = false;
 var gSaveClicked = false;
 var gTabClick = false;
+var gValidationFirst = false;
 
 function runUnloadValidation() 
 {
 	
 	if (gChangesWereMade == true && gSaveClicked == false) {
 		 	event.returnValue = ("Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or click 'Cancel' to return to this page to save the changes made.");
+		 	
+		 	
+		 		gTabClick =false;
+		 		gValidationFirst=true;
+		 	
+	}
+}
+
+function runUnloadCloseIasDiary()
+{
+	if (iasdiary && gTabClick == false)
+	{
+		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
 	}
 }
 
@@ -21,6 +35,11 @@ function runCloseIasDiaryUnload()
 {
 	if(gTabClick == false)
 	{
+		if (gValidationFirst == true)
+		{
+			alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
+		}
+		
 		runIasdiary();
 		closeIasdiary();
 	}
@@ -28,7 +47,7 @@ function runCloseIasDiaryUnload()
 
 </script>
 
-<body onbeforeunload="runUnloadValidation()" onunload="runCloseIasDiaryUnload()" >
+<body onbeforeunload="runUnloadValidation(); runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()" >
 
 <table width="100%">
 	<tr>

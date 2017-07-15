@@ -40,11 +40,37 @@ textbox.value = str
 </script>
 
 <script LANGUAGE="JavaScript" TYPE="text/javascript"><!--
+	  var req;
+	
 	function doOnClick()
 	{
 		gIASSaveClicked=true;
 	}
 	
+	
+	function getFormAsString(formName){
+	        
+	  //Setup the return String
+	  returnString ="";
+	        
+	  //Get the form values
+	  formElements=document.forms[formName].elements;
+	        
+	  //loop through the array, building up the url
+	  //in the format '/strutsaction.do&name=value'
+	 
+	  for(var i=formElements.length-1;i>=0; --i ){
+	        //we escape (encode) each value
+	       if (formElements[i].value.length != 0)
+	       { 
+	        	returnString+="&" +escape(formElements[i].name)+"=" +escape(formElements[i].value);
+	       }
+	 }
+	        
+	 //return the values
+	 return returnString; 
+	}
+
 	function replaceDropDown()
 	{
 	
@@ -76,15 +102,13 @@ textbox.value = str
 	function removeAutoSavePopUp()
 	{
 		
-		if(!window.detachEvent('onunload', autoSavePopUpTrue))
-		{
-			window.detachEvent('onunload', autoSavePopUpTrue);
-		}
+		window.detachEvent('onunload', autoSavePopUpTrue);
 		
 		if (gIASChangesWereMade == true && gIASSaveClicked == false) 
 		{	
-			replaceDropDown()
-			lightboxPopup('divLogin2', true);
+
+			replaceDropDown();
+			lightboxPopup('divLogin2', true);			
 		}
 		else
 		{	

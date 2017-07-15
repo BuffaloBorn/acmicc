@@ -239,11 +239,8 @@ public class PolicyPersonMainAction extends CCAction {
 			form.setPersonid(inoutparms.value.getSTART_PERSON_ID1().toString());
 		
 		form.setPolicyid( inoutparms.value.getPOLICY_ID1().toString());
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		
-		Date date = new Date();
-	    form.setEffective_date(dateFormat.format(date).toString());
+
+	    form.setEffective_date(TextProcessing.dateFormat(inoutparms.value.getPP_STARTDATE1()));
 	
 	}
 
