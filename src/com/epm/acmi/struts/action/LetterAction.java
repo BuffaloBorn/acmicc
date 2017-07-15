@@ -84,6 +84,9 @@ public class LetterAction extends CCAction {
 	private void createLetterMaint(ActionContext ctx, String eventCode) 
 	{
 		log.debug("Prepopulate Letter.....");
+		
+		String EventId ="0";
+		String service = "Letter";
 		LetterForm form = (LetterForm) ctx.form();
 		
 		String policyNo = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
@@ -92,6 +95,33 @@ public class LetterAction extends CCAction {
 		form.setEvent_id("");
 		form.setAttach("Y");
 		form.setStatus("O");
+		
+		MUDECMWResponseMSG_DATAHolder msgInfo = new MUDECMWResponseMSG_DATAHolder();
+		MUDECMWResponseOUT_PARMSHolder outparms = new MUDECMWResponseOUT_PARMSHolder();
+		
+		MUDECMWResponseINOUT_PARMS1Holder inoutparms = new MUDECMWResponseINOUT_PARMS1Holder();
+		
+		try {
+			WSDecAppMemoMaint.fetch(policyNo, EventId, inoutparms, msgInfo, outparms);
+			form.setSuspense_amt(outparms.value.getSUSPENSE_AMOUNT().toString());
+			form.setSuspense_date(TextProcessing.plainDateFormat(outparms.value.getSUSPENSE_DT().toString()));
+			
+		} catch (RemoteException e) {
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",policyNo);
+			ctx.forwardToInput();
+			return;
+		} catch (ServiceException e) {
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION, service + " WS",policyNo);
+			ctx.forwardToInput();
+			return;
+		} catch (Exception e) {
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",policyNo);
+			ctx.forwardToInput();
+			return;
+		}
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();

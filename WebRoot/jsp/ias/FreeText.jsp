@@ -317,7 +317,8 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
 					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />
+					<forms:button base="buttons.src.def2" name="btnReset" text="button.title.close" title="button.title.close"  onclick="runPageValidationLink()"/>
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

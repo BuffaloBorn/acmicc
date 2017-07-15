@@ -500,6 +500,10 @@ public class FreeTextAction extends CCAction {
 	}
 	
 	
+	public void reset_onClick(FormActionContext ctx) throws Exception{
+		ctx.forwardToInput();
+	}
+	
 	
 	/**
 	 * This method is called if the back button is clicked

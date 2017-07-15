@@ -12,7 +12,7 @@ function runUnloadIasValidation()
 	{
 		event.returnValue = middleline;
 		gIasChangesWereMade =false;
-		resetCookieToClose();
+		
 	}
 
 }
@@ -67,10 +67,17 @@ function runPageValidation(formobject)
 	}
 }
 
+function disableunload()
+{
+	window.onbeforeunload=null;
+}
+
 function runPageValidationLink()
 {
 	var happen = false;
 
+	var form = document.getElementsByTagName("form")[0];
+	
 	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
 	{
 		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
@@ -85,8 +92,7 @@ function runPageValidationLink()
 		else{
 			happen = false;
 			window.onbeforeunload=null;
-//			closeDeleteCookie();
-			alert(window.location);
+     		form.submit();
 			return happen;
 		}
 	}
