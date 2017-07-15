@@ -1,3 +1,5 @@
+var url = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
+
 var iasdiary = null;
 var iasdiaryAutoSaveWin = null;
 var gChangesWereMade = false;
@@ -6,18 +8,19 @@ var gTabClick = false;
 var gValidationFirst = false;
 var gPushActivity = false;
 
+var expDays = 1; // number of days the cookie should last
+
+var exp = new Date();
+exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
+
 function runUnloadValidation() 
 {
 	
-	if (gChangesWereMade == true && gSaveClicked == false) {
-		 	event.returnValue = ("Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or click 'Cancel' to return to this page to save the changes made.");
+	if (gChangesWereMade == true && gSaveClicked == false) 
+	{
+		event.returnValue = ("Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or click 'Cancel' to return to this page to save the changes made.");
 		
-		if (iasdiary)
-		{	
-		 	gTabClick =false;
-			gValidationFirst=true;
-		}
-		
+		gValidationFirst=true;
 	}
 }
 
@@ -29,6 +32,37 @@ function runUnloadCloseIasDiary()
 		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
 	}
 	
+	var iaspopup = getCookie('iaspopup');
+	
+	if((iaspopup == 'open') && (gTabClick == false))
+	{
+		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
+	}
+}
+
+function runCloseIasDiaryUnload()
+{	
+	if((gTabClick == false) && (gValidationFirst == true) && (iasdiary))
+	{
+	
+		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
+		
+			runIasdiaryInt();
+			closeIasdiary();
+	}
+	
+	
+	var iaspopup = getCookie('iaspopup');
+	
+	if((iaspopup == 'open') && (gTabClick == false))
+	{
+		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");	
+		
+		runIasdiaryInt();
+		closeIasdiary();
+		deleteCookie('iaspopup');
+	}
+
 }
 
 function setCloseIasDiaryUnloadFlags()
@@ -38,36 +72,35 @@ function setCloseIasDiaryUnloadFlags()
 	gPushActivity = true;
 }
 
-function runCloseIasDiaryUnload()
-{
-	
-	if(gTabClick == false)
-	{
-		if (gValidationFirst == true)
-		{
-			alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
-		}
-		
-		if (iasdiary)
-		{	
-			runIasdiary();
-			closeIasdiary();
-		}
-	}
-	
-	if (iasdiary && gPushActivity == true)
-	{
-		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");	
-		
-		runIasdiary();
-		closeIasdiary();
-	}
-	
-		
-}
 function runIasdiary()
 {
-	url = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
+	var width = 850;
+	var height = 520;
+
+	var winLeft = (screen.width-width)/2; 
+	var winTop = (screen.height-(height+110))/2; 
+
+	if(null == iasdiary || iasdiary.closed)
+	{
+		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
+		setCookie('iaspopup', 'open', exp);
+		iasdiary =window.open(url,'iasdiaryname',options);
+	}
+	else
+	{
+		iasdiary.location.href = url;
+	}
+	
+	if (window.focus) 
+	{
+		iasdiary.focus();
+	}
+
+	return false;			
+}
+
+function runIasdiaryInt()
+{
 
 	var width = 850;
 	var height = 520;
@@ -93,9 +126,23 @@ function runIasdiary()
 	return false;			
 }
 
+
 function initializeVar() {
 
 }
+
+	function closeIasdiaryCookie()
+	{
+		var iaspopup = getCookie('iaspopup')
+		
+		if(iaspopup == 'open')
+		{
+			runIasdiary();
+			closeIasdiary();
+			deleteCookie('iaspopup');
+		}
+
+	}
 
 function closeIasdiary()
 {
@@ -288,7 +335,53 @@ function addListeners()
 	addEvent(window, 'unload', closeIasdiary, false);
 }
 
-addLoadListener(init);
+//addLoadListener(init);
 //addLoadListener(addListeners);
 //addEvent(window, 'unload', closeIasdiary, false);
 
+	function setCookie (name, value) {
+	  var argv = setCookie.arguments;
+	  var argc = setCookie.arguments.length;
+	  var expires = (argc > 2) ? argv[2] : null;
+	  var path = (argc > 3) ? argv[3] : null;
+	  var domain = (argc > 4) ? argv[4] : null;
+	  var secure = (argc > 5) ? argv[5] : false;
+	  
+	  deleteCookie(name);
+	  
+	  document.cookie = name + "=" + escape (value) +
+	    ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+	    ((path == null) ? "" : ("; path=" + path)) +
+	    ((domain == null) ? "" : ("; domain=" + domain)) +
+	    ((secure == true) ? "; secure" : "");
+	}
+
+
+	function getCookie(searchName)
+	{
+		var cookies = document.cookie.split(";");
+		
+		for (var i = 0; i < cookies.length; i++)
+		{
+			var cookieCrumbs = cookies[i].split("=");
+			var cookieName = cookieCrumbs[0];
+			var cookieValue = cookieCrumbs[1];
+		
+			if (cookieName == searchName)
+			{
+				return cookieValue;
+			}
+		}
+		return false;
+	}
+	
+	
+	function deleteCookie (name) 
+	{
+  		var exp = new Date();
+  		exp.setTime (exp.getTime() - 1);
+  		var cval = getCookie (name);
+  		document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
+	}		
+	
+	//window.setInterval(function() { getCookie('child') == 'closed' ? self.close() : ''; }, 1000);

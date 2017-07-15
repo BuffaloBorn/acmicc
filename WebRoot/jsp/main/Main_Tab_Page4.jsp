@@ -24,7 +24,7 @@
 <table height="400" width="100%">
 	<tr>
 		<td height="10" colspan="2" class="legend" align="right" width="100%">Back
-		to <a href="worklist.do" onclick="gTabClick=false">WorkList</a></td>
+		to <a href="worklist.do" >WorkList</a></td>
 	</tr>
 	<tr>
 		<logic:present scope="session" name="expdoclist">
