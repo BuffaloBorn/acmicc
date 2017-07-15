@@ -127,10 +127,10 @@ public class SubStdCoverageMainAction extends CCAction {
 		if (item != null)
 		{
 			conditionCodeData[cc].setDESCRIPTION_REQUIRED_IND(item.getDESCRIPTION_REQUIRED_IND());
-			if (item.getDESCRIPTION_REQUIRED_IND().trim().length() != 0)
-				conditionCodeData[cc].setDESCRIPTION( item.getDESCRIPTION());
+			if (item.getDESCRIPTION_REQUIRED_IND().equalsIgnoreCase("y"))
+				conditionCodeData[cc].setDESCRIPTION("");
 			else
-				conditionCodeData[cc].setDESCRIPTION( "");
+				conditionCodeData[cc].setDESCRIPTION( item.getDESCRIPTION());
 			
 		}
 		else

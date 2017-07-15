@@ -53,7 +53,9 @@
 						</table>
 					</forms:html>
 					<forms:row>			
-						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />
+						<forms:select id="statusid" label="form.iasdiary.letter.status" property="status" size="1" onchange="gIASChangesWereMade=true" styleId="letterstatus" disabled="true"> 
+							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>
 						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>			
@@ -116,7 +118,9 @@
 						</table>
 					</forms:html>
 					<forms:row>			
-						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />		
+						<forms:select id="statusid" label="form.iasdiary.letter.status" property="status" size="1" styleId="letterstatus" > 
+							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>		
 						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
@@ -179,8 +183,10 @@
 							</tr>
 						</table>
 					</forms:html>
-					<forms:row>			
-						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />	
+					<forms:row>				
+						<forms:select id="statusid" label="form.iasdiary.letter.status" property="status" size="1" styleId="letterstatus" disabled="true"> 
+							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>
 						<c:set var="form" value="${letterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
@@ -254,7 +260,9 @@
 						</table>
 					</forms:html>
 					<forms:row>			
-						<forms:plaintext label="form.iasdiary.letter.status" property="status" colspan="1" />			
+						<forms:select id="statusid" label="form.iasdiary.letter.status" property="status" size="1" styleId="letterstatus" disabled="true"> 
+							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
+						</forms:select>
 						<c:set var="form" value="${letterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
@@ -281,7 +289,7 @@
 						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant" disabled="true"/>
 					</forms:row>
 					<forms:row>
-						<forms:radio  style="font-family: courier new" label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete"/>
+						<forms:radio  style="font-family: courier new" label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete" disabled="true"/>
 						<pre><forms:textarea style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top" readonly="true"/></pre>
 					</forms:row>	
 					<forms:row>

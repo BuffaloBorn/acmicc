@@ -57,7 +57,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		//deleteCookie('iaspopup');
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
 	if((iaspopup == 'open') && (gChangesWereMade == true) && (gWorklistClick == true))
@@ -66,7 +66,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		//deleteCookie('iaspopup');
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
 	
@@ -76,7 +76,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		//deleteCookie('iaspopup');
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	
 	}
 	
@@ -86,13 +86,14 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		//deleteCookie('iaspopup');
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
 	if(gClosePopup)
 	{
 		runIasdiaryInt();
 		closeIasdiary();
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 
 }
@@ -176,7 +177,7 @@ function initializeVar() {
 		{
 			runIasdiary();
 			closeIasdiary();
-			//deleteCookie('iaspopup');
+			setCookie('iaspopup', 'close', exp, '/acmicc/');
 		}
 
 	}
@@ -422,7 +423,7 @@ function addListeners()
 	function closeDeleteCookie()
 	{
 		self.close();
-		//deleteCookie('iaspopup');
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
 	function resetCookieToClose()

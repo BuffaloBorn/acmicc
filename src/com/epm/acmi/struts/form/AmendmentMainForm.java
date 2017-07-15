@@ -24,11 +24,11 @@ public class AmendmentMainForm extends ActionForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String policyid;
-	private String name;
-	private String wrong_app;
-	private String description;
-	private String amendmentTextArea;
+	private String policyid="";
+	private String name="";
+	private String wrong_app="";
+	private String description="";
+	private String amendmentTextArea="";
 	
 	public TreeMap getWrongAppOptions()
 	{

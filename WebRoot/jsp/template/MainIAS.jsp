@@ -65,9 +65,15 @@
 	}
 	//-->
 	
-	window.onunload = resetCookieToClose;
+	function monitorCookie()
+	{
+		if (getCookie('iaspopup') == 'close')
+			this.close(); 	
+	}
+	
+	window.setInterval('monitorCookie()', 500);
 	</script>
-
+	
 	<body id="mainbody" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" onLoad="init();"  bgcolor="#CFE1EB" >
 		<table width="980" height="100%" cellspacing="0" cellpadding="0" style="border-bottom: 0px;" align="center" bordercolor="#1E5C99" border="0.5px" bgcolor="#FFFFFF">
 			<!-- Header -->

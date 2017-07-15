@@ -109,13 +109,13 @@ public class FieldCheckCustom {
 	{
 		String wrapwordText = null;
 		
-    	value = value.replaceAll("\r\n", "\n");
+    	value = value.replaceAll("[\r\n]", "\n");
     	
     	wrapwordText = StringW.wordWrap(value, LastPosition, "\n", " ");
     	
     	String[] items = wrapwordText.split("\n");
     	
-    	if (items.length > Integer.parseInt(LineLimit))
+    	if (items.length > LastPosition)
     	{	
     		errors.addGlobalError(DiaryMessages.OVER_LIMIT_TEXTBOX, fieldname, LineLimit);
     	}

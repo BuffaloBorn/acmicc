@@ -102,7 +102,7 @@
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
 									</forms:row>
 									<forms:row>
-										<forms:text label="form.iasdiary.key.insured" property="KEY_INSURED" maxlength="255" size="65" colspan="1"  />
+										<forms:plaintext label="form.iasdiary.key.insured" property="KEY_INSURED" width="5" colspan="1"/>
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
@@ -280,7 +280,7 @@
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
 									</forms:row>
 									<forms:row>
-										<forms:text label="form.iasdiary.key.insured" property="KEY_INSURED" maxlength="255" size="65" colspan="1"  />
+										<forms:plaintext label="form.iasdiary.key.insured" property="KEY_INSURED" width="5" colspan="1"/>
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
@@ -458,7 +458,7 @@
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
 									</forms:row>
 									<forms:row>
-										<forms:text label="form.iasdiary.key.insured" property="KEY_INSURED" maxlength="255" size="65" colspan="1"  />
+										<forms:plaintext label="form.iasdiary.key.insured" property="KEY_INSURED"  width="5" colspan="1"/>
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
@@ -636,7 +636,7 @@
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
 									</forms:row>
 									<forms:row>
-										<forms:plaintext label="form.iasdiary.key.insured" property="KEY_INSURED"  width="65" colspan="1"/>
+										<forms:plaintext label="form.iasdiary.key.insured" property="KEY_INSURED"  width="5" colspan="1"/>
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
