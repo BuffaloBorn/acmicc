@@ -280,7 +280,7 @@ public class TextProcessing {
 	
 	public static String formatMainFrameMessage(String message)
 	{
-		String REGEX = "[0-9]*:*";
+		String REGEX = "(:\\d)*:";
 		
 		String REPLACE = "";
 		

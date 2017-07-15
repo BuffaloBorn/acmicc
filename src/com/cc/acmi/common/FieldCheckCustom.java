@@ -105,17 +105,17 @@ public class FieldCheckCustom {
 		}
 	}
 	
-	public static void validateTextBoxLineLimit(String value, FormActionContext errors, String fieldname, String LineLimit, int LastPosition) 
+	public static void validateTextBoxLineLimit(String value, FormActionContext errors, String fieldname, String LineLimit, int LastPosition, int NumberLines) 
 	{
 		String wrapwordText = null;
 		
-    	value = value.replaceAll("[\r\n]", "\n");
+    	value = value.replaceAll("\r\n", "\n");
     	
     	wrapwordText = StringW.wordWrap(value, LastPosition, "\n", " ");
     	
     	String[] items = wrapwordText.split("\n");
     	
-    	if (items.length > LastPosition)
+    	if (items.length > NumberLines)
     	{	
     		errors.addGlobalError(DiaryMessages.OVER_LIMIT_TEXTBOX, fieldname, LineLimit);
     	}

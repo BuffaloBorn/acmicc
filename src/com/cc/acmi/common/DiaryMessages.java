@@ -33,5 +33,6 @@ public interface DiaryMessages
 	public static final String POLICY_STARTDATE_ERROR = "error.policy.less.start.date";
 	public static final String PERSON_STARTDATE_ERROR = "error.person.less.start.date";
 	public static final String OVER_LIMIT_TEXTBOX = "over.limit.textbox";
+	public static final String ERROR_CONDITION_DESCRIPTION_TEXT = "error.condition.desc.text";
 	
 }

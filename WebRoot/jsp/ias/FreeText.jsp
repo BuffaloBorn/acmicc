@@ -282,11 +282,11 @@ textbox.value = str
 						</forms:html>		
 					</forms:row>
 					<forms:row>												
-						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIasChangesWereMade=true" styleId="freetextstatus">
+						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIasChangesWereMade=true" styleId="freetextstatus" disabled="true">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:text label="form.iasdiary.freeText.form.id" property="application_formid" />
-						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>												 
+						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />
+						<forms:plaintext label="form.iasdiary.event.portamedic.response.date" property="respn_date"/>												 
 					</forms:row>
 					<forms:row>					
 						<c:set var="form" value="${freeTextForm}"/>
@@ -308,7 +308,7 @@ textbox.value = str
 						</forms:select>
 					</forms:row>	
 					<forms:row>			
-						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIasChangesWereMade=true"/></pre>	
+						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIasChangesWereMade=true" readonly="true"/></pre>	
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">

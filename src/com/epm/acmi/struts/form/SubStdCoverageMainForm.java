@@ -10,8 +10,12 @@ import java.util.TreeMap;
 import org.apache.struts.action.ActionForm;
 
 import com.cc.framework.adapter.struts.FormActionContext;
+import com.cc.framework.ui.control.SimpleListControl;
+import com.epm.acmi.datamodel.ConditionCodesDisplayList;
 import com.epm.acmi.util.ACMICache;
+import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.FieldCheckCustom;
+import com.cc.acmi.presentation.dsp.ConditionCodeDsp;
 
 /** 
  * MyEclipse Struts
@@ -649,6 +653,32 @@ public class SubStdCoverageMainForm extends ActionForm
 		}
 		
 		FieldCheckCustom.validateRequired(this.getSUB_STANDARD_RISK_CODE(), ctx, "Substandard Code");
+		
+		validateConditionCodeList(ctx);
+		
+	}
+	
+	public void validateConditionCodeList(FormActionContext ctx)
+	{
+		SimpleListControl conditionCodeList = (SimpleListControl) ctx.session().getAttribute("conditionCodeList");
+		ConditionCodesDisplayList ConditionDspData = (ConditionCodesDisplayList)conditionCodeList.getDataModel();
+		ConditionCodeDsp[] conditionCodeData = ConditionDspData.getData();
+		
+		int position = 0;
+		
+		for(int c = 0; c < conditionCodeData.length; c++)
+		{
+			if(conditionCodeData[c].getDESCRIPTION().trim().length() == 0)
+			{
+				if (conditionCodeData[c].getCODE().trim().length() != 0 )
+				{	
+					position  = c + 1;
+					ctx.addGlobalError(DiaryMessages.ERROR_CONDITION_DESCRIPTION_TEXT, conditionCodeData[c].getCODE(), Integer.toString(position));
+				}
+				
+			}
+		}
+		
 		
 	}
 	
