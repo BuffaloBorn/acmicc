@@ -91,7 +91,7 @@ function getRole() {
 	<tr>
 		<td class="legend" align="right" height="8">
 			Back to
-			<a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5">
+			<a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="gTabClick=false">
 				WorkList
 			</a>
 		</td>

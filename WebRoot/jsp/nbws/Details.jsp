@@ -158,6 +158,7 @@ function theButtonClicked(activityButtonClicked)
     	if (retVal2 == true) {
     	 if (submitcount==0) {
     		gSaveClicked=true;
+			setCloseIasDiaryUnloadFlags();
 			submitcount++;
 			NBWSDetailsForm.submit();
 			document.body.style.cursor = "wait";

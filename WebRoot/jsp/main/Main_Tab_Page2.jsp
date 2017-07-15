@@ -68,7 +68,7 @@ function setfocus()
 
 <table width="100%" align="center">
 	<tr>
-<td class="legend" align="right" height="8">Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5">WorkList</a></td>
+<td class="legend" align="right" height="8">Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="gTabClick=false">WorkList</a></td>
 	</tr>
 </table>
 

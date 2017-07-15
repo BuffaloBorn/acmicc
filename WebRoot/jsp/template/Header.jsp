@@ -49,7 +49,7 @@
 							&nbsp;
 						</td>
 						<td align="right" class="small_legend">
-							<a href="logout.do" onclick="javascript:closeIasdiary()">
+							<a href="logout.do">
 								Logout
 							</a>
 							&nbsp;&nbsp;

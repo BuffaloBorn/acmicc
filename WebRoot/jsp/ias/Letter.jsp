@@ -272,21 +272,21 @@
 						<forms:plaintext label="form.iasdiary.letter.attach" property="attach" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<forms:radio  label=""  property="letter_text"  value="0"  description="form.iasdiary.letter.withdrawn"/>
-						<pre><forms:textarea  style="font-family: courier new" id ="letter_withdrawn" property="letter_withdrawn" cols="75" rows="1" maxlength="150" valign="top"/></pre>							
+						<forms:radio  label=""  property="letter_text"  value="0"  description="form.iasdiary.letter.withdrawn" disabled="true"/>
+						<pre><forms:textarea  style="font-family: courier new" id ="letter_withdrawn" property="letter_withdrawn" cols="75" rows="1" maxlength="150" valign="top" readonly="true"/></pre>							
 					</forms:row>
 					<forms:row join="true">
 						<forms:html label="" colspan="1"></forms:html>
-						<forms:radio property="by_agent_applicant" value="0" description="form.iasdiary.letter.by.agent"/>
-						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant"/>
+						<forms:radio property="by_agent_applicant" value="0" description="form.iasdiary.letter.by.agent" disabled="true"/>
+						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant" disabled="true"/>
 					</forms:row>
 					<forms:row>
 						<forms:radio  style="font-family: courier new" label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete"/>
-						<pre><forms:textarea style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top"/></pre>
+						<pre><forms:textarea style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top" readonly="true"/></pre>
 					</forms:row>	
 					<forms:row>
-						<forms:checkbox label="" property="letter_declined_value"  description="form.iasdiary.letter.declined"/>
-						<pre><forms:textarea  style="font-family: courier new" id="letter_declined" property="letter_declined" cols="75" rows="5" maxlength="450" valign="top"/></pre>
+						<forms:checkbox label="" property="letter_declined_value"  description="form.iasdiary.letter.declined" disabled="true"/>
+						<pre><forms:textarea  style="font-family: courier new" id="letter_declined" property="letter_declined" cols="75" rows="5" maxlength="450" valign="top" readonly="true"/></pre>
 					</forms:row>		
 				</forms:section>
 				<forms:buttonsection default="btnEdit">

@@ -4,6 +4,7 @@ var gChangesWereMade = false;
 var gSaveClicked = false;
 var gTabClick = false;
 var gValidationFirst = false;
+var gPushActivity = false;
 
 function runUnloadValidation() 
 {
@@ -22,10 +23,19 @@ function runUnloadValidation()
 
 function runUnloadCloseIasDiary()
 {
+	
 	if (iasdiary && gTabClick == false)
 	{
 		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
 	}
+	
+}
+
+function setCloseIasDiaryUnloadFlags()
+{
+	gTabClick = true;
+	gValidationFirst = false;
+	gPushActivity = true;
 }
 
 function runCloseIasDiaryUnload()
@@ -38,9 +48,22 @@ function runCloseIasDiaryUnload()
 			alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
 		}
 		
+		if (iasdiary)
+		{	
 			runIasdiary();
 			closeIasdiary();
+		}
 	}
+	
+	if (iasdiary && gPushActivity == true)
+	{
+		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");	
+		
+		runIasdiary();
+		closeIasdiary();
+	}
+	
+		
 }
 function runIasdiary()
 {
@@ -66,7 +89,7 @@ function runIasdiary()
 	{
 		iasdiary.focus();
 	}
-	
+
 	return false;			
 }
 
@@ -76,7 +99,7 @@ function initializeVar() {
 
 function closeIasdiary()
 {
-	if(iasdiary)
+	if(null != iasdiary)
 	{
 		iasdiary.close();
 	}

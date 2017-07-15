@@ -22,6 +22,7 @@ public class WSPersonTypesCodesCall {
 	     Iterator iter = set.iterator (  ) ; 
 	     
 	     localTMap.put(" ", " ");
+	     localTMap.put("*", "*");
 	     while ( iter.hasNext (  )  )  
 	     {  
 	    	

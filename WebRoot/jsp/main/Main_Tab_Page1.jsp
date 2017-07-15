@@ -17,7 +17,7 @@
 		<% if (session.getAttribute(Constants.policyNumber) != null) { %>
 			Policy Number: <b><%= session.getAttribute(Constants.policyNumber)%></b>&nbsp;&nbsp;|&nbsp;&nbsp;
 		<%}%>
-		Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5">WorkList</a></td>
+		Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="gTabClick=false">WorkList</a></td>
 	</tr>
 	<tr>
 		<td height="98%"><ctrl:tabset styleId="tabset2" name="nestedtabset"
@@ -46,7 +46,7 @@
 					if(policyno.length() != 0 && (!policyno.equalsIgnoreCase("0")) )
 					{
 			%> 
-			 	<ctrl:tab tabid="tab6"	title="tabset1.tab6.title" tooltip="tabset1.tab6.tooltip" onclick="javascript:return runIasdiary();gTabClick=true"/>
+			 	<ctrl:tab tabid="tab6"	title="tabset1.tab6.title" tooltip="tabset1.tab6.tooltip" onclick="javascript:return runIasdiary()"/>
 			
 			<%	
 					}
