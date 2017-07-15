@@ -323,5 +323,9 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		inputs.setTEXT(Text);
 	}
 	
+	public void update_onClick(FormActionContext ctx) throws Exception {
+		log.debug("Finish....Editing " + classAction);
+	}
+
 	
 }

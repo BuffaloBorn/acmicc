@@ -139,7 +139,7 @@
 								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
 				<%			}
 							
-							if(modifyStatus2.substring(0,3).equalsIgnoreCase("edit"))
+							if(modifyStatus2.substring(0,4).equalsIgnoreCase("edit"))
 							{
 				%>
 								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnEditHidden.value = 'clicked';
@@ -156,7 +156,7 @@
 				    			document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
 				<%			}
 							
-							if(IASModify2.substring(0,3).equalsIgnoreCase("edit"))
+							if(IASModify2.substring(0,4).equalsIgnoreCase("edit"))
 							{
 				%>
 							   document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnEditHidden.value = 'clicked';
@@ -176,7 +176,7 @@
 			
 			function goUpdateBtnClick()
 			{
-					<% 
+				<% 
 						String IASModify = (String) session.getAttribute("IASModify");
 						String modifyStatus = (String) pageContext.getAttribute("modifyStatus");
 						
@@ -188,7 +188,7 @@
 								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
 				<%			}
 							
-							if(modifyStatus.substring(0,3).equalsIgnoreCase("edit"))
+							if(modifyStatus.substring(0,4).equalsIgnoreCase("edit"))
 							{
 				%>
 								document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnEditHidden.value = 'clicked';
@@ -205,7 +205,7 @@
 				    			document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnSaveHidden.value = 'clicked';
 				<%			}
 							
-							if(IASModify.substring(0,3).equalsIgnoreCase("edit"))
+							if(IASModify.substring(0,4).equalsIgnoreCase("edit"))
 							{
 				%>
 							   document.forms('<%=(String) session.getAttribute("currentPageForm")%>').btnEditHidden.value = 'clicked';
@@ -214,8 +214,8 @@
 						}
 				%>
 				
-				
-				document.forms('<%=(String) session.getAttribute("currentPageForm")%>').submit();				
+				document.forms('<%=(String) session.getAttribute("currentPageForm")%>').submit();
+				return false;
 			}
 			
 			function goBtnBack()
@@ -252,9 +252,6 @@
 					<td class="legend" align="right" height="8" width="100%">
 							<% if (session.getAttribute(Constants.IASkeyInsured) != null) { %>
 								IAS Key Insured : <b><%= session.getAttribute(Constants.IASkeyInsured)%></b>&nbsp;&nbsp;|&nbsp;&nbsp;
-							<%}%>
-							<% if (session.getAttribute(Constants.IAStaskName) != null) { %>
-							   IAS Activity Name : <b><%= session.getAttribute(Constants.IAStaskName)%></b>&nbsp;&nbsp;|&nbsp;&nbsp;
 							<%}%>
 							<% if (session.getAttribute(Constants.IASpolicyNumber) != null) { %>
 								IAS Policy Number: <b><%= session.getAttribute(Constants.IASpolicyNumber)%></b>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -346,6 +343,7 @@
     <div id="divLogin_Shadow3" class="cssLightboxShadow3" style="width:200px;height:100px;"></div>
     <div id="divLogin_Shadow4" class="cssLightboxShadow4" style="width:200px;height:100px;"></div>
     <div id="divLogin_Shadow5" class="cssLightboxShadow5" style="width:200px;height:100px;"></div>
+    
 	<!-- ******************************************************************* -->
     <!-- ***** Login                                                   ***** -->
     <!-- ******************************************************************* -->
@@ -373,19 +371,20 @@
 								<ctrl:button name="btnUpdate" text="form.iasdiary.apply.update" title="form.iasdiary.apply.update" width="90" onclick="javascript:return goUpdateBtnClick();"/>							
 							</td>
 							<td style="padding-top:5px;">
-								<ctrl:button name="btnBack" text="form.iasdiary.no.update" title="form.iasdiary.no.update" width="90" onclick="javascript:goBtnBack();"/>
+								<ctrl:button styleId="btnClose" name="btnClose" text="form.iasdiary.no.update" title="form.iasdiary.no.update" width="90" onclick="javascript:goBtnBack();"/>
 							</td>
 						</tr>
 					</table>
 				</forms:html>
 			</forms:form>
     </div>
-    <div id="divLogin_Shadow0" class="cssLightboxShadow0" style="width:200px;height:100px;"></div>
-    <div id="divLogin_Shadow1" class="cssLightboxShadow1" style="width:200px;height:100px;"></div>
-    <div id="divLogin_Shadow2" class="cssLightboxShadow2" style="width:200px;height:100px;"></div>
-    <div id="divLogin_Shadow3" class="cssLightboxShadow3" style="width:200px;height:100px;"></div>
-    <div id="divLogin_Shadow4" class="cssLightboxShadow4" style="width:200px;height:100px;"></div>
-    <div id="divLogin_Shadow5" class="cssLightboxShadow5" style="width:200px;height:100px;"></div>
+    <div id="divLogin2_Shadow0" class="cssLightboxShadow0" style="width:200px;height:100px;"></div>
+    <div id="divLogin2_Shadow1" class="cssLightboxShadow1" style="width:200px;height:100px;"></div>
+    <div id="divLogin2_Shadow2" class="cssLightboxShadow2" style="width:200px;height:100px;"></div>
+    <div id="divLogin2_Shadow3" class="cssLightboxShadow3" style="width:200px;height:100px;"></div>
+    <div id="divLogin2_Shadow4" class="cssLightboxShadow4" style="width:200px;height:100px;"></div>
+    <div id="divLogin2_Shadow5" class="cssLightboxShadow5" style="width:200px;height:100px;"></div>
+	
 		
 		<% 
 			String currentPageURL = null;

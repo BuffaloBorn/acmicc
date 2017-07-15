@@ -45,18 +45,43 @@ textbox.value = str
 		gIASSaveClicked=true;
 	}
 	
+	function changeDropDownToInput(elemid)
+	{
+		var dropdownParent =null;
+		var dropdown =null;
+		var newTextField = document.createElement("INPUT");
+		var selectedValue =null;
+		var lastChild =null;
+
+		var dropdown = document.getElementById(elemid);
+
+		dropdownParent = dropdown.parentNode;
+		selectedValue = dropdown.options[dropdown.selectedIndex].innerText;
+		newTextField.value = selectedValue;
+		newTextField.size = selectedValue.length;
+		lastChild = dropdownParent.lastChild;
+		dropdownParent.appendChild(newTextField);
+		dropdownParent.removeChild(lastChild);
+	}
+
 	function removeAutoSavePopUp()
 	{
+
 		window.detachEvent('onunload', autoSavePopUpTrue);
 		
 		if (gIASChangesWereMade == true && gIASSaveClicked == false) 
 		{
+			changeDropDownToInput("freetextstatus");
+			changeDropDownToInput("freetextsecond_request");
+
 			lightboxPopup('divLogin2', true);
 		}
 		else
 		{	
 			goBtnBack();
 		}
+
+		//return false;
 	}
 	
 </script>
@@ -124,7 +149,7 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnSave">
 					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onmouseup="javascript:removeAutoSavePopUp();"/>	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -239,7 +264,7 @@ textbox.value = str
 						</forms:html>					
 					</forms:row>
 					<forms:row>
-						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true" styleId="freetextstatus">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.requested" property="requested" />	
@@ -260,7 +285,7 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
 					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onmouseup="javascript:removeAutoSavePopUp();"/>	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -302,15 +327,15 @@ textbox.value = str
 							<ctrl:plaintext property="memoid" />
 						</forms:html>		
 					</forms:row>
-					<forms:row>					
-						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true">
+					<forms:row>
+						<forms:select id="statusid" label="form.iasdiary.freeText.status" property="status" size="1" onchange="gIASChangesWereMade=true" styleId="freetextstatus">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:plaintext label="form.iasdiary.freeText.requested" property="requested" />
+						<forms:text label="form.iasdiary.freeText.form.id" property="application_formid" />
 						<forms:text label="form.iasdiary.event.portamedic.response.date" property="respn_date" maxlength="10" size="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIASChangesWereMade=true"/>												 
 					</forms:row>
 					<forms:row>					
-						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
+						<forms:select id="second_requestid" label="form.iasdiary.freeText.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" styleId="freetextsecond_request">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.freeText.form.id" property="application_formid" />			
@@ -322,7 +347,7 @@ textbox.value = str
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
 					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onmouseup="javascript:removeAutoSavePopUp();"/>	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

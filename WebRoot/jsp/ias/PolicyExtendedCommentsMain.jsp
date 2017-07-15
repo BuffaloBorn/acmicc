@@ -75,6 +75,16 @@
 
 
 <c:if test='${sessionScope.IASModify == "edit"}'>
+
+	<script language="Javascript">
+		window.onload=selectFocus;
+
+		function selectFocus()
+		{
+			document.policyExtendedCommentsMainForm.freeTextArea.focus();
+		}
+	</script>
+
 	<html:form action="/iuauser/policyExtendedCommentsMain" styleId="frmPolicyExtendedCommentsMain">
 		<html:hidden property="autoSave" value=""/>
 		<forms:form formid="extendedComments" caption="form.iasdiary.policy.extended.comments.main.title" type="edit" width="750" noframe="false">
@@ -97,4 +107,3 @@
 	</html:form>
 </c:if>
 
-   
