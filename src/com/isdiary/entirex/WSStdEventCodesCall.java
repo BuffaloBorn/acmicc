@@ -113,6 +113,7 @@ public class WSStdEventCodesCall {
 //		map.put("NOTIF", "NOTIFICATION");
 		map.put("OFFER-IN", "RIDER OFFER OF COVERAGE LETTER (IN ONLY)");
 		map.put("PHONE", "TELEPHONIC INTERVIEW");
+		map.put("PROP", "PROPOSAL SUBMITTED WITH THE APPLICATION");
 //		map.put("QT-ND", "QUOTE FOR REPLACEMENT POLICY");
 		map.put("QUOTE", "QUOTE");
 		map.put("RE-OPEN", "RE-OPEN REQUEST FOR NEW APPLICATION");
@@ -147,6 +148,7 @@ public class WSStdEventCodesCall {
 //		map.put("SS-S", "SOCIAL SECURITY NUMBER ON SPOUSE");
 		map.put("STDLET", "LETTER PRINTED ON STANDARD ACMIC LETTERHEAD");
 		map.put("URNSPEC", "HOME OFFICE URINE SPECIMEN");
+		
 
 		
 		

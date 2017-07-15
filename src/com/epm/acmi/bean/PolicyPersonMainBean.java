@@ -199,6 +199,11 @@ public class PolicyPersonMainBean extends PolicyPersonMainListDsp implements Dir
 	 */
 	public void setTone(String newTone) {
 		
+		if(newTone.equalsIgnoreCase(" "))
+		{
+			newTone = "";
+		}
+		
 		if (!newTone.equals(this.tone)) {
 			setDirty();
 			setPolicyPersonTypeCurrentMarker();
@@ -207,6 +212,12 @@ public class PolicyPersonMainBean extends PolicyPersonMainListDsp implements Dir
 	}
 	
 	public void setTtwo(String newTtwo) {
+		
+		if(newTtwo.equalsIgnoreCase(" "))
+		{
+			newTtwo = "";
+		}
+		
 		if (!newTtwo.equals(this.ttwo)) {
 			setDirty();
 			setPolicyPersonTypeCurrentMarker();
@@ -215,6 +226,12 @@ public class PolicyPersonMainBean extends PolicyPersonMainListDsp implements Dir
 	}
 	
 	public void setTthree(String newTthree) {
+		
+		if(newTthree.equalsIgnoreCase(" "))
+		{
+			newTthree = "";
+		}
+		
 		if (!newTthree.equals(this.tthree)){
 			setDirty();
 			setPolicyPersonTypeCurrentMarker();
@@ -223,6 +240,12 @@ public class PolicyPersonMainBean extends PolicyPersonMainListDsp implements Dir
 	}
 	
 	public void setTfour(String newTfour) {
+		if(newTfour.equalsIgnoreCase(" "))
+		{
+			newTfour = "";
+		}
+		
+		
 		if (!newTfour.equals(this.tfour)){
 			setDirty();
 			setPolicyPersonTypeCurrentMarker();
@@ -231,6 +254,11 @@ public class PolicyPersonMainBean extends PolicyPersonMainListDsp implements Dir
 	}
 	
 	public void setTfive(String newTfive) {
+		if(newTfive.equalsIgnoreCase(" "))
+		{
+			newTfive = "";
+		}
+		
 		if (!newTfive.equals(this.tfive)){
 			setDirty();
 			setPolicyPersonTypeCurrentMarker();

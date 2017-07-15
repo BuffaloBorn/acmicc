@@ -346,6 +346,12 @@ public class ActivateIASAction extends CCAction{
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
+		if (StdEventCode.equalsIgnoreCase("PROP")) 
+		{
+			log.debug("std event:" + StdEventCode);
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
+		}
+		
 		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 
 		{
 			log.debug("std event:" + StdEventCode);
@@ -462,6 +468,12 @@ public class ActivateIASAction extends CCAction{
 			log.debug("std event:" + StdEventCode);
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
 			flag = false;
+		}
+		
+		if (StdEventCode.equalsIgnoreCase("PROP")) 
+		{
+			log.debug("std event:" + StdEventCode);
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("LETTER")) 
