@@ -271,7 +271,7 @@
 			<forward name="policyPersonMainDisplay" path="/iuauser/policyPersonMain.do?modify=display" redirect="true" />
 			<forward name="subStdCoverageMain" path="/iuauser/subStdCoverageMain.do" redirect="true" />
 			<forward name="personCompanyBrowse" path="/iuauser/personCompanyBrowse.do" redirect="true" />
-			<forward name="stdEventCode" path="/iuauser/stdEventCode.do?showFocus=true&amp;autoSavePopUp=true"/>
+			<forward name="stdEventCode" path="/iuauser/stdEventCode.do?showFocus=true"/>
 			<forward name="memoIdCodes" path="/iuauser/memoIdCodes"/>
 			<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
 			<forward name="amendmentwarning" path="/iuauser/iasdiary.do?amendmentwarning=true" redirect="true" />
@@ -282,8 +282,8 @@
 			<forward name="amendmentEdit" path="/iuauser/amendmentMain.do?modify=edit" redirect="true"/>
 			<forward name="amendmentCreate" path="/iuauser/amendmentMain.do?modify=create" redirect="true"/>
 			<forward name="amendmentDisplay" path="/iuauser/amendmentMain.do?modify=display" redirect="true"/>
-			<forward name="policyExtendedCommentsEdit"	path="/iuauser/policyExtendedCommentsMain.do?modify=edit&amp;autoSavePopUp=true" redirect="true" />
-			<forward name="policyExtendedCommentsCreate" path="/iuauser/policyExtendedCommentsMain.do?modify=create&amp;autoSavePopUp=true" redirect="true" />
+			<forward name="policyExtendedCommentsEdit"	path="/iuauser/policyExtendedCommentsMain.do?modify=edit" redirect="true" />
+			<forward name="policyExtendedCommentsCreate" path="/iuauser/policyExtendedCommentsMain.do?modify=create" redirect="true" />
 			<forward name="policyExtendedCommentsDisplay" path="/iuauser/policyExtendedCommentsMain.do?modify=display" redirect="true" />
 			<forward name="conditionCodes" path="/iuauser/policyConditionCodesMain.do?personid={0}&amp;policyid={1}&amp;comingFrom=PD&amp;fillform=true&amp;proformAction=P" redirect="true" />
 		</action>
@@ -310,13 +310,13 @@
 			<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
 		</action>
 	
-	 	<action path="/iuauser/freeText" name="freeTextForm" attribute="freeTextForm" input=".display.ias.freetext" type="com.epm.acmi.struts.action.FreeTextAction">
+	 	<action path="/iuauser/freeText" name="freeTextForm" attribute="freeTextForm" input=".display.ias.freetext" type="com.epm.acmi.struts.action.FreeTextAction" scope="session">
 			<forward name="back" path="/iuauser/iasdiary.do" />
 			<forward name="failure" path="/iuauser/freeText.do" />
 			<forward name="EditWithStatus" path="/iuauser/freeTextWithStatus.do?eventid={0}&amp;action=edit&amp;modify=editWithStatus"/>
 			<forward name="memoIdHelp" path="/iuauser/memoIdCodes.do?comingFrom={0}&amp;eventid={1}"/>
 			<forward name="recipientHelp" path="/iuauser/browsePolicyCertPerson.do?comingFrom={0}&amp;eventid={1}"/>
-			<forward  name="showPopup" path="/iuauser/freeText.do?showPopup=false" redirect="true" />
+
 	 	</action>	
 	 	
 	 	<action path="/iuauser/freeTextCreate" name="freeTextForm" attribute="freeTextForm" input=".create.ias.freetext" type="com.epm.acmi.struts.action.FreeTextAction" validate="true">
@@ -394,8 +394,6 @@
 	
 		<action path="/iuauser/policyExtendedCommentsMain"  name="policyExtendedCommentsMainForm"  attribute="policyExtendedCommentsMainForm" input=".display.ias.policy.extended.comments.main"   type="com.epm.acmi.struts.action.PolicyExtendedCommentsMainAction" scope="session">
  		    <forward  name="back" path="/iuauser/iasdiary.do" redirect="true" />
- 		    <forward  name="autoSave" path="/iuauser/policyExtendedCommentsMain.do?showPopup=true" redirect="true" />
- 		     <forward  name="showPopup" path="/iuauser/policyExtendedCommentsMain.do?showPopup=false" redirect="true" />
     	</action>
 	
 		<action path="/iuauser/policyPersonMain" name="policyPersonMainForm" attribute="policyPersonMainForm" input=".display.ias.policy.person.main"   type="com.epm.acmi.struts.action.PolicyPersonMainAction">

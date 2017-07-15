@@ -28,6 +28,8 @@ import com.epm.stellent.StellentAdapterFactory;
 import com.epm.stellent.adapter.StellentAdapter;
 import com.isdiary.entirex.WSConditionCodesCall;
 import com.isdiary.entirex.WSMemoCodesCall;
+import com.isdiary.entirex.WSPersonStatusCodesCall;
+import com.isdiary.entirex.WSPersonTypesCodesCall;
 import com.isdiary.entirex.WSStdEventCodesCall;
 import com.isdiary.entirex.WSStdEventCodesNoCall;
 import com.isdiary.entirex.WSSubStandardReasonCall;
@@ -95,6 +97,10 @@ public class ACMICache {
 	
 	private static TreeMap UnderWriterStatusCodes;
 	
+	private static TreeMap PersonStatusCodes;
+	
+	private static TreeMap PersonTypesCodes;
+	
 	private static TreeMap ConditionCodes;
 	
 	private static TreeMap ConditionCodesExtendedFields;
@@ -107,12 +113,9 @@ public class ACMICache {
 	
 	private static ArrayList eMailUARecipients = null; 
 
-
 	private static ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
 
-
 	private static final String statusSQL = " select * from IUAAppStatus order by description";
-
 
 	private static final String statesSQL = " select * from States statename";
 
@@ -121,9 +124,7 @@ public class ACMICache {
 
 	private static final String unableToCompleteReasonSQL = " select * from IUAUnableToCompleteReasonCode order by description";
 
-
 	private static final String returnReasonSQL = " select * from IUAReturnedReasonCodes order by description";
-
 
 	private static final String productNameSQL = " select * from IUAProducts description where Deleted='F'";
 
@@ -824,7 +825,7 @@ public class ACMICache {
 	}
 	
 	/**
-	 * Load all Standard Event Codes  from WSacmi db into ACMICache
+	 * Load all Memo Id Codes  from WS acmi into ACMICache
 	 */
 	public static synchronized void loaDMemoIdCodes()
 	{
@@ -832,6 +833,40 @@ public class ACMICache {
 		
 		try {
 			MemoIdCodes = WSMemoCodesCall.fetch();
+		} catch (RemoteException e) {
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service );
+			
+		} catch (ServiceException e) {
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service );
+		}
+	}
+	
+	/**
+	 * Load all Person Status Codes  from WS acmi into ACMICache
+	 */
+	public static synchronized void loaDPersonStatusCodes()
+	{
+		String service = "Person Status Codes";
+		
+		try {
+			PersonStatusCodes = WSPersonStatusCodesCall.fetch();
+		} catch (RemoteException e) {
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service );
+			
+		} catch (ServiceException e) {
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service );
+		}
+	}
+	
+	/**
+	 * Load all Person Types Codes  from WS acmi into ACMICache
+	 */
+	public static synchronized void loaDPersonTypesCodes()
+	{
+		String service = "Person Types Codes";
+		
+		try {
+			PersonTypesCodes = WSPersonTypesCodesCall.fetch();
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service );
 			
@@ -1377,12 +1412,28 @@ public class ACMICache {
 		}
 	}
 	
-	
-	
 	public static TreeMap getMemoIdCodes() {
 		rwl.readLock().lock();
 		try {
 			return MemoIdCodes;
+		} finally {
+			rwl.readLock().unlock();
+		}
+	}
+	
+	public static TreeMap getPersonTypesCodes() {
+		rwl.readLock().lock();
+		try {
+			return PersonTypesCodes;
+		} finally {
+			rwl.readLock().unlock();
+		}
+	}
+	
+	public static TreeMap getPersonStatusCodes() {
+		rwl.readLock().lock();
+		try {
+			return PersonStatusCodes;
 		} finally {
 			rwl.readLock().unlock();
 		}

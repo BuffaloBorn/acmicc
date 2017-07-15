@@ -51,56 +51,6 @@ public class FreeTextAction extends CCAction {
 			
 		log.debug("Begin execute doExecute");
 		
-		String showPopup = null; 
-		showPopup = (String)ctx.request().getParameter("showPopup");
-		
-		String currentPageURL = ctx.request().getRequestURL()+"?"+ ctx.request().getQueryString() + "&showPopup=false" ;
-		ctx.session().setAttribute("currentPageURL", currentPageURL);
-		ctx.session().setAttribute("currentPageForm", "freeTextForm");
-		
-		FreeTextForm form =  (FreeTextForm)ctx.form();
-		
-		if(form.getAutoSave().trim().length() ==  0) 
-		{	
-			this.loadForm(ctx);	
-			log.debug("End execute doExecute");
-			return;
-		}
-		
-		if (form.getAutoSave().equalsIgnoreCase("clear"))
-		{
-			form.setAutoSave("");
-			form.save();
-		}
-		
-		if(form.getAutoSave().equalsIgnoreCase("true")) 
-		{
-			form.save();
-		}
-		else 
-		{
-			ctx.forwardToInput();
-		}
-		
-		if (showPopup != null)
-		{
-			if(showPopup.equalsIgnoreCase("true"))
-			{
-				ctx.forwardByName("showPopup");
-			}
-			
-			if(showPopup.equalsIgnoreCase("false"))
-			{
-				ctx.forwardToInput();
-			}
-		}
-
-		log.debug("End execute doExecute");
-	}
-	
-	
-	private void loadForm(ActionContext ctx) 
-	{
 		String action = (String)ctx.request().getParameter("action");
 		
 		String EventId = null; 
@@ -157,6 +107,8 @@ public class FreeTextAction extends CCAction {
 			}
 		}
 		
+
+		log.debug("End execute doExecute");
 	}
 	
 	private void createFreeTextMaint(ActionContext ctx, String eventCode) {
@@ -487,9 +439,7 @@ public class FreeTextAction extends CCAction {
 		
 		try {
 			WSMemoTextCall.fetch(memoid, msgInfo, outparms);
-			OldMemoText.append(form.getFreeTextArea());
-			OldMemoText.append(TextProcessing.backspace(" ", 74));
-			OldMemoText.append(TextProcessing.formatText(outparms.value.getTEXT(), 75));
+			OldMemoText.append(form.getFreeTextArea()).append(System.getProperty("line.separator")).append(TextProcessing.formatText(outparms.value.getTEXT(), 75));
 			form.setFreeTextArea(OldMemoText.toString());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service  +  " and Policy Number " + PolicyNo);

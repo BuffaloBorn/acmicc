@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 import org.apache.struts.action.ActionForm;
 
-import com.cc.acmi.common.FieldCheckCustom;
+
 import com.cc.framework.adapter.struts.FormActionContext;
 
 /** 

@@ -39,91 +39,10 @@ textbox.value = str
 }
 </script>
 
-<script LANGUAGE="JavaScript" TYPE="text/javascript"><!--
-	  var req;
-	
-	function doOnClick()
-	{
-		gIASSaveClicked=true;
-	}
-	
-	
-	function getFormAsString(formName){
-	        
-	  //Setup the return String
-	  returnString ="";
-	        
-	  //Get the form values
-	  formElements=document.forms[formName].elements;
-	        
-	  //loop through the array, building up the url
-	  //in the format '/strutsaction.do&name=value'
-	 
-	  for(var i=formElements.length-1;i>=0; --i ){
-	        //we escape (encode) each value
-	       if (formElements[i].value.length != 0)
-	       { 
-	        	returnString+="&" +escape(formElements[i].name)+"=" +escape(formElements[i].value);
-	       }
-	 }
-	        
-	 //return the values
-	 return returnString; 
-	}
-
-	function replaceDropDown()
-	{
-	
-		var j;
-		var el;
-		var newTextField = document.createElement("INPUT");
-		var selectedValue =null;
-	
-		var alldropdowns = document.getElementsByTagName('select');
-			for (var i = 0; i < alldropdowns.length; i++){                      
-			      var dropdownname = alldropdowns[i].id; 
-			      changeDropDownToInput(dropdownname);	
-			}
-			
-			var frms = document.getElementsByTagName('form');
-			
-			for (var i = 0; i < frms.length; i++) {	
-				for (j = frms[i].elements.length - 1; j > 0; j--) 
-				{
-					var el = frms[i].elements[j];
-					if (el.nodeName.toLowerCase() == 'select') 
-					{
-						el.parentNode.removeChild(el);
-					}
-				}
-			}	
-	}
-	
-	function removeAutoSavePopUp()
-	{
-		
-		window.detachEvent('onunload', autoSavePopUpTrue);
-		
-		if (gIASChangesWereMade == true && gIASSaveClicked == false) 
-		{	
-
-			replaceDropDown();
-			lightboxPopup('divLogin2', true);			
-		}
-		else
-		{	
-			goBtnBack();
-		}
-		
-		//return false;
-	}
-	
---></script>
 
 <c:if test='${sessionScope.IASModify == "create"}'>
 	<div align="center">
 		<html:form action="/iuauser/freeTextCreate" styleId="frmFreeText">
-			<html:hidden property="autoSave" value=""/>
 			<forms:form formid="freeText" caption="form.iasdiary.freeText.title" type="edit" width="750" noframe="false">
 				<forms:section>
 					<forms:row>
@@ -182,8 +101,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>	
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -259,7 +178,6 @@ textbox.value = str
 <c:if test='${sessionScope.IASModify == "editWithStatus"}'>
 	<div align="center">
 		<html:form action="/iuauser/freeText" styleId="frmFreeText">
-			<html:hidden property="autoSave" value=""/>
 			<forms:form formid="freeText" caption="form.iasdiary.freeText.title" type="edit" width="750" noframe="false">
 				<forms:section>
 					<forms:row>
@@ -318,8 +236,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>	
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -329,7 +247,6 @@ textbox.value = str
 <c:if test='${sessionScope.IASModify == "edit"}'>
 	<div align="center">
 		<html:form action="/iuauser/freeText" styleId="frmFreeText">
-			<html:hidden property="autoSave" value=""/>
 			<forms:form formid="freeText" caption="form.iasdiary.freeText.title" type="edit" width="750" noframe="false">
 				<forms:section>
 					<forms:row>
@@ -380,8 +297,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:doOnClick();"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="javascript:removeAutoSavePopUp();"/>	
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

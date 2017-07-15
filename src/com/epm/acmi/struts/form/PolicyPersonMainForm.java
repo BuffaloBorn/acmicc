@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionForm;
 
 import com.cc.framework.ui.control.SimpleListControl;
 
+import com.epm.acmi.util.ACMICache;
 /** 
  * MyEclipse Struts
  * Creation date: 04-03-2008
@@ -33,7 +34,7 @@ public class PolicyPersonMainForm extends ActionForm {
 	public TreeMap getTransactionsOptions()
 	{
 		
-		TreeMap status = new TreeMap();
+//		TreeMap status = new TreeMap();
 			
 		/*--- --------------------
 		 I  INSURED             
@@ -45,26 +46,26 @@ public class PolicyPersonMainForm extends ActionForm {
 		 W  WITHDRAWN APPLICANT 
 		 Z  DEP NOT ELIG FOR MSA 
 		 						*/
-		status.put(" ", " ");
-		status.put("*", "*");
-		status.put("I", "I");
-		status.put("K", "K");
-		status.put("N", "N");
-		status.put("O", "R");
-		status.put("P", "P");
-		status.put("T", "T");
-		status.put("W", "W");
-		status.put("Z", "Z");
+//		status.put(" ", " ");
+//		status.put("*", "*");
+//		status.put("I", "I");
+//		status.put("K", "K");
+//		status.put("N", "N");
+//		status.put("O", "R");
+//		status.put("P", "P");
+//		status.put("T", "T");
+//		status.put("W", "W");
+//		status.put("Z", "Z");
 		
 		
-		return status;
+		return ACMICache.getPersonTypesCodes();
 		
 	}
 	
 	public TreeMap getPersonStatusHelpOptions()
 	{
 	
-		TreeMap status = new TreeMap();
+		//TreeMap status = new TreeMap();
 		
 	   /*A    Y  APPROVED ADDITION                        
 		 B    Y  APPROVED WITH DELETE                     
@@ -81,25 +82,24 @@ public class PolicyPersonMainForm extends ActionForm {
 		 Y    Y  APPROVED WITH ONE OR MORE DECLINE(S)  
 		 Z    Y  APPROVED AS APPLIED FOR       */     
 		
-		status.put(" ", " ");
-		status.put("A", "A: APPROVED ADDITION");
-		status.put("B", "B: APPROVED WITH DELETE");
-		status.put("C", "C: CANCELLED");
-		status.put("D", "D: DECLINED");
-		status.put("G", "G: PENDING GROUP DECISION");
-		status.put("I", "I: INCOMPLETE");
-		status.put("M", "M: APPROVED WITH RIDER(S) AND/OR DECLINE(S)");
-		status.put("Q", "Q: SEE COMMENTS");
-		status.put("S", "S: SUBMITTED APPLICATION");
-		status.put("V", "V: APPROVE OTHER THAN APPLIED FOR");
-		status.put("W", "W: WITHDRAWN");
-		status.put("X", "X: APPROVED WITH ONE EXCLUSION RIDER");
-		status.put("Y", "Y: APPROVED WITH ONE OR MORE DECLINE(S)");
-		status.put("Z", "Z: APPROVED AS APPLIED FOR");
+//		status.put(" ", " ");
+//		status.put("A", "A: APPROVED ADDITION");
+//		status.put("B", "B: APPROVED WITH DELETE");
+//		status.put("C", "C: CANCELLED");
+//		status.put("D", "D: DECLINED");
+//		status.put("G", "G: PENDING GROUP DECISION");
+//		status.put("I", "I: INCOMPLETE");
+//		status.put("M", "M: APPROVED WITH RIDER(S) AND/OR DECLINE(S)");
+//		status.put("Q", "Q: SEE COMMENTS");
+//		status.put("S", "S: SUBMITTED APPLICATION");
+//		status.put("V", "V: APPROVE OTHER THAN APPLIED FOR");
+//		status.put("W", "W: WITHDRAWN");
+//		status.put("X", "X: APPROVED WITH ONE EXCLUSION RIDER");
+//		status.put("Y", "Y: APPROVED WITH ONE OR MORE DECLINE(S)");
+//		status.put("Z", "Z: APPROVED AS APPLIED FOR");
 		
 		
-		return status;
-	
+		return ACMICache.getPersonStatusCodes();	
 	}
 	
 	public TreeMap getSmokerOptions()

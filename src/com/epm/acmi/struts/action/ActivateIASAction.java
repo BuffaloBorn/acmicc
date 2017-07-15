@@ -343,7 +343,7 @@ public class ActivateIASAction extends CCAction{
 		if (StdEventCode.equalsIgnoreCase("FREE TX")) 
 		{
 			log.debug("std event:" + StdEventCode);
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit&autoSavePopUp=true");
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 

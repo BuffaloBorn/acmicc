@@ -173,6 +173,14 @@ public class StartUpServlet extends HttpServlet {
 		log.info("Building Memo Id Codes Cache...");
 		ACMICache.loaDMemoIdCodes();
 		log.info("Under Memo Id Codes Cache built....");
+		
+		log.info("Building Person Types Cache...");
+		ACMICache.loaDPersonTypesCodes();
+		log.info("Under Person Types Codes Cache built....");
+		
+		log.info("Building Person Status Cache...");
+		ACMICache.loaDPersonStatusCodes();
+		log.info("Under Person Status Codes Cache built....");
 
 	}
 

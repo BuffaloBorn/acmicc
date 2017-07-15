@@ -5,27 +5,81 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-logic.tld" prefix="logic"%>
 
 <script LANGUAGE="JavaScript" TYPE="text/javascript">
-	function doOnClick()
-	{
-		gIASSaveClicked=true;
-	}
-	
-	function replaceDropDown()
-	{}
-	
-	function removeAutoSavePopUp()
-	{
-		window.detachEvent('onunload', autoSavePopUpTrue);
-		
-		if (gIASChangesWereMade == true && gIASSaveClicked == false) 
-		{
-			lightboxPopup('divLogin2', true);
-		}
-		else
-		{	
-			goBtnBack();
-		}
-	}
+
+	function SetTextAreaCursor() {
+
+        var txtArea = document.getElementById("myText");
+
+        var oRange = txtArea.createTextRange();
+
+ 
+
+        txtArea.focus();
+
+        
+
+        
+
+        //Emtpy Line
+
+        var regExg = /\r\n\r\n/im;
+
+        
+
+        //Find first empty line.
+
+        matches = regExg.exec(txtArea.value);
+
+ 
+
+        if (matches != null && matches.length > 0) {
+
+        
+
+            //IE 6 Bug fix.
+
+            var pos = matches.index + 1;
+
+            var text = txtArea.value
+
+            for(var i = 0; i < matches.index; i++)
+
+            {
+
+                if (text.substring(i, i + 1) == "\r")
+
+                    pos--;
+
+            }
+
+            //IE 6 Bug Fix not sure about IE7
+
+            
+
+            oRange.moveStart("character", pos);
+
+            oRange.moveEnd("character", 0);
+
+            oRange.collapse(true);
+
+            oRange.select();
+
+        }
+
+        else {
+
+            oRange.moveStart("character", txtArea.value.length);
+
+            oRange.moveEnd("character", 0);
+
+            oRange.collapse(false);
+
+            oRange.select();
+
+        }
+
+    }
+	 
 	
 </script>
 
@@ -85,6 +139,7 @@
 		function selectFocus()
 		{
 			document.policyExtendedCommentsMainForm.freeTextArea.focus();
+			SetTextAreaCursor();
 		}
 	</script>
 	

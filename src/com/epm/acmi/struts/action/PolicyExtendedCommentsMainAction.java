@@ -39,52 +39,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	public void doExecute(ActionContext ctx) throws Exception 
 	{
 		log.debug("Begin execute doExecute");
-		
-		String showPopup = null; 
-		showPopup = (String)ctx.request().getParameter("showPopup");
-		
-		String currentPageURL = ctx.request().getRequestURL()+"?"+ ctx.request().getQueryString() + "&showPopup=false" ;
-		ctx.session().setAttribute("currentPageURL", currentPageURL);
-		ctx.session().setAttribute("currentPageForm", "policyExtendedCommentsMainForm");
-//		
-		PolicyExtendedCommentsMainForm form =  (PolicyExtendedCommentsMainForm)ctx.form();
-		
-		if(form.getAutoSave().trim().length() ==  0) 
-		{	
-			this.loadList(ctx);	
-			log.debug("End execute doExecute");
-			return;
-		}
-		
-		if (form.getAutoSave().equalsIgnoreCase("clear"))
-		{
-			form.setAutoSave("");
-			form.save();
-		}
-		
-		if(form.getAutoSave().equalsIgnoreCase("true")) 
-		{
-			form.save();
-		}
-		else 
-		{
-			ctx.forwardToInput();
-		}
-		
-		if (showPopup != null)
-		{
-			if(showPopup.equalsIgnoreCase("true"))
-			{
-				ctx.forwardByName("showPopup");
-			}
-			
-			if(showPopup.equalsIgnoreCase("false"))
-			{
-				ctx.forwardToInput();
-			}
-		}
-		
-			
+		this.loadList(ctx);		
 		log.debug("End execute doExecute");
 	}
 	

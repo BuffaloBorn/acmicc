@@ -6,8 +6,6 @@ package com.epm.acmi.struts.action;
 
 import java.math.BigDecimal;
 import java.rmi.RemoteException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.TreeMap;
 
 import javax.xml.rpc.ServiceException;

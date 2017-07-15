@@ -8,11 +8,9 @@ import java.util.TreeMap;
 import com.cc.acmi.presentation.dsp.ConditionCodeDsp;
 import com.softwarag.esb.webservice.looktables.client.APPLICATION_AREA;
 import com.softwarag.esb.webservice.looktables.client.GETLOOKUPTABLES;
-import com.softwarag.esb.webservice.looktables.client.GETLOOKUPTABLESResponse;
 import com.softwarag.esb.webservice.looktables.client.LookupCode;
 import com.softwarag.esb.webservice.looktables.client.LookupTable;
-import com.softwarag.esb.webservice.looktables.client.LookupTableServiceLocator;
-import com.softwarag.esb.webservice.looktables.client.LookupTableServiceSoapStub;
+
 import com.softwarag.esb.webservice.looktables.client.SENDER;
 
 public class LookupTableServiceClient {

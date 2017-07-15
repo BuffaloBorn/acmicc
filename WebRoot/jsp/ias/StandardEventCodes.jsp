@@ -26,14 +26,6 @@ function openAmendmentWindow(eventCode)
 	</script>
 </c:if>
 
-<script language="Javascript">
-	function removeAutoSavePopUpEC()
-	{	
-		window.detachEvent('onunload', autoSavePopUpTrue);
-		return false;
-	}	
-</script>
-
 <html:form action="/iuauser/stdEventCode" styleId="frmStandardEventCodesMain" >
 	<forms:form formid="stdevtcodes" type="edit" width="920">
 		<forms:html align="center">
