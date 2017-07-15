@@ -35,7 +35,7 @@ function runUnloadValidation()
 function runUnloadCloseIasDiary()
 {
 	var iaspopup = getCookie('iaspopup');
-	
+
 	if((iaspopup == 'open') && (gTabClick == false))
 	{
 		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
@@ -120,7 +120,7 @@ function runIasdiary()
 	if(null == iasdiary || iasdiary.closed)
 	{
 		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
-		setCookie('iaspopup', 'open', exp);
+		setCookie('iaspopup', 'open', exp, '/acmicc/');
 		iasdiary =window.open(url,'iasdiaryname',options);
 	}
 	else
@@ -130,7 +130,7 @@ function runIasdiary()
 	
 	if (window.focus) 
 	{
-		iasdiary.focus();
+		//iasdiary.focus();
 	}
 
 	return false;			
@@ -427,7 +427,7 @@ function addListeners()
 	
 	function resetCookieToClose()
 	{
-		setCookie('iaspopup', 'close',exp);
+		setCookie('iaspopup', 'close',exp, '/acmicc/');
 	}
 	
 	function removeIasCookie()
