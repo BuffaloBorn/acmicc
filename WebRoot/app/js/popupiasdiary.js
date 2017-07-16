@@ -42,6 +42,10 @@ function runUnloadCloseIasDiary()
 	var iaspopup = getCookie('iaspopup');
     var iaspopupclose = getCookie('iaspopupclose');	
 
+	alert("iaspopup:" + iaspopup);
+	alert("iaspopupclose:" + iaspopupclose);
+	alert("gTabClick:" + gTabClick);
+
 	if((iaspopupclose == 'close') && (iaspopup == 'open' ))
 	{
 		iaspopup = 'close';
@@ -74,7 +78,7 @@ function runCloseIasDiaryUnload()
 {	
 	var iaspopup = getCookie('iaspopup');		
 	var iaspopupclose = getCookie('iaspopupclose');			
-	
+		
 	if(iaspopupclose == 'close' && iaspopup == 'open' )
 	{
 		iaspopup = 'close';
@@ -129,7 +133,9 @@ function runCloseIasDiaryUnload()
 
 function setWorklistFlag()
 {
+	alert(gTabClick);
 	gTabClick = false;
+	alert(gTabClick);
 	gWorklistClick = true;
 }
 

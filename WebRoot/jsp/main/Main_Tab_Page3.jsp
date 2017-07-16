@@ -88,10 +88,9 @@ function getRole() {
         }
 	
 }
-
 </script>
 
-<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
+<body  onbeforeunload="runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 <table width="100%" align="center">
 
 	<tr>
@@ -122,7 +121,7 @@ function getRole() {
 						</forms:select>
 	
 						<forms:buttonsection default="btnSearch">
-							<forms:button name="btnSearch" text="button.title.Search" title="button.title.Search" onmouseup="gTabClick=true;"/>
+							<forms:button name="btnSearch" text="button.title.Search" title="button.title.Search" onmousedown="gTabClick=true;"/>
 						</forms:buttonsection>
 					</c:if>
 				</forms:form>

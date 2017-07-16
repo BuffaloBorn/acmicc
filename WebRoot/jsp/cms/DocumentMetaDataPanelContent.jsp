@@ -151,6 +151,7 @@
 	      }
 	      else {
 	            docMetaDataForm.submit();
+	            gTabClick = true;
            		document.body.style.cursor = "wait";
 	      }           
 	}
@@ -158,6 +159,7 @@
 	function cancelClicked() {
 	      document.getElementById('btnCancelHidden').value='clicked'
 	      document.getElementById('btnSaveHidden').value='';
+	      gTabClick = true;
 	      docMetaDataForm.submit();
 	}
 	var dtCh= "/";

@@ -33,7 +33,7 @@ function openRoleAssignWindow()
 	}
 	else {
 		theRole = ReassignTaskForm.roleDropdown.value;
-
+		gTabClick = true;
 		window.open("/acmicc/userRoleAssign.do?selectedRole=" +  theRole ,null,
 					"resizable=yes,left=200,top=200,height=275,width=440,status=no,toolbar=no,menubar=no,location=no");			
 	}
@@ -57,6 +57,7 @@ function resubmitReassignWindow()
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			ReassignTaskForm.submit();
 		} else
 		{
@@ -72,6 +73,7 @@ function getRole() {
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			ReassignTaskForm.submit();
 		} else
 		{
@@ -82,6 +84,8 @@ function getRole() {
 }
 
 </script>
+
+<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 <table width="100%" align="center">
 
 	<tr>
@@ -131,7 +135,7 @@ function getRole() {
 <br />
 <ctrl:button name="btnReassign" text="button.title.reassign" title="button.title.reassign" onclick="openRoleAssignWindow()" />
 </html:form>
-
+</body>
 
 
 

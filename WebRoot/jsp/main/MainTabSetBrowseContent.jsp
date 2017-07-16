@@ -39,7 +39,7 @@
 <%-- removed from here "<% } %>" and placed it at the bottom to fix issue #61 cmontero 03/20/06--%>
 	<ctrl:tab tabid="tab4" action="/main/docexep"
 		title="tabset1.tab4.title" content="Main_Tab_Page4.jsp"
-		tooltip="tabset1.tab4.tooltip" onclick="gTabClick=true" />
+		tooltip="tabset1.tab4.tooltip" />
 <% } %>
 	</ctrl:tabset>
 

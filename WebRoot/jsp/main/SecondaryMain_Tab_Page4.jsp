@@ -23,6 +23,7 @@
 
 	
 </script>
+<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 <table height="400" width="100%">
 	
 	<tr>
@@ -71,3 +72,4 @@
 		</tr>
 	</logic:notPresent>
 </table>
+</body>

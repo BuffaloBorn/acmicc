@@ -58,8 +58,6 @@
 %>
 
 <script LANGUAGE="JavaScript" TYPE="text/javascript"> 
-	setIaspopupcloseToTrue();
-	
 	function setChangeFlag()
 	{
 		gIasChangesWereMade=true;

@@ -78,6 +78,7 @@
 	      if (goodVals1 != true) {
 	            alert(message1);         
 	      } else {
+	      		gTabClick = true;
 	            docUpdateMetaDataForm.submit();
 	      }    
 	 }
@@ -180,6 +181,7 @@
 	            alert(message);         
 	      }
 	      else {
+	            gTabClick = true;
 	            docUpdateMetaDataForm.submit();
            		document.body.style.cursor = "wait";
 	      }           
@@ -189,6 +191,7 @@
 	      gTabClick=true;
 	      document.getElementById('btnCancelHidden').value='clicked'
 	      document.getElementById('btnUploadHidden').value='';
+	      gTabClick = true;
 	      docUpdateMetaDataForm.submit();
 	}
 	var dtCh= "/";

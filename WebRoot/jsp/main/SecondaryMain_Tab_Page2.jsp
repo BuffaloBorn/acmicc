@@ -24,6 +24,7 @@ function validateInput() {
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			activatePendingForm.submit();
 		} else
 		{
@@ -41,6 +42,7 @@ function confirmActivate() {
 		if (retVal == true && submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			activatePendingForm.submit();
 		} else
 		{
@@ -64,7 +66,7 @@ function setfocus()
 }
 
 </script>
-
+<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 <html:form action="/secondarymain/actpend">
 
 
@@ -125,5 +127,5 @@ Enter the policy number and click on the <b>Search</b> button. To Activate a pen
 	</c:if>
 
 </html:form>
-
+</body>
 

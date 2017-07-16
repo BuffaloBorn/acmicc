@@ -24,6 +24,7 @@ function validateInput() {
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			activatePendingForm.submit();
 		} else
 		{
@@ -40,6 +41,7 @@ function confirmActivate() {
 	if (retVal == true && submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			activatePendingForm.submit();
 		} else
 		{
