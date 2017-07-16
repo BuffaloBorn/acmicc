@@ -8,9 +8,6 @@
 <script language="Javascript">
 var submitcount=0;
 
-window.onbeforeunload=runUnloadCloseIasDiary;
-window.onunload=runCloseIasDiaryUnload;
-
 function validateInput() {
 	var policyNum = activatePendingForm.policyNumber.value;
 	var goodVals = true;		
@@ -66,6 +63,8 @@ function setfocus()
 }
 
 </script>
+
+<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 
 <html:form action="/main/actpend">
 
@@ -139,7 +138,7 @@ Enter the policy number and click on the <b>Search</b> button. To Activate a pen
 </html:form>
 
 <util:jsp directive="endofpage" />
-
+</body>
 
 
 

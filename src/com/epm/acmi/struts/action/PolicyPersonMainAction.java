@@ -392,7 +392,7 @@ public class PolicyPersonMainAction extends CCAction {
 
 		if (row.isDirty())
 		{
-			
+			//#0 Scenario
 			if (row.isSmokerStatus())
 			{
 				updateSmokerStatus(ctx, row.getSMOKER_IND(), row.getPERSON_ID());
@@ -418,7 +418,15 @@ public class PolicyPersonMainAction extends CCAction {
 			if ((row.isPersonStatusInd()) && (row.getPERSON_STATUS_IND().equalsIgnoreCase("D") ))
 			{
 				goToConditionCodesWithDeclince(ctx, row.getPERSON_ID(), form.getPolicyid());	
-			}	
+			}
+			
+			//#4 Scenario
+			if ((row.isPersonStatusInd()) && (!row.getPERSON_STATUS_IND().equalsIgnoreCase("D") ))
+			{
+				saveRowWithOutDeclince(row, ctx);
+			}
+			
+			
 
 			row.resetPersonStatusIndMarker();
 			row.resetPolicyPersonTypeCurrentMarker();

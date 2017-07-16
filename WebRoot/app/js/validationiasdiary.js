@@ -1,5 +1,6 @@
 var gIasChangesWereMade = false;
 var gIasSaveClicked = false;
+var submitcount=0;
 
 var firstline = "Are you sure want to navigate away from this page?";
 var middleline = "Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or \n click 'Cancel' to return to this page to save the changes made.";
@@ -111,8 +112,31 @@ function runPageValidationHref(linkobject)
 
 function runPageValidation(formobject)
 {
-	if (checkChangedFeilds(formobject)) 
-		CCUtility.submitEnclosingForm(formobject); 
+	if (checkChangedFeilds(formobject))
+	{ 
+		if (submitcount==0)
+		{
+			try
+		  	{	
+				submitcount++;
+				CCUtility.submitEnclosingForm(formobject); 
+			}
+			catch(ex)
+		 	{
+		 		//don't want a genuine error
+		 		//lets just restrict this our Unspecified one
+		 		if(ex.message.indexOf('Unspecified') == -1)
+		 		{
+		 			
+		 		}
+		 	}	
+				
+		} else
+		{
+      		alert("You have already submitted the request to server. Please wait until the page is refreshed.");
+			return false;
+        }
+	}
 	else 
 	{
 	   if (document.getElementById('btnBackHidden'))

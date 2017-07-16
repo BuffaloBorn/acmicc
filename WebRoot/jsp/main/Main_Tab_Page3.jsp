@@ -91,6 +91,8 @@ function getRole() {
 }
 
 </script>
+
+<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 <table width="100%" align="center">
 
 	<tr>
@@ -157,7 +159,7 @@ function getRole() {
 <br />
 	<ctrl:button name="btnReassign" text="button.title.reassign" title="button.title.reassign" onclick="openRoleAssignWindow()" />
 </html:form>
-
+</body>
 
 
 
