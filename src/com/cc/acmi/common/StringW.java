@@ -120,7 +120,7 @@ final public class StringW {
         for(int i=0; i<sz; i+=width) {
 
             // on the last line
-            if(i > sz - width) {
+            if(i >= sz - width) {
                 buffer.append(str.substring(i));
 //                System.err.print("LAST-LINE: "+str.substring(i));
                 break;

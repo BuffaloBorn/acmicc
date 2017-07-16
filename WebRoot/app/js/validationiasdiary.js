@@ -5,6 +5,10 @@ var firstline = "Are you sure want to navigate away from this page?";
 var middleline = "Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or \n click 'Cancel' to return to this page to save the changes made.";
 var lastline = "Press OK to continue, or Cancel to stay on the current page."; 
 
+var expDays = 1; // number of days the cookie should last
+
+var exp = new Date();
+exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
 
 function runUnloadIasValidation()
 {
@@ -87,13 +91,12 @@ function runPageValidationLink()
 			happen = true;
 			window.onbeforeunload=null;
 			closeDeleteCookie();
-			return happen;
+			//return happen;
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
-     		form.submit();
-			return happen;
+			//return happen;
 		}
 	}
 	else
@@ -101,7 +104,31 @@ function runPageValidationLink()
 		happen = true;
 		window.onbeforeunload=null;
 		closeDeleteCookie();
-		return happen;
+		//return happen;
 	}
-	
+window.onbeforeunload = runUnloadIasValidation;	
 }
+
+function getFormAsString(form){
+        
+  //Setup the return String
+  returnString ="";
+   
+        
+  //Get the form values
+  formElements= form.elements;
+        
+  //loop through the array, building up the url
+  //in the format '/strutsaction.do&name=value'
+ 
+  for(var i=formElements.length-1;i>=0; --i ){
+        //we escape (encode) each value
+        returnString+="&" 
+        +escape(formElements[i].name)+"=" 
+        +escape(formElements[i].value);
+ }
+        
+ //return the values
+ return returnString; 
+}
+

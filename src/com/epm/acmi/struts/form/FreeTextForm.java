@@ -49,9 +49,6 @@ public class FreeTextForm extends ActionForm {
 	private String memoind="";
 	private String freeformind="";
 	private String policyno="";
-	private String lineCount="";
-	private String remLines ="";
-	private String remChars="";
 	private String hiddenfreeTextArea="";
 	
 	public FreeTextForm() {
@@ -362,29 +359,7 @@ public class FreeTextForm extends ActionForm {
 		FieldCheckCustom.validateRequired(this.getDescription(), ctx, "Description");
 	}
 
-	public String getLineCount() {
-		return lineCount;
-	}
-
-	public void setLineCount(String lineCount) {
-		this.lineCount = lineCount;
-	}
-
-	public String getRemLines() {
-		return remLines;
-	}
-
-	public void setRemLines(String remLines) {
-		this.remLines = remLines;
-	}
-
-	public String getRemChars() {
-		return remChars;
-	}
-
-	public void setRemChars(String remChars) {
-		this.remChars = remChars;
-	}
+	
 
 	public String getHiddenfreeTextArea() {
 		return hiddenfreeTextArea;

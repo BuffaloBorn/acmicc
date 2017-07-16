@@ -41,7 +41,6 @@
 	</head>
 	
 	<script language="Javascript">
-
 	<!--
 	
 	/***********************************************
@@ -73,7 +72,7 @@
 	}
 	
 	window.setInterval('monitorCookie()', 500);
-	//window.onbeforeunload = runUnloadIasValidation;
+	window.onbeforeunload = runUnloadIasValidation;
 	</script>
 	
 	<body id="mainbody" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" onLoad="init();"  bgcolor="#CFE1EB" >
