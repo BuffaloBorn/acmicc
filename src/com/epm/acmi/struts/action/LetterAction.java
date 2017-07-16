@@ -108,17 +108,17 @@ public class LetterAction extends CCAction {
 			form.setSuspense_date(TextProcessing.plainDateFormat(outparms.value.getSUSPENSE_DT().toString()));
 			
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION, service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
@@ -299,17 +299,17 @@ public class LetterAction extends CCAction {
 				}
 			}
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -536,17 +536,17 @@ public class LetterAction extends CCAction {
 		try {
 			WSDecAppMemoMaint.add(inputs, inoutparms, msgInfo, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -619,17 +619,17 @@ public class LetterAction extends CCAction {
 		try {
 			WSDecAppMemoMaint.edit(inputs, inoutparms, msgInfo, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

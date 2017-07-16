@@ -17,13 +17,14 @@ import com.cc.framework.ui.control.SimpleListControl;
 import com.epm.acmi.datamodel.BrowseRiderCodesDisplatList;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.RiderCodesForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSRiderCodesCall;
 import com.softwarag.extirex.webservice.ridercodes.client.ACRIDBWPDA_FIELDS;
 import com.softwarag.extirex.webservice.ridercodes.client.holders.ACRIDBWResponseINOUT_PARM1Holder;
 
 public class RiderCodesAction extends CCAction{
 	
-	private static Logger log = Logger.getLogger(RiderCodesAction.class);	
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Rider Codes Data";
 	String riderPos = null;
 	String personid = null;
@@ -67,13 +68,13 @@ public class RiderCodesAction extends CCAction{
 			ctx.session().setAttribute("inoutparmsRiderCodesResponse", inoutparams);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo );
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -109,13 +110,13 @@ public class RiderCodesAction extends CCAction{
 			
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo );
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -148,13 +149,13 @@ public class RiderCodesAction extends CCAction{
 			ctx.session().setAttribute("inoutparmsRiderCodesResponse", inoutparams);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo );
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -305,13 +306,13 @@ public class RiderCodesAction extends CCAction{
 			ctx.session().setAttribute("inoutparmsRiderCodesResponse", inoutparams);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo );
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

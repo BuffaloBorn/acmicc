@@ -17,6 +17,7 @@ import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.RiderMainForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSRiderMainCall;
 import com.softwarag.extirex.webservice.ridercodes.client.ACRIDBWPDA_FIELDS;
 import com.softwarag.extirex.webservice.ridermaint.client.ACPLPMWINOUT_PARM;
@@ -36,7 +37,7 @@ import com.softwarag.extirex.webservice.ridermaint.client.holders.ACPLPMWRespons
  */
 public class RiderMainAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(RiderMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Rider Maintenance Data";
 	
 	public void doExecute(ActionContext ctx) throws Exception {
@@ -105,19 +106,19 @@ public class RiderMainAction extends CCAction {
 			WSRiderMainCall.fecth(policyNo, personId, msgInfo, inoutparms, outparms);
 			fillForm(inoutparms,outparms, ctx);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + policyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + policyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
@@ -322,19 +323,19 @@ public class RiderMainAction extends CCAction {
 		try {
 			WSRiderMainCall.add(user, inputs, msgInfo, inoutparms, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -381,19 +382,19 @@ public class RiderMainAction extends CCAction {
 		try {
 			WSRiderMainCall.edit(user, inputs, msgInfo, inoutparms, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardByName("riderEditError");
 			return;

@@ -24,6 +24,7 @@ import com.cc.framework.adapter.struts.FormActionContext;
 import com.cc.framework.ui.control.ControlRequestContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.FreeTextForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSFreeTextMaintCall;
 import com.isdiary.entirex.WSMemoTextCall;
 import com.softwarag.extirex.webservice.freetextmaint.client.MUEFMMWINOUT_PARMS;
@@ -43,7 +44,7 @@ import com.softwarag.extirex.webservice.memotext.client.holders.MUMEMMWResponseO
 
 public class FreeTextAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(FreeTextAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Free Text Maintance Data";
 	
 	public void doExecute(ActionContext ctx) throws Exception 
@@ -162,13 +163,13 @@ public class FreeTextAction extends CCAction {
 		try {
 			WSFreeTextMaintCall.edit( inputs, inoutparms, msgInfo, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -213,13 +214,13 @@ public class FreeTextAction extends CCAction {
 		try {
 			WSFreeTextMaintCall.add(inputs, inoutparms, msgInfo, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -357,17 +358,17 @@ public class FreeTextAction extends CCAction {
 			}
 
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -445,12 +446,12 @@ public class FreeTextAction extends CCAction {
 			OldMemoText.append(form.getFreeTextArea()).append(System.getProperty("line.separator")).append(TextProcessing.formatText(outparms.value.getTEXT(), 75));
 			form.setFreeTextArea(OldMemoText.toString());
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service  +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service  +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

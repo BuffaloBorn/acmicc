@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.cc.acmi.common.Forwards;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 /** 
  * MyEclipse Struts
@@ -20,7 +21,7 @@ import com.cc.framework.adapter.struts.FormActionContext;
  */
 public class PersonCompanyMainAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(PersonCompanyMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public void doExecute(ActionContext ctx) throws Exception {
 		log.debug("Begin execute doExecute");

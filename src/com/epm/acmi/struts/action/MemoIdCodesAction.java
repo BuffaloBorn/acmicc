@@ -12,10 +12,11 @@ import com.epm.acmi.bean.Filter;
 import com.epm.acmi.bean.MemoCodes;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.MemoIdCodesForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 public class MemoIdCodesAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(MemoIdCodesAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	String comingFrom = null;
 	String eventid = null;

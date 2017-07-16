@@ -21,6 +21,8 @@ public class PolicyEventsDsp implements DisplayObject {
 
 	    private String USER_ID;
 	    
+	    private String SCRNAME;
+	    
 	    private boolean columnMode;
 	    
 	    private boolean editMode;
@@ -109,6 +111,14 @@ public class PolicyEventsDsp implements DisplayObject {
 
 		public void setEditMode(boolean editMode) {
 			this.editMode = editMode;
+		}
+
+		public String getSCRNAME() {
+			return SCRNAME;
+		}
+
+		public void setSCRNAME(String scrname) {
+			SCRNAME = scrname;
 		}
 
 		

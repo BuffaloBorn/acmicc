@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.TreeMap;
 
 import com.cc.acmi.presentation.dsp.ConditionCodeDsp;
+import com.epm.acmi.bean.StandardEventIdBean;
 import com.softwarag.esb.webservice.looktables.client.APPLICATION_AREA;
 import com.softwarag.esb.webservice.looktables.client.GETLOOKUPTABLES;
 import com.softwarag.esb.webservice.looktables.client.LookupCode;
@@ -54,6 +55,22 @@ public class LookupTableServiceClient {
 	
 	}
 
+	//Return of TReemap of codes and descriotion for specificed table
+	//	Valid Table names are
+	//		Condition
+	//		Memo Id
+	//		Sub-Standard Reason
+	//		Standard Event
+	//		Underwriting Status
+	public static synchronized void GetLookupTableMapWithExtendedFieldsForStdEvents(String tableName, TreeMap StdEventsTreeMap) throws ServiceException, RemoteException
+	{
+
+		String[] tableNames = new String[1];
+		tableNames[0] = tableName;
+		GetLookupTablesMapWithExtendedFieldsForStdEvents(tableNames, StdEventsTreeMap);
+	
+	}
+	
 	//Return of TreeMap of TreeMaps of Tables containing code description
 	//Outer Treemap's key is the table name. Inner treep map's key is the code.
 	//Valid Table names are
@@ -133,6 +150,88 @@ public class LookupTableServiceClient {
         	}
         }
         return tablesMap;
+    }
+	
+	//Return of TreeMap of TreeMaps of Tables containing code description
+	//Outer Treemap's key is the table name. Inner treep map's key is the code.
+	//Valid Table names are
+	//	Condition
+	//		Memo Id
+	//		Sub-Standard Reason
+	//		Standard Event
+	//		Underwriting Status
+	public static synchronized void GetLookupTablesMapWithExtendedFieldsForStdEvents(String[] tableNames, TreeMap StdEventsTreeMap) throws ServiceException, RemoteException
+	{
+		com.softwarag.esb.webservice.looktables.client.LookupTableServiceSoapStub binding;
+        try {
+            binding = (com.softwarag.esb.webservice.looktables.client.LookupTableServiceSoapStub)
+                          new com.softwarag.esb.webservice.looktables.client.LookupTableServiceLocator().getLookupTableServiceSoap();
+        }
+        catch (javax.xml.rpc.ServiceException jre) {
+            if(jre.getLinkedCause()!=null)
+                jre.getLinkedCause().printStackTrace();
+            throw new RemoteException("JAX-RPC ServiceException caught: " + jre);
+        }
+        if(binding == null)
+        	throw new RemoteException("Binding is null");
+        	
+
+        // Time out after a minute
+        binding.setTimeout(60000);
+
+        // Test operation
+        GETLOOKUPTABLES getLookupTables = new com.softwarag.esb.webservice.looktables.client.GETLOOKUPTABLES();
+        //Init Application Area;
+        getLookupTables.setAPPLICATION_AREA(new APPLICATION_AREA());
+        APPLICATION_AREA applicationArea = getLookupTables.getAPPLICATION_AREA();
+        applicationArea.setAPI_VERSION("1.0");
+        applicationArea.setENVIRONMENT("DEV");
+        applicationArea.setSCHEMA_VERSION("1.0");
+        SENDER sender = new SENDER();
+        sender.setCOMPONENT_ID("IUPS");
+        sender.setGUID("");
+        sender.setCOMPONENT_ID("GetLookupTable");
+        sender.setLANGUAGE("en");
+        sender.setLOGICAL_ID("IUPSUSER");
+        sender.setREFERENCE_ID("");
+        sender.setTASK_ID("");
+        sender.setTIMESTAMP(Calendar.getInstance());
+        applicationArea.setSENDER(sender);
+        
+        getLookupTables.setTABLE_NAMES(tableNames);
+                
+        com.softwarag.esb.webservice.looktables.client.GETLOOKUPTABLESResponse value = null;
+        value = binding.getLookupTables(getLookupTables);
+        
+        LookupTable[] tables = value.getLOOKUP_TABLES();
+        //TreeMap tablesMap = new TreeMap();
+          
+        if(value.getLOOKUP_TABLES() != null)
+        {
+        	for(int i = 0; i < tables.length; i++)
+        	{
+        		//TreeMap tableMap = new TreeMap();
+        		LookupTable table = tables[i];
+        		LookupCode[] codes = table.getLOOKUP_VALUES();
+        		if(codes != null)
+        		{
+        			for(int k = 0; k < codes.length; k++)
+        			{
+        				LookupCode code = codes[k];
+        				//CodeDesc.put(code.getCODE(), code.getCODE() + ": " +code.getDESCRIPTION());
+        				//This code excerpt pulls extended Field Names and Values from the response.
+        				//for(int j = 0; j < table.getNAMES_COUNT(); j++)
+        				//{
+        					//String extendedFieldName = table.getNAMES()[j].getEXTENDED_FIELD();
+        					String scrname = code.getEXTENDED_VALUES()[1];
+        					StdEventsTreeMap.put(code.getCODE(), new StandardEventIdBean(code.getCODE(), code.getDESCRIPTION(), scrname));
+        			 //	}
+        			}
+        		}
+        		//CodeDesc.put(table.getNAME(), tableMap);
+        	}
+        }
+        
     }
 	
 	//Return of TreeMap of TreeMaps of Tables containing code description

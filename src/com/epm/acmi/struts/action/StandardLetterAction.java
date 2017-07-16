@@ -17,6 +17,7 @@ import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.StandardLetterForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSMemoTextCall;
 import com.isdiary.entirex.WSStdLetterCall;
 import com.softwarag.extirex.webservice.memotext.client.holders.MUMEMMWResponseMSG_DATAHolder;
@@ -28,7 +29,7 @@ import com.softwarag.extirex.webservice.stdletter.client.holders.MUELTMWResponse
 
 public class StandardLetterAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(StandardLetterAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Standard Letter Maintance Data";
 
 	public void doExecute(ActionContext ctx) throws Exception 
@@ -143,12 +144,12 @@ public class StandardLetterAction extends CCAction {
 			form.setLetterTextArea(TextProcessing.formatText(outparms.value.getTEXT(), 75));
 			
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service  +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service  +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -202,12 +203,12 @@ public class StandardLetterAction extends CCAction {
 		try {
 			WSStdLetterCall.add(inputs, inoutparms, msgInfo, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -318,13 +319,13 @@ public class StandardLetterAction extends CCAction {
 		try {
 			WSStdLetterCall.edit(inputs, inoutparms, msgInfo, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -391,19 +392,19 @@ public class StandardLetterAction extends CCAction {
 			}
 			
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

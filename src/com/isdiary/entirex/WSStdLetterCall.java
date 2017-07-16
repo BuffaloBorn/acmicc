@@ -7,6 +7,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.softwarag.extirex.webservice.stdletter.client.IASLIBPort;
 import com.softwarag.extirex.webservice.stdletter.client.LetterLocator;
 import com.softwarag.extirex.webservice.stdletter.client.MUELTMWINOUT_PARMS;
@@ -17,7 +18,7 @@ import com.softwarag.extirex.webservice.stdletter.client.holders.MUELTMWResponse
 
 public class WSStdLetterCall {
 
-	private static Logger log = Logger.getLogger(WSStdLetterCall.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Standard Letter Maintance Data";
 	
 	public static synchronized void fetch(String PolicyNo, String EventId, MUELTMWResponseINOUT_PARMS1Holder inoutparms, MUELTMWResponseMSG_DATAHolder msgInfo, MUELTMWResponseOUT_PARMSHolder outparms ) throws ServiceException, RemoteException

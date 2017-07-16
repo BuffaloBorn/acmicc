@@ -8,6 +8,7 @@ import javax.xml.rpc.ServiceException;
 import org.apache.log4j.Logger;
 
 import com.epm.acmi.struts.action.EventPortamedicAction;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.softwarag.extirex.webservice.eventportrequest.client.EventPortRequestLocator;
 import com.softwarag.extirex.webservice.eventportrequest.client.IASLIBPort;
 import com.softwarag.extirex.webservice.eventportrequest.client.MUPRTMWINOUT_PARMS;
@@ -20,7 +21,7 @@ public class WSEventPortRequest {
 	
 	private static String classAction = "Event Portamedic Request Data";
 	
-	private static Logger log = Logger.getLogger(EventPortamedicAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public static synchronized void fetch(String PolicyNo, String EventId, MUPRTMWResponseINOUT_PARMS1Holder inoutparms, MUPRTMWResponseMSG_INFOHolder msgInfo) throws ServiceException, RemoteException
 	{

@@ -25,6 +25,7 @@ import com.epm.acmi.bean.PolicyPersonMainBean;
 import com.epm.acmi.datamodel.PolicyPersonMainDisplayList;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.PolicyPersonMainForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSPersonCompanyMaintCall;
 import com.isdiary.entirex.WSPolicyPersonMainListCall;
 import com.isdiary.entirex.WSPolicyPersonMaint2Call;
@@ -49,7 +50,7 @@ import com.softwarag.extirex.webservice.policypersonmaint2.client.holders.ACCPEM
  */
 public class PolicyPersonMainAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(PolicyPersonMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Policy Person Maintance Data";
 	
 	public void doExecute(ActionContext ctx) throws Exception 
@@ -86,13 +87,13 @@ public class PolicyPersonMainAction extends CCAction {
 			loadForm(ctx,inoutparms, outparms  );
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -451,13 +452,13 @@ public class PolicyPersonMainAction extends CCAction {
 		try {
 			WSPersonCompanyMaintCall.update(person_id,smoker_ind,user, msgInfo);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -561,13 +562,13 @@ public class PolicyPersonMainAction extends CCAction {
 		try {	
 			WSPolicyPersonMaint2Call.update(action, inparms, msgInfo);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

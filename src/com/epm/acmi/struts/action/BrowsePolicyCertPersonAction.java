@@ -19,6 +19,7 @@ import com.cc.framework.ui.control.SimpleListControl;
 import com.epm.acmi.datamodel.PolicyBrowseCertPersonDisplayList;
 
 import com.epm.acmi.struts.Constants;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSPolicyBrowseCertPerson;
 
 /** 
@@ -31,7 +32,7 @@ import com.isdiary.entirex.WSPolicyBrowseCertPerson;
  */
 public class BrowsePolicyCertPersonAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(BrowsePolicyCertPersonAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	String comingFrom = null;
 	String eventid = null;
 	String modify = null;
@@ -42,7 +43,7 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		try {
 			this.loadList(ctx);
 		} catch (Throwable t) {
-			log.error(t.getMessage());
+			log.error(t.getMessage(), t);
 			
 		}
 		ctx.forwardToInput();
@@ -61,6 +62,8 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		comingFrom = null;
 		eventid = null;
 		
+		String method = "loadList";
+		
 		PolicyNo  = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
 		
 		/*PolicyNo  = (String)ctx.request().getParameter("policyno");
@@ -76,6 +79,7 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		eventid = (String)ctx.request().getParameter("eventid");
 		modify = (String) ctx.session().getAttribute(Constants.IASModify);
 		
+		log.debug(method + "Coming From: " + comingFrom + " ->> Event Id: " + eventid + " ->> Modify: " + modify);
 		
 		if (comingFrom != null)
 			ctx.session().setAttribute("policyPersonCodesComingForm", comingFrom);
@@ -98,7 +102,7 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		// in this example we go back to the jsp
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-		
+		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -204,7 +208,9 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		
 		//SimpleListControl browsePersonList = new SimpleListControl();
 	
-	
+		String method = "Back Event";
+		
+		log.debug(method + "Coming From: " + comingFrom + "->> Modify: " + modify);
 	
 		if (comingFrom != null)
 		{

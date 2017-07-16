@@ -22,6 +22,7 @@ import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.EventPortamedicForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSEventPortRequest;
 import com.isdiary.entirex.WSGetPersonDataCall;
 
@@ -43,7 +44,7 @@ import com.softwarag.extirex.webservice.getpersondata.client.holders.ACPCYMW1Res
  */
 public class EventPortamedicAction extends CCAction  {
 
-	private static Logger log = Logger.getLogger(EventPortamedicAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Event Portamedic Request Data";
 	
 	public void doExecute(ActionContext ctx) throws Exception 
@@ -307,18 +308,18 @@ public class EventPortamedicAction extends CCAction  {
 			}
 					
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, e.getClass().getName(), e.getCause(),PolicyNo);
 			ctx.forwardToInput();
@@ -434,19 +435,19 @@ public class EventPortamedicAction extends CCAction  {
 			WSGetPersonDataCall.fetch(inputs, msginfo, outparms);
 			fillGerneralInfo(ctx, outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Person Id " + personid);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Person Id " + personid, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION_PERSON_ID, service + " WS",personid);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Person Id " + personid);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Person Id " + personid, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION_PERSON_ID,service + " WS",personid);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Person Id " + personid);			
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Person Id " + personid, e);			
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION_PERSON_ID, e.getClass().getName(), e.getCause(),personid);
 			ctx.forwardToInput();
 			return;
@@ -518,13 +519,13 @@ public class EventPortamedicAction extends CCAction  {
 		try {
 			WSEventPortRequest.add(inputs, inoutparms, msgInfo);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);	
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -588,13 +589,13 @@ public class EventPortamedicAction extends CCAction  {
 		try {
 			WSEventPortRequest.edit(inputs, inoutparms, msgInfo);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

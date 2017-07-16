@@ -11,11 +11,12 @@ import java.text.BreakIterator;
 import java.util.Locale;
 
 import com.cc.acmi.common.StringW;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 
 public class TextProcessing {
 
-	private static Logger log = Logger.getLogger(TextProcessing.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public static final String EMPTY = "";
 	

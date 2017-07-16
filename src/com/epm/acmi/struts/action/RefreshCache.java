@@ -8,7 +8,7 @@ import com.epm.acmi.util.*;
 
 public class RefreshCache extends CCAction {
 	
-	protected static Logger log = Logger.getLogger(RefreshCache.class);
+	protected static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public void doExecute(ActionContext context) {
 		

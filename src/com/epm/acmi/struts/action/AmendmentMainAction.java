@@ -18,6 +18,7 @@ import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.AmendmentMainForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSAmendMaintCall;
 import com.softwarag.extirex.webservice.amendmaint.client.MUAMNMWINOUT_PARMS;
 import com.softwarag.extirex.webservice.amendmaint.client.holders.MUAMNMWResponseINOUT_PARMS1Holder;
@@ -34,7 +35,7 @@ import com.softwarag.extirex.webservice.amendmaint.client.holders.MUAMNMWRespons
  */
 public class AmendmentMainAction extends CCAction {
 	
-	private static Logger log = Logger.getLogger(AmendmentMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Amendment Main Data";
 
 	public void doExecute(ActionContext ctx) throws Exception {
@@ -49,7 +50,7 @@ public class AmendmentMainAction extends CCAction {
 		String service = "Amendment Maintainance";
 		
 		PolicyNo  = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
-		log.debug("requset policyno:" + PolicyNo);
+		log.debug("session policyno:" + PolicyNo);
 		
 		String user  = (String)ctx.session().getAttribute(Constants.IASuser);
 		
@@ -60,21 +61,22 @@ public class AmendmentMainAction extends CCAction {
 		try {
 			WSAmendMaintCall.fetch(user, PolicyNo, inoutparms, outparms, msgInfo);
 			fillForm(ctx, inoutparms,  outparms);
+			ctx.session().setAttribute("amendMainModify", null);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -133,7 +135,7 @@ public class AmendmentMainAction extends CCAction {
 		 
 		if(modify != null)
 		  ctx.request().setAttribute("modify", modify);	
-		
+		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -144,7 +146,7 @@ public class AmendmentMainAction extends CCAction {
 	public void edit_onClick(FormActionContext ctx) throws Exception 
 	{
 		AmendmentMainForm form = (AmendmentMainForm) ctx.form();
-		
+		log.debug("Calling Edit Amendment");
 		form.validateForm(ctx);
 		
 		if (ctx.hasErrors())
@@ -164,7 +166,7 @@ public class AmendmentMainAction extends CCAction {
 	public void save_onClick(FormActionContext ctx) throws Exception 
 	{
 		AmendmentMainForm form = (AmendmentMainForm) ctx.form();
-		
+		log.debug("Calling Save Amendment");
 		form.validateForm(ctx);
 		
 		if (ctx.hasErrors())
@@ -200,19 +202,19 @@ public class AmendmentMainAction extends CCAction {
 			WSAmendMaintCall.add(user, inputs, inoutparms, outparms, msgInfo);
 
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return; 
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -260,19 +262,19 @@ public class AmendmentMainAction extends CCAction {
 			WSAmendMaintCall.edit(user, inputs, inoutparms, outparms, msgInfo);
 
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return; 
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

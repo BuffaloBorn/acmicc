@@ -17,10 +17,11 @@ import org.apache.struts.util.RequestUtils;
 
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.action.FreeTextAction;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 public class FieldCheckCustom {
 
-	private static Logger log = Logger.getLogger(FreeTextAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public FieldCheckCustom() {
 	}

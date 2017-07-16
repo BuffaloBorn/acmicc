@@ -6,10 +6,11 @@ import org.apache.log4j.Logger;
 
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.form.ActivateIASForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 public class IasDairyEdit {
 	
-	private static Logger log = Logger.getLogger(IasDairyEdit.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "IAS Dairy Edits";
 	
 

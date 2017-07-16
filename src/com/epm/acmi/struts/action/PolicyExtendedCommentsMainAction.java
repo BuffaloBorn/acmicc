@@ -17,6 +17,7 @@ import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.PolicyExtendedCommentsMainForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSExtCommentMaintCall;
 import com.softwarag.extirex.webservice.extcommmaint.client.MUTXTMWINOUT_PARMS;
 import com.softwarag.extirex.webservice.extcommmaint.client.holders.MUTXTMWResponseINOUT_PARMS1Holder;
@@ -33,7 +34,7 @@ import com.softwarag.extirex.webservice.extcommmaint.client.holders.MUTXTMWRespo
  */
 public class PolicyExtendedCommentsMainAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(PolicyExtendedCommentsMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Policy Extended Comments Data";
 	
 	public void doExecute(ActionContext ctx) throws Exception 
@@ -61,17 +62,17 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 			fillForm(ctx, inoutparms,  outparms);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -109,6 +110,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	 */
 	public void back_onClick(FormActionContext ctx) throws Exception {
 		// in this example we go back to the jsp
+		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -118,7 +120,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	 */
 	public void save_onClick(FormActionContext ctx) throws Exception {
 		PolicyExtendedCommentsMainForm form = (PolicyExtendedCommentsMainForm) ctx.form();
-		
+		log.debug("Calling Save Policy Extended Comments");
 		form.validateForm(ctx);
 		
 		if (ctx.hasErrors())
@@ -135,7 +137,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	{
 		String service = "Add: " + classAction;
 		
-		log.debug("Adding Policy Extended Comments Maint");
+		log.debug("Adding Policy Extended Comments");
 		
 		PolicyExtendedCommentsMainForm form = (PolicyExtendedCommentsMainForm) ctx.form();
 		
@@ -153,18 +155,18 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		try {
 			WSExtCommentMaintCall.add(user, inputs,inoutparms,msgInfo,outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -194,7 +196,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	 */
 	public void edit_onClick(FormActionContext ctx) throws Exception {
 		PolicyExtendedCommentsMainForm form = (PolicyExtendedCommentsMainForm) ctx.form();
-		
+		log.debug("Calling Edit Policy Extended Comments");
 		form.validateForm(ctx);
 		
 		if (ctx.hasErrors())
@@ -211,7 +213,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	{
 		String service = "Edit: " + classAction;
 		
-		log.debug("Editing Policy Extended Comments Maint");
+		log.debug("Editing Policy Extended Comments");
 		
 		PolicyExtendedCommentsMainForm form = (PolicyExtendedCommentsMainForm) ctx.form();
 		
@@ -230,18 +232,18 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		try {
 			WSExtCommentMaintCall.edit(user, inputs,inoutparms,msgInfo,outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

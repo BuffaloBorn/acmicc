@@ -19,6 +19,7 @@ import com.cc.framework.adapter.struts.FormActionContext;
 
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.UnderwritingNotesMainForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSUnderwNotesMaintCall;
 import com.softwarag.extirex.webservice.underwnotesmaint.client.MUNOTMWINOUT_PARMS;
 import com.softwarag.extirex.webservice.underwnotesmaint.client.holders.MUNOTMWResponseINOUT_PARMS1Holder;
@@ -35,7 +36,7 @@ import com.softwarag.extirex.webservice.underwnotesmaint.client.holders.MUNOTMWR
  */
 public class UnderwritingNotesMainAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(UnderwritingNotesMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Underwriting Notes Data";
 	
 	public void doExecute(ActionContext ctx) throws Exception {
@@ -51,7 +52,7 @@ public class UnderwritingNotesMainAction extends CCAction {
 		
 		
 		PolicyNo  = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
-		log.debug("requset policyno:" + PolicyNo);
+		log.debug("session policyno:" + PolicyNo);
 		
 		String user  = (String)ctx.session().getAttribute(Constants.IASuser);
 		
@@ -63,21 +64,22 @@ public class UnderwritingNotesMainAction extends CCAction {
 		try {
 			WSUnderwNotesMaintCall.fetch(user, outparms, inoutparms, PolicyNo, msgInfo);
 			fillForm(ctx, inoutparms,  outparms);
+			ctx.session().setAttribute("underwritMainModify", null);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -111,6 +113,7 @@ public class UnderwritingNotesMainAction extends CCAction {
 	public void back_onClick(FormActionContext ctx) throws Exception {
 		UnderwritingNotesMainForm form = (UnderwritingNotesMainForm) ctx.form();
 		form.clear();
+		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -122,7 +125,7 @@ public class UnderwritingNotesMainAction extends CCAction {
 	{
 		
 		UnderwritingNotesMainForm form = (UnderwritingNotesMainForm) ctx.form();
-		
+		log.debug("Calling Edit Underwriting Notes");
 		form.validateForm(ctx);
 		
 		if (ctx.hasErrors())
@@ -143,7 +146,7 @@ public class UnderwritingNotesMainAction extends CCAction {
 	{
 		
 		UnderwritingNotesMainForm form = (UnderwritingNotesMainForm) ctx.form();
-		
+		log.debug("Calling Save Underwriting Notes");
 		form.validateForm(ctx);
 		
 		if (ctx.hasErrors())
@@ -177,19 +180,19 @@ public class UnderwritingNotesMainAction extends CCAction {
 		try {
 			WSUnderwNotesMaintCall.add(user, inputs, outparms, inoutparms, msgInfo);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -234,19 +237,19 @@ public class UnderwritingNotesMainAction extends CCAction {
 		try {
 			WSUnderwNotesMaintCall.edit(user, inputs, outparms, inoutparms, msgInfo);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

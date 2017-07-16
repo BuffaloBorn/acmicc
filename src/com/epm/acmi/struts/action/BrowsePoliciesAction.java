@@ -21,12 +21,13 @@ import com.cc.framework.ui.control.SimpleListControl;
 import com.epm.acmi.datamodel.PolicyBrowseDisplayList;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.BrowsePoliciesForm;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSPolicyBrowseCall;
 import com.softwarag.extirex.webservice.browsepolicies.client.holders.MUPLYBWResponseINOUT_PARM1Holder;
 
 public class BrowsePoliciesAction extends CCAction{
 
-	private static Logger log = Logger.getLogger(BrowsePoliciesAction.class);	
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Browse Policies Data";
 	String comingFrom = null;
 	String service = "Display: " + classAction;
@@ -63,13 +64,13 @@ public class BrowsePoliciesAction extends CCAction{
 			ctx.session().setAttribute("inoutparmsresponse", inoutparms);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -100,13 +101,13 @@ public class BrowsePoliciesAction extends CCAction{
 			ctx.session().setAttribute("inoutparmsresponse", inoutparms);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -125,6 +126,7 @@ public class BrowsePoliciesAction extends CCAction{
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
 		form.clear();
+		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
 		//ctx.forwardToAction("main/docexep?ctrl=nestedtabset&action=TabClick&param=tab12");
 	}
@@ -151,16 +153,18 @@ public class BrowsePoliciesAction extends CCAction{
 		
 		ctx.session().setAttribute("browsePolicies", browseList);
 		ctx.session().setAttribute("inoutparmsresponse", inoutparms);
+		
+		log.debug("Redirect backward from the current page");
 		form.clear();
 		ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -189,15 +193,16 @@ public class BrowsePoliciesAction extends CCAction{
 		ctx.session().setAttribute("browsePolicies", browseList);
 		ctx.session().setAttribute("inoutparmsresponse", inoutparms);
 		form.clear();
+		log.debug("Redirect forward from the current page");
 		ctx.forwardToInput();
 	} catch (RemoteException e) {
-		log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+		log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo,e);
 		ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 		ctx.forwardToInput();
 		return;
 		
 	} catch (ServiceException e) {
-		log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+		log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo,e);
 		ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 		ctx.forwardToInput();
 		return;
@@ -205,7 +210,9 @@ public class BrowsePoliciesAction extends CCAction{
 	}
 	
 	public void browsePolicies_onDrilldown(ControlActionContext ctx, String key) {
-		log.debug("ctx key:" + key);
+		
+		
+		log.debug("Selected from key:" + key + " from browse list");
 		
 		BrowsePoliciesForm form = (BrowsePoliciesForm) ctx.form();
 		
@@ -222,11 +229,13 @@ public class BrowsePoliciesAction extends CCAction{
 				{
 					ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
 					ctx.session().setAttribute(Constants.IASModify, "edit");
+					log.debug("Set " + Constants.IASModify + " to edit");
 				}
 				else
 				{	
 					ctx.session().setAttribute(Constants.IASpolicyNumber, key);
 					ctx.session().setAttribute(Constants.IASModify, "display");
+					log.debug("Set " + Constants.IASModify + " to display");
 				}	
 				form.clear();
 				ctx.forwardByName("back");

@@ -16,6 +16,7 @@ import com.softwarag.extirex.webservice.policyevents.client.PolicyEventsLocator;
 import com.softwarag.extirex.webservice.policyevents.client.holders.IADIABWResponseINOUT_PARM1Holder;
 import com.softwarag.extirex.webservice.policyevents.client.holders.IADIABWResponseMSG_INFOHolder;
 import com.softwarag.extirex.webservice.policyevents.client.holders.IADIABWResponseOUT_PARMHolder;
+import com.epm.acmi.bean.StandardEventIdBean;
 import com.epm.acmi.datamodel.PolicyEventsDisplayList;
 import com.epm.acmi.util.ACMICache;
 
@@ -33,6 +34,7 @@ public class WSPolicyEventsCall
 
 		BigDecimal POLICY_ID;
 		String MORE_EVENTS = "";
+		String scrname = "";
 		byte[] LAST_KEY = new byte[39];
 
 		POLICY_ID = new BigDecimal(policyNo);
@@ -73,13 +75,21 @@ public class WSPolicyEventsCall
 				PolicyEvents.setSTD_EVENT_STATUS(item.getSTD_EVENT_STATUS());
 				PolicyEvents.setUSER_ID(item.getUSER_ID());
 				
-				if (ACMICache.getStdEventCodesDescription().containsKey(item.getSTD_EVENT_ID()))
+				
+				if (ACMICache.getStdEventCodes().containsKey(item.getSTD_EVENT_ID()))
 				{	
+				
+					StandardEventIdBean stdEvent = (StandardEventIdBean) ACMICache.getStdEventCodes().get(item.getSTD_EVENT_ID());
+					
+					scrname = stdEvent.getSCRNAME(); 
+					
+					PolicyEvents.setSCRNAME(scrname);
 					PolicyEvents.setColumnMode(ButtonMode.ENABLED);
 					PolicyEvents.setEditMode(ButtonMode.ENABLED);
 				}
 			     else
 			     {	 
+			    	 PolicyEvents.setSCRNAME("");
 			    	 PolicyEvents.setColumnMode(ButtonMode.HIDDEN);
 			    	 PolicyEvents.setEditMode(ButtonMode.HIDDEN);
 			     }

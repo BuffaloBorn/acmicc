@@ -297,7 +297,17 @@
 			<forward name="policyExtendedCommentsEdit"	path="/iuauser/policyExtendedCommentsMain.do?modify=edit" redirect="true" />
 			<forward name="policyExtendedCommentsCreate" path="/iuauser/policyExtendedCommentsMain.do?modify=create" redirect="true" />
 			<forward name="policyExtendedCommentsDisplay" path="/iuauser/policyExtendedCommentsMain.do?modify=display" redirect="true" />
-			<forward name="conditionCodes" path="/iuauser/policyConditionCodesMain.do?personid={0}&amp;policyid={1}&amp;comingFrom=PD&amp;fillform=true&amp;proformAction=P" redirect="true" />
+			<forward name="conditionCodes" path="/iuauser/policyConditionCodesMain.do?personid={0}&amp;policyid={1}&amp;comingFrom=PD&amp;fillform=true&amp;proformAction=P" redirect="true" />		
+			<forward name="MUEFMDNonDrilldown" path="/iuauser/freeText.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUDECDNonDrilldown" path="/iuauser/letter.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUESMDNonDrilldown" path="/iuauser/eventStdMemo.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUPRTDNonDrilldown" path="/iuauser/eventPortamedic.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUELTDNonDrilldown" path="/iuauser/stdLetter.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUEFMDNonEdit" path="/iuauser/freeText.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUDECDNonEdit" path="/iuauser/letter.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUESMDNonEdit" path="/iuauser/eventStdMemo.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUPRTDNonEdit" path="/iuauser/eventPortamedic.do?eventid={0}&amp;action=display" redirect="true" />
+			<forward name="MUELTDNonEdit" path="/iuauser/stdLetter.do?eventid={0}&amp;action=display" redirect="true" />
 		</action>
 
 		<action path="/iuauser/stdLetter" name="stdLetterForm"  attribute="stdLetterForm" type="com.epm.acmi.struts.action.StandardLetterAction" input=".display.ias.stdletter" scope="session">
@@ -510,6 +520,11 @@
 			<forward name="stdEventCodeWithPolicy" path="/iuauser/stdEventCodeWithPolicy.do?policyno={0}&amp;productid={1}&amp;keyinsured={2}" redirect="true" />
 			<forward name="stdEventCodeError" path="/iuauser/stdEventCode.do?policyno={0}" redirect="true" />
 			<forward name="diary"  path="/iuauser/iasdiary.do?modify=create" redirect="true" />
+			<forward name="MUEFMDN" path="/iuauser/freeTextCreate.do?eventcode={0}&amp;action=edit&amp;modify=create" redirect="true" />
+			<forward name="MUDECDN" path="/iuauser/letterCreate.do?eventcode={0}&amp;action=edit" redirect="true" />
+			<forward name="MUESMDN" path="/iuauser/eventStdMemoCreate.do?eventcode={0}&amp;action=edit" redirect="true" />
+			<forward name="MUPRTDN" path="/iuauser/eventPortamedicCreate.do?eventcode={0}&amp;action=edit&amp;actiontype=create" redirect="true" />
+			<forward name="MUELTDN" path="/iuauser/stdLetterCreate.do?eventcode={0}&amp;action=edit" redirect="true" />
     	</action>
 
 		<action path="/secondarymain/reassign" name="ReassignTaskForm"

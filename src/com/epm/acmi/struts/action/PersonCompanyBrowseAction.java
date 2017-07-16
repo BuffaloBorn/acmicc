@@ -20,6 +20,7 @@ import com.cc.framework.ui.control.ControlActionContext;
 import com.cc.framework.ui.control.SimpleListControl;
 import com.epm.acmi.datamodel.PersonCompanyBrowseDisplayList;
 import com.epm.acmi.struts.Constants;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSPersonCompanyBrowse;
 
 /** 
@@ -32,7 +33,7 @@ import com.isdiary.entirex.WSPersonCompanyBrowse;
  */
 public class PersonCompanyBrowseAction extends CCAction {
 
-	private static Logger log = Logger.getLogger(PersonCompanyBrowseAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Person Company Browse Data";
 	String comingFrom;
 	
@@ -72,12 +73,12 @@ public class PersonCompanyBrowseAction extends CCAction {
 			ctx.request().setAttribute("PC_MORE_REC", MORE_REC);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();;
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

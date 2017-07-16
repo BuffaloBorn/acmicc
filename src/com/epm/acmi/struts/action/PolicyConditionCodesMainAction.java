@@ -25,6 +25,7 @@ import com.epm.acmi.struts.Constants;
 
 import com.epm.acmi.struts.form.PolicyConditionCodesMainForm;
 import com.epm.acmi.util.ACMICache;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.isdiary.entirex.WSPolicyPersonMaint1Call;
 import com.softwarag.extirex.webservice.policypersonmaint1.client.ACCPEMWINOUT_PARM;
 import com.softwarag.extirex.webservice.policypersonmaint1.client.holders.ACCPEMWResponseINOUT_PARM1Holder;
@@ -41,7 +42,7 @@ import com.softwarag.extirex.webservice.policypersonmaint1.client.holders.ACCPEM
  */
 public class PolicyConditionCodesMainAction extends CCAction {
 
-	private static Logger log = Logger.getLogger( PolicyConditionCodesMainAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Policy Condition Codes Maintance Data";
 	String comingFrom = null;
 	String fillform =null;
@@ -89,13 +90,13 @@ public class PolicyConditionCodesMainAction extends CCAction {
 			fillForm(ctx, inoutparms,  outparms);
 			ctx.forwardToInput();
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardByName(Forwards.BACK);
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardByName(Forwards.BACK);
 			return;
@@ -236,13 +237,13 @@ public class PolicyConditionCodesMainAction extends CCAction {
 			WSPolicyPersonMaint1Call.update(user, inputs, inoutparms,msgInfo, outparms, proformAction);
 	
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;

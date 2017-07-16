@@ -5,13 +5,16 @@ import org.apache.log4j.Logger;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
+import com.epm.acmi.bean.StandardEventIdBean;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.StandardEventCodesForm;
+import com.epm.acmi.util.ACMICache;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 
 public class StandardEventCodesAction  extends CCAction {
 
-	private static Logger log = Logger.getLogger(StandardEventCodesAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public void doExecute(ActionContext ctx) throws Exception 
 	{
@@ -32,239 +35,42 @@ public class StandardEventCodesAction  extends CCAction {
 	private void forwardToEvent(ActionContext ctx,String evtCode) 
 	{
 		
-		boolean flag = true;
+		String scrName = "";
 		
 		StandardEventCodesForm form = (StandardEventCodesForm) ctx.form();
 		
 		form.setStdEventCode(evtCode);
 		
-		if (evtCode.equalsIgnoreCase("FREE TX")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
-			flag = false;
-		}
+		StandardEventIdBean stdEvent = (StandardEventIdBean) ACMICache.getStdEventCodes().get(evtCode);
 		
-		if (evtCode.equalsIgnoreCase("QUOTE")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
-			flag = false;
-		}
+		scrName = stdEvent.getSCRNAME(); 
 		
-		if (evtCode.equalsIgnoreCase("PHONE")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("PROP")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("AMD-ONLY")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("MODIFYDR")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
-			flag = false;
-		}
+		log.debug("Std Event:" + evtCode);
 		
 		
-		
-		if (evtCode.equalsIgnoreCase("LETTER")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/letterCreate?eventcode=" + evtCode +"&action=edit" );
-			flag = false;
-		}
-		
-		
-		if (evtCode.equalsIgnoreCase("HIPAA")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/eventStdMemoCreate?eventcode=" + evtCode+"&action=edit" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("HIPAA-MI")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/eventStdMemoCreate?eventcode=" + evtCode+"&action=edit" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("HIPAA-OH")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/eventStdMemoCreate?eventcode=" + evtCode+"&action=edit" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("HIV-H")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/eventStdMemoCreate?eventcode=" + evtCode+"&action=edit" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("RE-OPEN")) 
-		{
-			log.debug("std event:" + evtCode);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/eventStdMemoCreate?eventcode=" + evtCode+"&action=edit" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("SA")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardToAction("iuauser/eventStdMemoCreate?eventcode=" + evtCode+"&action=edit" );
-			flag = false;
-		}
-		
-		if (evtCode.equalsIgnoreCase("STDLET")) 
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardByName("stdletterCreate", evtCode );
-			flag = false;
-		}
-		
-		if(evtCode.equalsIgnoreCase("BLD"))
-		{
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardByName("eventportamedicCreate", evtCode);
-			flag = false;
-		}
-		
-		if(evtCode.equalsIgnoreCase("ECG"))
-		{ 
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardByName("eventportamedicCreate", evtCode);
-			flag = false;
-		}
-		
-		if(evtCode.equalsIgnoreCase("EXM"))
-		{ 
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardByName("eventportamedicCreate", evtCode);
-			flag = false;
-		}
-		
-		if(evtCode.equalsIgnoreCase("EXM-BLD"))
-		{ 
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardByName("eventportamedicCreate", evtCode);
-			flag = false;
-		}
-		
-		if(evtCode.equalsIgnoreCase("URNSPEC"))
-		{ 
-			log.debug("std event:" + evtCode);
-			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-			ctx.session().setAttribute(Constants.IASModify, "create");
-			ctx.forwardByName("eventportamedicCreate", evtCode);
-			flag = false;
-		}
-	
-		
-		if(evtCode.equalsIgnoreCase("OFFER-IN"))
-		{ 
-			log.debug("std event:" + evtCode);
-			//String riderind = (String)ctx.session().getAttribute("riderind");
-			
-			/*if (riderind.equalsIgnoreCase("N"))
-			{
-				ctx.addGlobalMessage(DiaryMessages.OFFER_IN_NO_RIDER, "OFFER-IN");
-				ctx.session().removeAttribute("riderind");
-				ctx.forwardByName("diary");
-			}
-			else
-			{*/
-				String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
-				ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
-				ctx.session().setAttribute(Constants.IASModify, "create");
-				ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit" );	
-//			}
-			flag = false;
-		}
-	
-		
-		if (flag)
+		if(ctx.mapping().findForward(scrName) == null)
 		{
 			log.debug("Do not have a case for:" + evtCode);
 			ctx.addGlobalError(DiaryMessages.STD_EVENTS_CODES_INVALID,evtCode);
 			ctx.forwardByName("stdEventCodeError");
 		}
-		
+		else
+		{
+			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
+			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
+			log.debug(Constants.IASDiaryModify.toString() + ":" + IASModify); 
+			ctx.session().setAttribute(Constants.IASModify, "create");
+			log.debug(Constants.IASModify.toString() + ": create" );
+			ctx.forwardByName(scrName , evtCode);		
+			
+		}
+
 	}
 
 	public void createEvent_onClick(FormActionContext ctx) throws Exception
 	{
 		StandardEventCodesForm form = (StandardEventCodesForm) ctx.form();
-	
+		log.debug("Create Event");
 		forwardToEvent(ctx,form.getStdEventCode());
 	}
 	
@@ -272,7 +78,9 @@ public class StandardEventCodesAction  extends CCAction {
 	public void backToDiary_onClick(FormActionContext ctx) throws Exception
 	{ 	
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
+		log.debug(Constants.IASModify.toString() + IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+		log.debug("Redirect back previous page");
 		ctx.forwardByName("diary");
 	}
 	

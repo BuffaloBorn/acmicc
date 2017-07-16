@@ -468,4 +468,9 @@ public class MiscellaneousUtils {
 		System.out.println(isPastDate(tomorrow));
 		System.out.println(isPastDate(longAfter));
 	}
+	
+	public static Logger getIASLogger() {
+		
+		return Logger.getLogger("IASLog");
+	}
 }

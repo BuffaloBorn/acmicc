@@ -7,6 +7,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.softwarag.extirex.webservice.freetextmaint.client.FreeTextMaintLocator;
 import com.softwarag.extirex.webservice.freetextmaint.client.IASLIBPort;
 import com.softwarag.extirex.webservice.freetextmaint.client.MUEFMMWINOUT_PARMS;
@@ -17,7 +18,7 @@ import com.softwarag.extirex.webservice.freetextmaint.client.holders.MUEFMMWResp
 
 public class WSFreeTextMaintCall {
 
-	private static Logger log = Logger.getLogger(WSFreeTextMaintCall.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Free Text Maintance Data";
 	
 	public static synchronized void fetch(String PolicyNo, String EventId, MUEFMMWResponseINOUT_PARMS1Holder inoutparms, MUEFMMWResponseMSG_DATAHolder msgInfo, MUEFMMWResponseOUT_PARMSHolder outparms ) throws ServiceException, RemoteException

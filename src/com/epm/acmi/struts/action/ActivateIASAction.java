@@ -26,13 +26,14 @@ import com.softwarag.extirex.webservice.policymaint.client.holders.ACPLYMWRespon
 import com.softwarag.extirex.webservice.policymaint.client.holders.ACPLYMWResponseMSG_INFOHolder;
 import com.softwarag.extirex.webservice.policymaint.client.holders.ACPLYMWResponseOUT_PARMHolder;
 import com.epm.acmi.struts.Constants;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.epm.acmi.struts.form.ActivateIASForm;
 import com.isdiary.entirex.WSPolicyEventsCall;
 import com.isdiary.entirex.WSPolicyMaintCall;
 
 public class ActivateIASAction extends CCAction{
 
-	private static Logger log = Logger.getLogger(ActivateIASAction.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	private static String classAction = "Activate IAS Action";
 	
 	
@@ -52,9 +53,13 @@ public class ActivateIASAction extends CCAction{
 	public void doExecute(ActionContext ctx) throws IOException, ServletException 
 	{
 		
+		log.debug("Begin execute doExecute");
+		
 		String intPolicy = (String)ctx.request().getParameter("intPolicy");
 		
 		ctx.session().setAttribute("iasdiaryFlag", "edit");
+		
+		log.debug("intPolicy: " + intPolicy);
 		
 		if (intPolicy != null)
 		{
@@ -65,7 +70,6 @@ public class ActivateIASAction extends CCAction{
 				ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
 				ctx.session().setAttribute(Constants.IASModify, "edit");
 				ctx.session().setAttribute(Constants.IASDiaryModify, "edit");
-			
 			}
 			
 			if (intPolicy.equalsIgnoreCase("false"))
@@ -77,10 +81,7 @@ public class ActivateIASAction extends CCAction{
 			}
 			
 		}	
-		
-	
-		
-		log.debug("Begin execute doExecute");
+			
 		this.loadList(ctx);
 			// Display the Page with the UserList
 		log.debug("End execute doExecute");
@@ -103,10 +104,11 @@ public class ActivateIASAction extends CCAction{
 		//PolicyEventsBean OtherDisplay = new PolicyEventsBean();
 		
 		PolicyNo  = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
-		log.debug("Policy Number from IASpolicyNumber:" + PolicyNo);
+		log.debug("Policy Number from IASpolicyNumber: " + PolicyNo);
 		
 		if (PolicyNo.trim().length() == 0)
 		{
+			log.debug("PolicyNo length:" + PolicyNo.trim().length());
 			ctx.addGlobalMessage(DiaryMessages.NO_POLICY_ERROR_IASDIARY);
 			ctx.forwardToInput();
 			return;
@@ -114,9 +116,12 @@ public class ActivateIASAction extends CCAction{
 		
 		
 		try {
+			log.debug("Calling Policy Event List");
 			WSPolicyEventsCall.fetch(dspData, PolicyNo);
+			log.debug("Finish calling Policy Event List");
 			// secondly create the ListControl and populate it
 			// with the Data to display
+			log.debug("list: " + dspData.size());
 			SimpleListControl userList = new SimpleListControl();
 			userList.setDataModel(dspData);
 			//initForm(ctx, OtherDisplay);
@@ -132,13 +137,13 @@ public class ActivateIASAction extends CCAction{
 			ctx.session().setAttribute("events", userList);
 			loadForm(ctx,PolicyNo );
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return; 
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -161,6 +166,7 @@ public class ActivateIASAction extends CCAction{
 		User loggedUser = (User)ctx.session().getAttribute(Constants.loggedUser);
 		 
 		String userid = loggedUser.getUserId();
+		log.debug("userid: " + userid);
 		
 		ctx.session().setAttribute(Constants.IASuser, userid);
 		
@@ -168,18 +174,18 @@ public class ActivateIASAction extends CCAction{
 			WSPolicyMaintCall.fetch(PolicyNo, userid,inparms, inoutparms,  outparms, msgInfo);
 			fillForm(ctx,userid, inparms, inoutparms,  outparms);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 			
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo);
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
@@ -197,7 +203,7 @@ public class ActivateIASAction extends CCAction{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.forwardToInput();
-			log.debug("Finish....Adding " + classAction);
+			log.debug("Finish....Display " + classAction);
 		}
 
 	}
@@ -255,10 +261,10 @@ public class ActivateIASAction extends CCAction{
 	 * @throws Exception
 	 */
 	public void secondarymaintabset_onTabClick(ControlActionContext ctx, String seltab) throws Exception {
-		log.debug("Begin secondarymaintabset_onTabClick-Carl");
+		log.debug("Begin secondarymaintabset_onTabClick-IAS");
 		this.loadList(ctx);
 		ctx.control().execute(ctx, seltab);
-		log.debug("End secondarymaintabset_onTabClick-Carl");
+		log.debug("End secondarymaintabset_onTabClick-IAS");
 	}
 	
 	/**
@@ -306,7 +312,7 @@ public class ActivateIASAction extends CCAction{
 	{
 		ActivateIASForm form = (ActivateIASForm) ctx.form();
 		
-		log.debug("Forwarding to Create Event Page");
+		log.debug("Forwarding to Create Events Page");
 		ctx.session().setAttribute(Constants.IASpolicyNumber, form.getPOLICY_ID());
 		ctx.session().setAttribute(Constants.IAStaskName, "Creating New Event");
 		
@@ -315,9 +321,16 @@ public class ActivateIASAction extends CCAction{
 	}
 	
 	
+	/**
+	* This Method is called when the Edit-Column is clicked
+	*/
 	public void events_onEdit(ControlActionContext ctx, String key) throws Exception {
 		String PolicyNo = null;
 		String StdEventCode = null;
+		
+		String scrName = null;
+		
+		String method = "Method: events_onEdit ->> ";
 		
 		PolicyNo  = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
 		ListControl events = (ListControl)ctx.control();
@@ -325,130 +338,21 @@ public class ActivateIASAction extends CCAction{
 
 		StdEventCode = dceDisplay.getSTD_EVENT_ID().toString();
 		
-		log.debug("Session Policy Number: " + PolicyNo);
+		scrName = dceDisplay.getSCRNAME();
 		
+		log.debug(method + "Session Policy Number: " + PolicyNo);
+		log.debug(method + "Std Event Code: " + StdEventCode + " ->> Event Id: " + key + " ->> Scr Name: " + scrName);
 		
-		if (StdEventCode.equalsIgnoreCase("LETTER")) 
+		if(ctx.mapping().findForward(scrName + "onEdit") == null)
 		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/letter?eventid="+key+"&action=edit&modify=show");
+			log.debug(method + "Do not have a case for:" + StdEventCode);
+			ctx.addGlobalError(DiaryMessages.STD_EVENTS_CODES_INVALID,StdEventCode);
+			ctx.forwardToInput();
 		}
-		
-		if (StdEventCode.equalsIgnoreCase("BLD")) 
+		else
 		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
+			ctx.forwardByName(scrName + "onEdit", key);
 		}
-		
-		if (StdEventCode.equalsIgnoreCase("ECG")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("EXM"))
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("EXM-BLD")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("URNSPEC")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("FREE TX")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("PROP")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("AMD-ONLY")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("MODIFYDR")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("QUOTE")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("PHONE")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("STDLET")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/stdLetter?eventid="+key+"&action=edit&modify=show");
-		}
-	
-		if (StdEventCode.equalsIgnoreCase("HIPAA")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
-		}
-		
-		
-		if (StdEventCode.equalsIgnoreCase("HIPAA-OH")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("HIPAA-MI")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("HIV-H")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?&eventid="+key+"&action=edit&modify=show");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("RE-OPEN")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("SA")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
-		}
-		
 	}
 	
 	/**
@@ -464,166 +368,32 @@ public class ActivateIASAction extends CCAction{
 		String PolicyNo = null;
 		
 		String StdEventCode = null;
-		boolean flag = true; 
-	
+		String scrName = null;
+		
+		String method = "Method: events_onDrilldown ->> ";
+		
 	    PolicyNo = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
 		ListControl events = (ListControl)ctx.control();
 		PolicyEventsDsp dceDisplay = (PolicyEventsDsp)events.getRowFromKey(key);
 	
 		StdEventCode = dceDisplay.getSTD_EVENT_ID().toString();
+		scrName = dceDisplay.getSCRNAME();
 		
-		log.debug("Session Policy Number: " + PolicyNo);		
-	
-		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 
+		log.debug(method + "Session Policy Number: " + PolicyNo);
+		log.debug(method + "Std Event Code: " + StdEventCode + " ->> Event Id: " + key + " ->> Scr Name: " + scrName);
+		
+		if(ctx.mapping().findForward(scrName + "onDrilldown") == null)
 		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("FREE TX")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("QUOTE")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("PHONE")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("PROP")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("AMD-ONLY")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("MODIFYDR")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("LETTER")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/letter?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("HIPAA")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("HIPAA-MI")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("HIPAA-OH")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("HIV-H")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?&eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("RE-OPEN")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if (StdEventCode.equalsIgnoreCase("SA")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
-			flag = false;
-		}
-	
-		if (StdEventCode.equalsIgnoreCase("STDLET")) 
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("/iuauser/stdLetter?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if(StdEventCode.equalsIgnoreCase("BLD"))
-		{
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if(StdEventCode.equalsIgnoreCase("ECG"))
-		{ 
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if(StdEventCode.equalsIgnoreCase("EXM"))
-		{ 
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if(StdEventCode.equalsIgnoreCase("EXM-BLD"))
-		{ 
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		if(StdEventCode.equalsIgnoreCase("URNSPEC"))
-		{ 
-			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
-			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
-			flag = false;
-		}
-		
-		
-		if (flag)
-		{
-			log.debug("Do not have a case for:" + StdEventCode);
+			log.debug(method + "Do not have a case for:" + StdEventCode);
 			ctx.addGlobalError(DiaryMessages.STD_EVENTS_CODES_INVALID,StdEventCode);
 			ctx.forwardToInput();
-
+		}
+		else
+		{
+			ctx.forwardByName(scrName + "onDrilldown", key);		
+			ctx.request().setAttribute("showFocus", "showFocus");
 		}
 		
-		ctx.request().setAttribute("showFocus", "showFocus");
 	}
 	
 	
@@ -658,12 +428,14 @@ public class ActivateIASAction extends CCAction{
 	
 	public void browsePoliciesHelp_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirect to Browse Policies Help");
 		ActivateIASForm form = (ActivateIASForm) ctx.form();
 		ctx.forwardByName("browsePolicies", form.getKEY_INSURED());
 	}
 	
 	public void updatePolicyNo_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Calling Update Policy");
 		ActivateIASForm form = (ActivateIASForm) ctx.form();
 		updatePolicyNo(ctx, form.getPOLICY_ID().trim());
 	}
@@ -671,9 +443,13 @@ public class ActivateIASAction extends CCAction{
 	private void updatePolicyNo(FormActionContext ctx, String policy_id) 
 	{
 		String PolicyNo  = (String)ctx.session().getAttribute(Constants.policyNumber);
+		log.debug("Current Policy in Session: " + PolicyNo);
 		
 		ctx.session().setAttribute("iasdiaryFlag", "display");
+		log.debug("Setting iasdiaryFlag to display");
 		
+		
+		log.debug("New Policy to set in Session: " + policy_id);
 		if (PolicyNo.equalsIgnoreCase(policy_id))
 		{
 			ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
@@ -689,11 +465,13 @@ public class ActivateIASAction extends CCAction{
 			ctx.session().setAttribute(Constants.IASModify, "display");
 		}	
 
+		log.debug("Reload Policy Events List");
 		this.loadList(ctx);
 	}
 
 	public void updateUnderwriterStatus_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Calling Update Underwriter Status");
 		updateUnderwriterStatus(ctx);
 	}
 	
@@ -705,16 +483,19 @@ public class ActivateIASAction extends CCAction{
 		ACPLYMWResponseMSG_INFOHolder msgInfo = new ACPLYMWResponseMSG_INFOHolder();
 		
 		String amendment_ind = (String) ctx.session().getAttribute("AMENDMENT_IND");
+		log.debug("AMENDMENT_IND: " + amendment_ind );
+		
 		ctx.session().removeAttribute("AMENDMENT_IND");
 		
 		String rider_ind = (String) ctx.session().getAttribute("RIDER_IND");
+		log.debug("rider_ind: " + rider_ind );
 		
 		if(rider_ind == null)
 		{
 			rider_ind = "n";
 		}
 		
-		
+		log.debug("Set modify request and session to edit" );
 		ctx.request().setAttribute("modify", "edit");
 		ctx.session().setAttribute("modify", "edit");
 		
@@ -724,30 +505,35 @@ public class ActivateIASAction extends CCAction{
 		}
 		
 		String personId = (String)ctx.session().getAttribute(Constants.IASkeyInsuredId);
+		log.debug("personId: " + personId );
 		String user  = (String)ctx.session().getAttribute(Constants.IASuser);
-		
+		log.debug("user: " + user );
 		String policyNo = form.getPOLICY_ID();
+		log.debug("policyNo: " + policyNo );
 		//String underWriterStatus = form.getUdwselectedItem();
 		String logCounter = form.getLog_counter();
+		log.debug("logCounter: " + logCounter );
 		
+		log.info("Calling Edit Rountines");
 		if (IasDairyEdit.CallErrorEdits(ctx))
 		{
 			loadForm(ctx,policyNo);
 			ctx.forwardToInput();
 			return;
 		}
-			
+		log.info("No Error Edits Occurred");	
 		
 		try {
-			
+			log.debug("Current Underwriter Status: " + form.getUNDERWRITER_OLD().toString() );
+			log.debug("New Underwriter Status: " + form.getUdwselectedItem().toString() );
 			WSPolicyMaintCall.updateUnderwriterStatus(policyNo, user, form.getUdwselectedItem(), msgInfo, logCounter);
 		} catch (RemoteException e) {
-			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + policyNo);
+			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
 		} catch (ServiceException e) {
-			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + policyNo);
+			log.error("Service Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service + " and Policy Number " + policyNo, e);
 			ctx.addGlobalError(DiaryMessages.SERCIVE_EXCEPTION,service + " WS",policyNo);
 			ctx.forwardToInput();
 			return;
@@ -809,18 +595,19 @@ public class ActivateIASAction extends CCAction{
 				
 			}
 		}
-		
+		log.info("Setting new underwriter status to old underwriter object holder" );
 		form.setUNDERWRITER_OLD(form.getUdwselectedItem());
 	}
 
 	public void policyPersonEdit_onClick(FormActionContext ctx)throws Exception
 	{
-		
+		log.debug("Redirecting to Policy Person in edit mode");
 		ctx.forwardByName("policyPersonMainEdit");
 	}
 	
 	public void policyPersonDisplay_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Policy Person in display mode");
 		ctx.forwardByName("policyPersonMainDisplay");
 	}
 	
@@ -831,51 +618,57 @@ public class ActivateIASAction extends CCAction{
 	
 	public void policyExtendCommentsEdit_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Policy Extended Comments in edit mode");
 		ctx.forwardByName("policyExtendedCommentsEdit");
 	}
 	
 	public void policyExtendCommentsCreate_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Policy Extended Comments in create mode");
 		ctx.forwardByName("policyExtendedCommentsCreate");
 	}
 	
 	public void policyExtendCommentsDisplay_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Policy Extended Comments in display mode");
 		ctx.forwardByName("policyExtendedCommentsDisplay");
 	}
 	
 	public void underwritingNotesEdit_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Underwriting Notes in edit mode");
 		ctx.forwardByName("underwritingNotesEdit");
 	}
 	
 	public void underwritingNotesCreate_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Underwriting Notes in create mode");
 		ctx.forwardByName("underwritingNotesCreate");
 	}
 	
 	
 	public void underwritingNotesDisplay_onClick(FormActionContext ctx)throws Exception
 	{
+		log.debug("Redirecting to Underwriting Notes in display mode");
 		ctx.forwardByName("underwritingNotesDisplay");
 	}
 	
 	
 	public void amendmentCreate_onClick(FormActionContext ctx)throws Exception
 	{
-	
+		log.debug("Redirecting to Amendment in create mode");
 		ctx.forwardByName("amendmentCreate");
 	}
 	
 	public void amendmentEdit_onClick(FormActionContext ctx)throws Exception
 	{
-	
+		log.debug("Redirecting to Amendment in edit mode");
 		ctx.forwardByName("amendmentEdit");
 	}
 	
 	public void amendmentDisplay_onClick(FormActionContext ctx)throws Exception
 	{
-	
+		log.debug("Redirecting to Amendment in display mode");
 		ctx.forwardByName("amendmentDisplay");
 	}
 	
