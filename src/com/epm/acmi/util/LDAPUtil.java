@@ -1,13 +1,11 @@
 package com.epm.acmi.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
+import com.epm.acmi.struts.Constants;
 
+import java.util.*;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
+import javax.naming.InitialContext;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
@@ -27,30 +25,23 @@ import org.apache.log4j.Logger;
 public class LDAPUtil {
 
 	private static Logger log = Logger.getLogger(LDAPUtil.class);
-
-
 	private static final String providerURL;
-
-
 	private static final String contextFactory;
-
-
 	private static final String username;
-
-
-	// private static final String loginName;
-
 	private static final String searchBase;
-
-
 	private static final String empSearchBase;
-
-
 	private static final String globalsearchBase;
-	
 	private static String password ="";
 
-	public LDAPUtil() {
+	static {
+		log = Logger.getLogger(com.epm.acmi.util.LDAPUtil.class);
+		providerURL = LocalProperties.getProperty(Constants.PROVIDER_URL);
+		contextFactory = LocalProperties.getProperty(Constants.INITIAL_CONTEXT_FACTORY);
+		username = LocalProperties.getProperty(Constants.SECURITY_PRINCIPAL);
+		password = PasswordEncryption.getDecryptedPassword(username);
+		searchBase = LocalProperties.getProperty(Constants.SEARCH_BASE);
+		empSearchBase = LocalProperties.getProperty(Constants.EPM_SEARCH_BASE);
+		globalsearchBase = LocalProperties.getProperty(Constants.GLOBAL_SEARCH_BASE);
 	}
 
 
@@ -60,6 +51,7 @@ public class LDAPUtil {
 	 * @return DirContext
 	 */
 	public static DirContext getContext() {
+		
 		DirContext ctx = null;
 		Hashtable env = new Hashtable();
 		env.put("java.naming.factory.initial", contextFactory);
@@ -68,6 +60,7 @@ public class LDAPUtil {
 		env.put("java.naming.security.credentials", password);
 		env.put("java.naming.provider.url", providerURL);
 		log.debug("getting Directory Context");
+		
 		try {
 			ctx = new InitialDirContext(env);
 		} catch (Exception e) {
@@ -80,6 +73,7 @@ public class LDAPUtil {
 		}
 		return ctx;
 	}
+	
 
 
 	/**
@@ -89,27 +83,30 @@ public class LDAPUtil {
 	 * @param ppassword
 	 * @return boolean
 	 */
-	public static boolean authenticate(String loginName, String ppassword) {
-		boolean userIsOK = false;
+	public static String authenticate(String loginName, String ppassword) {
+		
 		log.debug("Begin authenticate()");
 		String keyDn = getCn(loginName);
+		InitialDirContext ctx = null;
+			
 		if (keyDn != null) {
 			Hashtable env = new Hashtable(11);
-			env.put("java.naming.factory.initial", "com.sun.jndi.ldap.LdapCtxFactory");
-			env.put("java.naming.provider.url", "");
+			env.put("java.naming.factory.initial", contextFactory);
+			env.put("java.naming.provider.url", providerURL);
 			env.put("java.naming.security.authentication", "simple");
 			env.put("java.naming.security.principal", keyDn);
 			env.put("java.naming.security.credentials", ppassword);
 			log.debug("authenticate with >" + keyDn + "<");
 			try {
-				new InitialDirContext(env);
-				userIsOK = true;
+				ctx = new InitialDirContext(env);
 			} catch (NamingException e) {
-				log.debug("authenticate failed with " + e);
+				log.debug("authenticate failed with " , e);
+			} finally {
+				closeContext(ctx);
 			}
 		}
 		log.debug("End authenticate()");
-		return userIsOK;
+		return keyDn;
 	}
 
 
@@ -128,12 +125,13 @@ public class LDAPUtil {
 			ctx = getContext();
 			SearchControls ctls = new SearchControls();
 			ctls.setSearchScope(2);
-			String searchStr = "(" + loginName + "=" + loginName + ")";
-			NamingEnumeration answer = ctx.search("", searchStr, ctls);
+			
+			String searchStr = "(sAMAccountName=" + loginName + ")";
+			NamingEnumeration answer = ctx.search(globalsearchBase, searchStr, ctls);
 			
 			if (answer.hasMore()) {
-				SearchResult sr = (SearchResult) answer.next();
-				keyDn = sr.getName() + "," + ctx.getNameInNamespace();
+				Attributes attr = ((SearchResult) answer.next()).getAttributes();
+				keyDn = (String)attr.get("distinguishedName").get();
 				log.debug("entry found for LDAP-search >" + searchStr + "<: dn= >" + keyDn + "<!");
 				answer.close();
 			} else {
@@ -604,8 +602,7 @@ public class LDAPUtil {
 	 * @return LDAPUser
 	 */
 	public LDAPUser getUserAttributes(String dn, DirContext ctx) {
-		LDAPUser user = null;
-		//log.debug("Begin getUserAttributes()");
+		LDAPUser user = null; 
 		boolean closeContext = false;
 		
 		try {
@@ -615,7 +612,7 @@ public class LDAPUtil {
 			}
 
 			SearchControls searchCtls = new SearchControls();
-			String returnedAtts[] = { "sAMAccountName", "sn", "givenName", "mail", "cn" };
+			String returnedAtts[] = { "sAMAccountName", "sn", "givenName", "mail", "cn", "memberOf" };
 			searchCtls.setReturningAttributes(returnedAtts);
 			searchCtls.setSearchScope(2);
 			String searchFilter = "(&(objectClass=user)(distinguishedName=" + dn + "))";
@@ -628,17 +625,25 @@ public class LDAPUtil {
 					try {
 						user = new LDAPUser();
 						user.setUserId(attrs.get("sAMAccountName").get().toString());
+						Attribute member = attrs.get("memberof");
+						
+						if ( member != null) {
+							user.setRoles(getIUPSRoles(member));
+						}
 						if (attrs.get("sn") != null)
 							user.setLastName(attrs.get("sn").get().toString());
 						if (attrs.get("givenName") != null)
 							user.setFirstName(attrs.get("givenName").get().toString());
-						if (attrs.get("mail") != null)
-							user.setEmail(attrs.get("mail").get().toString());
+						if (attrs.get("mail") != null) {
+							String email = attrs.get("mail").get().toString();
+							user.setEmail(email);
+							
+						}
 						if (attrs.get("cn") != null)
 							user.setCn(attrs.get("cn").get().toString());
-						//log.info("user fullname= " + user.getFirstName() + " | " + user.getLastName() + " CN=" + user.getCn());
+						
 					} catch (NullPointerException e) {
-						log.error("Errors listing attributes: " + e);
+						log.error("Errors listing attributes: ", e);
 					}
 				}
 			}
@@ -658,6 +663,46 @@ public class LDAPUtil {
 	}
 
 
+	public ArrayList getIUPSRoles(Attribute memberOf) {
+		
+		ArrayList list = null;
+		
+		if (memberOf != null) {
+			list = new ArrayList();
+			
+			try {
+				
+				NamingEnumeration ne = memberOf.getAll();
+				ArrayList groupList = ACMICache.getUserGroups();
+				while (ne.hasMore()) {
+					String group = (String) ne.next();
+					int indexOfIBPM = group.indexOf("IBPM");
+					if (indexOfIBPM != -1 ) {  //IBPM Role
+						String role = getCN(group);
+						if (groupList.contains(role)) {
+							list.add(role);
+						}
+					}
+				}
+			} catch (NamingException e) {
+				log.error(e);
+			}
+		}
+		return list;
+	}
+		
+	public String getCN(String str) {
+		if (str != null ){
+			int indexOfCN = str.indexOf("CN=");
+			if (indexOfCN != -1) {
+				int indexOfComma = str.indexOf(',',indexOfCN);
+				if (indexOfComma != -1) {
+					return str.substring(indexOfCN+3, indexOfComma) ;
+				}
+			}
+		}
+		return null;
+	}
 	/**
 	 * Returns users map from a group
 	 * 
@@ -724,13 +769,15 @@ public class LDAPUtil {
 				if (member != null) {
 					LDAPUser user = getUserAttributes(member, ctx);
 					String userId = user.getUserId().toLowerCase();
-					if (users.containsKey(userId)) {
-						user = (LDAPUser) users.get(userId);
-						user.setRole(group_name);
-					} else {
+					if (!users.containsKey(userId)) {
+						users.put(userId, user);
+//						user = (LDAPUser) users.get(userId);
+//						user.setRole(group_name);
+					} 
+/*					else {
 						user.setRole(group_name);
 						users.put(userId, user);
-					}
+					} */
 				}
 
 			}
@@ -757,18 +804,64 @@ public class LDAPUtil {
 		return users;
 	}
 
-	static {
-		log = Logger.getLogger(com.epm.acmi.util.LDAPUtil.class);
-		providerURL = LocalProperties.getProperty("PROVIDER_URL");
-		contextFactory = LocalProperties.getProperty("INITIAL_CONTEXT_FACTORY");
-		username = LocalProperties.getProperty("SECURITY_PRINCIPAL");
-		password = PasswordEncryption.getDecryptedPassword(username);
-		searchBase = LocalProperties.getProperty("SEARCH_BASE");
-		empSearchBase = LocalProperties.getProperty("EPM_SEARCH_BASE");
-		globalsearchBase = LocalProperties.getProperty("GLOBAL_SEARCH_BASE");
+	public List getGroupsForUser(String userId, DirContext ctx) {
+		
+		log.debug("Begin getGroupsForUser()");
+		ArrayList list = new ArrayList();
+				
+		try {
+			if (ctx == null) {
+				ctx = getContext();
+			}
+
+			//Create the search controls 		
+			SearchControls searchCtls = new SearchControls();
+
+			//User search filter
+			String searchFilter = "(&(objectClass=user)(CN= + ))";
+
+			//Specify the attributes to return
+			//String returnedAtts[]={"memberOf"};
+			//searchCtls.setReturningAttributes(returnedAtts);
+		
+			//Search for objects using the filter
+			NamingEnumeration answer = ctx.search(globalsearchBase, searchFilter, searchCtls);
+
+			//initialize counter to total the group members
+			int totalResults = 0;
+
+			while (answer.hasMoreElements()) {
+				SearchResult sr = (SearchResult)answer.next();
+  
+				Attributes attrs = sr.getAttributes();
+				
+				if (attrs != null) {
+					for (NamingEnumeration ae = attrs.getAll();ae.hasMore();) {
+						Attribute attr = (Attribute)ae.next();
+						System.out.println("Attribute: " + attr.getID());
+						for (NamingEnumeration e = attr.getAll();e.hasMore();totalResults++) {
+							System.out.println(e.next());
+							list.add(e.next());
+						}
+					}
+				}
+			} 
+		}
+		
+		catch (NamingException e) {
+			log.error("Problem getting group info for user " + userId, e);
+		
+		} finally {
+			try {
+				ctx.close();
+			} catch (NamingException e) {
+				log.error("Unable to close context in getGroupsForUser");
+			}
+		}
+		
+		return list;
 	}
-
-
+	
 	public static void main(String args[]) {
 		String group = "MRT";
 		LDAPUtil cache = new LDAPUtil();

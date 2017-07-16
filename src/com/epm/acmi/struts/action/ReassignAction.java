@@ -12,16 +12,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Vector;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Query;
 
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
@@ -33,10 +27,6 @@ import com.cc.framework.ui.model.ListDataModel;
 import com.cc.framework.util.ListHelp;
 import com.epm.acmi.bean.ReassignTaskBean;
 import com.epm.acmi.datamodel.ReassignTaskList;
-import com.epm.acmi.hbm.BaseHibernateDAO;
-import com.epm.acmi.hbm.IuainterviewRequest;
-import com.epm.acmi.hbm.IuainterviewRequestDAO;
-import com.epm.acmi.hbm.IuatelephonicInterview;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.ReassignTaskForm;
 import com.epm.acmi.util.ACMICache;
@@ -46,6 +36,7 @@ import com.epm.acmi.util.LDAPUser;
 import com.fujitsu.iflow.model.workflow.WFAdminSession;
 import com.fujitsu.iflow.model.workflow.WFObjectFactory;
 import com.fujitsu.iflow.model.workflow.WorkItem;
+import com.epm.acmi.bd.IUAProcessBD;
 
 /**
  * Action class for Reassign Page
@@ -57,15 +48,9 @@ public class ReassignAction extends MainTabPageBaseAction {
 	private static final int MAX_UPDATE_ATTEMPTS = 5;
 	private static final long INITIAL_WAITING_TIME = 100;
 	
-	private static final String INTERVIEW_BY_PID_SQL = "from IuatelephonicInterview u where u.iuaappDocProcesses in (from IuaappDocProcesses i where i.pid = :pid)";
-	private static final String PID_PARAM = "pid";
 	
 	private static Logger log = Logger.getLogger(ReassignAction.class);
 	private static HashMap userNameUserIDMap = new HashMap();
-	private static String WORKLISTSQL = "select application.gfid, application.CMListBill, application.UWInitial, application.State, application.PolicyNo,"
-		+ " application.KeyAppFirstName, application.KeyAppLastName from IUAApplication application WITH (NOLOCK) where application.gfid in (select distinct(gfid) from IUAAppDocProcesses WITH (NOLOCK) doc where enddate is null)";
-	private static String activitySQL = "select ActiveDate from IUAActivities WITH (NOLOCK) where pid = ? and activityName = ? and completeDate is null";
-
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 	
 
@@ -235,7 +220,7 @@ public class ReassignAction extends MainTabPageBaseAction {
 								}
 								
 								if (Constants.EPM_ACTIVITY_CONDUCT_INITIAL_INTERVIEW.equals(currentWorkItem.getName()))
-									updateInterviewForReassign(currentWorkItem);
+									new IUAProcessBD().updateInterviewForReassign(currentWorkItem);
 								
 							}// end if rtb is checked
 						} // end data for loop
@@ -267,40 +252,6 @@ public class ReassignAction extends MainTabPageBaseAction {
 		ctx.forwardToInput();
 
 	}
-
-	private void updateInterviewForReassign(WorkItem currentWorkItem) throws Exception {
-		try
-		{
-			long pid = currentWorkItem.getProcessInstance().getId();
-			List interviews = getInterviewForPID(pid);
-			
-			if (interviews != null && interviews.size() > 0){
-				IuatelephonicInterview interview = (IuatelephonicInterview)interviews.get(0);
-				
-				IuainterviewRequest request = interview.getIuainterviewRequest();
-				log.debug("got request with request id = " + request.getInterviewRequestId());
-				request.setIuauserByInitialInterviewNc(null);
-				BaseHibernateDAO.getSession().update(request);
-				BaseHibernateDAO.getSession().flush();
-			}
-		} finally
-		{
-			BaseHibernateDAO.close();
-		}
-		
-	}
-
-
-	private static List getInterviewForPID(long pid) {
-		log.debug("getInterviewForPID(" + pid + ") - Start");
-		Query query = BaseHibernateDAO.getSession().createQuery(INTERVIEW_BY_PID_SQL);
-		query.setLong(PID_PARAM, pid);
-		List results = query.list();		
-		log.debug("got " + results.size() + " interview requests");
-		log.debug("getInterviewForPID() - End");
-		return results;
-	}
-
 
 	// ----------------------------------------------
 	// TabSet-Callback Methods
@@ -337,13 +288,6 @@ public class ReassignAction extends MainTabPageBaseAction {
 		ctx.session().setAttribute("ReassignTaskForm", form);
 		ctx.session().setAttribute("ReassignTaskList", null);
 
-		// Clear Stellent Session Id when user tabs into document exceptions
-//		User user = (User) ctx.session().getAttribute(Constants.loggedUser);
-//		String AAID = user.getAAID();
-//		if (AAID != null) {
-//			StellentClient.logout(AAID);
-//			user.setAAID(null);
-//		}
 		log.debug("End maintabset_onTabClick");
 		ctx.control().execute(ctx, seltab);
 	}
@@ -383,32 +327,10 @@ public class ReassignAction extends MainTabPageBaseAction {
 		form.setMap(sortedMap);
 		ctx.session().setAttribute("ReassignTaskForm", form);
 		ctx.session().setAttribute("ReassignTaskList", null);
-		// Clear Stellent Session Id when user tabs into document exceptions
-//		User user = (User) ctx.session().getAttribute(Constants.loggedUser);
-//		String AAID = user.getAAID();
-//		if (AAID != null) {
-//			StellentClient.logout(AAID);
-//			user.setAAID(null);
-//		}
+
 		log.debug("End secondarymaintabset_onTabClick");
 
 		ctx.control().execute(ctx, seltab);
-	}
-
-
-	/**
-	 * The doExecute is called when the Button is clicked
-	 * 
-	 * @param ctx
-	 *            The FormActionContext
-	 * @throws Exception
-	 */
-	public void reassign_onClick(FormActionContext ctx) throws Exception {
-
-		// back to the jsp
-		// /ctx.forwardToInput();
-
-		log.debug("Reassign on click called");
 	}
 
 
@@ -432,144 +354,6 @@ public class ReassignAction extends MainTabPageBaseAction {
 
 		ctx.control().execute(ctx, column, direction);
 	}
-
-
-	/**
-	 * This Method is called when the Search Button is clicked
-	 * 
-	 * @param ctx
-	 *            ControlActionContext
-	 * @throws Exception
-	 */
-	public void search_onClickOld(FormActionContext ctx) throws Exception {
-
-		Connection conn = null;
-		String userRole;
-		WorkItem wi;
-		EPMHelper epmHelper = null;
-		WFAdminSession wfAdminSession = null;
-		PreparedStatement st = null;
-		PreparedStatement psmt = null;
-		Connection acmiConn = null;
-		ResultSet activityRS = null;
-		ResultSet allTasksResult = null;
-		String userID;
-		StringBuffer activitySelect = new StringBuffer();
-		activitySelect.append("select PID from IUAActivities WITH (NOLOCK) where PID = ? and ");
-		activitySelect.append("ltrim(rtrim(ActivityName)) = ? and ");
-		activitySelect.append("upper(EmployeeID) = ? ");
-		activitySelect.append("and AcceptDate is null and CompleteDate is null and ActiveDate is not null");
-        long PID = 0; 
-		try {
-			log.debug("Begin search_onClick");
-
-			ReassignTaskForm reassignForm = (ReassignTaskForm) ctx.form();
-			userRole = reassignForm.getRoleDropdown();
-
-			conn = Connect.getConnectionToTeamFlow();
-			acmiConn = Connect.getConnection();
-			userID = (String) ReassignAction.userNameUserIDMap.get(reassignForm.getItem());
-
-			// Build Work List
-			epmHelper = new EPMHelper();
-			wfAdminSession = epmHelper.connectAsAdminFromPropertiesFile();
-			String sql = " select workItemId from WorkItem WITH (NOLOCK) where responsible= ? and ( state = 8 or state = 3 ) order by state";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, userID);
-			allTasksResult = psmt.executeQuery();
-
-			Vector theVector = new Vector();
-			while (allTasksResult.next()) {
-				long workId = allTasksResult.getLong("workItemId");
-				wi = WFObjectFactory.getWorkItem(workId, wfAdminSession);
-				PID = wi.getProcessInstanceId();
-				if (wi.getState() == WorkItem.STATE_ACTIVE) {
-					
-					st = acmiConn.prepareStatement(activitySelect.toString());
-					st.setLong(1,wi.getProcessInstanceId());
-					st.setString(2, wi.getName().trim());
-					st.setString(3,userID.toUpperCase());
-					activityRS = st.executeQuery();
-					
-					if (wi.getNodeInstance().getRole().equalsIgnoreCase(userRole) && activityRS.next()) {
-						theVector.add(wi);
-					}
-
-				} else {
-					if (wi.getNodeInstance().getRole().equalsIgnoreCase(userRole)) {
-						theVector.add(wi);
-					}
-				} // end else
-
-			}
-
-			ReassignTaskBean[] itemsFirDisplay = null;
-
-			SimpleListControl theWorkList = new SimpleListControl();
-
-			if (theVector.size() != 0) {
-
-				WorkItem[] actualWlist = new WorkItem[theVector.size()];
-				Iterator workItemIter = theVector.iterator();
-
-				for (int numberOfWorkItem = 0; numberOfWorkItem < theVector.size(); numberOfWorkItem++) {
-					actualWlist[numberOfWorkItem] = (WorkItem) workItemIter.next();
-				}
-
-				List acmiWIBList = getWLNew(actualWlist, ctx.request(), ctx.response());
-				itemsFirDisplay = new ReassignTaskBean[acmiWIBList.size()];
-				Iterator iter = acmiWIBList.iterator();
-				int numberToDisplay = 0;
-				while (iter.hasNext()) {
-					itemsFirDisplay[numberToDisplay++] = (ReassignTaskBean) iter.next();
-				}
-
-				ReassignTaskList list = new ReassignTaskList(itemsFirDisplay);
-				theWorkList.setDataModel(list);
-			}
-
-			if (itemsFirDisplay == null) {
-				SimpleListControl theWorkListNull = new SimpleListControl();
-				ctx.session().setAttribute("ReassignTaskList", theWorkListNull);
-			} else {
-				ctx.session().setAttribute("ReassignTaskList", theWorkList);
-			}
-
-		} catch (Exception ex) {
-			ctx.addGlobalError("error.mainError", "");
-			log.error("Exception " + ex.getClass().getName() + " caught with message: " + ex.getMessage()+" . PID = " + PID);
-			ex.printStackTrace();
-		} finally {
-			if (allTasksResult != null)
-				allTasksResult.close();
-			if (activityRS != null)
-				activityRS.close();
-			if (st != null)
-				st.close();
-			if (psmt != null)
-				psmt.close();
-			if (conn != null)
-				conn.close();
-			if (acmiConn != null)
-				acmiConn.close();
-
-			try
-			{
-				if ((epmHelper != null) && (wfAdminSession != null))
-					epmHelper.disconnect(wfAdminSession);
-			} catch (Exception e)
-			{
-				log.error("Exception while disconnecting from EPM Server", e);
-			}
-		}
-
-		log.debug("End search_onClick");
-		// back to the jsp
-		ctx.forwardToInput();
-
-	}
-
-
 	
 	/**
 	 * This Method is called when the Search Button is clicked
@@ -733,7 +517,6 @@ public class ReassignAction extends MainTabPageBaseAction {
 		ctx.forwardToInput();
 	}
 
-
 	/**
 	 * This Method is called if an item is check/unchecked Normally this method needs not to be implemented within you
 	 * action, because this is handled by the control automatically. If you need a different behaviour you can add this
@@ -755,167 +538,11 @@ public class ReassignAction extends MainTabPageBaseAction {
 
 		log.debug("Item key: " + key + " checked: " + checked);
 
+		// ctx.addGlobalMessage(Messages.MESSAGE, "Items " + key + " " +(checked
+		// ? "checked" : "unchecked") + "!");
+
+		// back to the jsp
 		ctx.forwardToInput();
-	}
-
-	/**
-	 * Retrive workitems from EPM
-	 * @param tasks
-	 * @param request
-	 * @param response
-	 * @param session
-	 * @param onlyaccptandactivetasks
-	 * @return
-	 * @throws Exception
-	 */
-	private List getWLNew(WorkItem[] tasks, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//TODO: Need to change this method so that there is no ambiguity in retrieving the ActiveDate
-		//The way it is if we have two activities with the same name for a given PID, the first is chosen all the time.
-		//This is a bug that needs to be corrected.		
-		log.debug("Begin getWL()");
-
-		List acmiWIBList = new ArrayList();
-		HashMap acmiDBWIBMap = new HashMap();
-		String status = null;
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		PreparedStatement psmt1 = null;
-		ResultSet rs = null;
-		String theGFID = null;
-		try {
-			conn = Connect.getConnection();
-			psmt1 = conn.prepareStatement(activitySQL);
-			psmt = conn.prepareStatement(WORKLISTSQL);
-			String keyAppFirstName = null;
-			String keyAppLastName = null;
-
-			ResultSet rst = psmt.executeQuery();
-
-			while (rst.next()) {
-				ReassignTaskBean lacmiWIB = new ReassignTaskBean();
-
-				String pl = rst.getString("PolicyNo");
-				if (null != pl) {
-					if (pl.trim().length() > 0) {
-						lacmiWIB.setPolicyNumber(pl);
-					}
-				}
-				String uw = rst.getString("UWInitial");
-				if (null != uw) {
-					if (uw.trim().length() > 0) {
-						lacmiWIB.setUnderWriter(uw);
-					}
-				}
-//				String lb = rst.getString("CMListBill");
-//				if (null != lb) {
-//					if (lb.trim().length() > 0) {
-//						lacmiWIB.setListBill(lb);
-//					}
-//				}
-				String st = rst.getString("State");
-				if (null != st) {
-					if (st.trim().length() > 0) {
-						lacmiWIB.setState(st);
-					}
-				}
-
-				keyAppFirstName = rst.getString("KeyAppFirstName");
-				keyAppLastName = rst.getString("KeyAppLastName");
-				//lacmiWIB.setCreatedDate(rst.getTimestamp("ActiveDate"));
-				
-				if (keyAppLastName != null) {
-					lacmiWIB.setKeyApplicantName(keyAppLastName + " " + keyAppFirstName);
-				} else {
-					lacmiWIB.setKeyApplicantName(keyAppFirstName);
-				}
-				acmiDBWIBMap.put(rst.getString("gfid"), lacmiWIB);
-			}
-		
-			if (null != tasks) {
-				if (tasks.length > 0) {
-
-					for (int i = 0; i < tasks.length; i++) {
-
-						WorkItem wi = tasks[i];
-						int wistatus = wi.getState();
-
-						ReassignTaskBean acmiWIB = new ReassignTaskBean();
-						long taskId = wi.getId();
-						if (wistatus == WorkItem.STATE_ACTIVE) {
-							status = "Active";
-						} else if (wistatus == WorkItem.STATE_ACCEPTED) {
-							status = "Accepted";
-						} else if (wistatus == WorkItem.STATE_DECLINED) {
-							status = "Declined";
-						} else if (wistatus == WorkItem.STATE_DEACTIVE) {
-							status = "DeActive";
-						}
-
-						com.fujitsu.iflow.model.workflow.DataItem[] di = wi.getWorklistDataItems();
-						
-						for (int j = 0; j < di.length; j++) {
-							if (di[j].getName().equalsIgnoreCase("gfId")) {
-								theGFID = di[j].getValue();
-								break;
-							}
-						}
-
-						ReassignTaskBean localacmiWIB = (ReassignTaskBean) acmiDBWIBMap.get(theGFID);
-						//acmiWIB.setCreatedDate(localacmiWIB.getCreatedDate());
-						acmiWIB.setKeyApplicantName(localacmiWIB.getKeyApplicantName());
-						acmiWIB.setPolicyNumber(localacmiWIB.getPolicyNumber());
-						//acmiWIB.setListBill(localacmiWIB.getListBill());
-						acmiWIB.setUnderWriter(localacmiWIB.getUnderWriter());
-						acmiWIB.setState(localacmiWIB.getState());
-
-						acmiWIB.setTaskId(taskId);
-						acmiWIB.setProcessName(wi.getProcessInstanceName());
-						acmiWIB.setTaskName(wi.getName());
-						acmiWIB.setAssignee(wi.getAssignee());
-						acmiWIB.setStatus(status);
-						String taskURL = "WorkItem.jsp?taskId=" + String.valueOf(tasks[i].getId());
-						taskURL = response.encodeURL(taskURL);
-						
-						//Retrieve active date...
-						try
-						{
-							psmt1.setString(1, Long.toString(wi.getProcessInstanceId()));
-							psmt1.setString(2, wi.getName());
-							rs = psmt1.executeQuery();
-							
-							if (rs.next()) {
-								acmiWIB.setCreatedDate(rs.getTimestamp("ActiveDate"));
-							}
-						} finally
-						{
-							if (rs != null)
-							{
-								Connect.closeResultSet(rs);
-								rs = null;
-							}
-						}
-						
-						//acmiWIB.setCreatedDate(new Date(wi.getCreationTime()));
-						acmiWIBList.add(acmiWIB);
-						
-					}
-				}
-			}
-		} catch (Exception ex) {
-			log.error("Work list creation failed. GFID =  " + theGFID, ex);
-			ex.printStackTrace();
-		} finally {
-			if (conn != null) {				
-				Connect.closePSMT(psmt);
-				Connect.closePSMT(psmt1);
-				Connect.closeConnection(conn);
-			}
-
-		}
-
-		log.debug("End getWL()");
-		return acmiWIBList;
-
 	}
 
 	/**

@@ -111,6 +111,11 @@ public class RiderMainForm extends ActionForm {
 		return RIDER_FLAG;
 	}
 	public void setRIDER_FLAG(String rider_flag) {
+		if(rider_flag.equalsIgnoreCase(" "))
+		{
+			rider_flag = "";
+		}
+		
 		RIDER_FLAG = rider_flag;
 	}
 	public String getRIDER_CODE_ONE() {

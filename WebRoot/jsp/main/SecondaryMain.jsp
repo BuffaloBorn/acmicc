@@ -1,7 +1,5 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="/WEB-INF/tlds/cc-template.tld" prefix="template"%>
-
-
 <div align="center"><template:insert base="/jsp"
 	template="/jsp/template/Main.jsp">
 	<template:put name="title" content="ACMI IU&A Process System"

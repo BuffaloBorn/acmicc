@@ -93,7 +93,7 @@ function runCloseIasDiaryUnload()
 	{
 		runIasdiaryInt();
 		closeIasdiary();
-		setCookie('iaspopup', 'close', exp, '/acmicc/');
+		setCookie('updateClose', 'close', exp, '/acmicc/');
 	}
 
 }
@@ -151,10 +151,7 @@ function runIasdiaryInt()
 		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
 		iasdiary =window.open(url,'iasdiaryname',options);
 	}
-	else
-	{
-		iasdiary.location.href = url;
-	}
+	
 	
 	if (window.focus) 
 	{

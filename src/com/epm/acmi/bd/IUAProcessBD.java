@@ -2,18 +2,23 @@ package com.epm.acmi.bd;
 
 import java.util.*;
 
+import org.hibernate.Query;
+import org.apache.log4j.Logger;
 import com.epm.acmi.hbm.*;
 import com.epm.acmi.struts.Constants;
+import com.epm.acmi.struts.action.NBWSDetailsAction;
 import com.epm.acmi.struts.form.dsp.*;
 import com.epm.acmi.util.IUAUtils;
+import com.fujitsu.iflow.model.workflow.WorkItem;
 import com.cc.framework.common.DisplayObject;
 import com.cc.framework.ui.model.ListDataModel;
 
 public class IUAProcessBD {
 
 	private static final String IUAAPPLICATION = "iuaapplication";
-
-
+	private static final String INTERVIEW_BY_PID_SQL = "from IuatelephonicInterview u where u.iuaappDocProcesses in (from IuaappDocProcesses i where i.pid = :pid)";
+	private static final String PID_PARAM = "pid";
+	private static Logger log = Logger.getLogger(IUAProcessBD.class);
 	/**
 	 * Retrieves a list of interview requests from a GFID
 	 * @param gfid
@@ -338,4 +343,35 @@ public class IUAProcessBD {
 
 		return followUpInterview;
 	}
+	
+	public void updateInterviewForReassign(WorkItem currentWorkItem) throws Exception {
+		try {
+			long pid = currentWorkItem.getProcessInstance().getId();
+			List interviews = getInterviewForPID(pid);
+			
+			if (interviews != null && interviews.size() > 0){
+				IuatelephonicInterview interview = (IuatelephonicInterview)interviews.get(0);
+				
+				IuainterviewRequest request = interview.getIuainterviewRequest();
+				log.debug("got request with request id = " + request.getInterviewRequestId());
+				request.setIuauserByInitialInterviewNc(null);
+				BaseHibernateDAO.getSession().update(request);
+				BaseHibernateDAO.getSession().flush();
+			}
+		} finally {
+			BaseHibernateDAO.close();
+		}
+	}
+
+
+	public static List getInterviewForPID(long pid) {
+		log.debug("getInterviewForPID(" + pid + ") - Start");
+		Query query = BaseHibernateDAO.getSession().createQuery(INTERVIEW_BY_PID_SQL);
+		query.setLong(PID_PARAM, pid);
+		List results = query.list();		
+		log.debug("got " + results.size() + " interview requests");
+		log.debug("getInterviewForPID() - End");
+		return results;
+	}
+
 }

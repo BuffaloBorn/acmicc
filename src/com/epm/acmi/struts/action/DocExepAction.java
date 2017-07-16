@@ -315,18 +315,6 @@ public class DocExepAction extends MainTabPageBaseAction {
 					 * web application
 					 */
 
-					// User user = (User) session.getAttribute(Constants.loggedUser);
-					//
-					// if (user == null) {
-					//
-					// log.error("User Session expired");
-					// ActionMessages ams = new ActionMessages();
-					// ActionMessage am = new ActionMessage("User session has expired, Please login and try again");
-					// ams.add("Error", am);
-					// ctx.addErrors(ams);
-					// ctx.forwardToInput();
-					// }
-
 					SavedSearchResult ssrs[] = sAdapter.executeSavedSearch(searchName, AAID, ssps);
 					if (ssrs != null) {
 
@@ -358,7 +346,11 @@ public class DocExepAction extends MainTabPageBaseAction {
 
 						ModifyIndexResponse msr = sAdapter.updateMetaData(AAID, ssra);
 						StellentUpdateAudit.auditStellentUpdate(((User)ctx.session().getAttribute(Constants.loggedUser)).getUserId(), Constants.delGFID, lucId, StellentUpdateAudit.AUDIT_UPDATE);
-						log.error(msr.getAcordeError().getErrorMessage());
+						
+						String error = msr.getAcordeError().getErrorMessage();
+						if (error != null) {
+							log.error(error);
+						}
 
 					}
 

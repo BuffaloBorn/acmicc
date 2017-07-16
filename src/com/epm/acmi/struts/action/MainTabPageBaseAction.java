@@ -74,8 +74,15 @@ public abstract class MainTabPageBaseAction extends CCAction {
 	/** Identifier TabPage114 */
 	protected static final String TABPAGE114 = "tab114";
 
-	/** Identifier TabPage114 */
+	/** Identifier TabPage115 */
 	protected static final String TABPAGE115 = "tab115";
+	
+	/** Identifier TabPage120 */
+	protected static final String TABPAGE120 = "tab120";
+	
+	/** Identifier TabPage121 */
+	protected static final String TABPAGE121 = "tab121";
+	
 
 	/**
 	 * @see com.cc.framework.adapter.struts.FrameworkAction#doExecute(com.cc.framework.adapter.struts.ActionContext)

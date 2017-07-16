@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.cc.acmi.common.User;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
+import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.CaseNotesForm;
 import com.epm.acmi.util.Connect;
 import com.epm.acmi.util.EPMHelper;
@@ -71,7 +72,13 @@ public class CaseNotesAction extends CCAction {
 			if (conn != null) {
 				User user = (User) ctx.session().getAttribute(com.epm.acmi.struts.Constants.loggedUser);
 				EPMHelper epmHelper= new EPMHelper();
-				gfid = epmHelper.getGFIDFromWorkId(wid, user);
+				
+				//Get gfid from session
+				gfid = (String) ctx.session().getAttribute((Constants.gfid));
+				
+				if (gfid == null) {
+					gfid = epmHelper.getGFIDFromWorkId(wid, user);
+				}
 
 				String message = caseNotesForm.getMessage();
 				String subject = caseNotesForm.getSubject();
@@ -86,7 +93,7 @@ public class CaseNotesAction extends CCAction {
 					psmt.execute();
 				}
 
-				String sqlRefresh = " select * from IUACaseNotes where GFID = ? ";
+				String sqlRefresh = " select * from IUACaseNotes WITH (NOLOCK) where GFID = ? ";
 				psmtRefresh = conn.prepareStatement(sqlRefresh);
 				psmtRefresh.setString(1, gfid);
 				rstRefresh = psmtRefresh.executeQuery();
@@ -108,15 +115,11 @@ public class CaseNotesAction extends CCAction {
 				caseNotesForm.setMessage("");
 				caseNotesForm.setSubject("");
 				ctx.session().setAttribute("CaseNotesForm", caseNotesForm);
-				rstRefresh.close();
-
 			}
 			log.debug("End save_onClick");
 
 		} catch (Exception e) {
 			log.error("Exception: Failed to save case notes, GFID = " + gfid, e);
-
-			e.printStackTrace();
 
 		} finally {
 			if (psmt != null)

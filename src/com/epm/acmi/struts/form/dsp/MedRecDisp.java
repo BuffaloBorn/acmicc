@@ -27,7 +27,7 @@ public class MedRecDisp implements DisplayObject {
 		return appType;
 	}
 	public void setAppType(String appType) {
-		appType = IUAUtils.getAppStatusStringfromCode(appType);
+		this.appType = IUAUtils.getAppStatusStringfromCode(appType);
 	}
 	public String getFullName() {
 		return fullName;

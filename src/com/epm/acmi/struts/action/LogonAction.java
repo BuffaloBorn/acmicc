@@ -8,11 +8,8 @@ import com.cc.framework.adapter.struts.FormActionContext;
 import com.cc.framework.security.SecurityUtil;
 import com.cc.framework.ui.painter.PainterFactory;
 import com.epm.acmi.struts.form.LogonActionForm;
-import com.epm.acmi.util.ACMICache;
-import com.epm.acmi.util.EPMHelper;
-import com.epm.acmi.util.LDAPIUAUserUtil;
-import com.epm.acmi.util.LDAPUser;
-import com.epm.acmi.util.MiscellaneousUtils;
+import com.epm.acmi.util.*;
+import java.util.ArrayList;
 
 // Referenced classes of package com.epm.acmi.struts.action:
 //            CCAction
@@ -42,21 +39,23 @@ public class LogonAction extends CCAction
         log.debug("Begin logon_onClick()");
         LogonActionForm form = (LogonActionForm)ctx.form();
         try
-        {
+        {        	
             User user = new User();
             user.setUserId(form.getUserId());
             user.setPassword(form.getPassword());
             ACMICache acmiCache = new ACMICache();
             LDAPUser cachedUser = acmiCache.getUser(form.getUserId().toLowerCase());
             EPMHelper epmh = new EPMHelper();
+            ArrayList list = new LDAPUtil().getAllEPMGroups();
             com.fujitsu.iflow.model.workflow.WFSession wfsession = null;
-            
-            try
-            {
+            String userId = form.getUserId();
+            String password = form.getPassword();
+                 	
+            try {
 	            log.debug("Authenticating user with EPM");
-	            wfsession = epmh.connectAsUser(form.getUserId(), form.getPassword());
+	            wfsession = epmh.connectAsUser( userId, password);
 	            log.debug("EPM Authentication successfull");
-	            user.getSettings().setLocale(form.getLocale());
+	            user.getSettings().setLocale(form.getLocale());	       
 	            
 	            if(wfsession == null)
 	            {
@@ -77,18 +76,27 @@ public class LogonAction extends CCAction
             
             if(cachedUser != null)
             {
-                user.setFirstName(cachedUser.getFirstName());
-                user.setLastName(cachedUser.getLastName());
-                user.setRole(cachedUser.getRoles().toString());
-                
-                String[] roleStrings = MiscellaneousUtils.getRoleStrings(user.getRole());                
-                user.setRoleStr1(roleStrings[0]);
-                user.setRoleStr2(roleStrings[1]);
-                
-                log.info("Logged User: " + cachedUser.getFirstName() + " " + cachedUser.getLastName() + " Roles:" + cachedUser.getRoles().toString());
+            	log.debug("Getting User from Cache " + userId);
+            	setUserObject(user, cachedUser);
             }
-            else {
-            	throw new Exception();  //User doesn't exists
+            else { //then try to authenticate thru LDAP.
+            	log.debug("Couldn't find user in Cache, authenticating thru LDAP " + userId);
+            	String dn = LDAPUtil.authenticate(userId, password);
+            	if (dn != null) {
+            		LDAPUser usr1 = new LDAPUtil().getUserAttributes(dn, null);
+            		if (usr1.getRoles() != null ) {
+            			log.debug("User authenticated thru ldap successfully");
+            			acmiCache.addUser(userId, usr1);
+            			setUserObject(user, usr1);
+            		}
+            		else { //User doesn't exists
+            			log.debug("User " + userId + "Doesn't exists");
+            			throw new Exception();
+            		}
+            	} else { //User doesn't exists
+            		log.debug("User " + userId + "Doesn't exists");
+        			throw new Exception();
+            	}
             }
             
             log.debug("Painter selected: " + form.getUiType());
@@ -126,6 +134,18 @@ public class LogonAction extends CCAction
         log.debug("End logon_onClick()");
     }
 
+    private void setUserObject(User user, LDAPUser cachedUser) {
+    	user.setFirstName(cachedUser.getFirstName());
+        user.setLastName(cachedUser.getLastName());
+        user.setRole(cachedUser.getRoles().toString());
+        
+        String[] roleStrings = MiscellaneousUtils.getRoleStrings(user.getRole());                
+        user.setRoleStr1(roleStrings[0]);
+        user.setRoleStr2(roleStrings[1]);
+        
+        log.info("Logged User: " + cachedUser.getFirstName() + " " + cachedUser.getLastName() + " Roles:" + cachedUser.getRoles().toString());
+    }
+    
     static 
     {
         log = Logger.getLogger(com.epm.acmi.struts.action.LogonAction.class);

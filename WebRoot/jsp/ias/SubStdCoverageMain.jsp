@@ -256,7 +256,7 @@ function disableBtnResetSudStdCodes()
 						<ctrl:columnhtml   title="list.iasdiary.sub.std.coverage.main.text"  editable="true"  id="rowbean"  type="com.cc.acmi.presentation.dsp.ConditionCodeDsp">
 						 	<% if (rowbean.getDESCRIPTION_REQUIRED_IND().equalsIgnoreCase("Y")) {%>
 	               					
-	               				<ctrl:text  property="DESCRIPTION" size="50" maxlength="50"/>
+	               				<ctrl:text  property="DESCRIPTION" size="50" maxlength="50" onchange="gIasChangesWereMade=true;"/>
 						 	<% } else  { %>
 						 		 <ctrl:plaintext  property="DESCRIPTION"/>
 						 	 <% } %>
@@ -266,7 +266,7 @@ function disableBtnResetSudStdCodes()
 			</forms:section>	
 			<forms:section title="form.iasdiary.sub.std.coverage.main.start.date.term.section">
 				<forms:row>	
-					<forms:text label="form.iasdiary.sub.std.coverage.main.start.date" property="SUB_EFF_DATE" size="10"  maxlength="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+					<forms:text label="form.iasdiary.sub.std.coverage.main.start.date" property="SUB_EFF_DATE" size="10"  maxlength="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onkeydown="gIasChangesWereMade=true;"/>
 					<forms:plaintext label="form.iasdiary.sub.std.coverage.main.term.date" property="SUB_EXT_DATE"  colspan="1" />
 					<forms:plaintext label="form.iasdiary.sub.std.coverage.main.time.period" property="SS_CCODE_TIME_PERIOD" colspan="1" />
 				</forms:row>

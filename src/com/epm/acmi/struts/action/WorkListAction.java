@@ -39,6 +39,7 @@ import com.epm.acmi.struts.form.FormLoaderHelper;
 import com.epm.acmi.struts.form.SelectedActivity;
 import com.epm.acmi.struts.form.WorkListForm;
 import com.epm.acmi.util.Connect;
+import com.epm.acmi.util.MiscellaneousUtils;
 import com.epm.acmi.util.DateUtility;
 import com.epm.acmi.util.EPMHelper;
 import com.epm.acmi.util.HistoryEvent;
@@ -321,7 +322,8 @@ public class WorkListAction extends CCAction {
 			else if (status == 6) {
 				// check policy number
 				try {
-					Long.parseLong(filter);
+					if (!MiscellaneousUtils.isNullString(filter))
+						Long.parseLong(filter);
 				} catch (NumberFormatException ne) {
 					ctx.addGlobalError("worklist.invalidPolicyNo");
 					log.warn("Policy Number Format Exception ", ne);

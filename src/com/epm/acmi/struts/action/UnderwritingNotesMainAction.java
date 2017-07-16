@@ -7,6 +7,7 @@ package com.epm.acmi.struts.action;
 import java.math.BigDecimal;
 import java.rmi.RemoteException;
 
+import javax.servlet.http.Cookie;
 import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
@@ -233,6 +234,28 @@ public class UnderwritingNotesMainAction extends CCAction {
 		
 		try {
 			WSUnderwNotesMaintCall.edit(user, inputs, outparms, inoutparms, msgInfo);
+     		
+			Cookie[] cookies = ctx.request().getCookies();
+
+		     for (int i = 0; i < cookies.length; i++) {
+		            Cookie c = cookies[i];
+		            String name = c.getName();
+		            String value = c.getValue();
+		           
+		      		int expiry = 1*24*60*60;
+		      		
+		            if (name.equalsIgnoreCase("updateClose"))
+					{
+		            	if(value.equalsIgnoreCase("close")) 
+		            	{
+		            		Cookie cookie = new Cookie("iaspopup", "close");
+		            		cookie.setPath("/acmicc/");
+							cookie.setMaxAge(expiry);
+							ctx.response().addCookie(cookie);
+		            	}
+					}
+		        }
+	
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);

@@ -53,7 +53,7 @@ public class UserBrowseAction extends FWAction {
 		HashMap rolesDispHash = new HashMap();
 		HashMap usersDispHash;
 		ArrayList userRoleList;
-		HashMap userList;
+		ArrayList userList;
 		TreeMap sortedMap;
 		
 		log.debug("Begin doExecute()");
@@ -69,27 +69,18 @@ public class UserBrowseAction extends FWAction {
 				rolesDispHash.put(selectedRole, selectedRole);
 				
 				usersDispHash = new HashMap();
-				userList = ACMICache.getUsers();
+				userList = ACMICache.getUsersByRole(selectedRole);
 				log.info("Cache user list size = " + userList.size());
 
-				Object[] userArray = userList.values().toArray();
-				for (int i = 0; i < userArray.length; i++) {
-					userObj = (LDAPUser) userArray[i];
+				for (int i = 0; i < userList.size(); i++) {
+					
+					LDAPUser user = (LDAPUser) userList.get(i);
+					userName = user.getLastName() + " " + user.getFirstName();
+					usersDispHash.put(userName, userName);
+					
+					UserBrowseAction.userNameUserIDMap.put(userName, user.getUserId());
 				
-					userRoleList = userObj.getRoles();
-					for (int j = 0; j < userRoleList.size(); j++) {
-						userRole = (String) userRoleList.get(j);
-		
-
-						if (userRole.equals(selectedRole)) {
-							userName = userObj.getLastName() + " " + userObj.getFirstName();
-							usersDispHash.put(userName, userName);
-							
-							UserBrowseAction.userNameUserIDMap.put(userName, userObj.getUserId());
-							break;
-						}
-					} // end inner for
-				}// end outer for
+				} // end inner for
 
 				sortedMap = new TreeMap(usersDispHash);
 				

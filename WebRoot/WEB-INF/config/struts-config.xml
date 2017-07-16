@@ -44,7 +44,9 @@
 			type="com.epm.acmi.struts.form.TelInterviewForm" />
 		<form-bean name="activatePendingForm"
 			type="com.epm.acmi.struts.form.ActivatePendingForm" />	
-			
+		<form-bean name="adminForm"
+			type="com.epm.acmi.struts.form.AdminForm" />
+				
 		<form-bean name="activateIASForm" type="com.epm.acmi.struts.form.ActivateIASForm" />	
 		<form-bean name="letterForm" type="com.epm.acmi.struts.form.LetterForm"/>
 		<form-bean name="stdLetterForm" type="com.epm.acmi.struts.form.StandardLetterForm"/>
@@ -140,7 +142,17 @@
 		</action>
 
 
+		<!-- ################################# -->
+		<!-- #    Admin (Secret)  Page             # -->
+		<!-- ################################# -->
 
+		<action path="/secondarymain/refresh" name="adminForm" scope="request"
+			type="com.epm.acmi.struts.action.RefreshCache"
+			input="/jsp/main/AdminMain.jsp">
+			<forward name="success" path="/worklist" />
+			<forward name="failure" path="/logon.do" />
+		</action>
+		
 		<!-- ################################# -->
 		<!-- #    Main Tab Set               # -->
 		<!-- ################################# -->

@@ -9,7 +9,6 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-utility.tld" prefix="util"%>
 <%@ taglib uri="/WEB-INF/tlds/cc-forms.tld" prefix="forms"%>
 
-
 <script language="JavaScript">
 
 	function showfilterbox(dl)
@@ -55,12 +54,8 @@
 	// mins * secs * millis	
 	//var refreshTime = 5 * 60 * 1000;
 </script>
-
 <script for="onLoad">	 
 	//window.setTimeout("refreshPage()", refreshTime);
-	//initializeVar();
-	//alert("hit worklist");
-	//closeIasdiary();
 </script>
 
 <html:form action="/worklist">

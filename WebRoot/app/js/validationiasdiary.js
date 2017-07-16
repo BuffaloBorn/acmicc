@@ -51,14 +51,12 @@ function runPageValidationList()
 		{
 			happen = true;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			return happen;
 			
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			return happen;
 			
 		}
@@ -67,7 +65,6 @@ function runPageValidationList()
 	{
 		happen = true;
 		window.onbeforeunload=null;
-		window.onunload=null;
 		return happen;
 	}
 }
@@ -85,7 +82,6 @@ function runPageValidationHref(linkobject)
 		{
 			happen = true;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			window.location.href = linkobject.href;	
 			return happen;
 		}
@@ -98,7 +94,6 @@ function runPageValidationHref(linkobject)
 	{
 		happen = true;
 		window.onbeforeunload=null;
-		window.onunload=null;
 		window.location.href = linkobject.href;
 		return happen;
 	}
@@ -110,7 +105,10 @@ function runPageValidation(formobject)
 		CCUtility.submitEnclosingForm(formobject); 
 	else 
 	{
-	   document.getElementById('btnBackHidden').value=''; 
+	   if (document.getElementById('btnBackHidden'))
+	   {
+	   		document.getElementById('btnBackHidden').value='';
+	   } 
 	   return false;
 	}
 }
@@ -129,7 +127,6 @@ function runPageValidationTwo(formobject)
 		{
 			happen = true;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			//form.submit();
 			return happen;
 		}
@@ -142,7 +139,6 @@ function runPageValidationTwo(formobject)
 	{
 		happen = true;
 		window.onbeforeunload=null;
-		window.onunload=null;
 		//form.submit();
 		return happen;
 	}
@@ -160,14 +156,12 @@ function goDairy()
 		{
 			happen = true;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			window.location.href = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
 			//return happen;
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			//return happen;
 		}
 	
@@ -176,7 +170,6 @@ function goDairy()
 	{
 		happen = true;
 		window.onbeforeunload=null;
-		window.onunload=null;
 		window.location.href = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
 		//return happen;
 	}
@@ -204,14 +197,12 @@ function runPageValidationLink()
 		{
 			happen = true;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			closeDeleteCookie();
 			return happen;
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			return happen;
 		}
 	}
@@ -219,7 +210,6 @@ function runPageValidationLink()
 	{
 		happen = true;
 		window.onbeforeunload=null;
-		window.onunload=null;
 		closeDeleteCookie();
 		return happen;
 	}
@@ -260,7 +250,6 @@ function checkChangedFeilds()
 		{
 			happen = true;
 			window.onbeforeunload=null;
-			window.onunload=null;
 			return true;
 		}
 		else{
@@ -270,8 +259,9 @@ function checkChangedFeilds()
 	else
 	{
 		window.onbeforeunload=null;
-		window.onunload=null;
 		return true;
 	}		
 
 }
+
+

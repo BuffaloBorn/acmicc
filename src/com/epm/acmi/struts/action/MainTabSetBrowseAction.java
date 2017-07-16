@@ -58,6 +58,14 @@ public class MainTabSetBrowseAction extends CCAction {
 			ctx.session().setAttribute("nbwstabset", nbwstabset);
 			nbwstabset.setSelectedTab(MainTabPageBaseAction.TABPAGE111);
 
+			TabsetControl adminTab = new TabsetControl();
+			ctx.session().setAttribute("adminTab", adminTab);
+			adminTab.setSelectedTab(MainTabPageBaseAction.TABPAGE120);
+			
+			TabsetControl adminDetailTab = new TabsetControl();
+			ctx.session().setAttribute("adminDetailTab", adminDetailTab);
+			adminDetailTab.setSelectedTab(MainTabPageBaseAction.TABPAGE121);
+			
 			// In this example we show the first tab of the tabset at startup.
 			// Therefore we must make the data for this JSP available.
 			// To do this, we forward to the action which manages this

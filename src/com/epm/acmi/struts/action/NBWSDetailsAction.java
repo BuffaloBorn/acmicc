@@ -101,7 +101,7 @@ public class NBWSDetailsAction extends MainTabPageBaseAction {
 	private static IuatelephonicInterviewDAO phoneInterviewDAO = null;	
 	private static IuaappDocProcessesDAO processDAO = null;
 	private static IuauserDAO userDAO = null;
-	
+		
 	private static final Object lock = new Object();
 	private static Map interviewArrowCodeMap = null;
 	
@@ -1694,9 +1694,14 @@ public class NBWSDetailsAction extends MainTabPageBaseAction {
 							String[] usersOfGroup = new String[usersDispHash
 									.keySet().size()];
 							int count = 0;
+
+							//GCC 3831468. Printer out user id to figure out a problem with Re-assign.
+							log.debug("NBWSDetailsAction.reassign Users: ");
+
 							while (membersIterator.hasNext()) {
 								usersOfGroup[count] = (String) membersIterator
 										.next();
+								log.debug(usersOfGroup[count]);
 								count++;
 							}
 							currentWorkItem.reassignTo(usersOfGroup);
@@ -1718,8 +1723,12 @@ public class NBWSDetailsAction extends MainTabPageBaseAction {
 								currentWorkItem.getProcessInstance().getId(),
 								activeDate, userToAssignTo);
 					}
-
+					
+					//Now we need to set the InitialInterviewNC to null incase it was set to a user.
+					if (Constants.EPM_ACTIVITY_CONDUCT_INITIAL_INTERVIEW.equals(currentWorkItem.getName()))
+						new IUAProcessBD().updateInterviewForReassign(currentWorkItem);
 				}
+								
 				ctx.session().setAttribute(
 						com.epm.acmi.struts.Constants.reassignkey, null);
 			}
@@ -1909,5 +1918,4 @@ public class NBWSDetailsAction extends MainTabPageBaseAction {
 		
 		log.warn(buff.toString());
 	}
-
 }

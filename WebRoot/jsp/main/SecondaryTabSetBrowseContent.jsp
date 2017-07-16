@@ -4,7 +4,6 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/tlds-jstl/jstl-c.tld" prefix="c"%>
 
-
 <%com.cc.acmi.common.User user = (com.cc.acmi.common.User) session.getAttribute("USER");
   String role = user.getRole();
 %>

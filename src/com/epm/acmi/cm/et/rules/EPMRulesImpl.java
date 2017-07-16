@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.StringTokenizer;
@@ -51,16 +52,18 @@ public class EPMRulesImpl implements EPMRules {
 	public String isProcessExists(String gfId, String docType) throws Exception {
 		Connection conn = null;
 		String pid = "-1";
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method isProcessExists()");
 
 		try {
 			conn = Connect.getConnection();
-			Statement stmt = conn.createStatement();
+			stmt = conn.createStatement();
 			String sql = "Select pid from IUAAppDocProcesses WITH (NOLOCK) where GFID = '" + gfId
 					+ "' and TypeCode = (select code from IUAProcessTypes WITH (NOLOCK) where stellentcode='" + docType
 					+ "' ) and ENDDATE is null";
-			ResultSet rst = stmt.executeQuery(sql);
+			rst = stmt.executeQuery(sql);
 
 			while (rst.next()) {
 				pid = rst.getString("pid");
@@ -70,19 +73,16 @@ public class EPMRulesImpl implements EPMRules {
 			} else if (pid.equals("-1")) {
 				log.info(" process is not exists PID=" + pid);
 			}
-			rst.close();
-			stmt.close();
 		} catch (Exception ex) {
 			log.error("Error in isProcessExists(String GFID, String DocType). GFID = " + gfId + " , DocType = " + docType , ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
+			
 				try {
-					conn.close();
-					conn = null;
+					closeConnection(conn, stmt, rst);
 				} catch (Exception ex) {
+					log.error(ex);
 				}
-			}
 		}
 
 		log.debug("Exiting method isProcessExists()");
@@ -99,17 +99,19 @@ public class EPMRulesImpl implements EPMRules {
 	public String isProcessClosed(String gfId, String docType) throws Exception {
 		Connection conn = null;
 		String pid = "-1";
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method isProcessClosed()");
 
 		try {
 			conn = Connect.getConnection();
-			Statement stmt = conn.createStatement();
+			stmt = conn.createStatement();
 			String sql = "Select pid from IUAAppDocProcesses WITH (NOLOCK) where GFID = '" + gfId
 					+ "' and TypeCode = (select code from IUAProcessTypes WITH (NOLOCK) where stellentcode='" + docType
 					+ "') and ENDDATE is not null";
 
-			ResultSet rst = stmt.executeQuery(sql);
+			rst = stmt.executeQuery(sql);
 
 			while (rst.next()) {
 				pid = rst.getString("pid");
@@ -120,18 +122,15 @@ public class EPMRulesImpl implements EPMRules {
 				log.info(" process is closed PID=" + pid);
 			}
 
-			rst.close();
-			stmt.close();
+			
 		} catch (Exception ex) {
 			log.error("Error in isProcessClosed(String GFID, String DocType). GFID = " + gfId + " , DocType = " + docType , ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-				}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+				log.error(ex);
 			}
 		}
 
@@ -201,26 +200,11 @@ public class EPMRulesImpl implements EPMRules {
 			log.error("Error in getAppCountWithCompletedDateNull(String gfid, String policyNo). GFID = " + gfId, ex);
 			throw ex;
 		} finally {
-			if (rst != null) {
-				try {
-					rst.close();
-				} catch (Exception ex) {
-				}
-			}
-
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (Exception ex) {
-				}
-			}
-
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (Exception ex) {
-				}
-			}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+				log.error(ex);
+			}	
 		}
 	}
 
@@ -250,25 +234,10 @@ public class EPMRulesImpl implements EPMRules {
 			log.error("Error in getAppCount(String gfid, String policyNo). GFID = " + gfId, ex);
 			throw ex;
 		} finally {
-			if (rst != null) {
-				try {
-					rst.close();
-				} catch (Exception ex) {
-				}
-			}
-
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (Exception ex) {
-				}
-			}
-
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (Exception ex) {
-				}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {	
+				log.error(ex);
 			}
 		}
 	}
@@ -284,20 +253,28 @@ public class EPMRulesImpl implements EPMRules {
 	 */
 	private String getEPMProcessTypeCode(String stellentdocType, Connection conn) throws Exception {
 		String epmProcessTypeCode = null;
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		try {
 			String sql = "select code from IUAProcessTypes WITH (NOLOCK) where stellentcode = '" + stellentdocType + "'";
-			Statement stmt = conn.createStatement();
-			ResultSet rst = stmt.executeQuery(sql);
+			stmt = conn.createStatement();
+			rst = stmt.executeQuery(sql);
+			
 			while (rst.next()) {
 				epmProcessTypeCode = rst.getString("code");
 			}
-			rst.close();
-			stmt.close();
-
+			
 		} catch (Exception ex) {
 			log.error("Error in isProcessExists(String GFID, String DocType)", ex);
 			throw ex;
+		
+		} finally {
+			try {
+				closeConnection(null, stmt, rst);
+			} catch (Exception e) {
+				log.error(e);
+			}
 		}
 		return epmProcessTypeCode;
 	}
@@ -313,7 +290,9 @@ public class EPMRulesImpl implements EPMRules {
 	public boolean doesGFIDExist(String gfId) throws Exception {
 		Connection conn = null;
 		boolean retVal = false;
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method doesGFIDExist()");
 
 		try {
@@ -321,9 +300,10 @@ public class EPMRulesImpl implements EPMRules {
 			conn = Connect.getConnection();
 
 			String sql = "Select count(gfid) as count from IUAApplication WITH (NOLOCK) where GFID = '" + gfId + "' and status != 'ACT' ";
-			Statement stmt = conn.createStatement();
-			ResultSet rst = stmt.executeQuery(sql);
+			stmt = conn.createStatement();
+			rst = stmt.executeQuery(sql);
 			int count = 0;
+			
 			while (rst.next()) {
 				count = rst.getInt("count");
 			}
@@ -332,18 +312,15 @@ public class EPMRulesImpl implements EPMRules {
 				retVal = true;
 			}
 
-			rst.close();
-			stmt.close();
 		} catch (Exception ex) {
 			log.error("Error in doesGFIDExist(String GFID). GFID = " + gfId , ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-				}
+			
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+				log.error(ex);
 			}
 		}
 
@@ -361,7 +338,9 @@ public class EPMRulesImpl implements EPMRules {
 	public String isProcessRunning(String gfId, String docType) throws Exception {
 		Connection conn = null;
 		String pid = "-1";
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method isProcessRunning()");
 
 		try {
@@ -372,25 +351,23 @@ public class EPMRulesImpl implements EPMRules {
 					+ "' and TYPECODE = (select code from IUAProcessTypes WITH (NOLOCK) where stellentcode='" + docType
 					+ "') and STATUS = 'ACT'";
 
-			Statement stmt = conn.createStatement();
-			ResultSet rst = stmt.executeQuery(sql);
+			stmt = conn.createStatement();
+			rst = stmt.executeQuery(sql);
 
 			while (rst.next()) {
 				pid = rst.getString("pid");
 				log.info(gfId + " process is running PID=" + pid);
 			}
 
-			rst.close();
-			stmt.close();
 		} catch (Exception ex) {
 			log.error("Error in isProcessRunning(String GFID, String DocType). GFID = " + gfId + " , DocType = " + docType , ex);
 			throw ex;
 		} finally {
 			if (conn != null) {
 				try {
-					conn.close();
-					conn = null;
+					closeConnection(conn, stmt, rst);
 				} catch (Exception ex) {
+					log.error(ex);
 				}
 			}
 		}
@@ -409,36 +386,34 @@ public class EPMRulesImpl implements EPMRules {
 	public String isProcessSuspended(String gfId, String docType) throws Exception {
 		Connection conn = null;
 		String pid = "-1";
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method isProcessSuspended()");
 
 		try {
 
 			conn = Connect.getConnection();
-
+			
 			String sql = "Select pid from IUAAppDocProcesses WITH (NOLOCK) where GFID = '" + gfId
 					+ "' and TYPECODE = (select code from IUAProcessTypes WITH (NOLOCK) where stellentcode='" + docType
 					+ "') and STATUS = 'SUSP'";
-			Statement stmt = conn.createStatement();
-			ResultSet rst = stmt.executeQuery(sql);
+			stmt = conn.createStatement();
+			rst = stmt.executeQuery(sql);
 
 			while (rst.next()) {
 				pid = rst.getString("pid");
 				log.info(gfId + " process is suspended PID=" + pid);
 			}
 
-			rst.close();
-			stmt.close();
 		} catch (Exception ex) {
 			log.error("Error in isProcessSuspended(String GFID, String DocType). GFID = " + gfId + " , DocType = " + docType , ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-				}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+					log.error(ex);
 			}
 		}
 
@@ -455,16 +430,19 @@ public class EPMRulesImpl implements EPMRules {
 		Connection conn = null;
 		boolean returnVal = false;
 		String pid = "-1";
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method ResumeProcess()");
-
+		
 		try {
 
 			conn = Connect.getConnection();
 			String sql = "Select pid from IUAAppDocProcesses WITH (NOLOCK) where GFID = '" + gfId
 					+ "' and TYPECODE = (select code from IUAProcessTypes WITH (NOLOCK) where stellentcode='" + docType
 					+ "') and status = 'SUSP'";
-			Statement stmt = conn.createStatement();
-			ResultSet rst = stmt.executeQuery(sql);
+			stmt = conn.createStatement();
+			rst = stmt.executeQuery(sql);
 
 			while (rst.next()) {
 				pid = rst.getString("pid");
@@ -478,18 +456,14 @@ public class EPMRulesImpl implements EPMRules {
 				log.debug("There are no processes found for GFID = " + gfId + " and STATUS = 'SUSP'");
 
 			}
-			rst.close();
-			stmt.close();
 		} catch (Exception ex) {
 			log.error("Error in ResumeProcess(String GFID, String DocType). GFID = " + gfId + " , DocType = " + docType , ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-				}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+				log.error(ex);
 			}
 		}
 
@@ -502,7 +476,9 @@ public class EPMRulesImpl implements EPMRules {
 	public String CreateProcess(String gfId, String policyNum, String stelentDocTypeCode, String recId) throws Exception {
 		Connection conn = null;
 		String pid = "-1";
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method CreateProcess()");
 
 		try {
@@ -525,9 +501,9 @@ public class EPMRulesImpl implements EPMRules {
 					log.info("New ACMI_Main process created successfully" + " PID: " + piId);
 
 			} else {
-				Statement stmt = conn.createStatement();
+				stmt = conn.createStatement();
 				String sql = "select pid from IUAAppDocProcesses WITH (NOLOCK) where GFID = '" + gfId + "' and typecode = 'MAIN'";
-				ResultSet rst = stmt.executeQuery(sql);
+				rst = stmt.executeQuery(sql);
 				String mainPID = "-1";
 				while (rst.next()) {
 					mainPID = rst.getString("pid");
@@ -585,13 +561,10 @@ public class EPMRulesImpl implements EPMRules {
 			log.error("Error in CreateProcess(String GFID, String policyNum, String DocType). GFID = " + gfId + " , DocType = " + stelentDocTypeCode , ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-					log.error("Error. GFID = " + gfId + " , DocType = " + stelentDocTypeCode , ex);
-				}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+				log.error("Error. GFID = " + gfId + " , DocType = " + stelentDocTypeCode , ex);
 			}
 		}
 
@@ -618,7 +591,10 @@ public class EPMRulesImpl implements EPMRules {
 			String templateName, Properties props2, Connection conn) throws Exception {
 		long piId = -1;
 		EPMHelper epmHelper = null;
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		PreparedStatement psmt = null;
+		
 		log.debug("Entering method InstantiateDocProcess()");
 
 		try {
@@ -647,9 +623,9 @@ public class EPMRulesImpl implements EPMRules {
 				String GMTDate = gd.calculateDate();
 				String processStatus = "=1";
 				String sql = "select code from iuaProcessStatus WITH (NOLOCK) where upper(description) = 'ACTIVE'";
-				Statement stmt = conn.createStatement();
+				stmt = conn.createStatement();
 
-				ResultSet rst = stmt.executeQuery(sql);
+				rst = stmt.executeQuery(sql);
 				while (rst.next()) {
 					processStatus = rst.getString("code");
 				}
@@ -660,7 +636,7 @@ public class EPMRulesImpl implements EPMRules {
 
 				log.debug("Inserting info into IUAAppDocProcesses table");
 				String sql1 = "insert into iuaappdocprocesses (pid,gfid,typecode,status,startdate)values(?,?,?,?,?)";
-				PreparedStatement psmt = conn.prepareStatement(sql1);
+				psmt = conn.prepareStatement(sql1);
 
 				psmt.setLong(1, piId);
 				psmt.setString(2, gfId);
@@ -676,6 +652,14 @@ public class EPMRulesImpl implements EPMRules {
 			log.error("Exception Caught instantiating " + templateName + ": GFID =  " + gfId + e );
 			throw e;
 		} finally {
+			try {
+				if (psmt != null ) {
+					psmt.close();
+				}
+				closeConnection(null, stmt, rst);
+			} catch (Exception e) {
+				log.error(e);
+			}
 			epmHelper = null; // remove reference
 		}
 
@@ -702,7 +686,10 @@ public class EPMRulesImpl implements EPMRules {
 			String templateName, Properties props2, Connection conn) throws Exception {
 		long piId = -1;
 		EPMHelper epmHelper = null;
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		PreparedStatement psmt = null;
+		
 		log.debug("Entering method InstantiateMVRDocProcess()");
 
 		try {
@@ -712,7 +699,6 @@ public class EPMRulesImpl implements EPMRules {
 			props.put("policyNumber", policyNumber);
 
 			epmHelper = new EPMHelper();
-
 			String pUserName = props2.getProperty("username");
 			String pUserPassword = PasswordEncryption.getDecryptedPassword(pUserName);
 			ProcessInstance pi = epmHelper.startNewProcessWithUDAs(pUserName,pUserPassword,
@@ -729,9 +715,9 @@ public class EPMRulesImpl implements EPMRules {
 				String GMTDate = gd.calculateDate();
 				String processStatus = "=1";
 				String sql = "select code from iuaProcessStatus WITH (NOLOCK) where upper(description) = 'ACTIVE'";
-				Statement stmt = conn.createStatement();
+				stmt = conn.createStatement();
 
-				ResultSet rst = stmt.executeQuery(sql);
+				rst = stmt.executeQuery(sql);
 				while (rst.next()) {
 					processStatus = rst.getString("code");
 				}
@@ -742,7 +728,7 @@ public class EPMRulesImpl implements EPMRules {
 
 				log.debug("Inserting info into IUAAppDocProcesses table");
 				String sql1 = "insert into iuaappdocprocesses (pid,gfid,typecode,status,startdate)values(?,?,?,?,?)";
-				PreparedStatement psmt = conn.prepareStatement(sql1);
+				psmt = conn.prepareStatement(sql1);
 
 				psmt.setLong(1, piId);
 				psmt.setString(2, gfId);
@@ -758,6 +744,14 @@ public class EPMRulesImpl implements EPMRules {
 			log.error("Exception Caught instantiating " + templateName + ": GFID =  " + gfId + e);
 			throw e;
 		} finally {
+			try {
+				if (psmt != null ) {
+					psmt.close();
+				}
+				closeConnection(null, stmt, rst);
+			} catch (Exception e) {
+				log.error(e);
+			}
 			epmHelper = null; // remove reference
 		}
 
@@ -781,7 +775,11 @@ public class EPMRulesImpl implements EPMRules {
 		long piId = -1;
 		EPMHelper epmHelper = null;
 		String templateName = null;
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		PreparedStatement psmt = null;
+		PreparedStatement psmt1 = null, psmt2 = null;
+		
 		log.debug("Entering method InstantiateMainProcess()");
 
 		try {
@@ -793,9 +791,9 @@ public class EPMRulesImpl implements EPMRules {
 			props.put("policyNumber", policyNumber);
 			props.put("startedByET", "Yes");
 
-			ResultSet rst = null;
+			rst = null;
 			epmHelper = new EPMHelper();
-			Statement stmt = null;
+			stmt = null;
 			log.debug("policy number=" + policyNumber +" GFID= "+ gfId);
 			if (!policyNumber.trim().equals("0"))
 
@@ -899,7 +897,7 @@ public class EPMRulesImpl implements EPMRules {
 
 							String sql5 = "Insert into IUAAppDocProcesses (pid,gfid,typecode,status,startDate) "
 									+ "values (?,?,?,?,?)";
-							PreparedStatement psmt = conn.prepareStatement(sql5);
+							psmt = conn.prepareStatement(sql5);
 
 							psmt.setLong(1, piId);
 							psmt.setString(2, gfId);
@@ -910,9 +908,6 @@ public class EPMRulesImpl implements EPMRules {
 
 							log.debug("IUAAppDocProcesses table updated successfully");
 
-							rst.close();
-							stmt.close();
-							psmt.close();
 							} catch (Exception ex)
 							{
 								log.error("Exception " + ex.getClass().getName() + " thrown with message: '" + ex.getMessage() + "' while trying to add record to table IUAAppDocProcesses.", ex);
@@ -920,7 +915,6 @@ public class EPMRulesImpl implements EPMRules {
 								sendEmailAlert(policyNumber, gfId, ACMI_UPDATE_FAILED_STR);
 								throw ex;
 							}
-
 						}
 					}
 				} else if (numRecs == 0) {
@@ -1029,7 +1023,7 @@ public class EPMRulesImpl implements EPMRules {
 							String sql8 = "Insert into IUAApplication (gfid,policyNo,status,receivedDate,LastUpdatedDateTime,LastUpdatedUserID) "
 									+ "values (?,?,?,?,?,?)";
 		
-							PreparedStatement psmt1 = conn.prepareStatement(sql8);
+							psmt1 = conn.prepareStatement(sql8);
 							psmt1.setString(1, gfId);
 							psmt1.setString(2, policyNumber);
 							psmt1.setString(3, appStatus);
@@ -1051,7 +1045,7 @@ public class EPMRulesImpl implements EPMRules {
 							log.debug("processStatus = " + processStatus);		
 							log.debug("Inserting info into IUAAppDocProcesses table");		
 							String sql10 = "Insert into IUAAppDocProcesses (pid,gfid,typecode,status,startDate) " + "values (?,?,?,?,?)";
-							PreparedStatement psmt2 = conn.prepareStatement(sql10);
+							psmt2 = conn.prepareStatement(sql10);
 		
 							psmt2.setLong(1, piId);
 							psmt2.setString(2, gfId);
@@ -1080,6 +1074,20 @@ public class EPMRulesImpl implements EPMRules {
 			log.error("Exception Caught during processing for process of type " + templateName + ": GFID = " +gfId + e);
 			throw e;
 		} finally {
+			try {
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (psmt1 != null) {
+					psmt1.close();
+				}
+				if (psmt2 != null) {
+					psmt2.close();
+				}
+				closeConnection(null, stmt, rst);
+			} catch(Exception e) {
+				log.error(e);
+			}
 			epmHelper = null; // remove reference
 		}
 
@@ -1164,7 +1172,9 @@ public class EPMRulesImpl implements EPMRules {
 	public String isEPMProcessSuspended(String gfId, String epmDocType) throws Exception {
 		Connection conn = null;
 		String pid = "-1";
-
+		Statement stmt = null;
+		ResultSet rst = null;
+		
 		log.debug("Entering method isEPMProcessSuspended()");
 
 		try {
@@ -1173,28 +1183,39 @@ public class EPMRulesImpl implements EPMRules {
 
 			String sql = "Select pid from IUAAppDocProcesses WITH (NOLOCK) where GFID = '" + gfId + "' and TYPECODE = '" + epmDocType
 					+ "' and STATUS = 'SUSP'";
-			Statement stmt = conn.createStatement();
-			ResultSet rst = stmt.executeQuery(sql);
+			stmt = conn.createStatement();
+			rst = stmt.executeQuery(sql);
 			while (rst.next()) {
 				pid = rst.getString("pid");
 			}
-			rst.close();
-			stmt.close();
 		} catch (Exception ex) {
 			log.error("Error in isProcessSuspended(String GFID, String DocType) GFID = " + gfId  + " , DocType = " + epmDocType, ex);
 			throw ex;
 		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-				}
+			try {
+				closeConnection(conn, stmt, rst);
+			} catch (Exception ex) {
+				log.error(ex);
 			}
 		}
 
 		log.debug("Exiting method isEPMProcessSuspended()");
 
 		return pid;
+	}
+	
+	public void closeConnection(Connection conn, Statement stmt, ResultSet rst) throws SQLException {
+		if (stmt != null) {
+			stmt.close();
+			stmt = null;
+		}
+		if (rst != null) {
+			rst.close();
+			rst = null;
+		}
+		if (conn != null) {
+			conn.close();
+			conn = null;
+		}
 	}
 }

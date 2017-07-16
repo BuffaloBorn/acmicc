@@ -28,8 +28,10 @@ import org.xml.sax.InputSource;
 import com.epm.acmi.pdf.WorkSheet;
 import com.epm.acmi.struts.Constants;
 import com.epm.acmi.struts.form.DocumentMetaDataForm;
+import com.epm.acmi.struts.form.dsp.StellentClient;
 import com.epm.acmi.util.Connect;
-
+import com.epm.acmi.util.LocalProperties;
+import com.epm.acmi.util.StellentUpdateAudit;
 
 /**
  * WorkSheet class creates New Business Work Sheet PDF

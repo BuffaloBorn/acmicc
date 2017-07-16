@@ -1,7 +1,9 @@
 package com.epm.acmi.util;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -408,7 +410,6 @@ public class EPMHelper {
 		} catch (Exception e) {
 			log.debug("disconnect: fail to disconnect from server.");
 			log.debug("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage());
-			e.printStackTrace();
 		}
 		log.debug("End  disconnect()");
 	}
@@ -1103,20 +1104,16 @@ public class EPMHelper {
 			wfObjectList.closeList();
 
 		} catch (ModelInternalException e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage());
-			e.printStackTrace();
+			log.error("Exception " + e.getClass().getName() + " caught with message: ", e);
 			throw e;
 		} catch (WFInternalException e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage());
-			e.printStackTrace();
+			log.error("Exception " + e.getClass().getName() + " caught with message: ", e);
 			throw e;
 		} catch (WFServerException e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage());
-			e.printStackTrace();
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e);
 			throw e;
 		} catch (Exception e) {
-			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage());
-			e.printStackTrace();
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e);
 			throw e;
 		}
 		log.debug("End  getProcessDefinitionID() ");
@@ -1569,6 +1566,53 @@ public class EPMHelper {
 		public EPMCommunicationException(String message, Throwable ex) {
 			super(message, ex);
 		}
+	}
+	
+	public void synchronizeEPMLDAPUserCache() throws ModelInternalException,
+		WFServerException, WFInternalException, FileNotFoundException,
+		ModelException, IOException, EncryptionException {
+		
+		WFAdminSession session = null;
+		{
+			try {
+				log.debug("synchronizeEPMLDAPUserCache() - Start");
+				log.debug("connecting as Administrative user");
+				session = connectAsAdminFromPropertiesFile();
+				log.debug("Resetting the EPM LDAP user list");
+				session.resetLDAPUsersList();
+			
+			} catch (Exception e) {
+				log.error(e);
+			} finally { 
+				if (session != null) {
+					session.logOut();
+				}
+			}
+			log.debug("synchronizeEPMLDAPUserCache() - End");
+		}
+	}
+
+
+	public void synchronizeEPMLDAPGroupCache() throws ModelInternalException,
+		WFServerException, WFInternalException, FileNotFoundException,
+		ModelException, IOException, EncryptionException  {
+		
+		WFAdminSession session = null;
+		
+		try  {
+			log.debug("synchronizeEPMLDAPGroupCache() - Start");
+			log.debug("connecting as Administrative user");
+			session = connectAsAdminFromPropertiesFile();
+			log.debug("Resetting the EPM LDAP user list");
+			session.resetLDAPGroupsList();
+			
+		}catch (Exception e) {
+			log.error(e);
+		} finally {
+			session.logOut();
+		}
+
+		log.debug("synchronizeEPMLDAPUserCache() - End");
 	}
 
 }

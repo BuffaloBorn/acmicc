@@ -258,4 +258,12 @@ public interface Constants {
 	public static final String IASModify = "IASModify";
 	public static final String IASDiaryModify = "IASDiaryModify";
 	public static final String IASuser = "IASuser";
+	
+	//LDAP
+	public static final String INITIAL_CONTEXT_FACTORY = "INITIAL_CONTEXT_FACTORY";
+	public static final String PROVIDER_URL = "PROVIDER_URL";
+	public static final String SECURITY_PRINCIPAL = "SECURITY_PRINCIPAL";
+	public static final String SEARCH_BASE = "SEARCH_BASE";
+	public static final String EPM_SEARCH_BASE = "EPM_SEARCH_BASE";
+	public static final String GLOBAL_SEARCH_BASE = "GLOBAL_SEARCH_BASE";
 }

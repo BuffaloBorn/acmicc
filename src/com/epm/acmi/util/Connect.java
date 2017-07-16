@@ -39,6 +39,7 @@ public class Connect {
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource) envCtx.lookup("jdbc/acmi");
 			con = ds.getConnection();
+			initCtx.close();
 			} catch (Exception e) {
 			log.error(e);
 			log.error("Error Trace in getConnection() : " + e.getMessage());

@@ -469,6 +469,14 @@ public class ACMICache {
 		}
 	}
 
+      public void addUser(String userId, LDAPUser user) {
+		rwl.readLock().lock();
+		try {
+			users.put(userId.toLowerCase(), user);
+		} finally {
+			rwl.readLock().unlock();
+		}
+	}
 
 	/**
 	 * Returns true if the user has the role
@@ -1025,30 +1033,6 @@ public class ACMICache {
 		System.out.println("value = " + getValueFromMapItem("myKey1=myValue1"));
 		System.out.println("key = " + getKeyFromMapItem("myKeyTmyValue"));
 		System.out.println("value = " + getValueFromMapItem("myKey1TmyValue1"));
-		/**
-		ACMICache cache = new ACMICache();
-		String AAID = null;
-		
-		try
-		{
-			AAID = StellentClient.login();
-			// getServletContext().setAttribute("AAID", AAID);
-			// buildStellentSearchPromptCache(AAID);
-			String docTypeSearchName = LocalProperties
-					.getProperty("doc_type_search");
-			String docTypeSearchFieldName = LocalProperties
-					.getProperty("doc_typ_search_field");
-			String docTypeSearchFieldValue = LocalProperties
-					.getProperty("doc_typ_search_field_value");
-			cache.loadStellentDocumentTypes(AAID, docTypeSearchName, docTypeSearchFieldName, docTypeSearchFieldValue);
-		} catch (Exception e) {
-			log.debug("Exception " + e.getClass().getName() + " with message: " + e.getMessage() + " thrown while attemping to use Stellent");
-		} finally
-		{
-			if (AAID != null)
-				StellentClient.logout(AAID);
-		}
-*/
 	}
 
 	static {
