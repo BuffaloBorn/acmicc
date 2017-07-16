@@ -135,7 +135,7 @@ public class AmendmentMainAction extends CCAction {
 		if(modify != null)
 		  ctx.request().setAttribute("modify", modify);	
 		
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -230,7 +230,7 @@ public class AmendmentMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -290,7 +290,7 @@ public class AmendmentMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);

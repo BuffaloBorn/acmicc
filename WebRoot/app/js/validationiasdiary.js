@@ -265,3 +265,15 @@ function checkChangedFeilds()
 }
 
 
+function setGIasChangesWereMade()
+{
+	setCookie('gIasChangesWereMade', gIasChangesWereMade, exp, '/acmicc/');
+}
+
+function changePage()
+{
+	
+	window.location.href = getCookie('helpScr');
+	
+}
+

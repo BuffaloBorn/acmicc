@@ -251,7 +251,7 @@ public class SubStdCoverageMainAction extends CCAction {
 		
 		SubStdCoverageMainForm form = (SubStdCoverageMainForm) ctx.form();
 	
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName("coverageEdit", form.getPERSON_ID());
 		
 		form.clear();
@@ -318,7 +318,7 @@ public class SubStdCoverageMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName("coverageEdit", form.getPERSON_ID());
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);
@@ -367,7 +367,7 @@ public class SubStdCoverageMainAction extends CCAction {
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			//ctx.forwardByName("subStdCoverage",form.getPERSON_ID(), form.getCOVERAGE_CODE() );
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName("coverageEdit", form.getPERSON_ID());
 			log.debug("Finish....resetting " + classAction);
 		}

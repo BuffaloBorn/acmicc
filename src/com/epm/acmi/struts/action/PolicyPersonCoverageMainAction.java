@@ -184,7 +184,7 @@ public class PolicyPersonCoverageMainAction extends CCAction
 			return;
 		}
 		
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		
 	}
 	

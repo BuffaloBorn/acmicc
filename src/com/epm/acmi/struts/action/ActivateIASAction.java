@@ -746,7 +746,7 @@ public class ActivateIASAction extends CCAction{
 				ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 				log.debug("Finish....Updating Underwriter Status " + classAction);
 				loadForm(ctx,policyNo);
-				CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+				CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 				ctx.forwardByName("amendmentwarning");
 				return;
 			}

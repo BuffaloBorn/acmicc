@@ -293,7 +293,7 @@ public class PolicyPersonMainAction extends CCAction {
 	 */
 	public void back_onClick(FormActionContext ctx) throws Exception {
 		
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -435,7 +435,7 @@ public class PolicyPersonMainAction extends CCAction {
 		
 		try {
 			WSPersonCompanyMaintCall.update(person_id,smoker_ind,user, msgInfo);
-			CookieUtil.setUpdateCloseAndIaspopupCookie((FormActionContext) ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -546,7 +546,7 @@ public class PolicyPersonMainAction extends CCAction {
 		
 		try {	
 			WSPolicyPersonMaint2Call.update(action, inparms, msgInfo);
-			CookieUtil.setUpdateCloseAndIaspopupCookie((FormActionContext) ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);

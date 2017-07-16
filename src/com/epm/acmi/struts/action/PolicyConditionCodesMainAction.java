@@ -261,7 +261,7 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName("backPolicyPersonMain");
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -323,6 +323,6 @@ public class PolicyConditionCodesMainAction extends CCAction {
 				ctx.forwardByName("backPolicyPersonMain");
 			}
 		}
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 	}
 }
