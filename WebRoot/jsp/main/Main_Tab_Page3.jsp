@@ -36,7 +36,8 @@ function openRoleAssignWindow()
 	}
 	else {
 		theRole = ReassignTaskForm.roleDropdown.value;
-		gTabClick = true;
+		resetOnbeforeunloadFlagChanges();
+		//gTabClick = true;
 		window.open("/acmicc/userRoleAssign.do?selectedRole=" +  theRole ,null,
 					"resizable=yes,left=200,top=200,height=275,width=440,status=no,toolbar=no,menubar=no,location=no");			
 	}
@@ -61,7 +62,8 @@ function resubmitReassignWindow()
 		if (submitcount==0)
 		{
 			submitcount++;
-			gTabClick = true;
+			//gTabClick = true;
+			resetOnbeforeunloadFlagChanges();
 			ReassignTaskForm.submit();
 		} else
 		{
@@ -79,7 +81,8 @@ function getRole() {
 		if (submitcount==0)
 		{
 			submitcount++;
-			gTabClick = true;
+			//gTabClick = true;
+			resetOnbeforeunloadFlagChanges();
 			ReassignTaskForm.submit();
 		} else
 		{
@@ -96,7 +99,7 @@ function getRole() {
 	<tr>
 		<td class="legend" align="right" height="8">
 			Back to
-			<a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="setWorklistFlag()">
+			<a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="setWorklistFlagSetUnload()">
 				WorkList
 			</a>
 		</td>
@@ -121,11 +124,11 @@ function getRole() {
 						</forms:select>
 	
 						<forms:buttonsection default="btnSearch">
-							<forms:button name="btnSearch" text="button.title.Search" title="button.title.Search" onmousedown="gTabClick=true;"/>
+							<forms:button name="btnSearch" text="button.title.Search" title="button.title.Search" onmousedown="resetOnbeforeunloadFlagChanges();"/>
 						</forms:buttonsection>
 					</c:if>
 				</forms:form>
-
+			</html:form>
 		</td>
 	</tr>
 </table>
@@ -156,7 +159,7 @@ function getRole() {
 </div>
 <br />
 	<ctrl:button name="btnReassign" text="button.title.reassign" title="button.title.reassign" onclick="openRoleAssignWindow()" />
-</html:form>
+
 </body>
 
 

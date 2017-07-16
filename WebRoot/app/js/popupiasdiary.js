@@ -42,9 +42,9 @@ function runUnloadCloseIasDiary()
 	var iaspopup = getCookie('iaspopup');
     var iaspopupclose = getCookie('iaspopupclose');	
 
-	alert("iaspopup:" + iaspopup);
-	alert("iaspopupclose:" + iaspopupclose);
-	alert("gTabClick:" + gTabClick);
+	//alert("gTabClick: " + gTabClick);
+	//alert("iaspopup: " + iaspopup);
+	//alert("iaspopupclose: " + iaspopupclose);
 
 	if((iaspopupclose == 'close') && (iaspopup == 'open' ))
 	{
@@ -61,6 +61,29 @@ function runUnloadCloseIasDiary()
 	}
 }
 
+
+function runUnloadCloseIasDiaryAlwaysFalse()
+{
+	var iaspopup = getCookie('iaspopup');
+    var iaspopupclose = getCookie('iaspopupclose');	
+
+	if((iaspopupclose == 'close') && (iaspopup == 'open' ))
+	{
+		iaspopup = 'close';
+	}
+	
+	gTabClick = false;
+	
+	if((iaspopup == 'open') && (gTabClick == false))
+	{
+		event.returnValue =worklist;
+		//gClosePopup = true;
+		//gTabClick =true;
+	}
+	
+	window.onbeforeunload = null;
+	window.onbeforeunload = runUnloadCloseIasDiary;
+}
 
 function askquestion()
 {
@@ -127,15 +150,26 @@ function runCloseIasDiaryUnload()
 	{
 		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
-	
+}
 
+function resetOnbeforeunloadFlagChanges()
+{
+	gTabClick = true;
+	window.onbeforeunload = null;
+	window.onbeforeunload = runUnloadCloseIasDiary;
+}
+
+function setWorklistFlagSetUnload()
+{
+	window.onbeforeunload = null;
+	window.onbeforeunload = runUnloadCloseIasDiaryAlwaysFalse;
 }
 
 function setWorklistFlag()
 {
 	alert(gTabClick);
 	gTabClick = false;
-	alert(gTabClick);
+	alert(gWorklistClick);
 	gWorklistClick = true;
 }
 
@@ -440,19 +474,27 @@ function addherfListenersToSort()
 	{	
 		var href = all_links[i].href;
 	
+		alert(href);
+	
 		if (href.indexOf('asc'))
 		{
-			addEvent(all_links[i], 'click', setGtabClick, false);
+			addEvent(all_links[i], 'click', setGtabTrueClick, false);
 		}
 		
 		if (href.indexOf('desc'))
 		{
-			addEvent(all_links[i], 'click', setGtabClick, false);
+			addEvent(all_links[i], 'click', setGtabTrueClick, false);
 		}
 		
 		if (href.indexOf('Refresh'))
 		{
-			addEvent(all_links[i], 'click', setGtabClick, false);
+			addEvent(all_links[i], 'click', setGtabTrueClick, false);
+		}
+		
+		if(href.indexOf('tab5'))
+		{
+			alert("carl");
+			addEvent(all_links[i], 'click', setGtabFalseClick, false);
 		}
 	}
 
@@ -546,8 +588,12 @@ function addherfListenersToSort()
 		deleteCookie('iaspopup');
 	}
 	
+	function setGtabFalseClick()
+	{
+		gTabClick=false;
+	}
 	
-	function setGtabClick()
+	function setGtabTrueClick()
 	{
 		gTabClick=true;
 	}

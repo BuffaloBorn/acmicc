@@ -6,7 +6,34 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-logic.tld" prefix="logic"%>
 <jsp:useBean id="current" class="java.util.Date" />
 
-<script src="app/js/popupiasdiary.js" type="text/javascript" ></script>
+<script type="text/javascript" >
+	
+	function localResetCookieToClose()
+	{
+		var expDays = 1; // number of days the cookie should last
+
+		var exp = new Date();
+		exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
+		
+		localSetCookie('iaspopup', 'close',exp, '/acmicc/');
+	}
+	
+	function localSetCookie (name, value) {
+	  var argv = localSetCookie.arguments;
+	  var argc = localSetCookie.arguments.length;
+	  var expires = (argc > 2) ? argv[2] : null;
+	  var path = (argc > 3) ? argv[3] : null;
+	  var domain = (argc > 4) ? argv[4] : null;
+	  var secure = (argc > 5) ? argv[5] : false;
+	  
+	  document.cookie = name + "=" + escape (value) +
+	    ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+	    ((path == null) ? "" : ("; path=" + path)) +
+	    ((domain == null) ? "" : ("; domain=" + domain)) +
+	    ((secure == true) ? "; secure" : "");
+	}
+
+</script>
 
 <TABLE WIDTH="100%" height="40" NOwrap BACKGROUND="fw/def2/image/headerTitle.gif">
 	<tr>
@@ -51,7 +78,7 @@
 							&nbsp;
 						</td>
 						<td align="right" class="small_legend">
-							<a href="logout.do" onclick="resetCookieToClose()">
+							<a href="logout.do" onclick="localResetCookieToClose()">
 								Logout
 							</a>
 							&nbsp;&nbsp;

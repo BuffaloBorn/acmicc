@@ -31,6 +31,8 @@ window.onload = addherfListenersToSort;
 	}
 	
 </script>
+
+
 <div align="center">
 <table height="400" width="900">
 	<tr>
@@ -75,4 +77,5 @@ window.onload = addherfListenersToSort;
 	</logic:present>
 
 </table>
+
 </div>

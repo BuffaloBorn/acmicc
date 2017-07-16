@@ -18,7 +18,7 @@
 		<% if (session.getAttribute(Constants.policyNumber) != null) { %>
 			Policy Number: <b><%= session.getAttribute(Constants.policyNumber)%></b>&nbsp;&nbsp;|&nbsp;&nbsp;
 		<%}%>
-		Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="setWorklistFlag()">WorkList</a></td>
+		Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5">WorkList</a></td>
 	</tr>
 	<tr>
 		<td height="98%"><ctrl:tabset styleId="tabset2" name="nestedtabset"

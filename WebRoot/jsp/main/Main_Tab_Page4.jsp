@@ -12,6 +12,7 @@ window.onload = addherfListenersToSort;
 
 	function ConfirmChoice()
 	{
+			gTabClick=true;
 			var answer = confirm("Document will be marked for delete. Do you want to continue?");
 			if (answer !=0)
 			{
@@ -29,7 +30,7 @@ window.onload = addherfListenersToSort;
 <table height="400" width="100%">
 	<tr>
 		<td height="10" colspan="2" class="legend" align="right" width="100%">Back
-		to <a href="worklist.do"  onclick="setWorklistFlag();">WorkList</a></td>
+		to <a href="worklist.do"  onclick="setWorklistFlagSetUnload();">WorkList</a></td>
 	</tr>
 	<tr>
 		<logic:present scope="session" name="expdoclist">
