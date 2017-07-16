@@ -144,6 +144,7 @@ function saveClicked(activityButtonClicked) {
 	    	try
 		 	{
 				gSaveClicked=true;
+				gTabClick=true;
 				NBWSDetailsForm.submit();
 				submitcount++;
 				document.body.style.cursor = "wait";

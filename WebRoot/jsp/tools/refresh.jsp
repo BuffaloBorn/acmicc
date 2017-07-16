@@ -38,7 +38,7 @@ function setVariable() {
     	adminForm.refreshIAS.value = "false";
    }
       
-   if (refreshEPM == null && refreshAcmic == null && refreshIAS == null) {
+   if (refreshEPM == null && refreshAcmic == null) {
    		alert("Nothing is selected, no caches will be refreshed");
    	}
    	else {

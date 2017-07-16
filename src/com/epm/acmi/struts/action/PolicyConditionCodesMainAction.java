@@ -261,7 +261,18 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
-			ctx.forwardByName("backPolicyPersonMain");
+			if (comingFrom != null)
+			{
+				if (comingFrom.equalsIgnoreCase("PD"))
+				{
+					ctx.forwardByName("backPolicyDiary");
+				}
+				
+				if (comingFrom.equalsIgnoreCase("PP"))
+				{
+					ctx.forwardByName("backPolicyPersonMain");
+				}
+			}
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
 		}

@@ -92,6 +92,7 @@ function validateInput() {
 		
 		if (submitcount==0)
 		{
+			gTabClick=true;
 			submitcount++;
 			return true;
 		} else
@@ -215,8 +216,8 @@ return true
 			<ctrl:columntext title="tinterview.appType" property="appType" width="30" />
 	 		<ctrl:columntext title="tinterview.status" property="status" width="50" />
 			<ctrl:columntext title="tinterview.requestedby" property="requestedBy" width="150" />		     
-			<ctrl:columnedit title="list.edit" property="editable"/>
-			<ctrl:columndelete title="list.delete" property="editable"/>
+			<ctrl:columnedit title="list.edit" property="editable" onclick="gTabClick=true"/>
+			<ctrl:columndelete title="list.delete" property="editable" onclick="gTabClick=true"/>
 			
 		</ctrl:list>	
 	</c:if>

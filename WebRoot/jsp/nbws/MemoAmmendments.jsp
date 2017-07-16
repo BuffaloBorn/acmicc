@@ -26,6 +26,7 @@ function goUpdate() {
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick=true;
 			MemosAmendForm.submit();
 		} else
 		{

@@ -22,6 +22,7 @@ function goUpdate() {
 	if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick=true;
 			SharedInfoForm.submit();
 		} else
 		{

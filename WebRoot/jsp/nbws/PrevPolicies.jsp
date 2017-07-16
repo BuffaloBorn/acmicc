@@ -60,6 +60,7 @@ function validateInput() {
 			try
 		  	{	
 				submitcount++;
+				gTabClick=true;
 				prevPolicyForm.submit();
 			}
 			catch(ex)
@@ -204,7 +205,7 @@ click the "+" sign below.</div>
 	<ctrl:columntext title="prevPolicy.shortTermPol"
 		property="shortTermPolicy" width="70" />
 	<ctrl:columnedit title="list.edit" onclick="gTabClick=true"/>
-	<ctrl:columndelete title="list.delete" />
+	<ctrl:columndelete title="list.delete" onclick="gTabClick=true" />
 </ctrl:list>
 
 <br>
