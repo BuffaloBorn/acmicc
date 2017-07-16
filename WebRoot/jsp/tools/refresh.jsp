@@ -15,6 +15,7 @@
 function setVariable() {
    var refreshAcmic = adminForm.refreshAcmic.value;
    var refreshEPM   = adminForm.refreshEPM.value;
+   var refreshIAS   = adminForm.refreshIAS.value;
    
    if (refreshAcmic != null && refreshAcmic == "on") {
    		adminForm.refreshAcmic.value = "true";

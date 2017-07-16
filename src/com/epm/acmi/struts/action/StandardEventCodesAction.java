@@ -78,6 +78,26 @@ public class StandardEventCodesAction  extends CCAction {
 			flag = false;
 		}
 		
+		if (evtCode.equalsIgnoreCase("AMD-ONLY")) 
+		{
+			log.debug("std event:" + evtCode);
+			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
+			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
+			ctx.session().setAttribute(Constants.IASModify, "create");
+			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
+			flag = false;
+		}
+		
+		if (evtCode.equalsIgnoreCase("MODIFYDR")) 
+		{
+			log.debug("std event:" + evtCode);
+			String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
+			ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
+			ctx.session().setAttribute(Constants.IASModify, "create");
+			ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit&modify=create" );
+			flag = false;
+		}
+		
 		
 		
 		if (evtCode.equalsIgnoreCase("LETTER")) 

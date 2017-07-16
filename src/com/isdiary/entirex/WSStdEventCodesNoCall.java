@@ -29,6 +29,7 @@ public class WSStdEventCodesNoCall {
 //		map.put("ADDONDEC", "ADD-ON REQUEST DECLINED");
 //		map.put("AI", "APPLICATION INFORMATION");
 //		map.put("AMEND", "LETTER PRINTED ON STANDARD ACMIC LETTERHEAD");
+		map.put("AMD-ONLY", "AMENDMENT ONLY");
 //		map.put("AMEND-A", "ADD ON AMENDMENT");
 //		map.put("AMEND-P", "POST ISSUE SUB-STANDARD RATING AMENDMENT");
 //		map.put("AMEND-R", "REINSTATEMENT AMENDMENT");
@@ -105,6 +106,7 @@ public class WSStdEventCodesNoCall {
 //		map.put("MIB-H1", "MIB HEALTH DECLINE 1ST PART");
 //		map.put("MIB-L1", "MIB LIFE DECLINE 1ST PART");
 //		map.put("MIB-2", "MIB 2ND PT. FOR DECLINE OF HEALTH/LIFE");
+		map.put("MODIFYDR", "MODIFY DELIVERY REQUIREMENTS");
 //		map.put("MVR", "MOTOR VEHICLE RECORD");
 //		map.put("NOTICE", "NOTICE OF UNINSURABLE APPLICANT");
 //		map.put("NOTIF", "NOTIFICATION");

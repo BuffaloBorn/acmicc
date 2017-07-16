@@ -7,7 +7,7 @@
 
 <script language="Javascript">
 var submitcount=0;
-
+window.onload = addherfListenersToSort;
 function validateInput() {
 	var policyNum = activatePendingForm.policyNumber.value;
 	var goodVals = true;		
@@ -72,7 +72,7 @@ function setfocus()
 
 <table width="100%" align="center">
 	<tr>
-<td class="legend" align="right" height="8">Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="setWorklistFlag()">WorkList</a></td>
+<td class="legend" align="right" height="8">Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" >WorkList</a></td>
 	</tr>
 </table>
 

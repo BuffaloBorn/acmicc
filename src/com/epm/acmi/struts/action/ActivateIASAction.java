@@ -376,6 +376,18 @@ public class ActivateIASAction extends CCAction{
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
+		if (StdEventCode.equalsIgnoreCase("AMD-ONLY")) 
+		{
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
+		}
+		
+		if (StdEventCode.equalsIgnoreCase("MODIFYDR")) 
+		{
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
+		}
+		
 		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 
 		{
 			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
@@ -491,6 +503,20 @@ public class ActivateIASAction extends CCAction{
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("PROP")) 
+		{
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
+			flag = false;
+		}
+		
+		if (StdEventCode.equalsIgnoreCase("AMD-ONLY")) 
+		{
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
+			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
+			flag = false;
+		}
+		
+		if (StdEventCode.equalsIgnoreCase("MODIFYDR")) 
 		{
 			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");

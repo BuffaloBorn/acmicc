@@ -67,8 +67,11 @@
 	
 	function monitorCookie()
 	{
-		if (getCookie('iaspopup') == 'close')
-			this.close(); 	
+		if (getCookie('timer') == 'start') 
+		{	
+			if (getCookie('iaspopup') == 'close') 
+				this.close();
+		} 	
 	}
 	
 	window.setInterval('monitorCookie()', 500);

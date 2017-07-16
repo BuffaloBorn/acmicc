@@ -12,15 +12,35 @@ var exp = new Date();
 exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
 
 function runUnloadIasValidation()
-{
+{	
 	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
 	{
+//		if(askquestion())
+//		{
+//			setCookie('iaspopupclose', 'close', exp, '/acmicc/');
+//		}
+//		else
+//		{
+//			setCookie('iaspopup', 'open', exp, '/acmicc/');
+//		}
 		event.returnValue = middleline;
-		
+		setCookie('timer', 'stop', exp, '/acmicc/');
 	}
 
 }
 
+
+function askquestion()
+{
+	
+	var ret = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
+	
+	if(ret)
+		return true;
+	else
+		return false;
+
+}
 function setIaspopupcloseToTrue()
 {
 	setCookie('iaspopupclose', 'open', exp, '/acmicc/');

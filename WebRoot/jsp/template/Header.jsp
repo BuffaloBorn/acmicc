@@ -14,7 +14,6 @@
 
 		var exp = new Date();
 		exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
-		
 		localSetCookie('iaspopup', 'close',exp, '/acmicc/');
 	}
 	

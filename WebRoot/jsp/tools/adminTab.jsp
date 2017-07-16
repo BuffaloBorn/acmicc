@@ -2,6 +2,8 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-controls.tld" prefix="ctrl"%>
 <%@ taglib uri="/WEB-INF/tlds/cc-forms.tld" prefix="forms"%>
 
+<script LANGUAGE="JavaScript" TYPE="text/javascript" SRC="app/js/popupiasdiary.js" CHARSET="ISO-8859-1"></script>
+
 <style type="text/css">
 	.ext-link {
 		font-size: 9pt;

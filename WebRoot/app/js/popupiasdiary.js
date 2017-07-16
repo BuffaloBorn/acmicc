@@ -134,7 +134,6 @@ function runCloseIasDiaryUnload()
 		//runIasdiaryInt();
 		//closeIasdiary();
 		setCookie('iaspopup', 'close', exp, '/acmicc/');
-	
 	}
 	
 	if((iaspopup == 'open') && (gPushActivity == true))
@@ -167,9 +166,7 @@ function setWorklistFlagSetUnload()
 
 function setWorklistFlag()
 {
-	alert(gTabClick);
 	gTabClick = false;
-	alert(gWorklistClick);
 	gWorklistClick = true;
 }
 
@@ -192,6 +189,7 @@ function runIasdiary()
 		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
 		setCookie('iaspopup', 'open', exp, '/acmicc/');
 		setCookie('iaspopupclose', 'open', exp, '/acmicc/');
+		setCookie('timer', 'start', exp, '/acmicc/');
 		iasdiary =window.open(url,'iasdiaryname',options);
 	}
 	else
@@ -453,7 +451,7 @@ function addherfListeners()
 		if (all_links[i].title == 'create new item')
 		{
 		
-			addEvent(all_links[i], 'click', setGtabClick, false);
+			addEvent(all_links[i], 'click', setGtabTrueClick, false);
 
 		}
 		
@@ -474,26 +472,38 @@ function addherfListenersToSort()
 	{	
 		var href = all_links[i].href;
 	
-		alert(href);
-	
-		if (href.indexOf('asc'))
+		if (href.indexOf('asc') >-1)
 		{
 			addEvent(all_links[i], 'click', setGtabTrueClick, false);
 		}
 		
-		if (href.indexOf('desc'))
+		if (href.indexOf('desc')>-1)
 		{
 			addEvent(all_links[i], 'click', setGtabTrueClick, false);
 		}
 		
-		if (href.indexOf('Refresh'))
+		if (href.indexOf('Refresh')>-1)
 		{
 			addEvent(all_links[i], 'click', setGtabTrueClick, false);
 		}
 		
-		if(href.indexOf('tab5'))
+		if (href.indexOf('checkState&param=true')>-1)
 		{
-			alert("carl");
+			addEvent(all_links[i], 'click', setGtabTrueClick, false);
+		}
+		
+		if (href.indexOf('checkState&param=false')>-1)
+		{
+			addEvent(all_links[i], 'click', setGtabTrueClick, false);
+		}
+		
+		if(href.indexOf('tab5')>-1)
+		{
+			addEvent(all_links[i], 'click', setGtabFalseClick, false);
+		}
+		
+		if(href.indexOf('worklist.do')>-1)
+		{
 			addEvent(all_links[i], 'click', setGtabFalseClick, false);
 		}
 	}
