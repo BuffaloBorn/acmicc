@@ -58,18 +58,6 @@
 	{
 		gIasChangesWereMade=true;
 	}
-	
-	function monitorUpdateClose()
-	{
-	
-		//if (getCookie(' updateClose') == 'close')
-		//{	
-			//alert("insider");
-			//setCookie('updateClose', 'open', exp, '/acmicc/');
-			//setCookie('iaspopup', 'close', exp, '/acmicc/');
-		//}
-	} 	
-
 </script>
 
 <c:if test='${pageScope.modifyStatus == "create"}'>
@@ -87,7 +75,7 @@
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">
-				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true;monitorUpdateClose()" onclick="runPageValidation(this)"/>
+				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
 				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 			</forms:buttonsection>
 		</forms:form>
@@ -130,7 +118,7 @@
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">					
-				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true;monitorUpdateClose()" onclick="runPageValidation(this)"/>		
+				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>		
 				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 			</forms:buttonsection>
 		</forms:form>

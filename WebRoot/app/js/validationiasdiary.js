@@ -20,6 +20,16 @@ function runUnloadIasValidation()
 
 }
 
+function setIaspopupcloseToTrue()
+{
+	setCookie('iaspopupclose', 'true', exp, '/acmicc/');
+}
+
+function setIaspopupcloseToFalse()
+{
+	setCookie('iaspopupclose', 'false', exp, '/acmicc/');
+}
+
 
 function getEnclosingForm(node) {
 
@@ -263,17 +273,3 @@ function checkChangedFeilds()
 	}		
 
 }
-
-
-function setGIasChangesWereMade()
-{
-	setCookie('gIasChangesWereMade', gIasChangesWereMade, exp, '/acmicc/');
-}
-
-function changePage()
-{
-	
-	window.location.href = getCookie('helpScr');
-	
-}
-

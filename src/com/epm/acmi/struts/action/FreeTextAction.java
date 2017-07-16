@@ -18,7 +18,6 @@ import org.apache.log4j.Logger;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
-import com.cc.acmi.common.CookieUtil;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.ConcreteControlActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
@@ -141,7 +140,7 @@ public class FreeTextAction extends CCAction {
 	}
 
 	
-	private void editFreeTextMaint(FormActionContext ctx) 
+	private void editFreeTextMaint(ActionContext ctx) 
 	{
 		String service = "Edit: " + classAction;
 		
@@ -188,14 +187,13 @@ public class FreeTextAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);
 		}
 	}
 	
-	private void addFreeTextMaint(FormActionContext ctx) 
+	private void addFreeTextMaint(ActionContext ctx) 
 	{
 		String service = "Add: Free Text";
 		
@@ -214,7 +212,6 @@ public class FreeTextAction extends CCAction {
 		
 		try {
 			WSFreeTextMaintCall.add(inputs, inoutparms, msgInfo, outparms);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -241,7 +238,6 @@ public class FreeTextAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -524,7 +520,6 @@ public class FreeTextAction extends CCAction {
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
 		
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName(Forwards.BACK);
 	}
 	

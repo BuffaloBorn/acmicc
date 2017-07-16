@@ -15,7 +15,7 @@
 <table width="100%">
     <tr>
 		<td class="legend" align="right" height="8" width="100%">
-		Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5">WorkList</a></td>
+		Back to <a href="main/secondarytabsetBrowse.do?ctrl=secondarymaintabset&action=TabClick&param=tab5" onclick="setWorklistFlag()">WorkList</a></td>
 	</tr>
 </table>
 

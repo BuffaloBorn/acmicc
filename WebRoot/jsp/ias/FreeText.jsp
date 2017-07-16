@@ -42,6 +42,8 @@ textbox.value = str
 	<c:if test="${not empty param.gIasChangesWereMade}">
 		gIasChangesWereMade=true;
 	</c:if>
+
+
 </script>
 
 <c:if test='${sessionScope.IASModify == "create"}'>
@@ -204,7 +206,7 @@ textbox.value = str
 								<tr>
 									<td>
 										<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
-										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" onmouseup="setGIasChangesWereMade()"/>
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" onmouseup="gIasSaveClicked=true"/>
 									</td>
 								</tr>
 								<tr>

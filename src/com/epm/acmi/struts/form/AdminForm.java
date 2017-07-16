@@ -5,7 +5,7 @@ import com.cc.framework.adapter.struts.FWActionForm;
 
 public class AdminForm extends FWActionForm {
 	
-	private String refreshAcmic, refreshEPM;
+	private String refreshAcmic, refreshEPM, refreshIAS;
 	private static final long serialVersionUID = 0L;
 	
 	public void setRefreshAcmic(String acmic) {
@@ -22,5 +22,13 @@ public class AdminForm extends FWActionForm {
 	
 	public String getRefreshEPM() {
 		return refreshEPM;
+	}
+
+	public String getRefreshIAS() {
+		return refreshIAS;
+	}
+
+	public void setRefreshIAS(String refreshIAS) {
+		this.refreshIAS = refreshIAS;
 	}
 }

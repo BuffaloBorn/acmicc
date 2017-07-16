@@ -49,7 +49,7 @@
 							&nbsp;
 						</td>
 						<td align="right" class="small_legend">
-							<a href="logout.do">
+							<a href="logout.do" onclick="resetCookieToClose()">
 								Logout
 							</a>
 							&nbsp;&nbsp;

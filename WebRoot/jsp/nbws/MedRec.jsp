@@ -5,6 +5,11 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-controls.tld" prefix="ctrl"%>
 <%@ taglib uri="/WEB-INF/tlds-jstl/jstl-c.tld" prefix="c"%>
 <%@ page import="com.cc.acmi.presentation.taglib.TagUtils"%>
+
+<script type="text/javascript">	
+window.onload = addherfListeners;
+</script>
+
 <script language="Javascript">
 
 
@@ -61,8 +66,21 @@ function validateInput() {
 		
 		if (submitcount==0)
 		{
-			submitcount++;
-			medRecForm.submit();
+			try
+		  	{
+				submitcount++;
+				gTabClick=true;
+				medRecForm.submit();
+			}
+			catch(ex)
+		 	{
+		 		//don't want a genuine error
+		 		//lets just restrict this our Unspecified one
+		 		if(ex.message.indexOf('Unspecified') == -1)
+		 		{
+		 			
+		 		}
+		 	}	
 		} else
 		{
       		alert("You have already submitted the request to server. Please wait until the page is refreshed.");
@@ -75,8 +93,21 @@ function validateInput() {
 function cancelClicked() {
 	document.getElementById('btnCancelHidden').value='clicked'
 	document.getElementById('btnSaveHidden').value='';
+	try
+	{
+		gTabClick=true;
+		medRecForm.submit();
+	}
+	catch(ex)
+	{
+		//don't want a genuine error
+	    //lets just restrict this our Unspecified one
+		if(ex.message.indexOf('Unspecified') == -1)
+		{
+		 			
+		}
+	}
 	
-	medRecForm.submit();
 }
 
 var dtCh= "/";
@@ -170,8 +201,8 @@ return true
 			width="80" />
 		<ctrl:columntext title="medRec.phiMiss" property="phiMissing"
 			width="60" />
-		<ctrl:columnedit title="list.edit" />
-		<ctrl:columndelete title="list.delete" />
+		<ctrl:columnedit title="list.edit" onclick="gTabClick=true"/>
+		<ctrl:columndelete title="list.delete" onclick="gTabClick=true"/>
 	</ctrl:list>
 	<br/><br/>
 	<c:if test="${showMedRecForm == true}">

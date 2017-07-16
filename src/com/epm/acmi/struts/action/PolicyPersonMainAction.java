@@ -13,7 +13,6 @@ import javax.xml.rpc.ServiceException;
 import org.apache.log4j.Logger;
 
 
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -293,7 +292,6 @@ public class PolicyPersonMainAction extends CCAction {
 	 */
 	public void back_onClick(FormActionContext ctx) throws Exception {
 		
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -401,18 +399,27 @@ public class PolicyPersonMainAction extends CCAction {
 				row.resetSmokerStatusMarker();
 			}
 			
-			//row.isPersonStatusInd() && row.getPERSON_STATUS_IND().equalsIgnoreCase("D")
-			if(row.getPERSON_STATUS_IND().equalsIgnoreCase("D"))
-			{
-				goToConditionCodesWithDeclince(ctx, row.getPERSON_ID(), form.getPolicyid());
-			}
 			
-			//if (row.getPERSON_STATUS_IND().equalsIgnoreCase(" ") || (!row.getPERSON_STATUS_IND().equalsIgnoreCase("D")))
-			if((row.isPolicyPersonTypeCurrentMarker())&& (!row.getPERSON_STATUS_IND().equalsIgnoreCase("D")))
+			//#1 Scenario
+			if((row.isPolicyPersonTypeCurrentMarker())&& (!row.isPersonStatusInd()))
 			{
 				saveRowWithOutDeclince(row, ctx);
 			}
 			
+			
+			//#2 Scenario
+			if ((row.isPolicyPersonTypeCurrentMarker()) && (row.isPersonStatusInd()) &&  (row.getPERSON_STATUS_IND().equalsIgnoreCase("D")))
+			{
+					saveRowWithOutDeclince(row, ctx);
+					goToConditionCodesWithDeclince(ctx, row.getPERSON_ID(), form.getPolicyid());
+			}
+			
+			//#3 Scenario
+			if ((row.isPersonStatusInd()) && (row.getPERSON_STATUS_IND().equalsIgnoreCase("D") ))
+			{
+				goToConditionCodesWithDeclince(ctx, row.getPERSON_ID(), form.getPolicyid());	
+			}	
+
 			row.resetPersonStatusIndMarker();
 			row.resetPolicyPersonTypeCurrentMarker();
 		}	
@@ -435,7 +442,6 @@ public class PolicyPersonMainAction extends CCAction {
 		
 		try {
 			WSPersonCompanyMaintCall.update(person_id,smoker_ind,user, msgInfo);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -546,7 +552,6 @@ public class PolicyPersonMainAction extends CCAction {
 		
 		try {	
 			WSPolicyPersonMaint2Call.update(action, inparms, msgInfo);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);

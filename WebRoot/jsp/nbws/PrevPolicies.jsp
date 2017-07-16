@@ -5,8 +5,14 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-controls.tld" prefix="ctrl"%>
 <%@ taglib uri="/WEB-INF/tlds-jstl/jstl-c.tld" prefix="c"%>
 <%@ page import="com.cc.acmi.presentation.taglib.TagUtils"%>
+
+<script type="text/javascript">	
+window.onload = addherfListeners;
+</script>
+
 <script language="Javascript">
 var submitcount=0;
+
 function validateInput() {
 	var prevPolicyNum = prevPolicyForm.previousPolicyID.value;
 	var status = prevPolicyForm.status.value;
@@ -51,8 +57,21 @@ function validateInput() {
 		gSaveClicked=true; 
 		if (submitcount==0)
 		{
-			submitcount++;
-			prevPolicyForm.submit();
+			try
+		  	{	
+				submitcount++;
+				prevPolicyForm.submit();
+			}
+			catch(ex)
+		 	{
+		 		//don't want a genuine error
+		 		//lets just restrict this our Unspecified one
+		 		if(ex.message.indexOf('Unspecified') == -1)
+		 		{
+		 			
+		 		}
+		 	}	
+				
 		} else
 		{
       		alert("You have already submitted the request to server. Please wait until the page is refreshed.");
@@ -67,8 +86,21 @@ function cancelClicked() {
 	document.getElementById('btnSaveHidden').value='';
 		if (submitcount==0)
 		{
-			submitcount++;
-			prevPolicyForm.submit();
+			try
+		  	{
+				submitcount++;
+				gTabClick=true;
+				prevPolicyForm.submit();
+			}
+			catch(ex)
+		 	{
+		 		//don't want a genuine error
+		 		//lets just restrict this our Unspecified one
+		 		if(ex.message.indexOf('Unspecified') == -1)
+		 		{
+		 			
+		 		}
+		 	}	
 		} else
 		{
       		alert("You have already submitted the request to server. Please wait until the page is refreshed.");
@@ -171,7 +203,7 @@ click the "+" sign below.</div>
 		width="300" />
 	<ctrl:columntext title="prevPolicy.shortTermPol"
 		property="shortTermPolicy" width="70" />
-	<ctrl:columnedit title="list.edit" />
+	<ctrl:columnedit title="list.edit" onclick="gTabClick=true"/>
 	<ctrl:columndelete title="list.delete" />
 </ctrl:list>
 

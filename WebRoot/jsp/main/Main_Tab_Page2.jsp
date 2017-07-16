@@ -8,6 +8,9 @@
 <script language="Javascript">
 var submitcount=0;
 
+window.onbeforeunload=runUnloadCloseIasDiary;
+window.onunload=runCloseIasDiaryUnload;
+
 function validateInput() {
 	var policyNum = activatePendingForm.policyNumber.value;
 	var goodVals = true;		

@@ -11,6 +11,11 @@ var gValidationFirst = false;
 var gClosePopup = false; 
 var gWorklistClick = false;
 
+var firstline = "Are you sure want to navigate away from this page?";
+var middleline = "Changes were made and have not been saved. Click 'OK' to ignore these changes and proceed with your request, or \n click 'Cancel' to return to this page to save the changes made.";
+var lastline = "Press OK to continue, or Cancel to stay on the current page."; 
+var worklist = "Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel";
+
 var expDays = 1; // number of days the cookie should last
 
 var exp = new Date();
@@ -38,35 +43,53 @@ function runUnloadCloseIasDiary()
 
 	if((iaspopup == 'open') && (gTabClick == false))
 	{
-		event.returnValue =("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok \nIf you do not want to go to worklist click on cancel")
-		gClosePopup = true;
-		gTabClick =true;
+		
+		event.returnValue =worklist;
+		//gClosePopup = true;
+		//gTabClick =true;
 	}
+}
+
+
+function askquestion()
+{
+	
+	var ret = confirm(firstline + "\n\n" + worklist + "\n\n" + lastline);
+	
+	if(ret)
+		return true;
+	else
+		return false;
+
 }
 
 function runCloseIasDiaryUnload()
 {	
+	var iaspopup = getCookie('iaspopup');		
+	var iaspopupclose = getCookie('iaspopupclose');			
 	
-	var iaspopup = getCookie('iaspopup');			
-	
+	if(iaspopupclose == 'false' && iaspopup == 'open' )
+	{
+		iaspopup = 'close';
+	}
 	
 	//2.4 -- no changes, invoke worklist and pop ups Popup 2	
 	if((iaspopup == 'open') && (gValidationFirst == true) && (gChangesWereMade == false))
 	{
 		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
 		
-		runIasdiaryInt();
-		closeIasdiary();
-		setCookie('updateClose', 'close', exp, '/acmicc/');
+		//runIasdiaryInt();
+		//closeIasdiary();
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
 	if((iaspopup == 'open') && (gChangesWereMade == true) && (gWorklistClick == true))
 	{
 		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
 		
-		runIasdiaryInt();
-		closeIasdiary();
-		setCookie('updateClose', 'close', exp, '/acmicc/');
+		//runIasdiaryInt();
+		//closeIasdiary();
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
 	
@@ -74,9 +97,9 @@ function runCloseIasDiaryUnload()
 	{
 		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
 		
-		runIasdiaryInt();
-		closeIasdiary();
-		setCookie('updateClose', 'close', exp, '/acmicc/');
+		//runIasdiaryInt();
+		//closeIasdiary();
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	
 	}
 	
@@ -84,17 +107,23 @@ function runCloseIasDiaryUnload()
 	{
 		alert("Your IAS session will be closed \nIf you have changes you want saved switch to that session before clicking Ok");
 		
-		runIasdiaryInt();
-		closeIasdiary();
-		setCookie('updateClose', 'close', exp, '/acmicc/');
+		//runIasdiaryInt();
+		//closeIasdiary();
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
-	if(gClosePopup)
+	if((iaspopup == 'open') && (gTabClick == false))
 	{
-		runIasdiaryInt();
-		closeIasdiary();
-		setCookie('updateClose', 'close', exp, '/acmicc/');
+		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
+	
+	//if(gClosePopup)
+	//{
+		//runIasdiaryInt();
+		//closeIasdiary();
+		//setCookie('iaspopup', 'close', exp, '/acmicc/');
+		//setCookie('updateClose', 'close', exp, '/acmicc/');
+	//}
 
 }
 
@@ -122,6 +151,7 @@ function runIasdiary()
 	{
 		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
 		setCookie('iaspopup', 'open', exp, '/acmicc/');
+		setCookie('iaspopupclose', 'true', exp, '/acmicc/');
 		iasdiary =window.open(url,'iasdiaryname',options);
 	}
 	else
@@ -172,8 +202,8 @@ function initializeVar() {
 		
 		if(iaspopup == 'open')
 		{
-			runIasdiary();
-			closeIasdiary();
+			//runIasdiary();
+			//closeIasdiary();
 			setCookie('iaspopup', 'close', exp, '/acmicc/');
 		}
 
@@ -370,6 +400,60 @@ function addListeners()
 	addEvent(window, 'unload', closeIasdiary, false);
 }
 
+
+function addherfListeners() 
+{
+	if (!document.getElementById)
+		return;
+		
+	var all_links = document.links;
+	
+	for (var i = 0; i < all_links.length; i++) 
+	{	
+		if (all_links[i].title == 'create new item')
+		{
+		
+			addEvent(all_links[i], 'click', setGtabClick, false);
+
+		}
+		
+	}
+
+
+	//addEvent(window, 'unload', closeIasdiary, false);
+}
+
+function addherfListenersToSort() 
+{
+	if (!document.getElementById)
+		return;
+		
+	var all_links = document.links;
+	
+	for (var i = 0; i < all_links.length; i++) 
+	{	
+		var href = all_links[i].href;
+	
+		if (href.indexOf('asc'))
+		{
+			addEvent(all_links[i], 'click', setGtabClick, false);
+		}
+		
+		if (href.indexOf('desc'))
+		{
+			addEvent(all_links[i], 'click', setGtabClick, false);
+		}
+		
+		if (href.indexOf('Refresh'))
+		{
+			addEvent(all_links[i], 'click', setGtabClick, false);
+		}
+	}
+
+
+	//addEvent(window, 'unload', closeIasdiary, false);
+}
+
 //addLoadListener(init);
 //addLoadListener(addListeners);
 //addEvent(window, 'unload', closeIasdiary, false);
@@ -433,4 +517,9 @@ function addListeners()
 		deleteCookie('iaspopup');
 	}
 	
+	
+	function setGtabClick()
+	{
+		gTabClick=true;
+	}
 	//window.setInterval(function() { getCookie('child') == 'closed' ? self.close() : ''; }, 1000);

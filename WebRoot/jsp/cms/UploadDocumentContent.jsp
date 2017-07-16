@@ -65,7 +65,7 @@
 	 }
 	 
 	function validateDocCode(aform) {
-
+		 gTabClick=true;
 		 var docCode=docUpdateMetaDataForm.docCode.options[docUpdateMetaDataForm.docCode.selectedIndex].value;
 		 var goodVals1 = true;
 	     var message1 = "Please correct the following errors:\n" ;
@@ -83,6 +83,7 @@
 	 }
 	 
 	 function validateInput() {
+		 gTabClick=true;
 		  var policyNumber = docUpdateMetaDataForm.policyNumber.value;
 		  var file = docUpdateMetaDataForm.file.value;
 	      var state = docUpdateMetaDataForm.state.options[docUpdateMetaDataForm.state.selectedIndex].value;
@@ -185,6 +186,7 @@
 	}
 
 	function cancelClicked() {
+	      gTabClick=true;
 	      document.getElementById('btnCancelHidden').value='clicked'
 	      document.getElementById('btnUploadHidden').value='';
 	      docUpdateMetaDataForm.submit();

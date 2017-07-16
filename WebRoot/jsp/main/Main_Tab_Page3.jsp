@@ -24,6 +24,9 @@
 
 <script>
 var submitcount=0;
+window.onload = addherfListenersToSort;
+window.onbeforeunload=runUnloadCloseIasDiary;
+window.onunload=runCloseIasDiaryUnload;
 
 function openRoleAssignWindow() 
 {
@@ -34,7 +37,7 @@ function openRoleAssignWindow()
 	}
 	else {
 		theRole = ReassignTaskForm.roleDropdown.value;
-
+		gTabClick = true;
 		window.open("/acmicc/userRoleAssign.do?selectedRole=" +  theRole ,null,
 					"resizable=yes,left=200,top=200,height=275,width=440,status=no,toolbar=no,menubar=no,location=no");			
 	}
@@ -59,6 +62,7 @@ function resubmitReassignWindow()
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			ReassignTaskForm.submit();
 		} else
 		{
@@ -76,6 +80,7 @@ function getRole() {
 		if (submitcount==0)
 		{
 			submitcount++;
+			gTabClick = true;
 			ReassignTaskForm.submit();
 		} else
 		{
@@ -116,7 +121,7 @@ function getRole() {
 						</forms:select>
 	
 						<forms:buttonsection default="btnSearch">
-							<forms:button name="btnSearch" text="button.title.Search" title="button.title.Search"  />
+							<forms:button name="btnSearch" text="button.title.Search" title="button.title.Search" onmouseup="gTabClick=true;"/>
 						</forms:buttonsection>
 					</c:if>
 				</forms:form>

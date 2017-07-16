@@ -10,7 +10,6 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -85,6 +84,11 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 			ctx.forwardByName(Forwards.BACK);
 			log.debug("Error occurred " + classAction);
 		}
+		
+			
+		
+	
+		
 	}
 
 	private void fillForm(ActionContext ctx, MUTXTMWResponseINOUT_PARMS1Holder inoutparms,	MUTXTMWResponseOUT_PARMSHolder outparms) {
@@ -105,7 +109,6 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 	 */
 	public void back_onClick(FormActionContext ctx) throws Exception {
 		// in this example we go back to the jsp
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -178,7 +181,6 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -256,7 +258,6 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);

@@ -11,7 +11,6 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.TextProcessing;
 import com.cc.acmi.presentation.dsp.ConditionCodeDsp;
@@ -251,7 +250,6 @@ public class SubStdCoverageMainAction extends CCAction {
 		
 		SubStdCoverageMainForm form = (SubStdCoverageMainForm) ctx.form();
 	
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName("coverageEdit", form.getPERSON_ID());
 		
 		form.clear();
@@ -294,6 +292,7 @@ public class SubStdCoverageMainAction extends CCAction {
 		try {
 			
 			WSPolicyPersonCovMainCall.update(inputs, msgInfo, inoutparms, outparms);
+		
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -318,7 +317,6 @@ public class SubStdCoverageMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName("coverageEdit", form.getPERSON_ID());
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);
@@ -340,8 +338,10 @@ public class SubStdCoverageMainAction extends CCAction {
 		
 		retrieveForm( inputs, PolicyNo ,  ctx);
 		
-		try {			
+		try {
+			
 			WSPolicyPersonCovMainCall.update(inputs, msgInfo, inoutparms, outparms);
+		
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -367,7 +367,6 @@ public class SubStdCoverageMainAction extends CCAction {
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			//ctx.forwardByName("subStdCoverage",form.getPERSON_ID(), form.getCOVERAGE_CODE() );
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName("coverageEdit", form.getPERSON_ID());
 			log.debug("Finish....resetting " + classAction);
 		}

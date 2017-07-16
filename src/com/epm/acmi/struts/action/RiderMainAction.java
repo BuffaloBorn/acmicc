@@ -10,7 +10,6 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -259,7 +258,7 @@ public class RiderMainAction extends CCAction {
 		
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
+		
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -354,7 +353,6 @@ public class RiderMainAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -382,7 +380,6 @@ public class RiderMainAction extends CCAction {
 		
 		try {
 			WSRiderMainCall.edit(user, inputs, msgInfo, inoutparms, outparms);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -415,7 +412,6 @@ public class RiderMainAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, msgInfo.value.getMESSAGE_TEXT());
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);

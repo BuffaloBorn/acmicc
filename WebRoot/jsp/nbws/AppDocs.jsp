@@ -8,12 +8,17 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-utility.tld" prefix="util"%>
 <%session.setAttribute("pageContext", pageContext); %>
 
+
+<script type="text/javascript">	
+window.onload = addherfListenersToSort;
+</script>
+
 <script language="javascript">
 
 	
 	function ConfirmChoice()
 	{
-	
+			gTabClick=true;
 			var answer = confirm("The selected document will removed from this application. Do you want to continue?");
 			if (answer !=0)
 			{
@@ -62,7 +67,7 @@
 					sortable="false" />	
 				<ctrl:columntext title="doc.copyforpolicy" property="CFP" width="40" />
 				<ctrl:columntext title="doc.annotate" property="annotate" width="40" />
-				<ctrl:columnedit title="list.edit" />
+				<ctrl:columnedit title="list.edit" onclick="gTabClick=true"/>
 				<ctrl:columndelete title="list.remove"
 					onclick="return ConfirmChoice();" />
 			</ctrl:list></td>

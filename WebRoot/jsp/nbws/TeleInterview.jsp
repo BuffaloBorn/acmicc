@@ -9,15 +9,34 @@
      if the user hits enter instead of clicking the mouse, the form would bypass
      js validation and execute the action. 
 -->
+<script type="text/javascript">	
+window.onload = addherfListeners;
+</script>
 
 <script language="Javascript">
+
 
 
 var submitcount=0;
 
 function validate() {
-	if (validateInput()) {
-		tInterviewForm.submit();
+	if (validateInput()) 
+	{
+		try
+		{	
+			gTabClick=true;
+			tInterviewForm.submit();
+		}
+		catch(ex)
+		{
+			//don't want a genuine error
+			//lets just restrict this our Unspecified one
+			if(ex.message.indexOf('Unspecified') == -1)
+			{
+					
+			}
+	 	}		
+		
 	}
 }
 	  
@@ -88,8 +107,21 @@ function cancelClicked() {
 	document.getElementById('btnCancelHidden').value='clicked'
 	document.getElementById('btnSaveHidden').value='';
 	
-		
-	tInterviewForm.submit();
+		try
+		{	
+			gTabClick=true;
+			tInterviewForm.submit();
+		}
+		catch(ex)
+		{
+			//don't want a genuine error
+			//lets just restrict this our Unspecified one
+			if(ex.message.indexOf('Unspecified') == -1)
+			{
+					
+			}
+	 	}	
+			
 		
 }
 

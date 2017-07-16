@@ -5,7 +5,6 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/tlds/cc-base.tld" prefix="base"%>
 
-
 <html:form action="/iuauser/browsePolicyCertPerson" styleId="frmBrowsePolicyCertPerson">
 	<forms:form formid="browsePolicyCertPerson" caption="form.iasdiary.browse.policy.cert.person.title" type="edit" width="920">
 		<forms:html align="center">

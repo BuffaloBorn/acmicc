@@ -29,8 +29,15 @@ function setVariable() {
    else {
     	adminForm.refreshEPM.value = "false";
    }
+   
+    if (refreshIAS != null && refreshIAS == "on") {
+       	adminForm.refreshIAS.value = "true";
+   }
+   else {
+    	adminForm.refreshIAS.value = "false";
+   }
       
-   if (refreshEPM == null && refreshAcmic == null) {
+   if (refreshEPM == null && refreshAcmic == null && refreshIAS == null) {
    		alert("Nothing is selected, no caches will be refreshed");
    	}
    	else {
@@ -49,6 +56,9 @@ function setVariable() {
 	</forms:row>
  	<forms:row>		
 		<forms:checkbox property="refreshEPM" label="epm.refresh.title" join="true"/>
+	</forms:row>
+	<forms:row>		
+		<forms:checkbox property="refreshIAS" label="ias.refresh.title" join="true"/>
 	</forms:row>
 	<forms:row>
 

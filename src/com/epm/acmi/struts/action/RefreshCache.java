@@ -3,8 +3,6 @@ package com.epm.acmi.struts.action;
 import org.apache.log4j.Logger;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
-import com.cc.framework.ui.control.ControlActionContext;
-import com.cc.framework.ui.control.TabsetControl;
 import com.epm.acmi.struts.form.AdminForm;
 import com.epm.acmi.util.*;
 
@@ -24,6 +22,7 @@ public class RefreshCache extends CCAction {
 		
 		String acmicCache = form.getRefreshAcmic();
 		String epmCache   = form.getRefreshEPM();
+		String iasCache = form.getRefreshIAS();
 		
 		try {
 			if (acmicCache != null && acmicCache.equalsIgnoreCase("true")) {
@@ -37,6 +36,20 @@ public class RefreshCache extends CCAction {
 			context.addGlobalError("refersh.acmic.error");
 			log.error(e);
 		}
+		
+		try {
+			if (iasCache != null && iasCache.equalsIgnoreCase("true")) {
+				log.debug("Getting ready to Refresh IAS Cache");
+				ACMICache.getIasCodesTable();
+				log.debug("Finished Refreshing IAS Cache");
+				context.addGlobalMessage("refresh.ias.success");
+				form.setRefreshIAS(null);
+			}
+		} catch(Exception e){
+			context.addGlobalError("refersh.ias.error");
+			log.error(e);
+		}
+		
 			
 		try {
 			if (epmCache != null && epmCache.equalsIgnoreCase("true")) {

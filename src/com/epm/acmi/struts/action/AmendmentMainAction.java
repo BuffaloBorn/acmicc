@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
-import com.cc.acmi.common.CookieUtil;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
@@ -135,7 +134,6 @@ public class AmendmentMainAction extends CCAction {
 		if(modify != null)
 		  ctx.request().setAttribute("modify", modify);	
 		
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -200,6 +198,7 @@ public class AmendmentMainAction extends CCAction {
 		
 		try {
 			WSAmendMaintCall.add(user, inputs, inoutparms, outparms, msgInfo);
+
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -230,7 +229,6 @@ public class AmendmentMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -260,6 +258,7 @@ public class AmendmentMainAction extends CCAction {
 		
 		try {
 			WSAmendMaintCall.edit(user, inputs, inoutparms, outparms, msgInfo);
+
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -290,7 +289,6 @@ public class AmendmentMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);

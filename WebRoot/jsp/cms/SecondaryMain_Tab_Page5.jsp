@@ -9,6 +9,7 @@
 
 
 <script>
+	setIaspopupcloseToTrue();
 	<c:if test="${not empty param.gIasChangesWereMade}">
 		gIasChangesWereMade=true;
 	</c:if>

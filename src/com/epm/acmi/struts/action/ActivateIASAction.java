@@ -11,7 +11,6 @@ import org.apache.log4j.Logger;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.IasDairyEdit;
 import com.cc.acmi.common.TextProcessing;
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.User;
 import com.cc.acmi.common.TextProcessing.recipientDiaryFormat;
 import com.cc.acmi.presentation.dsp.PolicyEventsBean;
@@ -716,7 +715,6 @@ public class ActivateIASAction extends CCAction{
 		try {
 			
 			WSPolicyMaintCall.updateUnderwriterStatus(policyNo, user, form.getUdwselectedItem(), msgInfo, logCounter);
-		
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + policyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",policyNo);
@@ -746,7 +744,6 @@ public class ActivateIASAction extends CCAction{
 				ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 				log.debug("Finish....Updating Underwriter Status " + classAction);
 				loadForm(ctx,policyNo);
-				CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 				ctx.forwardByName("amendmentwarning");
 				return;
 			}

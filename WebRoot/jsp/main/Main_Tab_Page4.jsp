@@ -7,6 +7,11 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/tlds/cc-utility.tld" prefix="util"%>
 <script language="javascript">
+
+window.onload = addherfListenersToSort;
+window.onbeforeunload=runUnloadCloseIasDiary;
+window.onunload=runCloseIasDiaryUnload;
+
 	function ConfirmChoice()
 	{
 			var answer = confirm("Document will be marked for delete. Do you want to continue?");

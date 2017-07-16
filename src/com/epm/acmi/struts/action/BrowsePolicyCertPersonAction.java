@@ -6,15 +6,8 @@ package com.epm.acmi.struts.action;
 
 
 import org.apache.log4j.Logger;
-import org.apache.struts.config.ForwardConfig;
-
 import java.io.IOException;
-import java.rmi.RemoteException;
-
 import javax.servlet.ServletException;
-import javax.xml.rpc.ServiceException;
-
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.presentation.dsp.PolicyBrowseCertPersonDsp;
 import com.cc.framework.adapter.struts.ActionContext;
@@ -43,15 +36,15 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 	String eventid = null;
 	String modify = null;
 	
-	public void doExecute(ActionContext ctx) throws Exception, IOException, ServletException  {
+	public void doExecute(ActionContext ctx) throws IOException, ServletException  {
 		
 		log.debug("Begin execute doExecute");
-		//try {
+		try {
 			this.loadList(ctx);
-		//} catch (Throwable t) {
-		//	log.error(t.getMessage());
+		} catch (Throwable t) {
+			log.error(t.getMessage());
 			
-		//}
+		}
 		ctx.forwardToInput();
 		log.debug("End execute doExecute");
 	}
@@ -60,11 +53,9 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 	/**
 	 * Fill's the ListControl from the Database
 	 * @param ctx	ActionContext
-	 * @throws ServiceException 
-	 * @throws RemoteException 
 	 * @throws Exception
 	 */
-	private void loadList(ActionContext ctx) throws RemoteException, ServiceException {
+	private void loadList(ActionContext ctx) throws Exception {
 		
 		String PolicyNo = null;
 		comingFrom = null;
@@ -95,7 +86,6 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		browsePersonList.setDataModel(dspData);
 		ctx.session().setAttribute("browsePersons", browsePersonList);
 		
-		this.backEventCookiePath( ctx);
 		
 		log.debug("placed browsePolicyCertPersons session");
 		
@@ -108,6 +98,7 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		// in this example we go back to the jsp
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+		
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
@@ -209,24 +200,12 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		}
 	}
 	
-	public void backEventCookiePath(ActionContext ctx)
-	{
-		ForwardConfig[] helpScr = ctx.mapping().findForwardConfigs();	
-	
-		for (int i = 0; i < helpScr.length; i++)
-		{
-			if(helpScr[i].getName().equalsIgnoreCase(getBackEventName(ctx)))
-			{
-				CookieUtil.setCookie( ctx.response(), "helpScr", helpScr[i].getPath(), "/acmicc/");
-			}
-		}
-	}
-	
-	
 	public void backEvent_onClick(FormActionContext ctx) throws Exception {
 		
 		//SimpleListControl browsePersonList = new SimpleListControl();
-		
+	
+	
+	
 		if (comingFrom != null)
 		{
 			
@@ -308,96 +287,6 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 			
 		}
 	
-	}
-	
-	
-	public String getBackEventName(ActionContext ctx)
-	{
-		
-		String BackEventName = null;
-		
-		if (comingFrom != null)
-		{
-			
-			if (comingFrom.equalsIgnoreCase("FT") && modify.equalsIgnoreCase("create"))
-			{
-				BackEventName = "freeTextCreateBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("FT") && modify.equalsIgnoreCase("edit"))
-			{
-				BackEventName = "freeTextEditBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("FT") && modify.equalsIgnoreCase("editWithStatus"))
-			{
-				BackEventName = "freeTextEditBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("ESM") && modify.equalsIgnoreCase("create"))
-			{
-				BackEventName = "eventStdMemoCreateBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("ESM") && modify.equalsIgnoreCase("edit"))
-			{
-				BackEventName = "eventStdMemoEditBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("ESM") && modify.equalsIgnoreCase("editWithStatus"))
-			{
-				BackEventName = "eventStdMemoEditBack";
-			}	
-		
-			if (comingFrom.equalsIgnoreCase("EP") && modify.equalsIgnoreCase("create"))
-			{
-				BackEventName = "eventPortamedicCreateBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("EP") && modify.equalsIgnoreCase("edit"))
-			{
-				BackEventName = "eventPortamedicEditBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("EP") && modify.equalsIgnoreCase("editWithStatus"))
-			{
-				BackEventName = "eventPortamedicEditBack";
-			}	
-			
-		
-			if (comingFrom.equalsIgnoreCase("LM") && modify.equalsIgnoreCase("create"))
-			{
-				BackEventName = "letterCreateBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("LM") && modify.equalsIgnoreCase("edit"))
-			{
-				BackEventName = "letterEditBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("LM") && modify.equalsIgnoreCase("editWithStatus"))
-			{
-				BackEventName = "letterEditBack";
-			}	
-			
-			if (comingFrom.equalsIgnoreCase("SL") && modify.equalsIgnoreCase("create"))
-			{
-				BackEventName = "stdletterCreateBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("SL") && modify.equalsIgnoreCase("edit"))
-			{
-				BackEventName = "stdLetterEditBack";
-			}
-			
-			if (comingFrom.equalsIgnoreCase("SL") && modify.equalsIgnoreCase("editWithStatus"))
-			{
-				BackEventName = "stdLetterEditBack";
-			}	
-			
-		}
-		
-		return  BackEventName;
 	}
 	
 }

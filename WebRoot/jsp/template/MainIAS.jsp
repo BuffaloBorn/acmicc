@@ -73,6 +73,7 @@
 	
 	window.setInterval('monitorCookie()', 500);
 	window.onbeforeunload = runUnloadIasValidation;
+	window.onunload = setIaspopupcloseToFalse;
 	
 	</script>
 	

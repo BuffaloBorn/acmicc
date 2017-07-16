@@ -12,7 +12,6 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
-import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -235,6 +234,7 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		try {
 			
 			WSPolicyPersonMaint1Call.update(user, inputs, inoutparms,msgInfo, outparms, proformAction);
+	
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -261,7 +261,6 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		{
 			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
-			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 			ctx.forwardByName("backPolicyPersonMain");
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -323,6 +322,5 @@ public class PolicyConditionCodesMainAction extends CCAction {
 				ctx.forwardByName("backPolicyPersonMain");
 			}
 		}
-		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx.request(), ctx.response());
 	}
 }

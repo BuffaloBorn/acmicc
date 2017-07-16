@@ -149,39 +149,9 @@ public class StartUpServlet extends HttpServlet {
 		} else {
 			log.info("ACMI CACHE REFRESH WILL NOT RUN as RunCacheRefresh Switch is set to No");
 		}
-		
-		log.info("Building Standard Event Codes Cache...");
-		ACMICache.loaDStdEventCodes();
-		log.info("Standard Event Codes Cache built....");
-		
-		log.info("Building Standard Event Codes and Descriptions Cache...");
-		ACMICache.loaDStdEventCodesDescription();
-		log.info("Standard Event Codes and Descriptions Cache built....");
-		
-		log.info("Building Condition Codes Cache...");
-		ACMICache.loaDConditionCodes();
-		log.info("Condition Codes Cache built....");
-		
-		log.info("Building Sub Standard Reason Cache...");
-		ACMICache.loaDSubStandardReason();
-		log.info("Standard Sub Standard Reason and Descriptions Cache built....");
-		
-		log.info("Building Under Writer Status Codes Cache...");
-		ACMICache.loaDUnderWriterStatusCodes();
-		log.info("Under Writer Status Codes Cache built....");
-		
-		log.info("Building Memo Id Codes Cache...");
-		ACMICache.loaDMemoIdCodes();
-		log.info("Under Memo Id Codes Cache built....");
-		
-		log.info("Building Person Types Cache...");
-		ACMICache.loaDPersonTypesCodes();
-		log.info("Under Person Types Codes Cache built....");
-		
-		log.info("Building Person Status Cache...");
-		ACMICache.loaDPersonStatusCodes();
-		log.info("Under Person Status Codes Cache built....");
 
+		ACMICache.getIasCodesTable();
+		
 	}
 
 

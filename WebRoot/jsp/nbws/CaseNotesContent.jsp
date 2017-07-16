@@ -20,6 +20,7 @@ var submitcount=0;
 
 function goclear() {
 	gSaveClicked=true;
+	gTabClick=true;
 	document.CaseNotesForm.message.value = "";
 	document.CaseNotesForm.subject.value = "";
 	CaseNotesForm.submit();
@@ -30,6 +31,7 @@ function goSave() {
 	gSaveClicked=true;
 		if (submitcount==0)
 		{
+			gTabClick=true;
 			submitcount++;
 			CaseNotesForm.submit();
 		} else

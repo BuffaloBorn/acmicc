@@ -3,7 +3,8 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-controls.tld" prefix="ctrl"%>
 <%@ page import="java.util.ArrayList"%>
 
-<body  onbeforeunload=" runUnloadCloseIasDiary();runUnloadValidation()" onunload="runCloseIasDiaryUnload()" >
+
+<body  onbeforeunload=" runUnloadCloseIasDiary();runUnloadValidation()" onunload="runCloseIasDiaryUnload()">
 
 <table width="100%">
 	<tr>
