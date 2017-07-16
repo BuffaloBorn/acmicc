@@ -39,7 +39,7 @@ textbox.value = str
 
 function selectClicked(pos) 
 {
-	gIasChangesWereMade=true;
+	window.onbeforeunload = null;
 	document.subStdCoverageMainForm.currentPosition.value = pos;
 	subStdCoverageMainForm.submit();
 }
@@ -47,6 +47,7 @@ function selectClicked(pos)
 
 function checkBand(oListbox)
 {
+	gIasChangesWereMade=true;
 	if(oListbox.options[oListbox.selectedIndex].value == '33')
 	{
 		document.getElementById("hippaId").style.visibility =  "visible"; 	
@@ -87,6 +88,7 @@ function enableConditionCodes()
 
 function disableBtnEdit()
 {
+	gIasSaveClicked=true;
 	document.getElementById("btnResetSudStdCodes").style.visibility =  "hidden";
 	document.getElementById("btnEdit").style.visibility =  "hidden"; 
 	bar1.showBar();
@@ -272,10 +274,10 @@ function disableBtnResetSudStdCodes()
 			<forms:section title="form.iasdiary.policy.person.coverage.main.section.title">
 				<forms:buttonsection default="btnBack">
 				<c:if test="${empty param.rating}">
-					<forms:button base="buttons.src.def2" styleId="btnEdit" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:disableBtnEdit();"/>
+					<forms:button base="buttons.src.def2" styleId="btnEdit" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:disableBtnEdit();" onclick="runPageValidation(this)"/>
 				</c:if>
 				
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.coverage.main.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.coverage.main.back" title="button.title.back" onclick="runPageValidation(this)"/>
 				</forms:buttonsection>
 			</forms:section>
 		</forms:form>

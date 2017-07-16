@@ -92,7 +92,7 @@
 							   IUPS Activity Name : <b><%= session.getAttribute(Constants.taskName)%></b>&nbsp;&nbsp;|&nbsp;&nbsp;
 							<%}%>
 							<% if (session.getAttribute(Constants.policyNumber) != null) { %>
-								IUPS Policy Number: <a href="/acmicc/iuauser/iasdiary.do?intPolicy=true"><b><%= session.getAttribute(Constants.policyNumber)%></b></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+								IUPS Policy Number: <a href="javascript:goDairy()" onclick="disableunload()"><b><%= session.getAttribute(Constants.policyNumber)%></b></a>&nbsp;&nbsp;|&nbsp;&nbsp;
 							<%}%>
 					 </td>
 				</tr>

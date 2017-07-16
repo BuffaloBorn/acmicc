@@ -174,7 +174,7 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnBack">
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

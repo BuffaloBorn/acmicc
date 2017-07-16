@@ -6,7 +6,6 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-base.tld" prefix="base"%>
 
 <script LANGUAGE="JavaScript" TYPE="text/javascript">
-
 	
 function mask(str,textbox,loc,delim){
 var locs = loc.split(',');
@@ -23,6 +22,11 @@ for (var i = 0; i <= locs.length; i++){
 	}
  }
 textbox.value = str
+}
+
+function turnOffWarning()
+{	
+ window.onbeforeunload=null;	
 }
 </script>
 
@@ -107,7 +111,7 @@ textbox.value = str
 										<forms:plaintext label="form.iasdiary.policy.person.coverage.main.name" property="name"  width="10" colspan="1" />
 										<forms:plaintext label="form.iasdiary.policy.person.coverage.main.mode" property="mode"  width="10" colspan="1" />
 										<forms:html label="form.iasdiary.policy.person.coverage.main.display.date">
-											<ctrl:text  property="display_date"  size="10" maxlength="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true;"/>
+											<ctrl:text  property="display_date"  size="10" maxlength="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onkeydown="gIasChangesWereMade=true;"/>
 											<ctrl:button name="btnUpdateDisplayDate" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.person.coverage.main.update.display.date" onmouseup="gIasSaveClicked=true"/>									
 										</forms:html>
 									</forms:row>
@@ -124,7 +128,7 @@ textbox.value = str
 										<ctrl:columntext title="list.iasdiary.policy.person.coverage.main.tot.perm" property="TOTAL_PREMIUM"	 width="10" align="right"/>
 										<ctrl:columngroup title="list.iasdiary.policy.person.coverage.main.substd" align="center">
 											<ctrl:columntext title="list.iasdiary.policy.person.coverage.main.substd.code" property="SUB_STANDARD_RISK_CODE" align="center"/>
-											<ctrl:columnbutton  title="list.iasdiary.policy.person.main.edit.sub.std.coverage" text="list.iasdiary.policy.person.main.edit.sub.std.coverage.click" command="editstdcoverage" align="center"/>
+											<ctrl:columnbutton  title="list.iasdiary.policy.person.main.edit.sub.std.coverage" text="list.iasdiary.policy.person.main.edit.sub.std.coverage.click" command="editstdcoverage" align="center" onclick="runPageValidationHref(this);return false"/>
 										</ctrl:columngroup>
 										<ctrl:columntext title="list.iasdiary.policy.person.coverage.main.eff.perm" property="START_DATE"	 width="10" />
 										<ctrl:columntext title="list.iasdiary.policy.person.coverage.main.term.date" property="END_DATE"	 width="10" />

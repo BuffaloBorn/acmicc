@@ -45,7 +45,19 @@ function confirmDecline() {
 	
 	var retVal = confirm("You are about to decline this task. Do you want to continue?");
 	if (retVal == true) {
-		NBWSDetailsForm.submit();
+		try
+		{
+			NBWSDetailsForm.submit();
+		}
+		 catch(ex)
+		 {
+		 	//don't want a genuine error
+		 	//lets just restrict this our Unspecified one
+		 	if(ex.message.indexOf('Unspecified') == -1)
+		 	{
+		 			
+		 	}
+		 }
 	}	
 	
 }
@@ -129,10 +141,22 @@ function saveClicked(activityButtonClicked) {
 	}
 	else {
 	    if (submitcount==0) {
-			gSaveClicked=true;
-			NBWSDetailsForm.submit();
-			submitcount++;
-			document.body.style.cursor = "wait";
+	    	try
+		 	{
+				NBWSDetailsForm.submit();
+				gSaveClicked=true;
+				submitcount++;
+				document.body.style.cursor = "wait";
+			}
+			catch(ex)
+		 	{
+		 		//don't want a genuine error
+		 		//lets just restrict this our Unspecified one
+		 		if(ex.message.indexOf('Unspecified') == -1)
+		 		{
+		 			
+		 		}
+		 }
 		}   
 		else 
       	{
@@ -157,11 +181,24 @@ function theButtonClicked(activityButtonClicked)
     
     	if (retVal2 == true) {
     	 if (submitcount==0) {
-    		gSaveClicked=true;
-			setCloseIasDiaryUnloadFlags();
-			submitcount++;
-			NBWSDetailsForm.submit();
-			document.body.style.cursor = "wait";
+    	  	try
+		  	{
+				setCloseIasDiaryUnloadFlags();
+				submitcount++;
+				NBWSDetailsForm.submit();
+				gSaveClicked=true;
+				document.body.style.cursor = "wait";
+			}
+			catch(ex)
+		 	{
+		 		//don't want a genuine error
+		 		//lets just restrict this our Unspecified one
+		 		if(ex.message.indexOf('Unspecified') == -1)
+		 		{
+		 		
+		 		}
+		 }
+			
 		  }
 		  else 
       	 {
@@ -618,11 +655,24 @@ function openRoleAssignWindow()
 
 function resubmitReassignWindow() 
 {
-		if (submitcount==0) 
+	if (submitcount==0) 
 	{
-		 submitcount++;
-		 NBWSDetailsForm.buttonSelected.value="reassign";    
-   		 NBWSDetailsForm.submit();
+		 try
+		 {
+		 	submitcount++;
+		 	NBWSDetailsForm.buttonSelected.value="reassign";    
+   		 	NBWSDetailsForm.submit();
+		 }
+		 catch(ex)
+		 {
+		 	//don't want a genuine error
+		 	//lets just restrict this our Unspecified one
+		 	if(ex.message.indexOf('Unspecified') == -1)
+		 	{
+		 		
+		 	}
+		 }
+		 
 	} else
 	{
       	alert("You have already submitted the request to server. Please wait until the page is refreshed.");

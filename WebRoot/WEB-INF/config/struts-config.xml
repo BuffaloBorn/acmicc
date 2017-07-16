@@ -388,7 +388,7 @@
 	    </action>
 
 		<action path="/iuauser/browsePolicies"  attribute="browsePoliciesForm" name="browsePoliciesForm" input=".display.ias.browse.policies.main" type="com.epm.acmi.struts.action.BrowsePoliciesAction">
-		     <forward name="back" path="/iuauser/iasdiary.do" />
+		     <forward name="back" path="/iuauser/iasdiary.do?gIasChangesWereMade=true" />
     	</action>
 	
 	

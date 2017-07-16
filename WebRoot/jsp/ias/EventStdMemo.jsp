@@ -94,8 +94,8 @@
 					</forms:row>				
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

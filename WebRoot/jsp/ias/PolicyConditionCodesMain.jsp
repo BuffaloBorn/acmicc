@@ -17,12 +17,14 @@
 <script type="text/javascript">
 function selectClicked(pos) 
 {
+	window.onbeforeunload = null;
 	document.policyConditionCodesMainForm.currentPosition.value = pos;
 	policyConditionCodesMainForm.submit();
 }
 
 function disableBtnEdit()
 {
+	gIasSaveClicked=true;
 	document.getElementById("btnEdit").style.visibility =  "hidden"; 
 	bar1.showBar();
 	bar1.showMess();
@@ -50,7 +52,7 @@ function disableBtnEdit()
 			</forms:row>
 			<forms:row>	
 				<forms:plaintext label="form.iasdiary.policy.condition.codes.main.name" property="PERSON_NAME" colspan="1" />
-				<forms:text label="form.iasdiary.policy.condition.codes.main.display.date" property="DISPLAY_DATE" size="10" width="10" colspan="1" />
+				<forms:text label="form.iasdiary.policy.condition.codes.main.display.date" property="DISPLAY_DATE" size="10" width="10" colspan="1" onchange="gIasChangesWereMade=true"/>
 				<forms:plaintext label="form.iasdiary.policy.condition.codes.main.next.due.date" property="NEXT_DUE_DATE"  colspan="1" />
 			</forms:row>
 			<forms:html  colspan="3">
@@ -91,13 +93,13 @@ function disableBtnEdit()
 		</forms:section>
 		<forms:section title="form.iasdiary.policy.condition.codes.main.section.title">
 			<forms:buttonsection default="btnBack">
-				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:disableBtnEdit();"/>
+				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="javascript:disableBtnEdit();" onclick="runPageValidation(this)"/>
 				<c:choose> 
 					<c:when test="${param.comingFrom == 'PD'}">
 						<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
 					</c:when>
 					<c:otherwise>
-						<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.policy.person.main.back" />
+						<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.policy.person.main.back" onclick="runPageValidation(this)"/>
 					</c:otherwise>
 				</c:choose>
 			</forms:buttonsection>

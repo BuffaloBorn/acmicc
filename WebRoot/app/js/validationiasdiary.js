@@ -70,6 +70,35 @@ function runPageValidationList()
 }
 
 
+function runPageValidationHref(linkobject)
+{
+	var happen = false;
+	
+	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
+	{
+		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
+		
+		if (answer)
+		{
+			happen = true;
+			window.onbeforeunload=null;
+			window.location.href = linkobject.href;	
+			return happen;
+		}
+		else{
+			happen = false;
+			return happen;
+		}
+	}
+	else
+	{
+		happen = true;
+		window.onbeforeunload=null;
+		window.location.href = linkobject.href;
+		return happen;
+	}
+}
+
 function runPageValidation(formobject)
 {
 	var happen = false;
@@ -101,6 +130,40 @@ function runPageValidation(formobject)
 	}
 }
 
+
+function goDairy()
+{
+	var happen = false;
+
+	if (gIasChangesWereMade == true && gIasSaveClicked == false)
+	{
+		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
+		
+		if (answer)
+		{
+			happen = true;
+			window.onbeforeunload=null;
+			window.location.href = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
+			//return happen;
+		}
+		else{
+			happen = false;
+			window.onbeforeunload=null;
+			//return happen;
+		}
+	
+	}
+	else
+	{
+		happen = true;
+		window.onbeforeunload=null;
+		window.location.href = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
+		//return happen;
+	}
+	
+	
+}
+
 function disableunload()
 {
 	window.onbeforeunload=null;
@@ -121,12 +184,12 @@ function runPageValidationLink()
 			happen = true;
 			window.onbeforeunload=null;
 			closeDeleteCookie();
-			//return happen;
+			return happen;
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
-			//return happen;
+			return happen;
 		}
 	}
 	else
@@ -134,7 +197,7 @@ function runPageValidationLink()
 		happen = true;
 		window.onbeforeunload=null;
 		closeDeleteCookie();
-		//return happen;
+		return happen;
 	}
 //window.onbeforeunload = runUnloadIasValidation;	
 }

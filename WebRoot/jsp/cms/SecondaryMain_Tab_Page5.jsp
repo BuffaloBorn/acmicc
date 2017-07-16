@@ -7,6 +7,13 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-logic.tld" prefix="logic"%>
 <script language='JavaScript' src='app/help/help.js'></script>
 
+
+<script>
+	<c:if test="${not empty param.gIasChangesWereMade}">
+		gIasChangesWereMade=true;
+	</c:if>
+</script>
+
 <c:if test='${sessionScope.IASModify == "create"}'>
 	<div align="center">
 		<html:form action="/iuauser/iasdiary">
@@ -95,8 +102,8 @@
 								<forms:section noframe="false">
 									<forms:row>
 										<forms:html label="form.iasdiary.policy.id">
-											<ctrl:text  property="POLICY_ID" size="10" width="10" />
-											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" />
+											<ctrl:text  property="POLICY_ID" size="10" width="10" onkeydown="gIasChangesWereMade=true"/>
+											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" onmouseup="gIasSaveClicked=true"/>
 											<ctrl:button name="btnBrowsePoliciesHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.browse.policy.help" />
 										</forms:html>
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
@@ -106,10 +113,10 @@
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
-											<ctrl:select  property="udwselectedItem" size="1" >
+											<ctrl:select  property="udwselectedItem" size="1" onchange="gIasChangesWereMade=true" >
 			            						<base:options property="underwriterOptions"  keyProperty="key" labelProperty="value"/>
 								        	</ctrl:select>
-								        	<ctrl:button name="btnUpdateUnderwriterStatus" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.underwriter.status.update" />
+								        	<ctrl:button name="btnUpdateUnderwriterStatus" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.underwriter.status.update" onmouseup="gIasSaveClicked=true"/>
 								        	<c:if test="${not empty param.amendmentwarning}">
 								        		<br/>
 									        	<span style="color:red; font-weight: bold;">WARNING:  HAVE YOU ADDED YOUR AMENDMENT?</span>
@@ -126,27 +133,27 @@
 										<%--<forms:button name="btnPolicyPersonCoverageMain" text="button.iasdiary.policy.person.coverage.main.without" title="button.iasdiary.policy.person.coverage.main.without" />																								--%>
 										<c:choose>									
 		      								<c:when test = "${requestScope.COMMENTS_IND == 'Y'}" >
-		      									<forms:button name="btnPolicyExtendCommentsEdit" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" />
+		      									<forms:button name="btnPolicyExtendCommentsEdit" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnPolicyExtendCommentsCreate" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" />
+		        								<forms:button name="btnPolicyExtendCommentsCreate" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
-										<forms:button name="btnPolicyPersonEdit" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" />		
+										<forms:button name="btnPolicyPersonEdit" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" onclick="runPageValidation(this)"/>		
 		   								<c:choose>
 		      								<c:when test = "${requestScope.NOTES_IND == 'Y'}" >
-		        								<forms:button name="btnUnderwritingNotesEdit"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  />
+		        								<forms:button name="btnUnderwritingNotesEdit"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnUnderwritingNotesCreate"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  />
+		        								<forms:button name="btnUnderwritingNotesCreate"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		  								<c:choose>
 		      								<c:when test = "${requestScope.AMENDMENT_IND == 'Y'}" >
-		        								<forms:button name="btnAmendmentEdit" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  />
+		        								<forms:button name="btnAmendmentEdit" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnAmendmentCreate" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  />
+		        								<forms:button name="btnAmendmentCreate" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		<%--    							<c:choose>--%>
@@ -165,7 +172,7 @@
 							<td valign="top">
 							<logic:present scope="session" name="events">
 								<ctrl:list id="events" name="events" title="list.iasdiary.title" rows="25"  createButton="true" refreshButton="false" runat="server" locale="true">
-									<ctrl:columndrilldown title="list.iasdiary.eventid" property="EVENT_ID"	width="10" enableProperty="columnMode"/>
+									<ctrl:columndrilldown title="list.iasdiary.eventid" property="EVENT_ID"	width="10" enableProperty="columnMode" onclick="disableunload();runPageValidationHref(this);return false"/>
 									<ctrl:columntext title="list.iasdiary.eventst" property="STD_EVENT_ID"  width="10" />
 									<ctrl:columntext title="list.iasdiary.std.event.status" property="STD_EVENT_STATUS"  width="10" />
 									<ctrl:columntext title="list.iasdiary.event.desc" property="EVENT_DESCRIPTION"	 width="120" />
@@ -173,7 +180,7 @@
 									<ctrl:columntext title="list.iasdiary.date.completed" property="DATE_COMPLETED"  width="80" />
 									<ctrl:columntext title="list.iasdiary.event.person" property="EVENT_PERSON"  width="80" />
 									<ctrl:columntext title="list.iasdiary.userid" property="USER_ID"  width="15" />	
-									<ctrl:columnedit title="list.edit" property="editMode"/>
+									<ctrl:columnedit title="list.edit" property="editMode" onclick="disableunload();runPageValidationHref(this);return false"/>
 								</ctrl:list>
 							</logic:present>
 							</td>
@@ -273,8 +280,8 @@
 								<forms:section noframe="false">
 									<forms:row>
 										<forms:html label="form.iasdiary.policy.id">
-											<ctrl:text  property="POLICY_ID" size="10" width="10" />
-											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" />
+											<ctrl:text  property="POLICY_ID" size="10" width="10" onkeydown="gIasChangesWereMade=true"/>
+											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" onmouseup="gIasSaveClicked=true"/>
 											<ctrl:button name="btnBrowsePoliciesHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.browse.policy.help" />
 										</forms:html>
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
@@ -284,10 +291,10 @@
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
-											<ctrl:select  property="udwselectedItem" size="1" >
+											<ctrl:select  property="udwselectedItem" size="1" onchange="gIasChangesWereMade=true">
 			            						<base:options property="underwriterOptions"  keyProperty="key" labelProperty="value"/>
 								        	</ctrl:select>
-								        	<ctrl:button name="btnUpdateUnderwriterStatus" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.underwriter.status.update" />
+								        	<ctrl:button name="btnUpdateUnderwriterStatus" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.underwriter.status.update" onmouseup="gIasSaveClicked=true"/>
 								        	<c:if test="${not empty param.amendmentwarning}">
 								        		<br/>
 									        	<span style="color:red; font-weight: bold;">WARNING:  HAVE YOU ADDED YOUR AMENDMENT?</span>
@@ -304,27 +311,27 @@
 										<%--<forms:button name="btnPolicyPersonCoverageMain" text="button.iasdiary.policy.person.coverage.main.without" title="button.iasdiary.policy.person.coverage.main.without" />																								--%>
 										<c:choose>									
 		      								<c:when test = "${requestScope.COMMENTS_IND == 'Y'}" >
-		      									<forms:button name="btnPolicyExtendCommentsEdit" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" />
+		      									<forms:button name="btnPolicyExtendCommentsEdit" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnPolicyExtendCommentsCreate" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" />
+		        								<forms:button name="btnPolicyExtendCommentsCreate" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
-										<forms:button name="btnPolicyPersonEdit" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" />		
+										<forms:button name="btnPolicyPersonEdit" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" onclick="runPageValidation(this)"/>		
 		   								<c:choose>
 		      								<c:when test = "${requestScope.NOTES_IND == 'Y'}" >
-		        								<forms:button name="btnUnderwritingNotesEdit"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  />
+		        								<forms:button name="btnUnderwritingNotesEdit"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnUnderwritingNotesCreate"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  />
+		        								<forms:button name="btnUnderwritingNotesCreate"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		  								<c:choose>
 		      								<c:when test = "${requestScope.AMENDMENT_IND == 'Y'}" >
-		        								<forms:button name="btnAmendmentEdit" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  />
+		        								<forms:button name="btnAmendmentEdit" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnAmendmentCreate" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  />
+		        								<forms:button name="btnAmendmentCreate" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without" onclick="runPageValidation(this)" />
 		      								</c:otherwise>
 		    							</c:choose>
 		<%--    							<c:choose>--%>
@@ -343,7 +350,7 @@
 							<td valign="top">
 							<logic:present scope="session" name="events">
 								<ctrl:list id="events" name="events" title="list.iasdiary.title" rows="25"  createButton="true" refreshButton="false" runat="server" locale="true">
-									<ctrl:columndrilldown title="list.iasdiary.eventid" property="EVENT_ID"	width="10" enableProperty="columnMode"/>
+									<ctrl:columndrilldown title="list.iasdiary.eventid" property="EVENT_ID"	width="10" enableProperty="columnMode" onclick="disableunload();runPageValidationHref(this);return false"/>
 									<ctrl:columntext title="list.iasdiary.eventst" property="STD_EVENT_ID"  width="10" />
 									<ctrl:columntext title="list.iasdiary.std.event.status" property="STD_EVENT_STATUS"  width="10" />
 									<ctrl:columntext title="list.iasdiary.event.desc" property="EVENT_DESCRIPTION"	 width="120" />
@@ -351,7 +358,7 @@
 									<ctrl:columntext title="list.iasdiary.date.completed" property="DATE_COMPLETED"  width="80" />
 									<ctrl:columntext title="list.iasdiary.event.person" property="EVENT_PERSON"  width="80" />
 									<ctrl:columntext title="list.iasdiary.userid" property="USER_ID"  width="15" />	
-									<ctrl:columnedit title="list.edit" property="editMode" />
+									<ctrl:columnedit title="list.edit" property="editMode" onclick="disableunload();runPageValidationHref(this);return false"/>
 								</ctrl:list>
 							</logic:present>
 							</td>
@@ -451,8 +458,8 @@
 								<forms:section noframe="false">
 									<forms:row>
 										<forms:html label="form.iasdiary.policy.id">
-											<ctrl:text  property="POLICY_ID" size="10" width="10" />
-											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" />
+											<ctrl:text  property="POLICY_ID" size="10" width="10" onkeydown="gIasChangesWereMade=true"/>
+											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" onmouseup="gIasSaveClicked=true"/>
 											<ctrl:button name="btnBrowsePoliciesHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.browse.policy.help" />
 										</forms:html>
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
@@ -462,10 +469,10 @@
 									</forms:row>
 									<forms:row>
 										<forms:html label="form.iasdiary.underwriter.status">
-											<ctrl:select  property="udwselectedItem" size="1" >
+											<ctrl:select  property="udwselectedItem" size="1" onchange="gIasChangesWereMade=true">
 			            						<base:options property="underwriterOptions"  keyProperty="key" labelProperty="value"/>
 								        	</ctrl:select>
-								        	<ctrl:button name="btnUpdateUnderwriterStatus" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.underwriter.status.update" />
+								        	<ctrl:button name="btnUpdateUnderwriterStatus" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.underwriter.status.update" onmouseup="gIasSaveClicked=true"/>
 								        	<c:if test="${not empty param.amendmentwarning}">
 								        		<br/>
 									        	<span style="color:red; font-weight: bold;">WARNING:  HAVE YOU ADDED YOUR AMENDMENT?</span>
@@ -482,27 +489,27 @@
 										<%--<forms:button name="btnPolicyPersonCoverageMain" text="button.iasdiary.policy.person.coverage.main.without" title="button.iasdiary.policy.person.coverage.main.without" />																								--%>
 										<c:choose>									
 		      								<c:when test = "${requestScope.COMMENTS_IND == 'Y'}" >
-		      									<forms:button name="btnPolicyExtendCommentsEdit" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" />
+		      									<forms:button name="btnPolicyExtendCommentsEdit" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnPolicyExtendCommentsCreate" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" />
+		        								<forms:button name="btnPolicyExtendCommentsCreate" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
-										<forms:button name="btnPolicyPersonEdit" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" />		
+										<forms:button name="btnPolicyPersonEdit" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" onclick="runPageValidation(this)"/>		
 		   								<c:choose>
 		      								<c:when test = "${requestScope.NOTES_IND == 'Y'}" >
-		        								<forms:button name="btnUnderwritingNotesEdit"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  />
+		        								<forms:button name="btnUnderwritingNotesEdit"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnUnderwritingNotesCreate"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  />
+		        								<forms:button name="btnUnderwritingNotesCreate"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		  								<c:choose>
 		      								<c:when test = "${requestScope.AMENDMENT_IND == 'Y'}" >
-		        								<forms:button name="btnAmendmentEdit" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  />
+		        								<forms:button name="btnAmendmentEdit" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnAmendmentCreate" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  />
+		        								<forms:button name="btnAmendmentCreate" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		<%--    							<c:choose>--%>
@@ -521,7 +528,7 @@
 							<td valign="top">
 							<logic:present scope="session" name="events">
 								<ctrl:list id="events" name="events" title="list.iasdiary.title" rows="25"  createButton="true" refreshButton="false" runat="server" locale="true">
-									<ctrl:columndrilldown title="list.iasdiary.eventid" property="EVENT_ID"	width="10" enableProperty="columnMode"/>
+									<ctrl:columndrilldown title="list.iasdiary.eventid" property="EVENT_ID"	width="10" enableProperty="columnMode" onclick="disableunload();runPageValidationHref(this);return false"/>
 									<ctrl:columntext title="list.iasdiary.eventst" property="STD_EVENT_ID"  width="10" />
 									<ctrl:columntext title="list.iasdiary.std.event.status" property="STD_EVENT_STATUS"  width="10" />
 									<ctrl:columntext title="list.iasdiary.event.desc" property="EVENT_DESCRIPTION"	 width="120" />
@@ -529,7 +536,7 @@
 									<ctrl:columntext title="list.iasdiary.date.completed" property="DATE_COMPLETED"  width="80" />
 									<ctrl:columntext title="list.iasdiary.event.person" property="EVENT_PERSON"  width="80" />
 									<ctrl:columntext title="list.iasdiary.userid" property="USER_ID"  width="15" />	
-									<ctrl:columnedit title="list.edit" property="editMode"/>
+									<ctrl:columnedit title="list.edit" property="editMode" onclick="disableunload();runPageValidationHref(this);return false"/>
 								</ctrl:list>
 							</logic:present>
 							</td>
