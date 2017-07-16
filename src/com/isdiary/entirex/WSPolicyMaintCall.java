@@ -16,13 +16,10 @@ import com.softwarag.extirex.webservice.policymaint.client.holders.ACPLYMWRespon
 
 public class WSPolicyMaintCall {
 	
-	public static synchronized void fetch(String policyNo, String userId, ACPLYMWResponseIN_PARM1Holder inparms, ACPLYMWResponseINOUT_PARM1Holder inoutparms, ACPLYMWResponseOUT_PARMHolder outparms) throws ServiceException, RemoteException
+	public static synchronized void fetch(String policyNo, String userId, ACPLYMWResponseIN_PARM1Holder inparms, ACPLYMWResponseINOUT_PARM1Holder inoutparms, ACPLYMWResponseOUT_PARMHolder outparms, ACPLYMWResponseMSG_INFOHolder msgInfo) throws ServiceException, RemoteException
 	{
 		IASLIBPort service = new PolicyMaintLocator().getIASLIBPort();
 
-		ACPLYMWResponseMSG_INFOHolder msgInfo = new ACPLYMWResponseMSG_INFOHolder();
-		
-		
 		ACPLYMWIN_PARM action = new ACPLYMWIN_PARM();
 		action.setACTION("D");
 

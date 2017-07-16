@@ -39,9 +39,12 @@ for (var i = 0; i <= locs.length; i++){
 textbox.value = str
 }
 
+	<c:if test="${not empty param.gIasChangesWereMade}">
+		gIasChangesWereMade=true;
+	</c:if>
+
 
 </script>
-
 
 <c:if test='${sessionScope.IASModify == "create"}'>
 	<div align="center">
@@ -100,7 +103,7 @@ textbox.value = str
 						</forms:select>
 					</forms:row>
 					<forms:row>			
-						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIasChangesWereMade=true"/></pre>	
+						<pre><forms:textarea style="font-family: courier new" label="form.iasdiary.freeText.freeTextArea" property="freeTextArea" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIasChangesWereMade=true" /></pre>	
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnSave">
@@ -214,7 +217,7 @@ textbox.value = str
 							</table>
 						</forms:html>
 						<forms:html label="form.iasdiary.freeText.memoid" join="true">	
-							<ctrl:text  property="memoid" size="8" maxlength="8" disable="true"/>										
+							<ctrl:text  property="memoid" size="8" maxlength="8" disabled="true"/>										
 							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help" onmouseup="gIasSaveClicked=true"/>
 						</forms:html>					
 					</forms:row>

@@ -47,6 +47,11 @@
 			pageContext.setAttribute("modifyStatus", "display");		
 		}
 		
+		if(IASModify.equalsIgnoreCase("create"))
+		{
+			pageContext.setAttribute("modifyStatus", "create");		
+		}
+		
 	}
 	
 	
@@ -54,33 +59,22 @@
 
 <c:if test='${pageScope.modifyStatus == "create"}'>
 	<html:form action="/iuauser/amendmentMain"   styleId="frmAmendmentMain">
-		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="920">
+		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="750">
 			<forms:section>
 				<forms:row>
 					<forms:plaintext label="form.iasdiary.amendment.main.policyid" property="policyid" colspan="1" />
 					<forms:plaintext label="form.iasdiary.amendment.main.name" property="name"  colspan="1" />
+				</forms:row>   
+	            <forms:row colspan="2">
+					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="75" maxlength="75" colspan="1" onchange="gIASChangesWereMade=true"/>
 				</forms:row>
-				<forms:html  label="form.iasdiary.amendment.main.wrong.app">
-	        		<span style="font-family:Arial; font-size:12px;">
-	            		Need&nbsp;
-	            	</span>
-	        		<ctrl:select property="wrong_app" size="1" disabled="true">
-	            			<base:options property="wrongAppOptions" keyProperty="key" labelProperty="value" />
-	        		</ctrl:select>	
-	        		<span style="font-family:Arial; font-size:12px;">
-	            		&nbsp;Application 
-	            	</span>
-	        	</forms:html>    
-	            <forms:row>
-					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="75" maxlength="75" colspan="1" />
-				</forms:row>
-				<forms:row>
-					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard"/></pre>
+				<forms:row colspan="2">
+					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">		
-				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)" />
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>
@@ -88,27 +82,16 @@
 
 <c:if test='${pageScope.modifyStatus == "display"}'>
 	<html:form action="/iuauser/amendmentMain"   styleId="frmAmendmentMain">
-		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="920">
+		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="750">
 			<forms:section>
 				<forms:row>
 					<forms:plaintext label="form.iasdiary.amendment.main.policyid" property="policyid" colspan="1" />
 					<forms:plaintext label="form.iasdiary.amendment.main.name" property="name"  colspan="1" />
-				</forms:row>
-				<forms:html  label="form.iasdiary.amendment.main.wrong.app">
-	        		<span style="font-family:Arial; font-size:12px;">
-	            		Need&nbsp;
-	            	</span>
-	        		<ctrl:select disabled="true" property="wrong_app" size="1">
-	            			<base:options property="wrongAppOptions" keyProperty="key" labelProperty="value" />
-	        		</ctrl:select>	
-	        		<span style="font-family:Arial; font-size:12px;">
-	            		&nbsp;Application 
-	            	</span>
-	        	</forms:html>    
-	            <forms:row>
+				</forms:row>   
+	            <forms:row colspan="2">
 					<forms:plaintext label="form.iasdiary.amendment.main.description" property="description" colspan="1" />
 				</forms:row>
-				<forms:row>
+				<forms:row colspan="2">
 					<pre><forms:textarea readonly="true" style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="10" maxlength="600" valign="top"/></pre>
 				</forms:row>
 			</forms:section>
@@ -121,33 +104,22 @@
 
 <c:if test='${pageScope.modifyStatus == "edit"}'>
 	<html:form action="/iuauser/amendmentMain"   styleId="frmAmendmentMain">
-		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="920">
+		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="750">
 			<forms:section>
 				<forms:row>
 					<forms:plaintext label="form.iasdiary.amendment.main.policyid" property="policyid" colspan="1" />
 					<forms:plaintext label="form.iasdiary.amendment.main.name" property="name"  colspan="1" />
+				</forms:row>  
+	            <forms:row colspan="2">
+					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="50" maxlength="50" colspan="1" onchange="gIASChangesWereMade=true"/>
 				</forms:row>
-				<forms:html  label="form.iasdiary.amendment.main.wrong.app">
-	        		<span style="font-family:Arial; font-size:12px;">
-	            		Need&nbsp;
-	            	</span>
-	        		<ctrl:select property="wrong_app" size="1" disabled="true">
-	            			<base:options property="wrongAppOptions" keyProperty="key" labelProperty="value" />
-	        		</ctrl:select>	
-	        		<span style="font-family:Arial; font-size:12px;">
-	            		&nbsp;Application 
-	            	</span>
-	        	</forms:html>    
-	            <forms:row>
-					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="50" maxlength="50" colspan="1" />
-				</forms:row>
-				<forms:row>
-					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard"/></pre>
+				<forms:row colspan="2">
+					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">
-				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update"/>			
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>			
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>

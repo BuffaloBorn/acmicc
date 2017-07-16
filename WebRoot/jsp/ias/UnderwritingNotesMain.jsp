@@ -71,12 +71,12 @@
 					<forms:plaintext label="form.iasdiary.policy.underwriting.notes.main.description" property="description" colspan="1"/>
 				</forms:row>
 				<forms:row>
-					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard"/></pre>
+					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">
-				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>
@@ -114,12 +114,12 @@
 					<forms:plaintext label="form.iasdiary.policy.underwriting.notes.main.description" property="description" colspan="1"/>
 				</forms:row>
 				<forms:row>
-					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard"/></pre>
+					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">					
-				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update"/>		
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>		
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>

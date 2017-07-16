@@ -107,19 +107,19 @@
 						<td valign="top">
 								<logic:present scope="session" name="policyPeasonList">
 									<ctrl:list id="policyPeasonList" name="policyPeasonList" title="list.iasdiary.policy.person.main.person.title" rows="50"  createButton="false" refreshButton="false" runat="server" locale="true" formElement="true" >	
-										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tone" size="1" editableProperty="editable">
+										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tone" size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">
 	            							<base:options property="transactionsOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>
-										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="ttwo" size="1" editableProperty="editable">            							
+										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="ttwo" size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">            							
 	            							<base:options property="transactionsOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>
-										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tthree" size="1" editableProperty="editable">
+										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tthree" size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">
 	            							<base:options property="transactionsOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>
-										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tfour" size="1" editableProperty="editable">
+										<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tfour" size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">
 	            							<base:options property="transactionsOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>
-	        							<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tfive"  width="500"  size="1" editableProperty="editable">
+	        							<ctrl:columnselect  title="list.iasdiary.policy.person.main.t"  property="tfive"  width="500"  size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">
 	            							<base:options property="transactionsOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>
 										<ctrl:columntext title="list.iasdiary.policy.person.main.person" property="PERSON_ID"	 width="10" />
@@ -127,24 +127,24 @@
 										<ctrl:columntext title="list.iasdiary.policy.person.main.person.level.ind" property="PERSON_LEVEL_IND"	width="10" />
 										<ctrl:columntext title="list.iasdiary.policy.person.main.person.status.ind" property="PERSON_STATUS"	 width="10" />
 										<ctrl:columntext title="list.iasdiary.policy.person.main.start.date" property="PERSON_STATUS_START_DATE"	width="10"  />
-										<ctrl:columnselect  title="list.iasdiary.policy.person.main.under.writer.status"  property="PERSON_STATUS_IND" size="1" editableProperty="editable">
+										<ctrl:columnselect  title="list.iasdiary.policy.person.main.under.writer.status"  property="PERSON_STATUS_IND" size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">
 	            							<base:options property="personStatusHelpOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>						
 										<ctrl:columntext title="list.iasdiary.policy.person.main.und.rd" property="RIDER_IND"	width="10" />
-										<ctrl:columnselect  title="list.iasdiary.policy.person.main.smoker.ind" property="SMOKER_IND" size="1" editableProperty="editable">
+										<ctrl:columnselect  title="list.iasdiary.policy.person.main.smoker.ind" property="SMOKER_IND" size="1" editableProperty="editable" onchange="gIasChangesWereMade=true">
 	            							<base:options property="smokerOptions" keyProperty="key" labelProperty="value" />
 	        							</ctrl:columnselect>
 	        							<ctrl:columngroup title="list.iasdiary.policy.person.main.list.title" align="center">
 	        								<% boolean editable = ((PolicyPersonMainDisplayList) policyPeasonList.getDataModel()).getEditable(); %>
 	
 											<% if (!editable)  { %>
-												<ctrl:columnbutton title="list.iasdiary.policy.person.main.edit.row"  text="list.iasdiary.policy.person.main.edit"     image="fw/def2/image/icons/edit.gif"   align="center"  width="60"  command="edit"/>
+												<ctrl:columnbutton title="list.iasdiary.policy.person.main.edit.row"  text="list.iasdiary.policy.person.main.edit"     image="fw/def2/image/icons/edit.gif"   align="center"  width="60"  command="edit" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
 											<% } else { %>
-												<ctrl:columnbutton title="list.iasdiary.policy.person.main.save.row"  text="list.iasdiary.policy.person.main.save"     property="editable"  image="app/images/imgSave.gif"           align="center"  width="60"  command="save"/>
-												<ctrl:columnbutton title="list.iasdiary.policy.person.main.cancel.row"  text="list.iasdiary.policy.person.main.cancel"   property="editable"  image="fw/def2/image/icons/delete.gif"   align="center"  width="60"  command="cancel"/>
+												<ctrl:columnbutton title="list.iasdiary.policy.person.main.save.row"  text="list.iasdiary.policy.person.main.save"     property="editable"  image="app/images/imgSave.gif"           align="center"  width="60"  command="save" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+												<ctrl:columnbutton title="list.iasdiary.policy.person.main.cancel.row"  text="list.iasdiary.policy.person.main.cancel"   property="editable"  image="fw/def2/image/icons/delete.gif"   align="center"  width="60"  command="cancel" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
 											<% } %>			
 				
-											<ctrl:columndrilldown title="button.iasdiary.policy.person.main.rider" property="RIDER_SHOW" width="10" align="center" />
+											<ctrl:columndrilldown title="button.iasdiary.policy.person.main.rider" property="RIDER_SHOW" width="10" align="center" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
 											
 											<%--<% boolean checkRiderStatus = ((PolicyPersonMainDisplayList) policyPeasonList.getDataModel()).getCheckRiderStatus(); --%>
 											
@@ -154,7 +154,7 @@
 											<%--	<ctrl:columnbutton  title="button.iasdiary.policy.person.main.rider" text="list.iasdiary.policy.person.main.rider.click.open" command="riderOpen" align="center"  />--%>
 											<%--<% } %>--%>
 											
-											<ctrl:columnbutton  title="button.iasdiary.policy.person.main.sub.coverage" text="list.iasdiary.policy.person.main.coverage.click" command="coverage" align="center"/>
+											<ctrl:columnbutton  title="button.iasdiary.policy.person.main.sub.coverage" text="list.iasdiary.policy.person.main.coverage.click" command="coverage" align="center" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
 										
 										</ctrl:columngroup>
 									</ctrl:list>
@@ -162,7 +162,7 @@
 								<forms:section title="form.iasdiary.policy.person.main.section.title">
 									<forms:buttonsection default="btnBack">
 										<%--<forms:button base="buttons.src.def2" name="btnSave" text="button.title.save" title="button.title.save" />--%>
-										<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+										<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 									</forms:buttonsection>
 								</forms:section>
 						</td>

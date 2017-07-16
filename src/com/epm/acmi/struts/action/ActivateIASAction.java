@@ -131,7 +131,6 @@ public class ActivateIASAction extends CCAction{
 			// our ListControl-Object.
 			ctx.session().setAttribute("events", userList);
 			loadForm(ctx,PolicyNo );
-			ctx.forwardToInput();
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -145,6 +144,7 @@ public class ActivateIASAction extends CCAction{
 			return;
 			
 		}
+		
 	}
 	
 	
@@ -156,6 +156,7 @@ public class ActivateIASAction extends CCAction{
 		ACPLYMWResponseINOUT_PARM1Holder inoutparms = new ACPLYMWResponseINOUT_PARM1Holder();
 		ACPLYMWResponseOUT_PARMHolder outparms = new ACPLYMWResponseOUT_PARMHolder();
 		ACPLYMWResponseIN_PARM1Holder inparms = new ACPLYMWResponseIN_PARM1Holder();
+		ACPLYMWResponseMSG_INFOHolder msgInfo = new ACPLYMWResponseMSG_INFOHolder();
 		
 		User loggedUser = (User)ctx.session().getAttribute(Constants.loggedUser);
 		 
@@ -164,7 +165,7 @@ public class ActivateIASAction extends CCAction{
 		ctx.session().setAttribute(Constants.IASuser, userid);
 		
 		try {
-			WSPolicyMaintCall.fetch(PolicyNo, userid,inparms, inoutparms,  outparms);
+			WSPolicyMaintCall.fetch(PolicyNo, userid,inparms, inoutparms,  outparms, msgInfo);
 			fillForm(ctx,userid, inparms, inoutparms,  outparms);
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
@@ -182,6 +183,21 @@ public class ActivateIASAction extends CCAction{
 			ctx.addGlobalError(DiaryMessages.FILL_IN_FORM_EXCEPTION, service + " WS",PolicyNo);
 			ctx.forwardToInput();
 			return;
+		}
+		
+		if( msgInfo.value.getRETURN_CODE().equalsIgnoreCase("E"))
+		{
+			log.debug("Mainframe Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
+			ctx.addGlobalError(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
+			ctx.forwardToInput();
+			log.debug("Error occurred " + classAction);
+		}
+		else
+		{
+			log.debug("Message: " + TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
+			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMESSAGE_TEXT()));
+			ctx.forwardToInput();
+			log.debug("Finish....Adding " + classAction);
 		}
 
 	}
@@ -283,7 +299,6 @@ public class ActivateIASAction extends CCAction{
 		ActivateIASForm form = (ActivateIASForm) ctx.form();
 
 		ctx.session().setAttribute(Constants.IASpolicyNumber, form.getPOLICY_ID());
-		//ctx.session().removeAttribute("events");
 		this.loadList(ctx);
 	}
 	
@@ -291,12 +306,12 @@ public class ActivateIASAction extends CCAction{
 	{
 		ActivateIASForm form = (ActivateIASForm) ctx.form();
 		
-		log.debug("Event Create fired");
+		log.debug("Forwarding to Create Event Page");
 		ctx.session().setAttribute(Constants.IASpolicyNumber, form.getPOLICY_ID());
 		ctx.session().setAttribute(Constants.IAStaskName, "Creating New Event");
 		
 		ctx.forwardByName("stdEventCode");
-		log.debug("Event Create completed");
+		log.debug("Forwarding to Create Event Page: Complete Setting Up");
 	}
 	
 	
@@ -310,117 +325,115 @@ public class ActivateIASAction extends CCAction{
 
 		StdEventCode = dceDisplay.getSTD_EVENT_ID().toString();
 		
-		log.debug("session policyno:" + PolicyNo);
+		log.debug("Session Policy Number: " + PolicyNo);
 		
 		
 		if (StdEventCode.equalsIgnoreCase("LETTER")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/letter?eventid="+key+"&action=edit&modify=show");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("BLD")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("ECG")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("EXM"))
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("EXM-BLD")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("URNSPEC")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventPortamedic?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("FREE TX")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("PROP")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("QUOTE")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("PHONE")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=edit");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("STDLET")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/stdLetter?eventid="+key+"&action=edit&modify=show");
 		}
 	
 		if (StdEventCode.equalsIgnoreCase("HIPAA")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
 		}
 		
 		
 		if (StdEventCode.equalsIgnoreCase("HIPAA-OH")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("HIPAA-MI")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("HIV-H")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?&eventid="+key+"&action=edit&modify=show");
 		}
 		
-		
-		
 		if (StdEventCode.equalsIgnoreCase("RE-OPEN")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("SA")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=edit&modify=show");
 		}
 		
@@ -441,138 +454,136 @@ public class ActivateIASAction extends CCAction{
 		String StdEventCode = null;
 		boolean flag = true; 
 	
-
 	    PolicyNo = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
 		ListControl events = (ListControl)ctx.control();
 		PolicyEventsDsp dceDisplay = (PolicyEventsDsp)events.getRowFromKey(key);
 	
 		StdEventCode = dceDisplay.getSTD_EVENT_ID().toString();
 		
-		log.debug("requset policyno:" + PolicyNo);
-		
+		log.debug("Session Policy Number: " + PolicyNo);		
 	
 		if (StdEventCode.equalsIgnoreCase("OFFER-IN")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("FREE TX")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("QUOTE")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("PHONE")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("PROP")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/freeText?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("LETTER")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/letter?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("HIPAA")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("HIPAA-MI")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("HIPAA-OH")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("HIV-H")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?&eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("RE-OPEN")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if (StdEventCode.equalsIgnoreCase("SA")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("iuauser/eventStdMemo?eventid="+key+"&action=display");
 			flag = false;
 		}
 	
 		if (StdEventCode.equalsIgnoreCase("STDLET")) 
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("/iuauser/stdLetter?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if(StdEventCode.equalsIgnoreCase("BLD"))
 		{
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if(StdEventCode.equalsIgnoreCase("ECG"))
 		{ 
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if(StdEventCode.equalsIgnoreCase("EXM"))
 		{ 
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if(StdEventCode.equalsIgnoreCase("EXM-BLD"))
 		{ 
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
 			flag = false;
 		}
 		
 		if(StdEventCode.equalsIgnoreCase("URNSPEC"))
 		{ 
-			log.debug("std event:" + StdEventCode);
+			log.debug("Std Event Code: " + StdEventCode + " - Event Id: " + key );
 			ctx.forwardToAction("/iuauser/eventPortamedic?eventid="+key+"&action=display");
 			flag = false;
 		}
@@ -789,7 +800,6 @@ public class ActivateIASAction extends CCAction{
 	
 	public void policyPersonCoverageMain_onClick(FormActionContext ctx)throws Exception
 	{
-		
 		ctx.forwardToAction("iuauser/policyPersonCoverageMain");
 	}
 	

@@ -33,6 +33,9 @@
 	
 	}
 	
+	<c:if test="${not empty param.gIasChangesWereMade}">
+		gIasChangesWereMade=true;
+	</c:if>
 
 </script>
 
@@ -50,37 +53,39 @@
 						<forms:plaintext label="form.iasdiary.event.std.memo.description" property="description" />
 						<forms:plaintext label="form.iasdiary.event.std.memo.attachment" property="attachment" />
 					</forms:row>
-					<forms:html label="form.iasdiary.event.std.memo.Recipient">
-						<table border="0" cellspacing="0" cellpadding="5">
-							<tr>
-								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9" styleId="eventStdMemoRecipientStyleId"/>
-									<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ctrl:plaintext property="recipient_name" />
-								</td>
-							</tr>
-						</table>
-					 </forms:html>
-					 <forms:html label="form.iasdiary.event.std.memo.memoid" join="true">	
-	 					<ctrl:plaintext property="memoid" />
-					 </forms:html>
+					<forms:row>
+						<forms:html label="form.iasdiary.event.std.memo.Recipient">
+							<table border="0" cellspacing="0" cellpadding="5">
+								<tr>
+									<td>
+										<ctrl:text  property="recipient_id" maxlength="9" size="9" styleId="eventStdMemoRecipientStyleId"/>
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ctrl:plaintext property="recipient_name" />
+									</td>
+								</tr>
+							</table>
+						 </forms:html>
+						 <forms:html label="form.iasdiary.event.std.memo.memoid" join="true">	
+		 					<ctrl:plaintext property="memoid" />
+						 </forms:html>
+					 </forms:row>
 					 <forms:row>
-						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1">
+						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.event.std.memo.requested" property="requested" />
-						<forms:text label="form.iasdiary.event.std.memo.response.date" property="respn_date" maxlength="10" size="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+						<forms:text label="form.iasdiary.event.std.memo.response.date" property="respn_date" maxlength="10" size="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 					</forms:row>
 					<forms:row>
-						<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1">
+						<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.event.std.memo.form.id" property="application_formid" />
-						<forms:select id="freeformid" label="form.iasdiary.event.std.memo.free.form.ind" property="freeformind" size="1">
+						<forms:select id="freeformid" label="form.iasdiary.event.std.memo.free.form.ind" property="freeformind" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="freeformIndOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>		
 					</forms:row>
@@ -111,23 +116,25 @@
 						<forms:plaintext label="form.iasdiary.event.std.memo.description" property="description" />
 						<forms:plaintext label="form.iasdiary.event.std.memo.attachment" property="attachment" />
 					</forms:row>
-					<forms:html label="form.iasdiary.event.std.memo.Recipient">
-						<table border="0" cellspacing="0" cellpadding="5">
-							<tr>
-								<td>
-									<ctrl:text property="recipient_id" maxlength="9" size="9"/>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ctrl:text property="recipient_name" size="8" maxlength="8" />
-								</td>
-							</tr>
-						</table>
-					</forms:html>
-					<forms:html label="form.iasdiary.event.std.memo.memoid">
-						<ctrl:text property="memoid" size="8" maxlength="8" />
-					</forms:html>
+					<forms:row>
+						<forms:html label="form.iasdiary.event.std.memo.Recipient">
+							<table border="0" cellspacing="0" cellpadding="5">
+								<tr>
+									<td>
+										<ctrl:text property="recipient_id" maxlength="9" size="9"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ctrl:text property="recipient_name" size="8" maxlength="8" />
+									</td>
+								</tr>
+							</table>
+						</forms:html>
+						<forms:html label="form.iasdiary.event.std.memo.memoid" join="true">
+							<ctrl:text property="memoid" size="8" maxlength="8" />
+						</forms:html>
+					</forms:row>
 					<forms:row>
 						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
@@ -171,37 +178,39 @@
 						<forms:plaintext label="form.iasdiary.event.std.memo.description" property="description" />
 						<forms:plaintext label="form.iasdiary.event.std.memo.attachment" property="attachment" />
 					</forms:row>
-					<forms:html label="form.iasdiary.event.std.memo.Recipient">
-						<table border="0" cellspacing="0" cellpadding="5">
-							<tr>
-								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9"/>
-									<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ctrl:plaintext property="recipient_name" />
-								</td>
-							</tr>
-						</table>
-					 </forms:html>
-					 <forms:html label="form.iasdiary.event.std.memo.memoid">	
-	 					<ctrl:plaintext property="memoid" />
-					 </forms:html>
+					<forms:row>
+						<forms:html label="form.iasdiary.event.std.memo.Recipient">
+							<table border="0" cellspacing="0" cellpadding="5">
+								<tr>
+									<td>
+										<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ctrl:plaintext property="recipient_name" />
+									</td>
+								</tr>
+							</table>
+						 </forms:html>
+						 <forms:html label="form.iasdiary.event.std.memo.memoid" join="true">	
+		 					<ctrl:plaintext property="memoid" />
+						 </forms:html>
+					 </forms:row>
 					 <forms:row>
-						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1">
+						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.event.std.memo.requested" property="requested" />
-						<forms:text label="form.iasdiary.event.std.memo.response.date" property="respn_date" maxlength="10" size="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+						<forms:text label="form.iasdiary.event.std.memo.response.date" property="respn_date" maxlength="10" size="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 					</forms:row>
 					<forms:row>
-						<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1">
+						<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.event.std.memo.form.id" property="application_formid" />
-						<forms:select id="freeformid" label="form.iasdiary.event.std.memo.free.form.ind" property="freeformind" size="1">
+						<forms:select id="freeformid" label="form.iasdiary.event.std.memo.free.form.ind" property="freeformind" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="freeformIndOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>		
 					</forms:row>
@@ -210,8 +219,8 @@
 					</forms:row>			
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 				</forms:buttonsection>	
 			</forms:form>
 		</html:form>
@@ -232,26 +241,28 @@
 						<forms:plaintext label="form.iasdiary.event.std.memo.description" property="description" />
 						<forms:plaintext label="form.iasdiary.event.std.memo.attachment" property="attachment" />
 					</forms:row>
-					<forms:html label="form.iasdiary.event.std.memo.Recipient">
-						<table border="0" cellspacing="0" cellpadding="5">
-							<tr>
-								<td>
-									<ctrl:plaintext  property="recipient_id"/>
-									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ctrl:plaintext property="recipient_name" />
-								</td>
-							</tr>
-						</table>
-					 </forms:html>
-					 <forms:html label="form.iasdiary.event.std.memo.memoid" join="true">	
-	 					<ctrl:plaintext property="memoid" />
-					 </forms:html>
+					<forms:row>
+						<forms:html label="form.iasdiary.event.std.memo.Recipient">
+							<table border="0" cellspacing="0" cellpadding="5">
+								<tr>
+									<td>
+										<ctrl:plaintext  property="recipient_id"/>
+										<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ctrl:plaintext property="recipient_name" />
+									</td>
+								</tr>
+							</table>
+						 </forms:html>
+						 <forms:html label="form.iasdiary.event.std.memo.memoid" join="true">	
+		 					<ctrl:plaintext property="memoid" />
+						 </forms:html>
+					 </forms:row>
 					 <forms:row>
-						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1">
+						<forms:select id="statusid" label="form.iasdiary.event.std.memo.status" property="status" size="1" onchange="gIasChangesWereMade=true">
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
 						<forms:plaintext label="form.iasdiary.event.std.memo.requested" property="requested" />
@@ -261,7 +272,7 @@
 					<c:set var="form" value="${eventStdMemoForm}"/>
 					<c:choose>
 						<c:when test='${form.second_request == "N"}'>
-							<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1">
+							<forms:select id="second_requestid" label="form.iasdiary.event.std.mem.second.request" property="second_request" size="1" onchange="gIasChangesWereMade=true">
 								<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 							</forms:select>
 						</c:when>
@@ -275,12 +286,12 @@
 						<forms:plaintext label="form.iasdiary.event.std.memo.free.form.ind" property="freeformind" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea style="font-family: courier new" id="stdletterTextArea"  label="form.iasdiary.event.std.memo.LetterTextArea"	property="stdletterTextArea" readonly="true" cols="75" rows="14" maxlength="4500" valign="top" /></pre>
+						<pre><forms:textarea style="font-family: courier new" id="stdletterTextArea"  label="form.iasdiary.event.std.memo.LetterTextArea"	property="stdletterTextArea" readonly="true" cols="75" rows="14" maxlength="4500" valign="top" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>			
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 				</forms:buttonsection>	
 			</forms:form>
 		</html:form>

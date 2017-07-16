@@ -22,6 +22,25 @@
 	pageContext.setAttribute("modifyStatus", modifyStatus);
 %>
 
+<script>
+		
+		
+		function toggleSet(rad) 
+		{ 
+  			gIasChangesWereMade=true; 
+		}
+		
+	</script>
+
+
+<c:if test="${not empty param.gIasChangesWereMade}">
+	<script>
+		gIasChangesWereMade=true;
+	</script>
+</c:if>
+
+
+
 
 <c:if test='${sessionScope.IASModify == "create"}'>
 	<div align="center">
@@ -41,7 +60,7 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9"/>
+									<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
 									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
@@ -53,10 +72,10 @@
 						</table>
 					</forms:html>
 					<forms:row>			
-						<forms:select id="statusid" label="form.iasdiary.letter.status" property="status" size="1" onchange="gIASChangesWereMade=true" styleId="letterstatus" disabled="true"> 
+						<forms:select id="statusid" label="form.iasdiary.letter.status" property="status" size="1" styleId="letterstatus" disabled="true"> 
 							<base:options property="statusOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
+						<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true" >
 							<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>			
 						<forms:plaintext label="form.iasdiary.letter.requested" property="requested" colspan="1" />
@@ -64,25 +83,25 @@
 					</forms:row>
 					<forms:row>
 						<forms:html label="" colspan="1"/>	
-						<forms:radio property="by_agent_applicant" value="0" description="form.iasdiary.letter.by.agent"/>
-						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant"/>
+						<forms:radio property="by_agent_applicant" value="0" description="form.iasdiary.letter.by.agent" onclick="toggleSet(this)" />
+						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant" onclick="toggleSet(this)" />
 					</forms:row>
 					<forms:row join="true">
-						<forms:radio  label=""  property="letter_text"  value="0"  description="form.iasdiary.letter.withdrawn"/>
-						<pre><forms:textarea  style="font-family: courier new" id ="letter_withdrawn" property="letter_withdrawn" cols="75" rows="1" maxlength="150" valign="top"/></pre>							
+						<forms:radio  label=""  property="letter_text"  value="0"  description="form.iasdiary.letter.withdrawn" onclick="toggleSet(this)" />
+						<pre><forms:textarea  style="font-family: courier new" id ="letter_withdrawn" property="letter_withdrawn" cols="75" rows="1" maxlength="150" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>							
 					</forms:row>
 					<forms:row>
-						<forms:radio  label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete"/>
-						<pre><forms:textarea  style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top"/></pre>
+						<forms:radio  label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete" onclick="toggleSet(this)" />
+						<pre><forms:textarea  style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>
 					</forms:row>	
 					<forms:row>
-						<forms:checkbox label="" property="letter_declined_value"  description="form.iasdiary.letter.declined"/>
-						<pre><forms:textarea  style="font-family: courier new" id="letter_declined" property="letter_declined" cols="75" rows="5" maxlength="450" valign="top"/></pre>
+						<forms:checkbox label="" property="letter_declined_value"  description="form.iasdiary.letter.declined" onclick="toggleSet(this)" />
+						<pre><forms:textarea  style="font-family: courier new" id="letter_declined" property="letter_declined" cols="75" rows="5" maxlength="450" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>
 					</forms:row>		
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -172,7 +191,7 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9"/>
+									<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIASChangesWereMade=true"/>
 									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
@@ -190,7 +209,7 @@
 						<c:set var="form" value="${letterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
-								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
 									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 								</forms:select>
 							</c:when>
@@ -205,25 +224,25 @@
 					</forms:row>
 					<forms:row>
 						<forms:html label="" colspan="1"/>
-						<forms:radio property="by_agent_applicant" value="0" description="form.iasdiary.letter.by.agent"/>
-						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant"/>
+						<forms:radio property="by_agent_applicant" value="0" description="form.iasdiary.letter.by.agent" onclick="toggleSet(this)"/>
+						<forms:radio property="by_agent_applicant" value = "1" description="form.iasdiary.letter.by.applicant" onclick="toggleSet(this)"/>
 					</forms:row>
 					<forms:row join="true">
-						<forms:radio  label=""  property="letter_text"  value="0"  description="form.iasdiary.letter.withdrawn"/>
-						<pre><forms:textarea  style="font-family: courier new" id ="letter_withdrawn" property="letter_withdrawn" cols="75" rows="1" maxlength="150" valign="top"/></pre>							
+						<forms:radio  label=""  property="letter_text"  value="0"  description="form.iasdiary.letter.withdrawn" onclick="toggleSet(this)"/>
+						<pre><forms:textarea  style="font-family: courier new" id ="letter_withdrawn" property="letter_withdrawn" cols="75" rows="1" maxlength="150" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>							
 					</forms:row>
 					<forms:row>
-						<forms:radio  label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete"/>
-						<pre><forms:textarea style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top"/></pre>
+						<forms:radio  label="" property="letter_text"  value="1"  description="form.iasdiary.letter.incomplete" onclick="toggleSet(this)"/>
+						<pre><forms:textarea style="font-family: courier new" id="letter_incomplete" property="letter_incomplete" cols="75" rows="3" maxlength="300" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>
 					</forms:row>	
 					<forms:row>
-						<forms:checkbox label="" property="letter_declined_value"  description="form.iasdiary.letter.declined"/>
-						<pre><forms:textarea style="font-family: courier new" id="letter_declined" property="letter_declined" cols="75" rows="5" maxlength="450" valign="top"/></pre>
+						<forms:checkbox label="" property="letter_declined_value"  description="form.iasdiary.letter.declined" onclick="toggleSet(this)"/>
+						<pre><forms:textarea style="font-family: courier new" id="letter_declined" property="letter_declined" cols="75" rows="5" maxlength="450" valign="top" onkeydown="gIASChangesWereMade=true"/></pre>
 					</forms:row>		
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)" />
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)" />
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>
@@ -248,7 +267,7 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9"/>
+									<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIASChangesWereMade=true"/>
 									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
@@ -266,7 +285,7 @@
 						<c:set var="form" value="${letterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
-								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1">
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
 									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 								</forms:select>	
 							</c:when>
@@ -298,8 +317,8 @@
 					</forms:row>		
 				</forms:section>
 				<forms:buttonsection default="btnEdit">
-					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" />
+					<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

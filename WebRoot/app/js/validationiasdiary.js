@@ -15,7 +15,6 @@ function runUnloadIasValidation()
 	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
 	{
 		event.returnValue = middleline;
-		gIasChangesWereMade =false;
 		
 	}
 

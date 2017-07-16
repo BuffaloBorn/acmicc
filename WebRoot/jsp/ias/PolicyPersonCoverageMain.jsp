@@ -107,7 +107,7 @@ textbox.value = str
 										<forms:plaintext label="form.iasdiary.policy.person.coverage.main.name" property="name"  width="10" colspan="1" />
 										<forms:plaintext label="form.iasdiary.policy.person.coverage.main.mode" property="mode"  width="10" colspan="1" />
 										<forms:html label="form.iasdiary.policy.person.coverage.main.display.date">
-											<ctrl:text  property="display_date"  size="10" maxlength="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+											<ctrl:text  property="display_date"  size="10" maxlength="10"  onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 											<ctrl:button name="btnUpdateDisplayDate" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.person.coverage.main.update.display.date" />									
 										</forms:html>
 									</forms:row>
@@ -133,7 +133,7 @@ textbox.value = str
 								<forms:section title="form.iasdiary.policy.person.coverage.main.section.title">
 									<forms:buttonsection default="btnBack">
 										<%--<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.edit" title="button.title.save" />--%>
-										<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.title.back" />
+										<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.title.back" onclick="runPageValidation(this)"/>
 									</forms:buttonsection>
 								</forms:section>
 						    </td>

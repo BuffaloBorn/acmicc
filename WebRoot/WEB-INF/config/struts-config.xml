@@ -352,38 +352,38 @@
     	
     	<action path="/iuauser/browsePolicyCertPerson" name="browsePolicyCertPersonForm" attribute="browsePolicyCertPersonForm" input=".display.ias.browse.policy.cert.person.main" type="com.epm.acmi.struts.action.BrowsePolicyCertPersonAction">
       		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
-      		<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
-      		<forward name="freeTextCreateBack" path="/iuauser/freeTextCreate.do?action=edit&amp;back=true" redirect="true" />
-      		<forward name="freeTextEdit" path="/iuauser/freeText.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+      		<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
+      		<forward name="freeTextCreateBack" path="/iuauser/freeTextCreate.do?action=edit&amp;back=true&amp;gIasChangesWereMade=true" redirect="true" />
+      		<forward name="freeTextEdit" path="/iuauser/freeText.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="freeTextEditBack" path="/iuauser/freeText.do?action=edit&amp;back=true&amp;event=ft" redirect="true" />
-			<forward name="eventPortamedicCreate" path="/iuauser/eventPortamedicCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventPortamedicCreate" path="/iuauser/eventPortamedicCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="eventPortamedicCreateBack" path="/iuauser/eventPortamedicCreate.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="eventPortamedicEdit" path="/iuauser/eventPortamedic.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventPortamedicEdit" path="/iuauser/eventPortamedic.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="eventPortamedicEditBack" path="/iuauser/eventPortamedic.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="letterCreate" path="/iuauser/letterCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="letterCreate" path="/iuauser/letterCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="letterCreateBack" path="/iuauser/letterCreate.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="letterEdit" path="/iuauser/letter.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />         		      		
+			<forward name="letterEdit" path="/iuauser/letter.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />         		      		
 			<forward name="letterEditBack" path="/iuauser/letter.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?personid={0}&amp;person_name={1}&amp;action=edit" redirect="true" />
+			<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="stdletterCreateBack" path="/iuauser/stdLetterCreate.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="stdLetterEdit" path="/iuauser/stdLetter.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="stdLetterEdit" path="/iuauser/stdLetter.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="stdLetterEditBack" path="/iuauser/stdLetter.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="eventStdMemoCreate" path="/iuauser/eventStdMemoCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventStdMemoCreate" path="/iuauser/eventStdMemoCreate.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="eventStdMemoCreateBack" path="/iuauser/eventStdMemoCreate.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="eventStdMemoEdit" path="/iuauser/eventStdMemo.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}" redirect="true" />
+			<forward name="eventStdMemoEdit" path="/iuauser/eventStdMemo.do?personid={0}&amp;person_name={1}&amp;action=edit&amp;eventid={2}&amp;gIasChangesWereMade=true&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="eventStdMemoEditBack" path="/iuauser/eventStdMemo.do?action=edit&amp;back=true" redirect="true" />
 	    </action>
 	    
 	    <action path="/iuauser/memoIdCodes" name="memoIdCodesForm" attribute="memoIdCodesForm" input=".display.ias.memo.codes.main" type="com.epm.acmi.struts.action.MemoIdCodesAction">
       		<forward name="back" path="/iuauser/iasdiary.do" redirect="true" />
       		<forward name="edit" path="/iuauser/freetextCreate.do?action=edit"/>
-      		<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do?memoid={0}&amp;action=edit&amp;eventid={1}" redirect="true" />
+      		<forward name="freeTextCreate" path="/iuauser/freeTextCreate.do?memoid={0}&amp;action=edit&amp;eventid={1}&amp;gIasChangesWereMade=true" redirect="true" />
       		<forward name="freeTextCreateBack" path="/iuauser/freeTextCreate.do?action=edit&amp;back=true" redirect="true" />
-      		<forward name="freeTextEdit" path="/iuauser/freeText.do?memoid={0}&amp;action=edit&amp;eventid={1}" redirect="true" />
+      		<forward name="freeTextEdit" path="/iuauser/freeText.do?memoid={0}&amp;action=edit&amp;eventid={1}&amp;gIasChangesWereMade=true" redirect="true" />
       		<forward name="freeTextEditBack" path="/iuauser/freeText.do?action=edit&amp;back=true" redirect="true" />
-      		<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?memoid={0}&amp;action=edit" redirect="true" />
+      		<forward name="stdletterCreate" path="/iuauser/stdLetterCreate.do?memoid={0}&amp;action=edit&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="stdletterCreateBack" path="/iuauser/stdLetterCreate.do?action=edit&amp;back=true" redirect="true" />
-			<forward name="stdletterEdit" path="/iuauser/stdLetter.do?memoid={0}&amp;action=edit&amp;eventid={1}&amp;modify=show" redirect="true" />
+			<forward name="stdletterEdit" path="/iuauser/stdLetter.do?memoid={0}&amp;action=edit&amp;eventid={1}&amp;modify=show&amp;gIasChangesWereMade=true" redirect="true" />
 			<forward name="stdletterEditBack" path="/iuauser/stdLetter.do?action=edit&amp;back=true" redirect="true" />
 	    </action>
 
