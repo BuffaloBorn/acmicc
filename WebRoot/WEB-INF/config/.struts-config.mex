@@ -1,0 +1,2273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/about.do" location="4723,3657" dimension="260,88" />
+  <StrutsActivity path="/main.do" location="0,4569" dimension="260,88" />
+  <StrutsActivity path="/logon.do" location="2485,3845" dimension="235,88" />
+  <StrutsActivity path="/logout.do" location="2320,3657" dimension="239,88" />
+  <StrutsActivity path="/reset.do" location="0,5943" dimension="248,88" />
+  <StrutsActivity path="/worklist.do" location="2347,4271" dimension="247,88" />
+  <StrutsActivity path="/secondarymain/refresh.do" location="3320,3657" dimension="244,88" />
+  <StrutsActivity path="/main/tabsetBrowse.do" location="2104,4569" dimension="297,88" />
+  <StrutsActivity path="/main/secondarytabsetBrowse.do" location="2957,4083" dimension="297,88" />
+  <StrutsActivity path="/main/iuauser.do" location="1318,4837" dimension="246,88" />
+  <StrutsActivity path="/main/iuauser/nbws.do" location="572,5343" dimension="235,88" />
+  <StrutsActivity path="/main/actpend.do" location="904,4837" dimension="284,88" />
+  <StrutsActivity path="/main/iasdiary.do" location="560,4569" dimension="263,88" />
+  <StrutsActivity path="/main/reassign.do" location="1735,4837" dimension="249,88" />
+  <StrutsActivity path="/main/reassign1.do" location="1471,4569" dimension="249,88" />
+  <StrutsActivity path="/main/reassign2.do" location="1083,4569" dimension="249,88" />
+  <StrutsActivity path="/main/docexep.do" location="2408,5343" dimension="248,88" />
+  <StrutsActivity path="/secondarymain/actpend.do" location="3421,4271" dimension="284,88" />
+  <StrutsActivity path="/iuauser/StandardLetterErrAutoSave.do" location="4060,3657" dimension="310,88" />
+  <StrutsActivity path="/iuauser/iasdiary.do" location="4151,169" dimension="263,88" />
+  <StrutsActivity path="/iuauser/stdLetter.do" location="4162,2979" dimension="279,88" />
+  <StrutsActivity path="/iuauser/stdLetterCreate.do" location="3439,2023" dimension="279,88" />
+  <StrutsActivity path="/iuauser/letterCreate.do" location="815,2979" dimension="235,88" />
+  <StrutsActivity path="/iuauser/letter.do" location="3737,2979" dimension="235,88" />
+  <StrutsActivity path="/iuauser/freeText.do" location="3062,1097" dimension="250,88" />
+  <StrutsActivity path="/iuauser/freeTextCreate.do" location="2268,2979" dimension="250,88" />
+  <StrutsActivity path="/iuauser/eventPortamedicCreate.do" location="1790,2979" dimension="287,88" />
+  <StrutsActivity path="/iuauser/eventPortamedic.do" location="4541,2979" dimension="287,88" />
+  <StrutsActivity path="/iuauser/eventStdMemo.do" location="5066,2979" dimension="278,88" />
+  <StrutsActivity path="/iuauser/eventStdMemoCreate.do" location="3322,2979" dimension="278,88" />
+  <StrutsActivity path="/iuauser/browsePolicyCertPerson.do" location="3376,2441" dimension="322,88" />
+  <StrutsActivity path="/iuauser/memoIdCodes.do" location="3602,1635" dimension="274,88" />
+  <StrutsActivity path="/iuauser/browsePolicies.do" location="6379,1097" dimension="275,88" />
+  <StrutsActivity path="/iuauser/policyExtendedCommentsMain.do" location="5651,1097" dimension="351,88" />
+  <StrutsActivity path="/iuauser/policyPersonMain.do" location="6265,1635" dimension="288,88" />
+  <StrutsActivity path="/iuauser/riderMain.do" location="7828,1097" dimension="253,88" />
+  <StrutsActivity path="/iuauser/browseRiderCodes.do" location="7865,1635" dimension="261,88" />
+  <StrutsActivity path="/iuauser/policyPersonCoverageMain.do" location="6283,2023" dimension="335,88" />
+  <StrutsActivity path="/iuauser/policyConditionCodesMain.do" location="5073,2023" dimension="330,88" />
+  <StrutsActivity path="/iuauser/amendmentMain.do" location="56,1097" dimension="285,88" />
+  <StrutsActivity path="/iuauser/underwritingNotesMain.do" location="441,1097" dimension="317,88" />
+  <StrutsActivity path="/iuauser/personCompanyMain.do" location="7248,1097" dimension="306,88" />
+  <StrutsActivity path="/iuauser/subStdCoverageMain.do" location="6090,2441" dimension="309,88" />
+  <StrutsActivity path="/iuauser/personCompanyBrowse.do" location="6829,1097" dimension="319,88" />
+  <StrutsActivity path="/iuauser/amendmentCreate.do" location="1727,1635" dimension="238,88" />
+  <StrutsActivity path="/iuauser/freetextCreate.do" location="4753,3187" dimension="238,88" />
+  <StrutsActivity path="/iuauser/eventstdmemoCreate.do" location="1389,1635" dimension="238,88" />
+  <StrutsActivity path="/iuauser/lettercreate.do" location="582,5943" dimension="238,88" />
+  <StrutsActivity path="/iuauser/stdletterCreate.do" location="865,5943" dimension="238,88" />
+  <StrutsActivity path="/iuauser/stdEventCodeError.do" location="1148,5943" dimension="238,88" />
+  <StrutsActivity path="/iuauser/stdEventCodeWithPolicy.do" location="1090,1635" dimension="238,88" />
+  <StrutsActivity path="/iuauser/freeTextEditError.do" location="2119,3187" dimension="238,88" />
+  <StrutsActivity path="/iuauser/freeTextCreateError.do" location="2179,3375" dimension="250,88" />
+  <StrutsActivity path="/iuauser/stdEventCode.do" location="1214,1097" dimension="308,88" />
+  <StrutsActivity path="/secondarymain/reassign.do" location="2774,4271" dimension="249,88" />
+  <StrutsActivity path="/secondarymain/reassign1.do" location="3354,4083" dimension="249,88" />
+  <StrutsActivity path="/secondarymain/reassign2.do" location="3766,4083" dimension="249,88" />
+  <StrutsActivity path="/secondarymain/docexep.do" location="3226,5075" dimension="248,88" />
+  <StrutsActivity path="/main/docexep/update.do" location="2578,5641" dimension="291,88" />
+  <StrutsActivity path="/main/appdocs/update.do" location="2413,5075" dimension="295,88" />
+  <StrutsActivity path="/main/nbw/upload.do" location="2026,5075" dimension="287,88" />
+  <StrutsActivity path="/main/viewdoc.do" location="2202,5641" dimension="276,88" />
+  <StrutsActivity path="/nbs/memosAmend.do" location="638,5075" dimension="272,88" />
+  <StrutsActivity path="/nbs/sharedInfo.do" location="913,5641" dimension="260,88" />
+  <StrutsActivity path="/nbs/details.do" location="221,5641" dimension="267,88" />
+  <StrutsActivity path="/iuauser/caseNotes.do" location="1418,5641" dimension="258,88" />
+  <StrutsActivity path="/userRoleAssign.do" location="4415,3657" dimension="263,88" />
+  <StrutsActivity path="/prevPolicyAction.do" location="5339,3508" dimension="255,88" />
+  <StrutsActivity path="/medRecAction.do" location="293,5943" dimension="244,88" />
+  <StrutsActivity path="/telInterviewAction.do" location="5028,3508" dimension="266,88" />
+  <StrutsActivity path="/listcontrol.do" location="1431,5943" dimension="229,88" />
+  <StrutsActivity path="/treelistcontrol.do" location="1705,5943" dimension="229,88" />
+  <StrutsActivity path="/treecontrol.do" location="1979,5943" dimension="229,88" />
+  <StrutsActivity path="/tabsetcontrol.do" location="2253,5943" dimension="229,88" />
+  <StrutsActivity path="/tabbarcontrol.do" location="2527,5943" dimension="229,88" />
+  <StrutsActivity path="/schedulercontrol.do" location="2801,5943" dimension="229,88" />
+  <StrutsActivity path="/menucontrol.do" location="3075,5943" dimension="229,88" />
+  <StrutsActivity path="/formelements.do" location="3349,5943" dimension="229,88" />
+  <StrutsActivity path="logon;6" location="2620,3663" dimension="85,75" />
+  <StrutsActivity path="/jsp/about/About.jsp" location="4788,3508" dimension="130,49" />
+  <StrutsActivity path="/jsp/main/Main.jsp" location="1237,4290" dimension="117,49" />
+  <StrutsActivity path="/jsp/login/Login.jsp" location="2455,3508" dimension="120,49" />
+  <StrutsActivity path="/jsp/main/SecondaryMain.jsp" location="3200,3864" dimension="168,49" />
+  <StrutsActivity path="/worklist" location="3468,3864" dimension="69,49" />
+  <StrutsActivity path="/jsp/main/AdminMain.jsp" location="3369,3508" dimension="146,49" />
+  <StrutsActivity path="/jsp/nbws/TeleInterview.jsp" location="588,5660" dimension="164,49" />
+  <StrutsActivity path="/jsp/ias/ErrAutoSave.jsp" location="4141,3508" dimension="147,49" />
+  <StrutsActivity path="/iuauser/underwritingNotesMain.do " location="2087,1116" dimension="201,49" />
+  <StrutsActivity path="/iuauser/memoIdCodes" location="2752,1116" dimension="140,49" />
+  <StrutsActivity path=".display.ias.iasdiary" location="4320,0" dimension="124,49" />
+  <StrutsActivity path=".display.ias.stdletter" location="4377,2460" dimension="128,49" />
+  <StrutsActivity path=".create.ias.stdletter" location="3415,1654" dimension="126,49" />
+  <StrutsActivity path=".create.ias.letter" location="819,2460" dimension="111,49" />
+  <StrutsActivity path=".display.ias.letter" location="3810,2460" dimension="113,49" />
+  <StrutsActivity path="/iuauser/freeTextWithStatus.do" location="3122,1641" dimension="193,75" />
+  <StrutsActivity path=".display.ias.freetext" location="3124,188" dimension="127,49" />
+  <StrutsActivity path=".create.ias.freetext" location="2457,3206" dimension="125,49" />
+  <StrutsActivity path=".create.ias.eventportamedic" location="1451,2460" dimension="166,49" />
+  <StrutsActivity path=".display.ias.eventportamedic" location="4733,2460" dimension="168,49" />
+  <StrutsActivity path=".display.ias.eventstdmemo" location="5772,2460" dimension="158,49" />
+  <StrutsActivity path=".create.ias.eventstdmemo" location="2503,2460" dimension="156,49" />
+  <StrutsActivity path=".display.ias.browse.policy.cert.person.main" location="2822,2042" dimension="239,49" />
+  <StrutsActivity path=".display.ias.memo.codes.main" location="3843,1116" dimension="173,49" />
+  <StrutsActivity path=".display.ias.browse.policies.main" location="6541,188" dimension="186,49" />
+  <StrutsActivity path=".display.ias.policy.extended.comments.main" location="5871,188" dimension="242,49" />
+  <StrutsActivity path=".display.ias.policy.person.main" location="6102,1116" dimension="177,49" />
+  <StrutsActivity path=".display.ias.policy.rider.main" location="7966,188" dimension="166,49" />
+  <StrutsActivity path=".display.ias.policy.rider.codes" location="8181,1116" dimension="172,49" />
+  <StrutsActivity path=".display.ias.policy.person.coverage.main" location="6943,1654" dimension="226,49" />
+  <StrutsActivity path=".display.ias.policy.condition.codes.main" location="5136,1654" dimension="219,49" />
+  <StrutsActivity path=".display.ias.amendment.main" location="0,188" dimension="169,49" />
+  <StrutsActivity path=".display.ias.underwriting.notes.main" location="370,188" dimension="204,49" />
+  <StrutsActivity path="/jsp/ias/PersonCompanyMainMain.jsp" location="7425,188" dimension="208,49" />
+  <StrutsActivity path=".display.ias.sub.std.coverage.main" location="6718,2042" dimension="198,49" />
+  <StrutsActivity path="/jsp/ias/PersonCompanyBrowseMain.jsp" location="7010,188" dimension="221,49" />
+  <StrutsActivity path=".acmi.ias.create.base" location="1292,188" dimension="133,49" />
+  <StrutsActivity path="/jsp/cms/DocumentMetaDataPanel.jsp" location="3532,5362" dimension="212,49" />
+  <StrutsActivity path="/jsp/cms/AppDocsMetaDataPanel.jsp" location="2531,4856" dimension="206,49" />
+  <StrutsActivity path="/jsp/cms/UploadDocument.jsp" location="2084,4856" dimension="172,49" />
+  <StrutsActivity path="/logon" location="802,5849" dimension="59,49" />
+  <StrutsActivity path="/jsp/nbws/MemoAmmendments.jsp" location="608,4856" dimension="196,49" />
+  <StrutsActivity path="/jsp/nbws/SharedInformation.jsp" location="951,5362" dimension="188,49" />
+  <StrutsActivity path="/jsp/nbws/CaseNotesContent.jsp" location="1297,5362" dimension="189,49" />
+  <StrutsActivity path="/jsp/userrole/userRoleAssignContent.jsp" location="4434,3508" dimension="224,49" />
+  <StrutsTransition id="/iuauser/memoIdCodes.do,stdletterCreate,/iuauser/stdLetterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3753,1723" />
+      <AbsolutePoint location="3753,1933" />
+      <AbsolutePoint location="3602,1933" />
+      <AbsolutePoint location="3602,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,edit,/main/appdocs/update.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1546,4925" />
+      <AbsolutePoint location="1546,4955" />
+      <AbsolutePoint location="2487,4955" />
+      <AbsolutePoint location="2487,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/reassign1.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1317,4339" />
+      <AbsolutePoint location="1317,4479" />
+      <AbsolutePoint location="1596,4479" />
+      <AbsolutePoint location="1596,4569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/nbs/details.do,success,/main/iuauser/nbws.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="455,5641" />
+      <AbsolutePoint location="455,5491" />
+      <AbsolutePoint location="631,5491" />
+      <AbsolutePoint location="631,5431" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventStdMemoEditBack,/iuauser/eventStdMemo.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3664,2529" />
+      <AbsolutePoint location="3664,2649" />
+      <AbsolutePoint location="5090,2649" />
+      <AbsolutePoint location="5090,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeTwoCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8087,1635" />
+      <AbsolutePoint location="8087,1245" />
+      <AbsolutePoint location="8063,1245" />
+      <AbsolutePoint location="8063,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,back,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7965,1635" />
+      <AbsolutePoint location="7965,1215" />
+      <AbsolutePoint location="7966,1215" />
+      <AbsolutePoint location="7966,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeThreeCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8103,1635" />
+      <AbsolutePoint location="8103,1215" />
+      <AbsolutePoint location="8075,1215" />
+      <AbsolutePoint location="8075,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/worklist.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3212,3913" />
+      <AbsolutePoint location="3212,3993" />
+      <AbsolutePoint location="2445,3993" />
+      <AbsolutePoint location="2445,4206" />
+      <AbsolutePoint location="2471,4206" />
+      <AbsolutePoint location="2471,4271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,amendmentEdit,/iuauser/amendmentMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4171,257" />
+      <AbsolutePoint location="4171,407" />
+      <AbsolutePoint location="198,407" />
+      <AbsolutePoint location="198,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,coverageDisplay,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6368,1723" />
+      <AbsolutePoint location="6368,1753" />
+      <AbsolutePoint location="6376,1753" />
+      <AbsolutePoint location="6376,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,personCompanyMain,/iuauser/personCompanyMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4401,257" />
+      <AbsolutePoint location="4401,347" />
+      <AbsolutePoint location="7299,347" />
+      <AbsolutePoint location="7299,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventStdMemo.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5229,2979" />
+      <AbsolutePoint location="5229,2559" />
+      <AbsolutePoint location="5043,2559" />
+      <AbsolutePoint location="5043,857" />
+      <AbsolutePoint location="4308,857" />
+      <AbsolutePoint location="4308,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/nbs/sharedInfo.do,success,/main/iuauser/nbws.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1010,5641" />
+      <AbsolutePoint location="1010,5521" />
+      <AbsolutePoint location="748,5521" />
+      <AbsolutePoint location="748,5431" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,policyPersonCoverageMain,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4384,257" />
+      <AbsolutePoint location="4384,437" />
+      <AbsolutePoint location="6799,437" />
+      <AbsolutePoint location="6799,1753" />
+      <AbsolutePoint location="6562,1753" />
+      <AbsolutePoint location="6562,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/tabsetBrowse.do,tab1,/main/iuauser.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2215,4657" />
+      <AbsolutePoint location="2215,4747" />
+      <AbsolutePoint location="1523,4747" />
+      <AbsolutePoint location="1523,4837" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/secondarymain/docexep.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3332,3913" />
+      <AbsolutePoint location="3332,3993" />
+      <AbsolutePoint location="3735,3993" />
+      <AbsolutePoint location="3735,4955" />
+      <AbsolutePoint location="3412,4955" />
+      <AbsolutePoint location="3412,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,freeTextEdit,/iuauser/freeText.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3739,1635" />
+      <AbsolutePoint location="3739,1215" />
+      <AbsolutePoint location="3294,1215" />
+      <AbsolutePoint location="3294,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,eventportamedicCreate,/iuauser/eventPortamedicCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1280,1185" />
+      <AbsolutePoint location="1280,1245" />
+      <AbsolutePoint location="1059,1245" />
+      <AbsolutePoint location="1059,2589" />
+      <AbsolutePoint location="1814,2589" />
+      <AbsolutePoint location="1814,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/nbws/CaseNotesContent.jsp,null,/iuauser/caseNotes.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1391,5411" />
+      <AbsolutePoint location="1391,5461" />
+      <AbsolutePoint location="1515,5461" />
+      <AbsolutePoint location="1515,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="logon;6,null,/logon.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2663,3738" />
+      <AbsolutePoint location="2663,3780" />
+      <AbsolutePoint location="2650,3780" />
+      <AbsolutePoint location="2650,3845" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/secondarymain/docexep.do,view,/main/viewdoc.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3350,5163" />
+      <AbsolutePoint location="3350,5551" />
+      <AbsolutePoint location="2432,5551" />
+      <AbsolutePoint location="2432,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,stdLetterEditBack,/iuauser/stdLetter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3584,2529" />
+      <AbsolutePoint location="3584,2829" />
+      <AbsolutePoint location="4178,2829" />
+      <AbsolutePoint location="4178,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/nbs/sharedInfo.do,failure,/logon,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1043,5729" />
+      <AbsolutePoint location="1043,5789" />
+      <AbsolutePoint location="839,5789" />
+      <AbsolutePoint location="839,5849" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeText.do,memoIdHelp,/iuauser/memoIdCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3222,1185" />
+      <AbsolutePoint location="3222,1275" />
+      <AbsolutePoint location="3630,1275" />
+      <AbsolutePoint location="3630,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,riderMain,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4412,257" />
+      <AbsolutePoint location="4412,287" />
+      <AbsolutePoint location="7986,287" />
+      <AbsolutePoint location="7986,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser/nbws.do,tab111,/nbs/details.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="592,5431" />
+      <AbsolutePoint location="592,5461" />
+      <AbsolutePoint location="388,5461" />
+      <AbsolutePoint location="388,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.freetext,null,/iuauser/freeText.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3188,237" />
+      <AbsolutePoint location="3188,287" />
+      <AbsolutePoint location="3156,287" />
+      <AbsolutePoint location="3156,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,tab114,/nbs/memosAmend.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1371,4925" />
+      <AbsolutePoint location="1371,4985" />
+      <AbsolutePoint location="842,4985" />
+      <AbsolutePoint location="842,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".create.ias.stdletter,null,/iuauser/stdLetterCreate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3478,1703" />
+      <AbsolutePoint location="3478,1753" />
+      <AbsolutePoint location="3509,1753" />
+      <AbsolutePoint location="3509,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,underwritingNotesDisplay,/iuauser/underwritingNotesMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4187,257" />
+      <AbsolutePoint location="4187,497" />
+      <AbsolutePoint location="599,497" />
+      <AbsolutePoint location="599,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,subStdCoverageMainEdit,/iuauser/subStdCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6104,2441" />
+      <AbsolutePoint location="6104,2411" />
+      <AbsolutePoint location="6060,2411" />
+      <AbsolutePoint location="6060,2463" />
+      <AbsolutePoint location="6090,2463" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,underwritingNotesCreate,/iuauser/underwritingNotesMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4182,257" />
+      <AbsolutePoint location="4182,467" />
+      <AbsolutePoint location="536,467" />
+      <AbsolutePoint location="536,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/docexep/update.do,docexep,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2666,5641" />
+      <AbsolutePoint location="2666,5491" />
+      <AbsolutePoint location="2563,5491" />
+      <AbsolutePoint location="2563,5431" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3794,1635" />
+      <AbsolutePoint location="3794,1215" />
+      <AbsolutePoint location="3812,1215" />
+      <AbsolutePoint location="3812,887" />
+      <AbsolutePoint location="4258,887" />
+      <AbsolutePoint location="4258,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser/nbws.do,tab115,/nbs/sharedInfo.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="709,5431" />
+      <AbsolutePoint location="709,5551" />
+      <AbsolutePoint location="945,5551" />
+      <AbsolutePoint location="945,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.eventstdmemo,null,/iuauser/eventStdMemo.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5851,2509" />
+      <AbsolutePoint location="5851,2589" />
+      <AbsolutePoint location="5321,2589" />
+      <AbsolutePoint location="5321,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.letter,null,/iuauser/letter.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3867,2509" />
+      <AbsolutePoint location="3867,2859" />
+      <AbsolutePoint location="3874,2859" />
+      <AbsolutePoint location="3874,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/docexep.do,view,/main/viewdoc.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2439,5431" />
+      <AbsolutePoint location="2439,5461" />
+      <AbsolutePoint location="2340,5461" />
+      <AbsolutePoint location="2340,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.policy.person.main,null,/iuauser/policyPersonMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6191,1165" />
+      <AbsolutePoint location="6191,1215" />
+      <AbsolutePoint location="6305,1215" />
+      <AbsolutePoint location="6305,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.policy.person.coverage.main,null,/iuauser/policyPersonCoverageMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7056,1703" />
+      <AbsolutePoint location="7056,1783" />
+      <AbsolutePoint location="6599,1783" />
+      <AbsolutePoint location="6599,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/underwritingNotesMain.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="726,1097" />
+      <AbsolutePoint location="726,437" />
+      <AbsolutePoint location="4176,437" />
+      <AbsolutePoint location="4176,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,browsePolicyCertPerson,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4269,257" />
+      <AbsolutePoint location="4269,947" />
+      <AbsolutePoint location="4052,947" />
+      <AbsolutePoint location="4052,2201" />
+      <AbsolutePoint location="3680,2201" />
+      <AbsolutePoint location="3680,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/AdminMain.jsp,null,/secondarymain/refresh.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3442,3557" />
+      <AbsolutePoint location="3442,3657" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.underwriting.notes.main,null,/iuauser/underwritingNotesMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="472,237" />
+      <AbsolutePoint location="472,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,subStdCoverageMain,/iuauser/subStdCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4329,257" />
+      <AbsolutePoint location="4329,737" />
+      <AbsolutePoint location="5621,737" />
+      <AbsolutePoint location="5621,2141" />
+      <AbsolutePoint location="6161,2141" />
+      <AbsolutePoint location="6161,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/caseNotes.do,failure,/logon,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1547,5729" />
+      <AbsolutePoint location="1547,5819" />
+      <AbsolutePoint location="853,5819" />
+      <AbsolutePoint location="853,5849" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,stdletterCreateBack,/iuauser/stdLetterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3698,1723" />
+      <AbsolutePoint location="3698,1873" />
+      <AbsolutePoint location="3648,1873" />
+      <AbsolutePoint location="3648,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicies.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6517,1097" />
+      <AbsolutePoint location="6517,557" />
+      <AbsolutePoint location="4357,557" />
+      <AbsolutePoint location="4357,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,subStdCoverageMainEdit,/iuauser/subStdCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6307,2111" />
+      <AbsolutePoint location="6307,2141" />
+      <AbsolutePoint location="6189,2141" />
+      <AbsolutePoint location="6189,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".create.ias.eventstdmemo,null,/iuauser/eventStdMemoCreate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2581,2509" />
+      <AbsolutePoint location="2581,2589" />
+      <AbsolutePoint location="3350,2589" />
+      <AbsolutePoint location="3350,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/nbs/memosAmend.do,success,/main/iuauser/nbws.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="683,5163" />
+      <AbsolutePoint location="683,5193" />
+      <AbsolutePoint location="689,5193" />
+      <AbsolutePoint location="689,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,stdEventCodeWithPolicy,/iuauser/stdEventCodeWithPolicy.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1324,1185" />
+      <AbsolutePoint location="1324,1275" />
+      <AbsolutePoint location="1209,1275" />
+      <AbsolutePoint location="1209,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,back,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6329,2441" />
+      <AbsolutePoint location="6329,2291" />
+      <AbsolutePoint location="6546,2291" />
+      <AbsolutePoint location="6546,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/secondarymain/refresh.do,failure,/logon.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3381,3745" />
+      <AbsolutePoint location="3381,3780" />
+      <AbsolutePoint location="2697,3780" />
+      <AbsolutePoint location="2697,3845" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/nbws/SharedInformation.jsp,null,/nbs/sharedInfo.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1045,5411" />
+      <AbsolutePoint location="1045,5521" />
+      <AbsolutePoint location="1075,5521" />
+      <AbsolutePoint location="1075,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,backDisplay,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6301,2441" />
+      <AbsolutePoint location="6301,2261" />
+      <AbsolutePoint location="6498,2261" />
+      <AbsolutePoint location="6498,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/worklist.do,success,/main/tabsetBrowse.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2471,4359" />
+      <AbsolutePoint location="2471,4419" />
+      <AbsolutePoint location="2327,4419" />
+      <AbsolutePoint location="2327,4569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/cms/UploadDocument.jsp,null,/main/nbw/upload.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2170,4905" />
+      <AbsolutePoint location="2170,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/nbws/MemoAmmendments.jsp,null,/nbs/memosAmend.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="706,4905" />
+      <AbsolutePoint location="706,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,errorEditWithStatus,/iuauser/freeTextEditError.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2372,3067" />
+      <AbsolutePoint location="2372,3157" />
+      <AbsolutePoint location="2297,3157" />
+      <AbsolutePoint location="2297,3187" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/ias/PersonCompanyMainMain.jsp,null,/iuauser/personCompanyMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7529,237" />
+      <AbsolutePoint location="7529,317" />
+      <AbsolutePoint location="7503,317" />
+      <AbsolutePoint location="7503,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.policy.rider.codes,null,/iuauser/browseRiderCodes.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8267,1165" />
+      <AbsolutePoint location="8267,1215" />
+      <AbsolutePoint location="8118,1215" />
+      <AbsolutePoint location="8118,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/appdocs/update.do,appdocs,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2487,5163" />
+      <AbsolutePoint location="2487,5193" />
+      <AbsolutePoint location="2497,5193" />
+      <AbsolutePoint location="2497,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,coverageEdit,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6357,2441" />
+      <AbsolutePoint location="6357,2321" />
+      <AbsolutePoint location="6594,2321" />
+      <AbsolutePoint location="6594,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,amendmenterror,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4316,169" />
+      <AbsolutePoint location="4316,79" />
+      <AbsolutePoint location="4061,79" />
+      <AbsolutePoint location="4061,242" />
+      <AbsolutePoint location="4151,242" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/tabsetBrowse.do,tab3,/main/reassign.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2290,4657" />
+      <AbsolutePoint location="2290,4777" />
+      <AbsolutePoint location="1921,4777" />
+      <AbsolutePoint location="1921,4837" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.iasdiary,null,/iuauser/iasdiary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4382,49" />
+      <AbsolutePoint location="4382,169" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,memoIdHelp,/iuauser/memoIdCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2408,2979" />
+      <AbsolutePoint location="2408,2559" />
+      <AbsolutePoint location="2404,2559" />
+      <AbsolutePoint location="2404,1843" />
+      <AbsolutePoint location="3671,1843" />
+      <AbsolutePoint location="3671,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.eventportamedic,null,/iuauser/eventPortamedic.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4817,2509" />
+      <AbsolutePoint location="4817,2679" />
+      <AbsolutePoint location="4804,2679" />
+      <AbsolutePoint location="4804,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,freeTextCreate,/iuauser/freeTextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3616,1723" />
+      <AbsolutePoint location="3616,1783" />
+      <AbsolutePoint location="2349,1783" />
+      <AbsolutePoint location="2349,2559" />
+      <AbsolutePoint location="2346,2559" />
+      <AbsolutePoint location="2346,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventPortamedicCreate.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1909,2979" />
+      <AbsolutePoint location="1909,2559" />
+      <AbsolutePoint location="2026,2559" />
+      <AbsolutePoint location="2026,647" />
+      <AbsolutePoint location="4214,647" />
+      <AbsolutePoint location="4214,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,letterCreate,/iuauser/letterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3383,2529" />
+      <AbsolutePoint location="3383,2619" />
+      <AbsolutePoint location="952,2619" />
+      <AbsolutePoint location="952,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeThreeEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7949,1635" />
+      <AbsolutePoint location="7949,1215" />
+      <AbsolutePoint location="7954,1215" />
+      <AbsolutePoint location="7954,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2314,2979" />
+      <AbsolutePoint location="2314,2559" />
+      <AbsolutePoint location="2318,2559" />
+      <AbsolutePoint location="2318,707" />
+      <AbsolutePoint location="4225,707" />
+      <AbsolutePoint location="4225,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,stdEventCodeError,/iuauser/stdEventCode.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1245,1097" />
+      <AbsolutePoint location="1245,1067" />
+      <AbsolutePoint location="1184,1067" />
+      <AbsolutePoint location="1184,1119" />
+      <AbsolutePoint location="1214,1119" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdLetter.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4364,2979" />
+      <AbsolutePoint location="4364,2799" />
+      <AbsolutePoint location="4341,2799" />
+      <AbsolutePoint location="4341,977" />
+      <AbsolutePoint location="4286,977" />
+      <AbsolutePoint location="4286,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintWithCodeCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7934,1635" />
+      <AbsolutePoint location="7934,1575" />
+      <AbsolutePoint location="7942,1575" />
+      <AbsolutePoint location="7942,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/tabsetBrowse.do,tab2,/main/actpend.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2141,4657" />
+      <AbsolutePoint location="2141,4717" />
+      <AbsolutePoint location="1117,4717" />
+      <AbsolutePoint location="1117,4837" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/appdocs/update.do,cancel,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2634,5163" />
+      <AbsolutePoint location="2634,5193" />
+      <AbsolutePoint location="2532,5193" />
+      <AbsolutePoint location="2532,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,stdEventCode,/iuauser/stdEventCode.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4209,257" />
+      <AbsolutePoint location="4209,617" />
+      <AbsolutePoint location="1429,617" />
+      <AbsolutePoint location="1429,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,riderCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6462,1635" />
+      <AbsolutePoint location="6462,1425" />
+      <AbsolutePoint location="7882,1425" />
+      <AbsolutePoint location="7882,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,policyExtendedCommentsCreate,/iuauser/policyExtendedCommentsMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4335,257" />
+      <AbsolutePoint location="4335,707" />
+      <AbsolutePoint location="5686,707" />
+      <AbsolutePoint location="5686,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/secondarymain/actpend.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3308,3913" />
+      <AbsolutePoint location="3308,4023" />
+      <AbsolutePoint location="3634,4023" />
+      <AbsolutePoint location="3634,4271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,back,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7858,1185" />
+      <AbsolutePoint location="7858,1365" />
+      <AbsolutePoint location="6409,1365" />
+      <AbsolutePoint location="6409,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/docexep.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1349,4339" />
+      <AbsolutePoint location="1349,4389" />
+      <AbsolutePoint location="2839,4389" />
+      <AbsolutePoint location="2839,5253" />
+      <AbsolutePoint location="2603,5253" />
+      <AbsolutePoint location="2603,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,policyExtendedCommentsEdit,/iuauser/policyExtendedCommentsMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4346,257" />
+      <AbsolutePoint location="4346,647" />
+      <AbsolutePoint location="5827,647" />
+      <AbsolutePoint location="5827,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,policyPersonMainEdit,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6278,1635" />
+      <AbsolutePoint location="6278,1605" />
+      <AbsolutePoint location="6235,1605" />
+      <AbsolutePoint location="6235,1679" />
+      <AbsolutePoint location="6265,1679" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,letterEdit,/iuauser/letter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3544,2529" />
+      <AbsolutePoint location="3544,2919" />
+      <AbsolutePoint location="3757,2919" />
+      <AbsolutePoint location="3757,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/letterCreate.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1031,2979" />
+      <AbsolutePoint location="1031,2679" />
+      <AbsolutePoint location="3410,2679" />
+      <AbsolutePoint location="3410,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/docexep.do,edit,/main/docexep/update.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2501,5431" />
+      <AbsolutePoint location="2501,5521" />
+      <AbsolutePoint location="2607,5521" />
+      <AbsolutePoint location="2607,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeText.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3151,1185" />
+      <AbsolutePoint location="3151,1275" />
+      <AbsolutePoint location="3092,1275" />
+      <AbsolutePoint location="3092,2171" />
+      <AbsolutePoint location="3501,2171" />
+      <AbsolutePoint location="3501,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/docexep/update.do,cancel,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2724,5641" />
+      <AbsolutePoint location="2724,5461" />
+      <AbsolutePoint location="2625,5461" />
+      <AbsolutePoint location="2625,5431" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,freeTextEditBack,/iuauser/freeText.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3684,1635" />
+      <AbsolutePoint location="3684,1245" />
+      <AbsolutePoint location="3258,1245" />
+      <AbsolutePoint location="3258,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1243,4339" />
+      <AbsolutePoint location="1243,4389" />
+      <AbsolutePoint location="130,4389" />
+      <AbsolutePoint location="130,4569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventStdMemoCreate.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3572,2979" />
+      <AbsolutePoint location="3572,2949" />
+      <AbsolutePoint location="3530,2949" />
+      <AbsolutePoint location="3530,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/secondarymain/reassign1.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3284,3913" />
+      <AbsolutePoint location="3284,4053" />
+      <AbsolutePoint location="3479,4053" />
+      <AbsolutePoint location="3479,4083" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".create.ias.freetext,null,/iuauser/freeTextCreateError.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2519,3255" />
+      <AbsolutePoint location="2519,3325" />
+      <AbsolutePoint location="2366,3325" />
+      <AbsolutePoint location="2366,3375" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,freeTextEdit,/iuauser/freeText.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3430,2441" />
+      <AbsolutePoint location="3430,2231" />
+      <AbsolutePoint location="2792,2231" />
+      <AbsolutePoint location="2792,1245" />
+      <AbsolutePoint location="3115,1245" />
+      <AbsolutePoint location="3115,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,freeTextEditBack,/iuauser/freeText.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3394,2441" />
+      <AbsolutePoint location="3394,2261" />
+      <AbsolutePoint location="2761,2261" />
+      <AbsolutePoint location="2761,1215" />
+      <AbsolutePoint location="3080,1215" />
+      <AbsolutePoint location="3080,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/nbs/details.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1253,4339" />
+      <AbsolutePoint location="1253,4419" />
+      <AbsolutePoint location="290,4419" />
+      <AbsolutePoint location="290,5461" />
+      <AbsolutePoint location="254,5461" />
+      <AbsolutePoint location="254,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/ias/PersonCompanyBrowseMain.jsp,null,/iuauser/personCompanyBrowse.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7120,237" />
+      <AbsolutePoint location="7120,377" />
+      <AbsolutePoint location="7095,377" />
+      <AbsolutePoint location="7095,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/secondarytabsetBrowse.do,tab3,/secondarymain/reassign.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3069,4171" />
+      <AbsolutePoint location="3069,4236" />
+      <AbsolutePoint location="2961,4236" />
+      <AbsolutePoint location="2961,4271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,diary,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1491,1097" />
+      <AbsolutePoint location="1491,587" />
+      <AbsolutePoint location="4203,587" />
+      <AbsolutePoint location="4203,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,stdletterEditBack,/iuauser/stdLetter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3835,1723" />
+      <AbsolutePoint location="3835,1783" />
+      <AbsolutePoint location="4310,1783" />
+      <AbsolutePoint location="4310,2769" />
+      <AbsolutePoint location="4333,2769" />
+      <AbsolutePoint location="4333,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/actpend.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1285,4339" />
+      <AbsolutePoint location="1285,4509" />
+      <AbsolutePoint location="975,4509" />
+      <AbsolutePoint location="975,4837" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdLetterCreate.do,memoIdHelp,/iuauser/memoIdCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3695,2023" />
+      <AbsolutePoint location="3695,1903" />
+      <AbsolutePoint location="3726,1903" />
+      <AbsolutePoint location="3726,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintWithCodeEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7995,1635" />
+      <AbsolutePoint location="7995,1215" />
+      <AbsolutePoint location="7990,1215" />
+      <AbsolutePoint location="7990,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,freeTextCreateBack,/iuauser/freeTextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3643,1723" />
+      <AbsolutePoint location="3643,1813" />
+      <AbsolutePoint location="2377,1813" />
+      <AbsolutePoint location="2377,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeTwoEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8072,1635" />
+      <AbsolutePoint location="8072,1275" />
+      <AbsolutePoint location="8051,1275" />
+      <AbsolutePoint location="8051,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser/nbws.do,tab114,/nbs/memosAmend.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="768,5343" />
+      <AbsolutePoint location="768,5193" />
+      <AbsolutePoint location="774,5193" />
+      <AbsolutePoint location="774,5163" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/docexep.do,delete,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2426,5343" />
+      <AbsolutePoint location="2426,5313" />
+      <AbsolutePoint location="2378,5313" />
+      <AbsolutePoint location="2378,5387" />
+      <AbsolutePoint location="2408,5387" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/cms/AppDocsMetaDataPanel.jsp,null,/main/appdocs/update.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2634,4905" />
+      <AbsolutePoint location="2634,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,backDisplay,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7846,1185" />
+      <AbsolutePoint location="7846,1335" />
+      <AbsolutePoint location="6540,1335" />
+      <AbsolutePoint location="6540,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,policyPersonCoverageMainDisplay,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6339,2023" />
+      <AbsolutePoint location="6339,1963" />
+      <AbsolutePoint location="6223,1963" />
+      <AbsolutePoint location="6223,2089" />
+      <AbsolutePoint location="6283,2089" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/secondarymain/reassign.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3236,3913" />
+      <AbsolutePoint location="3236,4023" />
+      <AbsolutePoint location="2837,4023" />
+      <AbsolutePoint location="2837,4271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventPortamedicCreateBack,/iuauser/eventPortamedicCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3436,2529" />
+      <AbsolutePoint location="3436,2739" />
+      <AbsolutePoint location="2005,2739" />
+      <AbsolutePoint location="2005,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventPortamedic.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4709,2979" />
+      <AbsolutePoint location="4709,2709" />
+      <AbsolutePoint location="4697,2709" />
+      <AbsolutePoint location="4697,917" />
+      <AbsolutePoint location="4297,917" />
+      <AbsolutePoint location="4297,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,eventStdMemo,/iuauser/eventStdMemo.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4324,257" />
+      <AbsolutePoint location="4324,767" />
+      <AbsolutePoint location="5434,767" />
+      <AbsolutePoint location="5434,2559" />
+      <AbsolutePoint location="5275,2559" />
+      <AbsolutePoint location="5275,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.browse.policy.cert.person.main,null,/iuauser/browsePolicyCertPerson.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2942,2091" />
+      <AbsolutePoint location="2942,2201" />
+      <AbsolutePoint location="3465,2201" />
+      <AbsolutePoint location="3465,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,riderHelpCreate,/iuauser/browseRiderCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7918,1185" />
+      <AbsolutePoint location="7918,1515" />
+      <AbsolutePoint location="7903,1515" />
+      <AbsolutePoint location="7903,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeText.do,failure,/iuauser/freeText.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3093,1097" />
+      <AbsolutePoint location="3093,1067" />
+      <AbsolutePoint location="3032,1067" />
+      <AbsolutePoint location="3032,1141" />
+      <AbsolutePoint location="3062,1141" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,subStdCoverageMainDisplay,/iuauser/subStdCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6355,2111" />
+      <AbsolutePoint location="6355,2171" />
+      <AbsolutePoint location="6217,2171" />
+      <AbsolutePoint location="6217,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,tab14,/iuauser/caseNotes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1476,4925" />
+      <AbsolutePoint location="1476,5015" />
+      <AbsolutePoint location="1684,5015" />
+      <AbsolutePoint location="1684,5461" />
+      <AbsolutePoint location="1644,5461" />
+      <AbsolutePoint location="1644,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,delete,/main/iuauser.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1359,4837" />
+      <AbsolutePoint location="1359,4807" />
+      <AbsolutePoint location="1288,4807" />
+      <AbsolutePoint location="1288,4881" />
+      <AbsolutePoint location="1318,4881" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventPortamedicEdit,/iuauser/eventPortamedic.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3638,2529" />
+      <AbsolutePoint location="3638,2709" />
+      <AbsolutePoint location="4613,2709" />
+      <AbsolutePoint location="4613,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/login/Login.jsp,null,/logon.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2545,3557" />
+      <AbsolutePoint location="2545,3607" />
+      <AbsolutePoint location="2590,3607" />
+      <AbsolutePoint location="2590,3780" />
+      <AbsolutePoint location="2603,3780" />
+      <AbsolutePoint location="2603,3845" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeFourEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7980,1635" />
+      <AbsolutePoint location="7980,1215" />
+      <AbsolutePoint location="7978,1215" />
+      <AbsolutePoint location="7978,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,conditionCodes,/iuauser/policyConditionCodesMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6286,1723" />
+      <AbsolutePoint location="6286,1753" />
+      <AbsolutePoint location="5304,1753" />
+      <AbsolutePoint location="5304,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,backEdit,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6451,2023" />
+      <AbsolutePoint location="6451,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser/nbws.do,tab14,/iuauser/caseNotes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="787,5431" />
+      <AbsolutePoint location="787,5491" />
+      <AbsolutePoint location="1451,5491" />
+      <AbsolutePoint location="1451,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,stdletterEdit,/iuauser/stdLetter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3808,1723" />
+      <AbsolutePoint location="3808,1813" />
+      <AbsolutePoint location="4283,1813" />
+      <AbsolutePoint location="4283,2769" />
+      <AbsolutePoint location="4302,2769" />
+      <AbsolutePoint location="4302,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,amendmentwarning,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,169" />
+      <AbsolutePoint location="4250,109" />
+      <AbsolutePoint location="4091,109" />
+      <AbsolutePoint location="4091,213" />
+      <AbsolutePoint location="4151,213" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventStdMemo.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5182,2979" />
+      <AbsolutePoint location="5182,2589" />
+      <AbsolutePoint location="3691,2589" />
+      <AbsolutePoint location="3691,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,backEdit,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6245,2441" />
+      <AbsolutePoint location="6245,2201" />
+      <AbsolutePoint location="6403,2201" />
+      <AbsolutePoint location="6403,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeOneEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8057,1635" />
+      <AbsolutePoint location="8057,1305" />
+      <AbsolutePoint location="8039,1305" />
+      <AbsolutePoint location="8039,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/logon.do,success,/main/secondarytabsetBrowse.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2661,3933" />
+      <AbsolutePoint location="2661,3963" />
+      <AbsolutePoint location="3032,3963" />
+      <AbsolutePoint location="3032,4083" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/reassign2.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1296,4339" />
+      <AbsolutePoint location="1296,4539" />
+      <AbsolutePoint location="1208,4539" />
+      <AbsolutePoint location="1208,4569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,riderCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7859,1097" />
+      <AbsolutePoint location="7859,1067" />
+      <AbsolutePoint location="7798,1067" />
+      <AbsolutePoint location="7798,1119" />
+      <AbsolutePoint location="7828,1119" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.policy.extended.comments.main,null,/iuauser/policyExtendedCommentsMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5992,237" />
+      <AbsolutePoint location="5992,617" />
+      <AbsolutePoint location="5967,617" />
+      <AbsolutePoint location="5967,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,errorCreate,/iuauser/freeTextCreateError.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2288,3067" />
+      <AbsolutePoint location="2288,3097" />
+      <AbsolutePoint location="2088,3097" />
+      <AbsolutePoint location="2088,3325" />
+      <AbsolutePoint location="2241,3325" />
+      <AbsolutePoint location="2241,3375" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventStdMemoCreate.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3406,2979" />
+      <AbsolutePoint location="3406,2559" />
+      <AbsolutePoint location="2690,2559" />
+      <AbsolutePoint location="2690,737" />
+      <AbsolutePoint location="4231,737" />
+      <AbsolutePoint location="4231,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".create.ias.freetext,null,/iuauser/freeTextCreate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2550,3206" />
+      <AbsolutePoint location="2550,3127" />
+      <AbsolutePoint location="2455,3127" />
+      <AbsolutePoint location="2455,3067" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/secondarymain/docexep.do,delete,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3267,5163" />
+      <AbsolutePoint location="3267,5283" />
+      <AbsolutePoint location="2638,5283" />
+      <AbsolutePoint location="2638,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".create.ias.letter,null,/iuauser/letterCreate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="874,2509" />
+      <AbsolutePoint location="874,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeFiveCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8026,1635" />
+      <AbsolutePoint location="8026,1365" />
+      <AbsolutePoint location="8014,1365" />
+      <AbsolutePoint location="8014,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/nbs/memosAmend.do,failure,/logon,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="865,5163" />
+      <AbsolutePoint location="865,5193" />
+      <AbsolutePoint location="882,5193" />
+      <AbsolutePoint location="882,5759" />
+      <AbsolutePoint location="824,5759" />
+      <AbsolutePoint location="824,5849" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,subStdCoverage,/iuauser/subStdCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6133,2441" />
+      <AbsolutePoint location="6133,2381" />
+      <AbsolutePoint location="6030,2381" />
+      <AbsolutePoint location="6030,2507" />
+      <AbsolutePoint location="6090,2507" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,createrFreeText,.create.ias.freetext,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2413,3067" />
+      <AbsolutePoint location="2413,3157" />
+      <AbsolutePoint location="2488,3157" />
+      <AbsolutePoint location="2488,3206" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/login/Login.jsp,null,/logout.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2485,3557" />
+      <AbsolutePoint location="2485,3607" />
+      <AbsolutePoint location="2440,3607" />
+      <AbsolutePoint location="2440,3657" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,browsePolicies,/iuauser/browsePolicies.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4362,257" />
+      <AbsolutePoint location="4362,587" />
+      <AbsolutePoint location="6425,587" />
+      <AbsolutePoint location="6425,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventPortamedic.do,personidHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4661,2979" />
+      <AbsolutePoint location="4661,2679" />
+      <AbsolutePoint location="3651,2679" />
+      <AbsolutePoint location="3651,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.sub.std.coverage.main,null,/iuauser/subStdCoverageMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6817,2091" />
+      <AbsolutePoint location="6817,2351" />
+      <AbsolutePoint location="6385,2351" />
+      <AbsolutePoint location="6385,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,amendmentCreate,/iuauser/amendmentMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4154,257" />
+      <AbsolutePoint location="4154,317" />
+      <AbsolutePoint location="255,317" />
+      <AbsolutePoint location="255,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,create,/iuauser/freetextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2497,3067" />
+      <AbsolutePoint location="2497,3097" />
+      <AbsolutePoint location="4812,3097" />
+      <AbsolutePoint location="4812,3187" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,coverageEdit,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6409,1723" />
+      <AbsolutePoint location="6409,1753" />
+      <AbsolutePoint location="6413,1753" />
+      <AbsolutePoint location="6413,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdLetter.do,memoIdHelp,/iuauser/memoIdCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4271,2979" />
+      <AbsolutePoint location="4271,2769" />
+      <AbsolutePoint location="4256,2769" />
+      <AbsolutePoint location="4256,1843" />
+      <AbsolutePoint location="3780,1843" />
+      <AbsolutePoint location="3780,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/secondarytabsetBrowse.do,tab5,/worklist.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2995,4171" />
+      <AbsolutePoint location="2995,4206" />
+      <AbsolutePoint location="2553,4206" />
+      <AbsolutePoint location="2553,4271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,personCompanyBrowse,/iuauser/personCompanyBrowse.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4390,257" />
+      <AbsolutePoint location="4390,407" />
+      <AbsolutePoint location="6882,407" />
+      <AbsolutePoint location="6882,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,stdLetterEdit,/iuauser/stdLetter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3597,2529" />
+      <AbsolutePoint location="3597,2799" />
+      <AbsolutePoint location="4209,2799" />
+      <AbsolutePoint location="4209,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdLetter.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4240,2979" />
+      <AbsolutePoint location="4240,2769" />
+      <AbsolutePoint location="3611,2769" />
+      <AbsolutePoint location="3611,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/worklist.do,failure,/logon.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2389,4271" />
+      <AbsolutePoint location="2389,4206" />
+      <AbsolutePoint location="2286,4206" />
+      <AbsolutePoint location="2286,3963" />
+      <AbsolutePoint location="2544,3963" />
+      <AbsolutePoint location="2544,3933" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,stdletterCreate,/iuauser/stdLetterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1500,1185" />
+      <AbsolutePoint location="1500,1215" />
+      <AbsolutePoint location="1995,1215" />
+      <AbsolutePoint location="1995,1753" />
+      <AbsolutePoint location="3462,1753" />
+      <AbsolutePoint location="3462,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/amendmentMain.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="312,1097" />
+      <AbsolutePoint location="312,347" />
+      <AbsolutePoint location="4160,347" />
+      <AbsolutePoint location="4160,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,eventPortamedic,/iuauser/eventPortamedic.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4302,257" />
+      <AbsolutePoint location="4302,887" />
+      <AbsolutePoint location="4702,887" />
+      <AbsolutePoint location="4702,2679" />
+      <AbsolutePoint location="4757,2679" />
+      <AbsolutePoint location="4757,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,stdlet,/iuauser/stdLetter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4291,257" />
+      <AbsolutePoint location="4291,947" />
+      <AbsolutePoint location="4347,947" />
+      <AbsolutePoint location="4347,2769" />
+      <AbsolutePoint location="4395,2769" />
+      <AbsolutePoint location="4395,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.policy.condition.codes.main,null,/iuauser/policyConditionCodesMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5245,1703" />
+      <AbsolutePoint location="5245,1753" />
+      <AbsolutePoint location="5238,1753" />
+      <AbsolutePoint location="5238,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2502,2979" />
+      <AbsolutePoint location="2502,2859" />
+      <AbsolutePoint location="3490,2859" />
+      <AbsolutePoint location="3490,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeOneCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8011,1635" />
+      <AbsolutePoint location="8011,1395" />
+      <AbsolutePoint location="8002,1395" />
+      <AbsolutePoint location="8002,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,stdletterCreate,/iuauser/stdLetterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3609,2441" />
+      <AbsolutePoint location="3609,2141" />
+      <AbsolutePoint location="3672,2141" />
+      <AbsolutePoint location="3672,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,freeTextCreate,/iuauser/freeTextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3463,2529" />
+      <AbsolutePoint location="3463,2799" />
+      <AbsolutePoint location="2439,2799" />
+      <AbsolutePoint location="2439,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,amendmentCreate,/iuauser/amendmentCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1456,1185" />
+      <AbsolutePoint location="1456,1245" />
+      <AbsolutePoint location="1846,1245" />
+      <AbsolutePoint location="1846,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/letterCreate.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="835,2979" />
+      <AbsolutePoint location="835,2559" />
+      <AbsolutePoint location="788,2559" />
+      <AbsolutePoint location="788,557" />
+      <AbsolutePoint location="4198,557" />
+      <AbsolutePoint location="4198,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/ias/ErrAutoSave.jsp,null,/iuauser/StandardLetterErrAutoSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4215,3557" />
+      <AbsolutePoint location="4215,3657" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/nbs/details.do,failure,/logon,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="354,5729" />
+      <AbsolutePoint location="354,5759" />
+      <AbsolutePoint location="809,5759" />
+      <AbsolutePoint location="809,5849" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".create.ias.eventportamedic,null,/iuauser/eventPortamedicCreate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1534,2509" />
+      <AbsolutePoint location="1534,2559" />
+      <AbsolutePoint location="1861,2559" />
+      <AbsolutePoint location="1861,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,tab111,/nbs/details.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1336,4925" />
+      <AbsolutePoint location="1336,4955" />
+      <AbsolutePoint location="321,4955" />
+      <AbsolutePoint location="321,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeText.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3281,1097" />
+      <AbsolutePoint location="3281,797" />
+      <AbsolutePoint location="4242,797" />
+      <AbsolutePoint location="4242,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventStdMemoCreate,/iuauser/eventStdMemoCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3503,2529" />
+      <AbsolutePoint location="3503,2889" />
+      <AbsolutePoint location="3461,2889" />
+      <AbsolutePoint location="3461,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/tabsetBrowse.do,tab4,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2364,4657" />
+      <AbsolutePoint location="2364,4687" />
+      <AbsolutePoint location="2790,4687" />
+      <AbsolutePoint location="2790,5223" />
+      <AbsolutePoint location="2567,5223" />
+      <AbsolutePoint location="2567,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/userrole/userRoleAssignContent.jsp,null,/userRoleAssign.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4546,3557" />
+      <AbsolutePoint location="4546,3657" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,policyPersonCoverageMainEdit,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6302,2023" />
+      <AbsolutePoint location="6302,1993" />
+      <AbsolutePoint location="6253,1993" />
+      <AbsolutePoint location="6253,2045" />
+      <AbsolutePoint location="6283,2045" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6357,1635" />
+      <AbsolutePoint location="6357,1245" />
+      <AbsolutePoint location="6690,1245" />
+      <AbsolutePoint location="6690,497" />
+      <AbsolutePoint location="4373,497" />
+      <AbsolutePoint location="4373,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyExtendedCommentsMain.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5897,1097" />
+      <AbsolutePoint location="5897,617" />
+      <AbsolutePoint location="4351,617" />
+      <AbsolutePoint location="4351,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,conditionCodes,/iuauser/policyConditionCodesMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4319,257" />
+      <AbsolutePoint location="4319,797" />
+      <AbsolutePoint location="5105,797" />
+      <AbsolutePoint location="5105,1753" />
+      <AbsolutePoint location="5172,1753" />
+      <AbsolutePoint location="5172,2023" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,memoIdCodes,/iuauser/memoIdCodes,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4236,257" />
+      <AbsolutePoint location="4236,767" />
+      <AbsolutePoint location="2822,767" />
+      <AbsolutePoint location="2822,1116" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,letterCreate,/iuauser/letterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1236,1185" />
+      <AbsolutePoint location="1236,1215" />
+      <AbsolutePoint location="960,1215" />
+      <AbsolutePoint location="960,2559" />
+      <AbsolutePoint location="913,2559" />
+      <AbsolutePoint location="913,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.browse.policies.main,null,/iuauser/browsePolicies.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6634,237" />
+      <AbsolutePoint location="6634,557" />
+      <AbsolutePoint location="6608,557" />
+      <AbsolutePoint location="6608,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,riderDisplay,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6436,1635" />
+      <AbsolutePoint location="6436,1395" />
+      <AbsolutePoint location="7870,1395" />
+      <AbsolutePoint location="7870,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,eventstdmemoCreate,/iuauser/eventstdmemoCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1412,1185" />
+      <AbsolutePoint location="1412,1275" />
+      <AbsolutePoint location="1508,1275" />
+      <AbsolutePoint location="1508,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/secondarymain/reassign2.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3356,3913" />
+      <AbsolutePoint location="3356,3963" />
+      <AbsolutePoint location="3890,3963" />
+      <AbsolutePoint location="3890,4083" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/logout.do,success,/logon.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2440,3745" />
+      <AbsolutePoint location="2440,3780" />
+      <AbsolutePoint location="2556,3780" />
+      <AbsolutePoint location="2556,3845" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/secondarytabsetBrowse.do,tab4,/secondarymain/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3143,4171" />
+      <AbsolutePoint location="3143,4955" />
+      <AbsolutePoint location="3288,4955" />
+      <AbsolutePoint location="3288,5075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyConditionCodesMain.do,backPolicyPersonMain,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5370,2023" />
+      <AbsolutePoint location="5370,1783" />
+      <AbsolutePoint location="6327,1783" />
+      <AbsolutePoint location="6327,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/letter.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3913,2979" />
+      <AbsolutePoint location="3913,2859" />
+      <AbsolutePoint location="4136,2859" />
+      <AbsolutePoint location="4136,977" />
+      <AbsolutePoint location="4275,977" />
+      <AbsolutePoint location="4275,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,riderHelpEdit,/iuauser/browseRiderCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7906,1185" />
+      <AbsolutePoint location="7906,1485" />
+      <AbsolutePoint location="7888,1485" />
+      <AbsolutePoint location="7888,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonMain.do,riderEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6488,1635" />
+      <AbsolutePoint location="6488,1455" />
+      <AbsolutePoint location="7894,1455" />
+      <AbsolutePoint location="7894,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeText.do,EditWithStatus,/iuauser/freeTextWithStatus.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3187,1185" />
+      <AbsolutePoint location="3187,1305" />
+      <AbsolutePoint location="3219,1305" />
+      <AbsolutePoint location="3219,1641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,freeTextCreate,/iuauser/freeTextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1368,1185" />
+      <AbsolutePoint location="1368,1215" />
+      <AbsolutePoint location="1358,1215" />
+      <AbsolutePoint location="1358,1783" />
+      <AbsolutePoint location="2266,1783" />
+      <AbsolutePoint location="2266,2559" />
+      <AbsolutePoint location="2283,2559" />
+      <AbsolutePoint location="2283,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/secondarytabsetBrowse.do,tab2,/secondarymain/actpend.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3217,4171" />
+      <AbsolutePoint location="3217,4206" />
+      <AbsolutePoint location="3492,4206" />
+      <AbsolutePoint location="3492,4271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/subStdCoverageMain.do,coverageDisplay,/iuauser/policyPersonCoverageMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6273,2441" />
+      <AbsolutePoint location="6273,2231" />
+      <AbsolutePoint location="6451,2231" />
+      <AbsolutePoint location="6451,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,underwritingNotesEdit,/iuauser/underwritingNotesMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4192,257" />
+      <AbsolutePoint location="4192,527" />
+      <AbsolutePoint location="662,527" />
+      <AbsolutePoint location="662,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/SecondaryMain.jsp,null,/main/secondarytabsetBrowse.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3260,3913" />
+      <AbsolutePoint location="3260,4053" />
+      <AbsolutePoint location="3180,4053" />
+      <AbsolutePoint location="3180,4083" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,freeTextCreateBack,/iuauser/freeTextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3477,2529" />
+      <AbsolutePoint location="3477,2829" />
+      <AbsolutePoint location="2471,2829" />
+      <AbsolutePoint location="2471,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4184,169" />
+      <AbsolutePoint location="4184,139" />
+      <AbsolutePoint location="4121,139" />
+      <AbsolutePoint location="4121,183" />
+      <AbsolutePoint location="4151,183" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/cms/DocumentMetaDataPanel.jsp,null,/main/docexep/update.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3638,5411" />
+      <AbsolutePoint location="3638,5611" />
+      <AbsolutePoint location="2840,5611" />
+      <AbsolutePoint location="2840,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventPortamedicEditBack,/iuauser/eventPortamedic.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3624,2529" />
+      <AbsolutePoint location="3624,2739" />
+      <AbsolutePoint location="4565,2739" />
+      <AbsolutePoint location="4565,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,back,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6525,2023" />
+      <AbsolutePoint location="6525,1753" />
+      <AbsolutePoint location="6533,1753" />
+      <AbsolutePoint location="6533,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,stdletterCreateBack,/iuauser/stdLetterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3573,2441" />
+      <AbsolutePoint location="3573,2141" />
+      <AbsolutePoint location="3579,2141" />
+      <AbsolutePoint location="3579,2111" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,riderEditError,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7923,1097" />
+      <AbsolutePoint location="7923,1037" />
+      <AbsolutePoint location="7768,1037" />
+      <AbsolutePoint location="7768,1163" />
+      <AbsolutePoint location="7828,1163" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/iuauser.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1306,4339" />
+      <AbsolutePoint location="1306,4509" />
+      <AbsolutePoint location="1441,4509" />
+      <AbsolutePoint location="1441,4837" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,policyExtendedCommentsDisplay,/iuauser/policyExtendedCommentsMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4340,257" />
+      <AbsolutePoint location="4340,677" />
+      <AbsolutePoint location="5756,677" />
+      <AbsolutePoint location="5756,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,letterCreateBack,/iuauser/letterCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3396,2529" />
+      <AbsolutePoint location="3396,2649" />
+      <AbsolutePoint location="992,2649" />
+      <AbsolutePoint location="992,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.memo.codes.main,null,/iuauser/memoIdCodes.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3929,1165" />
+      <AbsolutePoint location="3929,1215" />
+      <AbsolutePoint location="3849,1215" />
+      <AbsolutePoint location="3849,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,policyPersonMainEdit,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4368,257" />
+      <AbsolutePoint location="4368,527" />
+      <AbsolutePoint location="6685,527" />
+      <AbsolutePoint location="6685,1215" />
+      <AbsolutePoint location="6331,1215" />
+      <AbsolutePoint location="6331,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/freeTextCreate.do,errorEdit,/iuauser/freeTextEditError.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2330,3067" />
+      <AbsolutePoint location="2330,3127" />
+      <AbsolutePoint location="2178,3127" />
+      <AbsolutePoint location="2178,3187" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser/nbws.do,tab116,/jsp/nbws/TeleInterview.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="670,5431" />
+      <AbsolutePoint location="670,5660" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,tab115,/nbs/sharedInfo.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1406,4925" />
+      <AbsolutePoint location="1406,5015" />
+      <AbsolutePoint location="1244,5015" />
+      <AbsolutePoint location="1244,5521" />
+      <AbsolutePoint location="1140,5521" />
+      <AbsolutePoint location="1140,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/personCompanyMain.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7401,1097" />
+      <AbsolutePoint location="7401,317" />
+      <AbsolutePoint location="4406,317" />
+      <AbsolutePoint location="4406,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/riderMain.do,backEdit,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7834,1185" />
+      <AbsolutePoint location="7834,1305" />
+      <AbsolutePoint location="6514,1305" />
+      <AbsolutePoint location="6514,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeFiveEdit,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8041,1635" />
+      <AbsolutePoint location="8041,1335" />
+      <AbsolutePoint location="8026,1335" />
+      <AbsolutePoint location="8026,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdEventCode.do,back,/iuauser/stdEventCode.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1306,1097" />
+      <AbsolutePoint location="1306,1037" />
+      <AbsolutePoint location="1154,1037" />
+      <AbsolutePoint location="1154,1163" />
+      <AbsolutePoint location="1214,1163" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventPortamedicCreate,/iuauser/eventPortamedicCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3423,2529" />
+      <AbsolutePoint location="3423,2709" />
+      <AbsolutePoint location="1957,2709" />
+      <AbsolutePoint location="1957,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/logon.do,failure,/logon.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2509,3845" />
+      <AbsolutePoint location="2509,3815" />
+      <AbsolutePoint location="2455,3815" />
+      <AbsolutePoint location="2455,3889" />
+      <AbsolutePoint location="2485,3889" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdLetterCreate.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3486,2111" />
+      <AbsolutePoint location="3486,2141" />
+      <AbsolutePoint location="3537,2141" />
+      <AbsolutePoint location="3537,2441" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventStdMemoCreateBack,/iuauser/eventStdMemoCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3517,2529" />
+      <AbsolutePoint location="3517,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/eventPortamedicCreate.do,personidHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2053,2979" />
+      <AbsolutePoint location="2053,2769" />
+      <AbsolutePoint location="3450,2769" />
+      <AbsolutePoint location="3450,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,letter,/iuauser/letter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4280,257" />
+      <AbsolutePoint location="4280,1007" />
+      <AbsolutePoint location="4141,1007" />
+      <AbsolutePoint location="4141,2889" />
+      <AbsolutePoint location="3952,2889" />
+      <AbsolutePoint location="3952,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.policy.rider.main,null,/iuauser/riderMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8049,237" />
+      <AbsolutePoint location="8049,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/personCompanyBrowse.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6989,1097" />
+      <AbsolutePoint location="6989,377" />
+      <AbsolutePoint location="4395,377" />
+      <AbsolutePoint location="4395,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/caseNotes.do,success,/main/iuauser.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1580,5641" />
+      <AbsolutePoint location="1580,5461" />
+      <AbsolutePoint location="1529,5461" />
+      <AbsolutePoint location="1529,5045" />
+      <AbsolutePoint location="1441,5045" />
+      <AbsolutePoint location="1441,4925" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/secondarymain/refresh.do,success,/worklist,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3503,3745" />
+      <AbsolutePoint location="3503,3864" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/memoIdCodes.do,edit,/iuauser/freetextCreate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3863,1723" />
+      <AbsolutePoint location="3863,1753" />
+      <AbsolutePoint location="4931,1753" />
+      <AbsolutePoint location="4931,3187" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3644,2441" />
+      <AbsolutePoint location="3644,2171" />
+      <AbsolutePoint location="4046,2171" />
+      <AbsolutePoint location="4046,917" />
+      <AbsolutePoint location="4264,917" />
+      <AbsolutePoint location="4264,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/secondarymain/docexep.do,edit,/main/docexep/update.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3433,5163" />
+      <AbsolutePoint location="3433,5193" />
+      <AbsolutePoint location="3501,5193" />
+      <AbsolutePoint location="3501,5581" />
+      <AbsolutePoint location="2782,5581" />
+      <AbsolutePoint location="2782,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,Main,/iuauser/underwritingNotesMain.do ,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4220,257" />
+      <AbsolutePoint location="4220,677" />
+      <AbsolutePoint location="2187,677" />
+      <AbsolutePoint location="2187,1116" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/about/About.jsp,null,/about.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4853,3557" />
+      <AbsolutePoint location="4853,3657" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/iuauser/nbws.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1264,4339" />
+      <AbsolutePoint location="1264,4449" />
+      <AbsolutePoint location="462,4449" />
+      <AbsolutePoint location="462,5193" />
+      <AbsolutePoint location="611,5193" />
+      <AbsolutePoint location="611,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/stdLetterCreate.do,back,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3555,2023" />
+      <AbsolutePoint location="3555,1753" />
+      <AbsolutePoint location="3572,1753" />
+      <AbsolutePoint location="3572,857" />
+      <AbsolutePoint location="4253,857" />
+      <AbsolutePoint location="4253,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,eventStdMemoEdit,/iuauser/eventStdMemo.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3678,2529" />
+      <AbsolutePoint location="3678,2619" />
+      <AbsolutePoint location="5136,2619" />
+      <AbsolutePoint location="5136,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.stdletter,null,/iuauser/stdLetter.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4441,2509" />
+      <AbsolutePoint location="4441,2769" />
+      <AbsolutePoint location="4426,2769" />
+      <AbsolutePoint location="4426,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,self,/iuauser/browseRiderCodes.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7872,1635" />
+      <AbsolutePoint location="7872,1605" />
+      <AbsolutePoint location="7835,1605" />
+      <AbsolutePoint location="7835,1679" />
+      <AbsolutePoint location="7865,1679" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/reassign.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1328,4339" />
+      <AbsolutePoint location="1328,4449" />
+      <AbsolutePoint location="1751,4449" />
+      <AbsolutePoint location="1751,4687" />
+      <AbsolutePoint location="1797,4687" />
+      <AbsolutePoint location="1797,4837" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".display.ias.amendment.main,null,/iuauser/amendmentMain.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="84,237" />
+      <AbsolutePoint location="84,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/iuauser.do,view,/main/viewdoc.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1511,4925" />
+      <AbsolutePoint location="1511,4985" />
+      <AbsolutePoint location="1762,4985" />
+      <AbsolutePoint location="1762,5461" />
+      <AbsolutePoint location="2248,5461" />
+      <AbsolutePoint location="2248,5641" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".acmi.ias.create.base,null,/iuauser/stdEventCode.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1358,237" />
+      <AbsolutePoint location="1358,287" />
+      <AbsolutePoint location="1368,287" />
+      <AbsolutePoint location="1368,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyConditionCodesMain.do,backPolicyDiary,/iuauser/iasdiary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="5106,2023" />
+      <AbsolutePoint location="5106,1783" />
+      <AbsolutePoint location="5100,1783" />
+      <AbsolutePoint location="5100,827" />
+      <AbsolutePoint location="4313,827" />
+      <AbsolutePoint location="4313,257" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,amendmentDisplay,/iuauser/amendmentMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4165,257" />
+      <AbsolutePoint location="4165,377" />
+      <AbsolutePoint location="141,377" />
+      <AbsolutePoint location="141,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/iasdiary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1275,4339" />
+      <AbsolutePoint location="1275,4479" />
+      <AbsolutePoint location="691,4479" />
+      <AbsolutePoint location="691,4569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/main/Main.jsp,null,/main/tabsetBrowse.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1338,4339" />
+      <AbsolutePoint location="1338,4419" />
+      <AbsolutePoint location="2178,4419" />
+      <AbsolutePoint location="2178,4569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,policyPersonMainDisplay,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4379,257" />
+      <AbsolutePoint location="4379,467" />
+      <AbsolutePoint location="6696,467" />
+      <AbsolutePoint location="6696,1275" />
+      <AbsolutePoint location="6383,1275" />
+      <AbsolutePoint location="6383,1635" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/main/nbw/upload.do,docexep,/main/docexep.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2170,5163" />
+      <AbsolutePoint location="2170,5193" />
+      <AbsolutePoint location="2461,5193" />
+      <AbsolutePoint location="2461,5343" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/letter.do,recipientHelp,/iuauser/browsePolicyCertPerson.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3835,2979" />
+      <AbsolutePoint location="3835,2859" />
+      <AbsolutePoint location="3571,2859" />
+      <AbsolutePoint location="3571,2529" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/policyPersonCoverageMain.do,backDisplay,/iuauser/policyPersonMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6488,2023" />
+      <AbsolutePoint location="6488,1753" />
+      <AbsolutePoint location="6492,1753" />
+      <AbsolutePoint location="6492,1723" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/iasdiary.do,freeText,/iuauser/freeText.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4247,257" />
+      <AbsolutePoint location="4247,827" />
+      <AbsolutePoint location="3218,827" />
+      <AbsolutePoint location="3218,1097" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browsePolicyCertPerson.do,letterEditBack,/iuauser/letter.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3557,2529" />
+      <AbsolutePoint location="3557,2889" />
+      <AbsolutePoint location="3796,2889" />
+      <AbsolutePoint location="3796,2979" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/iuauser/browseRiderCodes.do,riderMaintNoCodeFourCreate,/iuauser/riderMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7919,1635" />
+      <AbsolutePoint location="7919,1545" />
+      <AbsolutePoint location="7930,1545" />
+      <AbsolutePoint location="7930,1185" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
