@@ -156,7 +156,7 @@ public class TextProcessing {
 			
 			for(int b=0; b<itemTxt.length(); b++)
 			{
-				if(itemTxt.charAt(b)=='ß')
+				if(itemTxt.charAt(b)=='~')
 				{
 					itemTxt.replace(b, b+1, " ");
 				}
@@ -195,7 +195,7 @@ public class TextProcessing {
 			
 			for(int b=0; b<itemTxt.length(); b++)
 			{
-				if(itemTxt.charAt(b)=='ß')
+				if(itemTxt.charAt(b)=='~')
 				{
 					itemTxt.replace(b, b+1, " ");
 				}
@@ -674,7 +674,7 @@ public class TextProcessing {
 			{
 				if(itemTxt.charAt(b)==' ')
 				{
-					itemTxt.replace(b, b+1, "ß");
+					itemTxt.replace(b, b+1, "~");
 				}
 				else
 				{	break;
@@ -708,7 +708,7 @@ public class TextProcessing {
 			{
 				if(itemTxt.charAt(b)==' ')
 				{
-					itemTxt.replace(b, b+1, "ß");
+					itemTxt.replace(b, b+1, "~");
 				}
 				else
 				{	break;

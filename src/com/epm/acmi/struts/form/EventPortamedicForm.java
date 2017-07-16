@@ -358,6 +358,13 @@ public class EventPortamedicForm extends ActionForm {
 	}
 
 	public void setPhyician_state(String phyician_state) {
+		
+		if(phyician_state.equalsIgnoreCase(" "))
+		{
+			phyician_state = "";
+		}
+		
+		
 		this.phyician_state = phyician_state;
 	}
 

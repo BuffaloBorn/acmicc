@@ -636,9 +636,9 @@
 								<forms:section noframe="false">
 									<forms:row>
 										<forms:html label="form.iasdiary.policy.id">
-											<ctrl:text  property="POLICY_ID" size="10" width="10" />
-											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" />
-											<ctrl:button name="btnBrowsePoliciesHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.browse.policy.help" />
+											<ctrl:text  property="POLICY_ID" size="10" width="10" onkeydown="gIasChangesWereMade=true"/>
+											<ctrl:button name="btnUpdatePolicyNo" src="fw/def/image/buttons/btnUnchkAll3.gif" tooltip="form.iasdiary.policy.no.update" onmouseup="gIasSaveClicked=true"/>
+											<ctrl:button name="btnBrowsePoliciesHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.browse.policy.help" onclick="runPageValidation(this)"/>
 										</forms:html>
 										<forms:plaintext label="form.iasdiary.key.product" property="KEY_PRODUCT_ID" width="5" colspan="1"  />
 									</forms:row>
@@ -666,27 +666,27 @@
 										<%--<forms:button name="btnPolicyPersonCoverageMain" text="button.iasdiary.policy.person.coverage.main.without" title="button.iasdiary.policy.person.coverage.main.without" />																								--%>
 										<c:choose>									
 		      								<c:when test = "${requestScope.COMMENTS_IND == 'Y'}" >
-		      									<forms:button name="btnPolicyExtendCommentsDisplay" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" />
+		      									<forms:button name="btnPolicyExtendCommentsDisplay" text="button.iasdiary.comments.with" title="button.iasdiary.comments.with" onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnPolicyExtendCommentsDisplay" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" />
+		        								<forms:button name="btnPolicyExtendCommentsDisplay" text="button.iasdiary.comments.without" title="button.iasdiary.comments.without" onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
-										<forms:button name="btnPolicyPersonDisplay" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" />		
+										<forms:button name="btnPolicyPersonDisplay" text="button.iasdiary.policy.person" title="button.iasdiary.policy.person" onclick="runPageValidation(this)"/>		
 		   								<c:choose>
 		      								<c:when test = "${requestScope.NOTES_IND == 'Y'}" >
-		        								<forms:button name="btnUnderwritingNotesDisplay"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  />
+		        								<forms:button name="btnUnderwritingNotesDisplay"  text="button.iasdiary.notes.id.with" title="button.iasdiary.notes.id.with"  onclick="runPageValidation(this)"/>
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnUnderwritingNotesDisplay"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  />
+		        								<forms:button name="btnUnderwritingNotesDisplay"  text="button.iasdiary.notes.id.without" title="button.iasdiary.notes.id.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		  								<c:choose>
 		      								<c:when test = "${requestScope.AMENDMENT_IND == 'Y'}" >
-		        								<forms:button name="btnAmendmentDisplay" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with"  />
+		        								<forms:button name="btnAmendmentDisplay" text="button.iasdiary.amendment.with" title="button.iasdiary.amendment.with" onclick="runPageValidation(this)" />
 		      								</c:when>
 		      								<c:otherwise>
-		        								<forms:button name="btnAmendmentDisplay" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  />
+		        								<forms:button name="btnAmendmentDisplay" text="button.iasdiary.amendment.without" title="button.iasdiary.amendment.without"  onclick="runPageValidation(this)"/>
 		      								</c:otherwise>
 		    							</c:choose>
 		<%--    							<c:choose>--%>

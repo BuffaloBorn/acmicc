@@ -125,6 +125,11 @@ public class LetterForm extends ActionForm {
 		return status;
 	}
 	public void setStatus(String status) {
+		if(status.equalsIgnoreCase(" "))
+		{
+			status = "";
+		}
+		
 		this.status = status;
 	}
 
@@ -159,6 +164,11 @@ public class LetterForm extends ActionForm {
 		return attach;
 	}
 	public void setAttach(String attach) {
+		if(attach.equalsIgnoreCase(" "))
+		{
+			attach = "";
+		}
+		
 		this.attach = attach;
 	}
 
@@ -169,6 +179,12 @@ public class LetterForm extends ActionForm {
 
 
 	public void setSecond_request(String second_request) {
+		
+		if(second_request.equalsIgnoreCase(" "))
+		{
+			second_request = "";
+		}
+		
 		this.second_request = second_request;
 	}
 

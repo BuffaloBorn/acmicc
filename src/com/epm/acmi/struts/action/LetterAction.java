@@ -363,7 +363,7 @@ public class LetterAction extends CCAction {
 				
 				for(b=0; b<itemTxt.length(); b++)
 				{
-					if(itemTxt.charAt(b)=='ß')
+					if(itemTxt.charAt(b)=='~')
 					{
 						itemTxt.replace(b, b+1, " ");
 					}
@@ -407,7 +407,7 @@ public class LetterAction extends CCAction {
 				
 				for(b=0; b<itemTxt.length(); b++)
 				{
-					if(itemTxt.charAt(b)=='ß')
+					if(itemTxt.charAt(b)=='~')
 					{
 						itemTxt.replace(b, b+1, " ");
 					}
@@ -453,7 +453,7 @@ public class LetterAction extends CCAction {
 				
 				for(b=0; b<itemTxt.length(); b++)
 				{
-					if(itemTxt.charAt(b)=='ß')
+					if(itemTxt.charAt(b)=='~')
 					{
 						itemTxt.replace(b, b+1, " ");
 					}

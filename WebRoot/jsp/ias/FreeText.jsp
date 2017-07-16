@@ -58,10 +58,10 @@ textbox.value = str
 					</forms:row>
 					<forms:row>
 						<forms:text label="form.iasdiary.freeText.description" property="description" maxlength="60" size="60" colspan="1" styleId="descriptionStyleId" onchange="gIasChangesWereMade=true"/>				
-						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIasChangesWereMade=true" styleId="memoind">
+						<forms:select id="memindid" label="form.iasdiary.freeText.memoind" property="memoind" size="1" onchange="gIasChangesWereMade=true" styleId="memoind" >
 							<base:options property="memoindOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>
-						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIasChangesWereMade=true" styleId="freetextattachmentid">
+						<forms:select id="attachmentid"	label="form.iasdiary.freeText.attachment" property="attachment" size="1" onchange="gIasChangesWereMade=true" styleId="freetextattachmentid" >
 							<base:options property="attachmentOptions" keyProperty="key" labelProperty="value" />
 						</forms:select>	
 					</forms:row>
@@ -107,8 +107,8 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
-					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="if (runPageValidationTwo(this)) CCUtility.submitEnclosingForm(this); else {document.getElementById('btnBackHidden').value=''; return false;}"/>
+					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="if (runPageValidationTwo(this)) CCUtility.submitEnclosingForm(this); else {document.getElementById('btnBackHidden').value=''; return false;}"/>	
 				</forms:buttonsection>
 			</forms:form>
 		</html:form>

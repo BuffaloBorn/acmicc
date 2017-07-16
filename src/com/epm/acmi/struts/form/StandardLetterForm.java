@@ -125,6 +125,11 @@ public class StandardLetterForm extends ActionForm {
 		}
 
 		public void setStatus(String status) {
+			if(status.equalsIgnoreCase(" "))
+			{
+				status = "";
+			}
+			
 			this.status = status;
 		}
 
@@ -149,6 +154,12 @@ public class StandardLetterForm extends ActionForm {
 		}
 
 		public void setSecond_request(String second_request) {
+			if(second_request.equalsIgnoreCase(" "))
+			{
+				second_request = "";
+			}
+			
+			
 			this.second_request = second_request;
 		}
 
@@ -214,6 +225,12 @@ public class StandardLetterForm extends ActionForm {
 
 
 		public void setAttachment(String attachment) {
+			
+			if(attachment.equalsIgnoreCase(" "))
+			{
+				attachment = "";
+			}
+			
 			this.attachment = attachment;
 		}
 

@@ -165,6 +165,11 @@ public class FreeTextForm extends ActionForm {
 	}
 
 	public void setStatus(String status) {
+		if(status.equalsIgnoreCase(" "))
+		{
+			status = "";
+		}
+		
 		this.status = status;
 	}
 
@@ -197,6 +202,12 @@ public class FreeTextForm extends ActionForm {
 	}
 
 	public void setSecond_request(String second_request) {
+		
+		if(second_request.equalsIgnoreCase(" "))
+		{
+			second_request = "";
+		}
+		
 		this.second_request = second_request;
 	}
 
@@ -273,6 +284,12 @@ public class FreeTextForm extends ActionForm {
 
 
 	public void setAttachment(String attachment) {
+		
+		if(attachment.equalsIgnoreCase(" "))
+		{
+			attachment = "";
+		}
+		
 		this.attachment = attachment;
 	}
 
@@ -282,6 +299,12 @@ public class FreeTextForm extends ActionForm {
 
 
 	public void setMemoind(String memoind) {
+		
+		if(memoind.equalsIgnoreCase(" "))
+		{
+			memoind = "";
+		}
+		
 		this.memoind = memoind;
 	}
 
@@ -292,6 +315,12 @@ public class FreeTextForm extends ActionForm {
 
 
 	public void setFreeformind(String freeformind) {
+		
+		if(freeformind.equalsIgnoreCase(" "))
+		{
+			freeformind = "";
+		}
+		
 		this.freeformind = freeformind;
 	}
 

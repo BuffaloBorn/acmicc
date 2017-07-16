@@ -143,8 +143,8 @@ function saveClicked(activityButtonClicked) {
 	    if (submitcount==0) {
 	    	try
 		 	{
-				NBWSDetailsForm.submit();
 				gSaveClicked=true;
+				NBWSDetailsForm.submit();
 				submitcount++;
 				document.body.style.cursor = "wait";
 			}
@@ -185,8 +185,8 @@ function theButtonClicked(activityButtonClicked)
 		  	{
 				setCloseIasDiaryUnloadFlags();
 				submitcount++;
-				NBWSDetailsForm.submit();
 				gSaveClicked=true;
+				NBWSDetailsForm.submit();
 				document.body.style.cursor = "wait";
 			}
 			catch(ex)
@@ -195,7 +195,7 @@ function theButtonClicked(activityButtonClicked)
 		 		//lets just restrict this our Unspecified one
 		 		if(ex.message.indexOf('Unspecified') == -1)
 		 		{
-		 		
+		 			
 		 		}
 		 }
 			

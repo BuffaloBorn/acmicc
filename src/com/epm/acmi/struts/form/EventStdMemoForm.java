@@ -167,6 +167,11 @@ public class EventStdMemoForm extends ActionForm {
 
 
 	public void setSecond_request(String second_request) {
+		if(second_request.equalsIgnoreCase(" "))
+		{
+			second_request = "";
+		}
+		
 		this.second_request = second_request;
 	}
 
@@ -239,6 +244,12 @@ public class EventStdMemoForm extends ActionForm {
 
 
 	public void setFreeformind(String freeformind) {
+		
+		if(freeformind.equalsIgnoreCase(" "))
+		{
+			freeformind = "";
+		}
+		
 		this.freeformind = freeformind;
 	}
 

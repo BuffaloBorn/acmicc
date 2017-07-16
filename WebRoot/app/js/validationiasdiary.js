@@ -105,6 +105,8 @@ function runPageValidation(formobject)
 	
 	var form = getEnclosingForm(formobject);
 
+	//document.getElementById('btnBackHidden').value='';
+
 	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
 	{
 		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
@@ -130,6 +132,36 @@ function runPageValidation(formobject)
 	}
 }
 
+function runPageValidationTwo(formobject)
+{
+	var happen = false;
+	
+	var form = getEnclosingForm(formobject);
+
+	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
+	{
+		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
+		
+		if (answer)
+		{
+			happen = true;
+			window.onbeforeunload=null;
+			//form.submit();
+			return happen;
+		}
+		else{
+			happen = false;
+			return happen;
+		}
+	}
+	else
+	{
+		happen = true;
+		window.onbeforeunload=null;
+		//form.submit();
+		return happen;
+	}
+}
 
 function goDairy()
 {
