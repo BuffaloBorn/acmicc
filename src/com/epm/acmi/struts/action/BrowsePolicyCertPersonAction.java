@@ -8,6 +8,7 @@ package com.epm.acmi.struts.action;
 import org.apache.log4j.Logger;
 import java.io.IOException;
 import javax.servlet.ServletException;
+
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.presentation.dsp.PolicyBrowseCertPersonDsp;
 import com.cc.framework.adapter.struts.ActionContext;
@@ -98,7 +99,6 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		// in this example we go back to the jsp
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-		
 		ctx.forwardByName(Forwards.BACK);
 	}
 	

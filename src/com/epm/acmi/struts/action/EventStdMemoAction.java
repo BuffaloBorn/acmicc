@@ -13,9 +13,11 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
+
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
+import com.cc.acmi.common.CookieUtil;
 import com.cc.framework.adapter.struts.ActionContext;
 import com.cc.framework.adapter.struts.FormActionContext;
 import com.epm.acmi.struts.Constants;
@@ -302,6 +304,7 @@ public class EventStdMemoAction extends CCAction {
 		
 		try {
 			WSEventStdMemoCall.add(inputs, inoutparms, msgInfo, outparms);
+			
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + PolicyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",PolicyNo);
@@ -328,6 +331,7 @@ public class EventStdMemoAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Adding " + classAction);
@@ -403,6 +407,7 @@ public class EventStdMemoAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);
@@ -455,7 +460,8 @@ public class EventStdMemoAction extends CCAction {
 		
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-
+		
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 		ctx.forwardByName(Forwards.BACK);
 		
 	}

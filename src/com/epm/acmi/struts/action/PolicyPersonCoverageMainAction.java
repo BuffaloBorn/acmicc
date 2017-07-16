@@ -11,6 +11,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
+import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -182,6 +183,8 @@ public class PolicyPersonCoverageMainAction extends CCAction
 			ctx.forwardToInput();
 			return;
 		}
+		
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 		
 	}
 	

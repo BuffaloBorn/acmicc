@@ -9,6 +9,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
+import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -226,6 +227,7 @@ public class StandardLetterAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....adding " + classAction);
@@ -343,6 +345,7 @@ public class StandardLetterAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....Editing " + classAction);
@@ -450,7 +453,7 @@ public class StandardLetterAction extends CCAction {
 		
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
-		
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 		ctx.forwardByName(Forwards.BACK);
 	}
 	

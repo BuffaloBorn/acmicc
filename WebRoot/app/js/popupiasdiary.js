@@ -57,7 +57,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		setCookie('iaspopup', 'close', exp, '/acmicc/');
+		setCookie('updateClose', 'close', exp, '/acmicc/');
 	}
 	
 	if((iaspopup == 'open') && (gChangesWereMade == true) && (gWorklistClick == true))
@@ -66,7 +66,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		setCookie('iaspopup', 'close', exp, '/acmicc/');
+		setCookie('updateClose', 'close', exp, '/acmicc/');
 	}
 	
 	
@@ -76,7 +76,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		setCookie('iaspopup', 'close', exp, '/acmicc/');
+		setCookie('updateClose', 'close', exp, '/acmicc/');
 	
 	}
 	
@@ -86,7 +86,7 @@ function runCloseIasDiaryUnload()
 		
 		runIasdiaryInt();
 		closeIasdiary();
-		setCookie('iaspopup', 'close', exp, '/acmicc/');
+		setCookie('updateClose', 'close', exp, '/acmicc/');
 	}
 	
 	if(gClosePopup)

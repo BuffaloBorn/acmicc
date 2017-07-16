@@ -11,6 +11,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.log4j.Logger;
 
+import com.cc.acmi.common.CookieUtil;
 import com.cc.acmi.common.DiaryMessages;
 import com.cc.acmi.common.Forwards;
 import com.cc.acmi.common.TextProcessing;
@@ -515,7 +516,7 @@ public class LetterAction extends CCAction {
 
 	}
 	
-	private void addLetterMaint(ActionContext ctx) 
+	private void addLetterMaint(FormActionContext ctx) 
 	{
 		String service = "Adding: " + classAction;
 		
@@ -565,6 +566,7 @@ public class LetterAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....adding " + classAction);
@@ -599,7 +601,7 @@ public class LetterAction extends CCAction {
 	}
 	
 
-	private void editDecAppMemoMaint(ActionContext ctx) {
+	private void editDecAppMemoMaint(FormActionContext ctx) {
 		String service = "Edit: " + classAction;
 		
 		log.debug("Editing " + classAction);
@@ -648,6 +650,7 @@ public class LetterAction extends CCAction {
 			ctx.addGlobalMessage(DiaryMessages.NATUAL_BUS_MSG, TextProcessing.formatMainFrameMessage(msgInfo.value.getMSG_TEXT()));
 			String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 			ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+			CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 			ctx.forwardByName(Forwards.BACK);
 			form.clear();	
 			log.debug("Finish....editing " + classAction);
@@ -666,6 +669,7 @@ public class LetterAction extends CCAction {
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
 		
+		CookieUtil.setUpdateCloseAndIaspopupCookie(ctx);
 		ctx.forwardByName(Forwards.BACK);
 	}
 	
