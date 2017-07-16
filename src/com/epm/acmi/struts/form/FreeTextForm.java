@@ -50,6 +50,7 @@ public class FreeTextForm extends ActionForm {
 	private String freeformind="";
 	private String policyno="";
 	private String hiddenfreeTextArea="";
+	private String log_counter = "";
 	
 	public FreeTextForm() {
 		super();
@@ -320,6 +321,7 @@ public class FreeTextForm extends ActionForm {
 		this.setFreeformind("");
 		this.setMemoind("");
 		this.setPolicyno("");
+		this.setLog_counter("");
 	}
 
 
@@ -367,6 +369,14 @@ public class FreeTextForm extends ActionForm {
 
 	public void setHiddenfreeTextArea(String hiddenfreeTextArea) {
 		this.hiddenfreeTextArea = hiddenfreeTextArea;
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 }

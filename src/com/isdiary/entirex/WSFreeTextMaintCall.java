@@ -45,6 +45,7 @@ public class WSFreeTextMaintCall {
 		inputs.setUSER_ID(new String(""));
 		inputs.setMEMO_IND(new String(""));
 		inputs.setFREE_FORM_IND(new String(""));
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		
 		service.MUEFMMW(action, inputs, msgInfo, inoutparms, outparms);

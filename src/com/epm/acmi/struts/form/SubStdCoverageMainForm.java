@@ -84,6 +84,8 @@ public class SubStdCoverageMainForm extends ActionForm
 	private String POLICY_ISSUED;
 	
 	private String currentPosition;
+	
+	private String log_counter="";
 
 	public TreeMap getSubstdreasoncodeOptions()
 	{
@@ -576,6 +578,8 @@ public class SubStdCoverageMainForm extends ActionForm
 		setMODE("");
 	
 		setPOLICY_ISSUED("");
+		
+		setLog_counter("");
 	
 	}
 
@@ -633,6 +637,8 @@ public class SubStdCoverageMainForm extends ActionForm
 		setMODE(getMODE());
 	
 		setPOLICY_ISSUED(getPOLICY_ISSUED());
+		
+		setLog_counter(getLog_counter());
 		
 	}
 
@@ -695,6 +701,14 @@ public class SubStdCoverageMainForm extends ActionForm
 
 	public void setCurrentPosition(String currentPosition) {
 		this.currentPosition = currentPosition;
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 	

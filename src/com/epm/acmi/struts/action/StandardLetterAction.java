@@ -105,6 +105,7 @@ public class StandardLetterAction extends CCAction {
 		form.setStd_event(eventCode);
 		form.setStatus("O");
 		form.setEvent_id("");
+		form.setLog_counter("0");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
 	    form.setRequested(dateFormat.format(date).toString());
@@ -262,6 +263,7 @@ public class StandardLetterAction extends CCAction {
 		String[] Text = new String[60];
 		TextProcessing.storeTextData(form.getLetterTextArea(), 0, 59, Text , 75, 0, 4500);
 		inputs.setTEXT(Text);
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 
 	}
 
@@ -433,7 +435,7 @@ public class StandardLetterAction extends CCAction {
 		form.setSecond_request(inoutparms.value.getSECOND_REQUEST_IND1());
 		form.setStatus(inoutparms.value.getEVENT_STATUS_CURRENT1());
 		form.setStd_event(inoutparms.value.getSTD_EVENT_ID1());
-		
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 	}
 
 

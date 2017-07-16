@@ -174,6 +174,8 @@ public class SubStdCoverageMainAction extends CCAction {
 			form.setPERSON_ID(inoutparms.value.getPERSON_ID1().toString());
 		
 			form.setCOVERAGE_CODE(inoutparms.value.getCOVERAGE_CODE1());
+			
+			form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 		
 			if (inoutparms.value.getSUB_STANDARD_RISK_CODE1().trim().length() == 0 )
 				form.setSUB_STANDARD_RISK_CODE("");
@@ -385,7 +387,7 @@ public class SubStdCoverageMainAction extends CCAction {
 		inputs.setSS_CCODE_TIME_PERIOD(form.getSS_CCODE_TIME_PERIOD());
 		inputs.setSUB_EFF_DATE(new BigDecimal(TextProcessing.YYYYMMDDFormat(form.getSUB_EFF_DATE())));
 		inputs.setDISPLAY_DATE(TextProcessing.YYYYMMDDFormat(form.getDISPLAY_DATE()));
-		
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 		if (form.getSUB_STANDARD_RISK_CODE().trim().length() == 0)
 			inputs.setSUB_STANDARD_RISK_CODE("");

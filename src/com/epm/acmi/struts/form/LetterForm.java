@@ -35,6 +35,7 @@ public class LetterForm extends ActionForm {
 	private String letter_text="";
 	private boolean letter_declined_value = false;
 	private String policyno;
+	private String log_counter="";
 	
 	public TreeMap getStatusOptions()
 	{
@@ -253,6 +254,7 @@ public class LetterForm extends ActionForm {
 		this.setSuspense_amt("");
 		this.setSuspense_date("");
 		this.setLetter_declined_value(false);
+		this.setLog_counter("");
 	}
 	
 	public void validateForm(FormActionContext ctx)
@@ -269,6 +271,14 @@ public class LetterForm extends ActionForm {
 
 	public void setLetter_declined_value(boolean letter_declined_value) {
 		this.letter_declined_value = letter_declined_value;
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 	

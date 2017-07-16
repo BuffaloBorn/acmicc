@@ -78,6 +78,8 @@ public class PolicyConditionCodesMainForm extends ActionForm
 		
 	private String currentPosition;
 	
+	private String log_counter = "";
+	
 	public TreeMap getCondictionCodesOptions()
 	{
 		
@@ -453,6 +455,8 @@ public class PolicyConditionCodesMainForm extends ActionForm
 		setCCODE_TIME_PERIOD("");
 		
 		setSTATE_ISSUED("");
+		
+		setLog_counter("");
 	
 	}
 
@@ -505,6 +509,7 @@ public class PolicyConditionCodesMainForm extends ActionForm
 		
 		setSTATE_ISSUED(getSTATE_ISSUED());
 	
+		setLog_counter(getLog_counter());
 	
 	}
 
@@ -545,6 +550,16 @@ public class PolicyConditionCodesMainForm extends ActionForm
 
 	public void setCurrentPosition(String currentPosition) {
 		this.currentPosition = currentPosition;
+	}
+
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 }

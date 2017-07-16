@@ -43,6 +43,7 @@ public class ActivateIASForm extends ActionForm
 	private String POLICY_TRANS_TYPE_COND="";
 	private String RIDER_IND ="";
 	private String AMENDMENT_IND ="";
+	private String log_counter = "";
 
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 		return null;
@@ -212,6 +213,14 @@ public class ActivateIASForm extends ActionForm
 
 	public void setAMENDMENT_IND(String amendment_ind) {
 		AMENDMENT_IND = amendment_ind;
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 	

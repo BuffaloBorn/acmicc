@@ -213,21 +213,21 @@ public class StandardEventCodesAction  extends CCAction {
 		if(evtCode.equalsIgnoreCase("OFFER-IN"))
 		{ 
 			log.debug("std event:" + evtCode);
-			String riderind = (String)ctx.session().getAttribute("riderind");
+			//String riderind = (String)ctx.session().getAttribute("riderind");
 			
-			if (riderind.equalsIgnoreCase("N"))
+			/*if (riderind.equalsIgnoreCase("N"))
 			{
 				ctx.addGlobalMessage(DiaryMessages.OFFER_IN_NO_RIDER, "OFFER-IN");
 				ctx.session().removeAttribute("riderind");
 				ctx.forwardByName("diary");
 			}
 			else
-			{
+			{*/
 				String IASModify = (String)ctx.session().getAttribute(Constants.IASModify);
 				ctx.session().setAttribute(Constants.IASDiaryModify,IASModify);
 				ctx.session().setAttribute(Constants.IASModify, "create");
 				ctx.forwardToAction("iuauser/freeTextCreate?eventcode=" + evtCode + "&action=edit" );	
-			}
+//			}
 			flag = false;
 		}
 	

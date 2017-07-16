@@ -30,6 +30,7 @@ public class WSAmendMaintCall {
 		inputs.setTEXT(new String[191]);
 		inputs.setTRUST_IND(new String(""));
 		inputs.setPROXY_IND(new String(""));
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		service.MUAMNMW(action, inputs, msgInfo, inoutparms, outparms);
 	}

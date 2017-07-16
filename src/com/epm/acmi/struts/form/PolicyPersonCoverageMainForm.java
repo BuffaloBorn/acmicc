@@ -31,6 +31,7 @@ public class PolicyPersonCoverageMainForm extends ActionForm {
 	private String name;
 	private String mode;
 	private String display_date;
+	private String log_counter="";
 	
 
 	public String getPolicyid() {
@@ -130,6 +131,14 @@ public class PolicyPersonCoverageMainForm extends ActionForm {
 	{
 		
 		
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 	
 	

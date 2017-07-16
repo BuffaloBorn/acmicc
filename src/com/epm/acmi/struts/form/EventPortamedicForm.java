@@ -61,6 +61,7 @@ public class EventPortamedicForm extends ActionForm {
 	private String request_type="";
 	private String remarksTextArea="";
 	private String policyno="";
+	private String log_counter = "";
 	
 	
 	public TreeMap getStatesOptions()
@@ -567,6 +568,7 @@ public class EventPortamedicForm extends ActionForm {
 		this.setRequested("");
 		this.setResponse("");
 		this.setPhyician_phone_extentsion("");
+		this.setLog_counter("");
 		
 	}
 	
@@ -658,6 +660,14 @@ public class EventPortamedicForm extends ActionForm {
 		
 		return status;
 		
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 

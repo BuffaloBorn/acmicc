@@ -44,6 +44,7 @@ public class WSEventPortRequest {
 		inputs.setSTD_EVENT_ID(new String(""));
 		inputs.setEVENT_ID(new BigDecimal(EventId));
 		inputs.setDATE_CREATED(new String(""));
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		//=============General Information =======================
 		inputs.setEQUIF_SUBJECT_PERSON_ID(new BigDecimal("0"));

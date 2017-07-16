@@ -243,6 +243,8 @@ public class RiderMainAction extends CCAction {
 		parms.setPDA_PERSON_STATUS(personstatus);
 		parms.setPDA_STATE(form.getSTATE());
 		
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
+		
 		ctx.session().setAttribute("riderCodesParms",parms);
 	}
 
@@ -427,6 +429,7 @@ public class RiderMainAction extends CCAction {
 		
 		inputs.setPOLICY_ID(new BigDecimal(policyNo));
 		inputs.setRIDER_FLAG(form.getRIDER_FLAG());
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 		ACPLPMWINOUT_PARMRIDER_INFOsRIDER_INFO[] RIDER_INFOs = new ACPLPMWINOUT_PARMRIDER_INFOsRIDER_INFO[5];
 		

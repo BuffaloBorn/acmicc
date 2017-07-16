@@ -27,6 +27,7 @@ public class UnderwritingNotesMainForm extends ActionForm {
 	private String policy_id;
 	private String description;
 	private String notesArea;
+	private String log_counter="";
 	
 	public UnderwritingNotesMainForm() {
 		super();
@@ -68,6 +69,7 @@ public class UnderwritingNotesMainForm extends ActionForm {
 		this.setDescription("");
 		this.setNotesArea("");
 		this.setPolicy_id("");
+		this.setLog_counter("");
 	}
 	
 	
@@ -77,6 +79,15 @@ public class UnderwritingNotesMainForm extends ActionForm {
 		this.setDescription(getDescription());
 		this.setNotesArea(getNotesArea());
 		this.setPolicy_id(getPolicy_id());
+		this.setLog_counter(getLog_counter());
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counte) {
+		this.log_counter = log_counte;
 	}
 	
 	

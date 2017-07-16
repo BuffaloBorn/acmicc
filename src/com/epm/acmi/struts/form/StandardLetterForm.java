@@ -35,6 +35,7 @@ public class StandardLetterForm extends ActionForm {
 		private String second_request="";
 		private String recipient_name="";
 		private String policyno="";
+		private String log_counter="";
 	
 		
 		public StandardLetterForm() {
@@ -248,6 +249,7 @@ public class StandardLetterForm extends ActionForm {
 			this.setPolicyno("");
 			this.setLetterTextArea("");
 			this.setStd_event("");
+			this.setLog_counter("");
 		}
 
 
@@ -266,6 +268,7 @@ public class StandardLetterForm extends ActionForm {
 			this.setStatus(this.getStatus());
 			this.setStd_event(this.getStd_event());
 			this.setLetterTextArea(this.getLetterTextArea());
+			this.setLog_counter(this.getLog_counter());
 		}
 		
 		
@@ -286,6 +289,16 @@ public class StandardLetterForm extends ActionForm {
 			
 			FieldCheckCustom.validateRequired(this.getDescription(), ctx, "Description");
 			FieldCheckCustom.validateRequired(this.getLetterTextArea(), ctx, "Letter Text");
+		}
+
+
+		public String getLog_counter() {
+			return log_counter;
+		}
+
+
+		public void setLog_counter(String log_counter) {
+			this.log_counter = log_counter;
 		}
 
 

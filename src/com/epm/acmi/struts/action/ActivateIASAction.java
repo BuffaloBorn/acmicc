@@ -68,6 +68,14 @@ public class ActivateIASAction extends CCAction{
 			
 			}
 			
+			if (intPolicy.equalsIgnoreCase("false"))
+			{
+				String PolicyNo  = (String)ctx.request().getParameter("PolicyNo");
+				ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
+				ctx.session().setAttribute(Constants.IASModify, "edit");
+				ctx.session().setAttribute(Constants.IASDiaryModify, "edit");
+			}
+			
 		}	
 		
 	
@@ -199,6 +207,7 @@ public class ActivateIASAction extends CCAction{
 		form.setPOLICY_TRANS_TYPE_COND(outparms.value.getPOLICY_TRANS_TYPE_COND());
 		form.setRIDER_IND(outparms.value.getRIDER_IND());
 		form.setAMENDMENT_IND(outparms.value.getAMENDMENT_IND());
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 		
 		if(form.getUNDERWRITER_OLD().trim().length() == 0)
 		{
@@ -682,6 +691,7 @@ public class ActivateIASAction extends CCAction{
 		
 		String policyNo = form.getPOLICY_ID();
 		//String underWriterStatus = form.getUdwselectedItem();
+		String logCounter = form.getLog_counter();
 		
 		if (IasDairyEdit.CallErrorEdits(ctx))
 		{
@@ -693,7 +703,7 @@ public class ActivateIASAction extends CCAction{
 		
 		try {
 			
-			WSPolicyMaintCall.updateUnderwriterStatus(policyNo, user, form.getUdwselectedItem(), msgInfo);
+			WSPolicyMaintCall.updateUnderwriterStatus(policyNo, user, form.getUdwselectedItem(), msgInfo, logCounter);
 		} catch (RemoteException e) {
 			log.error("Remote Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() +" Web Service: " + service +  " and Policy Number " + policyNo);
 			ctx.addGlobalError(DiaryMessages.REMOTE_EXCEPTION, service + " WS",policyNo);

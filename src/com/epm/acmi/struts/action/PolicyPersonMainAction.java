@@ -477,7 +477,11 @@ public class PolicyPersonMainAction extends CCAction {
 		
 		action.setPERSON_ID(new BigDecimal(row.getPERSON_ID()));
 		
+		action.setACTION("M");
+		
 		action.setPOLICY_ID(new BigDecimal(PolicyNo));
+		
+		action.setLOG_COUNTER(new BigDecimal("0"));
 		
 		action.setPERSON_STATUS_IND(row.getPERSON_STATUS_IND());
 		

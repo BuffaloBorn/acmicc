@@ -57,7 +57,7 @@
 							</table>
 						</forms:html>
 						<forms:html label="form.iasdiary.std.letter.memoid" join="true">	
-							<ctrl:text  property="memoid" size="8" maxlength="8"/>										
+							<ctrl:plaintext property="memoid"/>										
 							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help"/>
 						</forms:html>
 					</forms:row>
@@ -180,7 +180,7 @@
 							</table>
 						</forms:html>
 						<forms:html label="form.iasdiary.std.letter.memoid" join="true">	
-							<ctrl:text  property="memoid" size="8" maxlength="8"/>										
+							<ctrl:plaintext property="memoid"/>										
 							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help"/>
 						</forms:html>
 					</forms:row>

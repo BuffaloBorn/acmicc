@@ -95,6 +95,7 @@ public class LetterAction extends CCAction {
 		form.setEvent_id("");
 		form.setAttach("Y");
 		form.setStatus("O");
+		form.setLog_counter("0");
 		
 		MUDECMWResponseMSG_DATAHolder msgInfo = new MUDECMWResponseMSG_DATAHolder();
 		MUDECMWResponseOUT_PARMSHolder outparms = new MUDECMWResponseOUT_PARMSHolder();
@@ -151,6 +152,7 @@ public class LetterAction extends CCAction {
 		
 		inputs.setPOLICY_ID(new BigDecimal(PolicyNo));
 		inputs.setUSER_ID(user);
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 		if(form.getEvent_id().length() == 0)
 		{
@@ -331,6 +333,7 @@ public class LetterAction extends CCAction {
 		form.setAttach(outparms.value.getATTACHMENT_IND());
 		
 		form.setEvent_id(inoutparms.value.getEVENT_ID1().toString());
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 		
 		String[] outArray =  inoutparms.value.getTEXT1();
 	
@@ -490,7 +493,7 @@ public class LetterAction extends CCAction {
 		form.setSuspense_date(TextProcessing.plainDateFormat(outparms.value.getSUSPENSE_DT().toString()));
 		String policyNo = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
 		form.setPolicyno(policyNo );
-		
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 	}
 
 	/**

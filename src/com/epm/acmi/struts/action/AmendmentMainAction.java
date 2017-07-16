@@ -117,6 +117,7 @@ public class AmendmentMainAction extends CCAction {
 		}
 		
 		form.setAmendmentTextArea(TextProcessing.formatText(inoutparms.value.getTEXT1(), 60));
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 		
 	}
 
@@ -305,8 +306,8 @@ public class AmendmentMainAction extends CCAction {
 		inputs.setPOLICY_ID(new BigDecimal(policyNo ));
 		inputs.setDESCRIPTION(form.getDescription());
 		
-	
-				
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
+			
 		if (form.getWrong_app().equalsIgnoreCase("0"))
 			inputs.setPROXY_IND("X");					
 		else

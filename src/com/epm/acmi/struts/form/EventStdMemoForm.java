@@ -40,6 +40,7 @@ public class EventStdMemoForm extends ActionForm {
 	private String application_formid;
 	private String freeformind;
 	private String stdletterTextArea;
+	private String log_counter="";
 	
 
 	public EventStdMemoForm() {
@@ -271,6 +272,7 @@ public class EventStdMemoForm extends ActionForm {
 		this.setApplication_formid("");
 		this.setFreeformind("");
 		this.setStdletterTextArea("");
+		this.setLog_counter("");
 	}
 
 
@@ -300,6 +302,14 @@ public class EventStdMemoForm extends ActionForm {
 	{
 
 		
+	}
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 	

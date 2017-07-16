@@ -27,6 +27,7 @@ public class WSPolicyPersonMaint1Call {
 		inputs.setDISPLAY_DATE(new BigDecimal("0"));
 		inputs.setPERSON_ID(new BigDecimal(person_id));
 		inputs.setPERSON_STATUS_IND(new String(""));
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		ACCPEMWIN_PARM action = new ACCPEMWIN_PARM();
 		action.setACTION("D");

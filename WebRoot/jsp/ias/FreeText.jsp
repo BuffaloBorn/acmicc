@@ -79,7 +79,7 @@ textbox.value = str
 							</table>
 						</forms:html>
 						<forms:html label="form.iasdiary.freeText.memoid" join="true">	
-							<ctrl:text  property="memoid" size="8" maxlength="8" onchange="gIasChangesWereMade=true"/>										
+							<ctrl:text property="memoid" size="8" maxlength="8" disabled="true"/>										
 							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help" onmouseup="gIasSaveClicked=true"/>
 						</forms:html>					
 					</forms:row>
@@ -104,7 +104,7 @@ textbox.value = str
 					</forms:row>
 				</forms:section>
 				<forms:buttonsection default="btnSave">
-					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onclick="runPageValidation(this)"/>
+					<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
 					<forms:button base="buttons.src.def2" name="btnBack" text="button.title.back" title="button.title.back" onclick="runPageValidation(this)"/>	
 				</forms:buttonsection>
 			</forms:form>
@@ -214,7 +214,7 @@ textbox.value = str
 							</table>
 						</forms:html>
 						<forms:html label="form.iasdiary.freeText.memoid" join="true">	
-							<ctrl:text  property="memoid" size="8" maxlength="8" onchange="gIasChangesWereMade=true"/>										
+							<ctrl:text  property="memoid" size="8" maxlength="8" disable="true"/>										
 							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help" onmouseup="gIasSaveClicked=true"/>
 						</forms:html>					
 					</forms:row>

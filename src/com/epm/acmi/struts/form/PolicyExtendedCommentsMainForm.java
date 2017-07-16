@@ -26,6 +26,7 @@ public class PolicyExtendedCommentsMainForm extends ActionForm {
 	private String description = "";
 	private String freeTextArea = "";
 	private String autoSave ="";
+	private String log_counter = "";
 	
 	
 	public PolicyExtendedCommentsMainForm(String policy_id, String description,
@@ -79,6 +80,7 @@ public class PolicyExtendedCommentsMainForm extends ActionForm {
 		this.setDescription("");
 		this.setFreeTextArea("");
 		this.setAutoSave("");
+		this.setLog_counter("");
 	}
 	
 	public void save()
@@ -102,6 +104,16 @@ public class PolicyExtendedCommentsMainForm extends ActionForm {
 
 	public void setAutoSave(String autoSave) {
 		this.autoSave = autoSave;
+	}
+
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 	
 }

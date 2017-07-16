@@ -28,6 +28,7 @@ public class WSExtCommentMaintCall {
 		inputs.setPOLICY_ID(new BigDecimal(PolicyNo));
 		inputs.setDESCRIPTION(new String(""));
 		inputs.setTEXT(new String[60]);
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 			
 	
 		service.MUTXTMW(inparams, inputs, msgInfo, inoutparms, outparms);

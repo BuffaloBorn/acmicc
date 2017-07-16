@@ -37,6 +37,7 @@ public class WSPolicyPersonCovMainCall {
 		inputs.setCONDITION_TEXT( new String[4]);
 		inputs.setSUB_STANDARD_RISK_CODE( new String(""));
 		inputs.setDISPLAY_DATE(displaydate);
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		service.IAPPCMW(action, inputs, msgInfo , inoutparms, outparms);
 	

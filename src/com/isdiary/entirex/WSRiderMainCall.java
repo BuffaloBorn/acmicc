@@ -37,6 +37,8 @@ public class WSRiderMainCall {
 		
 		inputs.setRIDER_INFOs(new ACPLPMWINOUT_PARMRIDER_INFOsRIDER_INFO[5]);
 		
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
+		
 		service.ACPLPMW(action , inputs, msgInfo, inoutparms , outparms );
 		
 	}

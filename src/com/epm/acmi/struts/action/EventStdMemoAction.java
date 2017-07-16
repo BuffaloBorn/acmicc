@@ -109,6 +109,7 @@ public class EventStdMemoAction extends CCAction {
 		form.setStd_event(eventcode);
 		form.setStatus("O");
 		form.setAttachment("Y");
+		form.setLog_counter("0");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
 	    form.setRequested(dateFormat.format(date).toString());
@@ -215,6 +216,7 @@ public class EventStdMemoAction extends CCAction {
 		form.setApplication_formid(outparms.value.getAPPLICATION_FORM_ID());
 		//form.setFreeformind(outparms.value.get));	
 		form.setStdletterTextArea(TextProcessing.formatTextStdEventMemo(outparms.value.getTEXT(), 75));
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 	
 	}
 
@@ -416,7 +418,7 @@ public class EventStdMemoAction extends CCAction {
 		String user  = (String)ctx.session().getAttribute(Constants.IASuser);
 		
 		inputs.setUSER_ID(user);
-		
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		inputs.setPOLICY_ID(new BigDecimal(form.getPolicyno()));
 		if (form.getEvent_id().trim().length() == 0) 
 			inputs.setEVENT_ID(new BigDecimal("0"));

@@ -37,6 +37,7 @@ public class WSEventStdMemoCall {
 		inputs.setSTD_EVENT_ID(new String(""));
 		
 		inputs.setUSER_ID(new String(""));
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		service.MUESMMW(action, inputs, msgInfo, inoutparms, outparms);
 			

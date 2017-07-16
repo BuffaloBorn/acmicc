@@ -18,9 +18,26 @@ public class WSPersonCompanyMaintCall {
 	{
 		IASLIBPort service = new PersonCompanyMaintLocator().getIASLIBPort();
 
+		ACPCYMWIN_PARM displayAction = new ACPCYMWIN_PARM();
+	
+		ACPCYMWINOUT_PARM displayInputs = new ACPCYMWINOUT_PARM();
+		
+		ACPCYMWResponseMSG_INFOHolder displayMsgInfo = new ACPCYMWResponseMSG_INFOHolder();
+		
+		ACPCYMWResponseINOUT_PARM1Holder displayOutparms = new ACPCYMWResponseINOUT_PARM1Holder();
+		
+		
+		displayAction.setACTION("D");
+		displayAction.setPERSON_ID(new BigDecimal(person_id));
+		displayAction.setUSER_ID(user_id);
+		
+		displayInputs.setSMOKER_IND(new String(""));
+		displayInputs.setLOG_COUNTER(new BigDecimal("0"));
+		
+		service.ACPCYMW(displayAction, displayInputs, displayMsgInfo , displayOutparms );
+		
 		ACPCYMWIN_PARM action = new ACPCYMWIN_PARM();
 		
-	
 		action.setACTION("M");
 		action.setPERSON_ID(new BigDecimal(person_id));
 		action.setUSER_ID(user_id);
@@ -28,6 +45,7 @@ public class WSPersonCompanyMaintCall {
 		ACPCYMWINOUT_PARM inputs = new ACPCYMWINOUT_PARM();
 		
 		inputs.setSMOKER_IND(smoker_ind);
+		inputs.setLOG_COUNTER(displayOutparms.value.getLOG_COUNTER1());
 		
 		ACPCYMWResponseINOUT_PARM1Holder outparms = new ACPCYMWResponseINOUT_PARM1Holder();
 	

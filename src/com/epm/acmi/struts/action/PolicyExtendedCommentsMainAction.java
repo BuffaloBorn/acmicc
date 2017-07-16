@@ -100,6 +100,7 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		form.setPolicy_id(inoutparms.value.getPOLICY_ID1().toString());
 		form.setDescription(inoutparms.value.getDESCRIPTION1());
 		form.setFreeTextArea(TextProcessing.formatText(inoutparms.value.getTEXT1(), 60));
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 	}
 
 	/**
@@ -276,6 +277,8 @@ public class PolicyExtendedCommentsMainAction extends CCAction {
 		
 		TextProcessing.storeTextData(form.getFreeTextArea(), 0, 190, Text ,61, 0, 11460);
 		inputs.setTEXT(Text);
+		
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 	}
 	
 	

@@ -134,6 +134,8 @@ public class EventPortamedicAction extends CCAction  {
 		}
 		form.setStatus("O");
 		form.setEvent_id("");
+		form.setLog_counter("0");
+		
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
@@ -193,6 +195,7 @@ public class EventPortamedicAction extends CCAction  {
 		
 		inputs.setEVENT_ID(new BigDecimal(eventid));
 		inputs.setDATE_CREATED(TextProcessing.YYYYMMDDFormat(form.getRequested()));
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 		//=============General Information =======================
 		
@@ -342,6 +345,7 @@ public class EventPortamedicAction extends CCAction  {
 		form.setStd_event(inoutparms.value.getSTD_EVENT_ID1());
 		form.setEvent_id(inoutparms.value.getEVENT_ID1().toString());
 		form.setRequested(TextProcessing.dateFormat(inoutparms.value.getDATE_CREATED1()));
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 		
 		//=============General Information =======================
 		
@@ -642,6 +646,7 @@ public class EventPortamedicAction extends CCAction  {
 		
 		inputs.setEVENT_ID(new BigDecimal(eventid));
 		inputs.setDATE_CREATED(TextProcessing.YYYYMMDDFormat(form.getRequested()));
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 		//=============General Information =======================
 		

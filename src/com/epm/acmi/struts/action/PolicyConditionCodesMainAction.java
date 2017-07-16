@@ -148,6 +148,8 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		
 		form.setPERSON_ID(inoutparms.value.getPERSON_ID1().toString());
 		
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
+		
 		form.setDISPLAY_DATE(TextProcessing.dateFormat(inoutparms.value.getDISPLAY_DATE1().toString()));
 	
 		form.setPERSON_STATUS_IND("D");
@@ -297,6 +299,7 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		CONDITION_TEXT[3] = conditionCodeData[3].getDESCRIPTION();
 		
 		inputs.setCONDITION_TEXT(CONDITION_TEXT);
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 	}
 	

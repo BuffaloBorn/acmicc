@@ -31,12 +31,13 @@ public class WSPolicyMaintCall {
 		inputs.setPOLICY_ID(new BigDecimal(policyNo));
 		inputs.setUNDERW_STATUS_CURRENT(new String(""));
 		inputs.setUSER_ID(userId);
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 		
 		service.ACPLYMW(action, inputs, msgInfo, inparms, inoutparms, outparms);
 		
 	}
 
-	public static synchronized void updateUnderwriterStatus(String policyNo, String userId, String underWriterStatus, ACPLYMWResponseMSG_INFOHolder msgInfo)throws ServiceException, RemoteException
+	public static synchronized void updateUnderwriterStatus(String policyNo, String userId, String underWriterStatus, ACPLYMWResponseMSG_INFOHolder msgInfo, String logCounter)throws ServiceException, RemoteException
 	{
 		IASLIBPort service = new PolicyMaintLocator().getIASLIBPort();
 
@@ -53,6 +54,7 @@ public class WSPolicyMaintCall {
 		inputs.setPOLICY_ID(new BigDecimal(policyNo));
 		inputs.setUNDERW_STATUS_CURRENT(underWriterStatus);
 		inputs.setUSER_ID(userId);
+		inputs.setLOG_COUNTER(new BigDecimal(logCounter));
 		
 		
 		service.ACPLYMW(action, inputs, msgInfo, inparms, inoutparms, outparms);

@@ -125,6 +125,7 @@ public class FreeTextAction extends CCAction {
 		form.setStd_event(eventCode);
 		form.setStatus("O");
 		form.setEvent_id("");
+		form.setLog_counter("0");
 		 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
@@ -272,6 +273,7 @@ public class FreeTextAction extends CCAction {
 		inputs.setUSER_ID(user);
 		inputs.setMEMO_IND(form.getMemoind());
 		inputs.setFREE_FORM_IND(form.getFreeformind());
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));
 		
 	}
 	
@@ -309,7 +311,7 @@ public class FreeTextAction extends CCAction {
 		inputs.setUSER_ID(user);
 		inputs.setMEMO_IND(form.getMemoind());
 		inputs.setFREE_FORM_IND(form.getFreeformind());
-				
+		inputs.setLOG_COUNTER(new BigDecimal(form.getLog_counter()));		
 	}
 
 	private void displayFreeTextMaint(ActionContext ctx, String EventId, String page) 
@@ -413,6 +415,7 @@ public class FreeTextAction extends CCAction {
 		
 		form.setStd_event(inoutparms.value.getSTD_EVENT_ID1());
 		form.setSecond_request(inoutparms.value.getSECOND_REQUEST_IND1());
+		form.setLog_counter(inoutparms.value.getLOG_COUNTER1().toString());
 	}
 
 	private void editDisplayFreeTextMaint(ActionContext ctx) {
@@ -539,6 +542,7 @@ public class FreeTextAction extends CCAction {
 		form.setSecond_request(form.getSecond_request());
 		form.setStatus(form.getStatus());
 		form.setStd_event(form.getStd_event());
+		form.setLog_counter(form.getLog_counter());
 	}
 	
 	

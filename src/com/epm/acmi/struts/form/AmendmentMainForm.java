@@ -29,6 +29,7 @@ public class AmendmentMainForm extends ActionForm {
 	private String wrong_app="";
 	private String description="";
 	private String amendmentTextArea="";
+	private String log_counter;
 	
 	public TreeMap getWrongAppOptions()
 	{
@@ -90,6 +91,7 @@ public class AmendmentMainForm extends ActionForm {
 		this.setName("");
 		this.setPolicyid("");
 		this.setWrong_app("");
+		this.setLog_counter("");
 	
 	}
 
@@ -100,6 +102,16 @@ public class AmendmentMainForm extends ActionForm {
 		this.setName(getName());
 		this.setPolicyid(getPolicyid());
 		this.setWrong_app(getWrong_app());
+	}
+
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 	
 }

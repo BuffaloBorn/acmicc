@@ -68,6 +68,8 @@ public class RiderMainForm extends ActionForm {
 	private String RIDER_END_DATE_FIVE="";
 	private String RIDER_TEXT_FIVE="";
 	
+	private String log_counter ="";
+	
 	public TreeMap getRestrictedOptions()
 	{
 		
@@ -364,6 +366,7 @@ public class RiderMainForm extends ActionForm {
 		setRIDER_END_DATE_FIVE("");
 		setRIDER_TEXT_FIVE("");
 		setSTATE("");
+		setLog_counter("");
 	}
 	
 	public void save()
@@ -411,6 +414,17 @@ public class RiderMainForm extends ActionForm {
 		setRIDER_TEXT_FIVE(getRIDER_TEXT_FIVE());
 	
 		setSTATE(getSTATE());
+		setLog_counter(getLog_counter());
+	}
+
+
+	public String getLog_counter() {
+		return log_counter;
+	}
+
+
+	public void setLog_counter(String log_counter) {
+		this.log_counter = log_counter;
 	}
 
 

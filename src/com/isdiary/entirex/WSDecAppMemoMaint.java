@@ -35,7 +35,7 @@ public class WSDecAppMemoMaint {
 		inputs.setTEXT(new String[60]);
 		inputs.setINCOMPLETE_IND(new String(""));
 		inputs.setDECLINED_IND(new String(""));
-        
+        inputs.setLOG_COUNTER(new BigDecimal("0"));
 	
 		service.MUDECMW(action, inputs, msgInfo, inoutparms, outparms);
 		

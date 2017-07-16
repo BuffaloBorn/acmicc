@@ -29,6 +29,7 @@ public class WSUnderwNotesMaintCall {
 		inputs.setPOLICY_ID(new BigDecimal(PolicyNo));
 		inputs.setDESCRIPTION(new String(""));
 		inputs.setTEXT(new String[191]);
+		inputs.setLOG_COUNTER(new BigDecimal("0"));
 
 	
 		service.MUNOTMW(action, inputs, msgInfo, inoutparms, outparms);
