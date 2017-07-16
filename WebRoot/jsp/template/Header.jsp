@@ -6,6 +6,8 @@
 <%@ taglib uri="/WEB-INF/tlds/struts-logic.tld" prefix="logic"%>
 <jsp:useBean id="current" class="java.util.Date" />
 
+<script src="app/js/popupiasdiary.js" type="text/javascript" ></script>
+
 <TABLE WIDTH="100%" height="40" NOwrap BACKGROUND="fw/def2/image/headerTitle.gif">
 	<tr>
 		<%-- Image --%>

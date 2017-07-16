@@ -25,8 +25,7 @@
 <script>
 var submitcount=0;
 window.onload = addherfListenersToSort;
-window.onbeforeunload=runUnloadCloseIasDiary;
-window.onunload=runCloseIasDiaryUnload;
+
 
 function openRoleAssignWindow() 
 {

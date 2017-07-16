@@ -40,7 +40,14 @@ function runUnloadValidation()
 function runUnloadCloseIasDiary()
 {
 	var iaspopup = getCookie('iaspopup');
+    var iaspopupclose = getCookie('iaspopupclose');	
 
+	if((iaspopupclose == 'close') && (iaspopup == 'open' ))
+	{
+		iaspopup = 'close';
+	}
+	
+	
 	if((iaspopup == 'open') && (gTabClick == false))
 	{
 		
@@ -68,7 +75,7 @@ function runCloseIasDiaryUnload()
 	var iaspopup = getCookie('iaspopup');		
 	var iaspopupclose = getCookie('iaspopupclose');			
 	
-	if(iaspopupclose == 'false' && iaspopup == 'open' )
+	if(iaspopupclose == 'close' && iaspopup == 'open' )
 	{
 		iaspopup = 'close';
 	}
@@ -117,13 +124,6 @@ function runCloseIasDiaryUnload()
 		setCookie('iaspopup', 'close', exp, '/acmicc/');
 	}
 	
-	//if(gClosePopup)
-	//{
-		//runIasdiaryInt();
-		//closeIasdiary();
-		//setCookie('iaspopup', 'close', exp, '/acmicc/');
-		//setCookie('updateClose', 'close', exp, '/acmicc/');
-	//}
 
 }
 
@@ -151,7 +151,7 @@ function runIasdiary()
 	{
 		var options = 'width=' + width  + ', height=' + height + ', top='+ winTop + ', left='+ winLeft  + ',fullscreen=no,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes';
 		setCookie('iaspopup', 'open', exp, '/acmicc/');
-		setCookie('iaspopupclose', 'true', exp, '/acmicc/');
+		setCookie('iaspopupclose', 'open', exp, '/acmicc/');
 		iasdiary =window.open(url,'iasdiaryname',options);
 	}
 	else
@@ -474,7 +474,7 @@ function addherfListenersToSort()
 	}
 
 
-	function getCookie(searchName)
+	function getCookieOld(searchName)
 	{
 		var cookies = document.cookie.split(";");
 		
@@ -492,6 +492,29 @@ function addherfListenersToSort()
 		return false;
 	}
 	
+	function getCookie(cookieName)
+	{
+		
+    	var cookieNameStart,valueStart,valueEnd,cookieValue,returnValue;
+    	cookieNameStart = document.cookie.indexOf(cookieName+'=');
+    	if (cookieNameStart < 0)
+    	{
+      		returnValue = null;
+    	}
+    	else
+    	{
+      		valueStart = document.cookie.indexOf(cookieName+'=') + cookieName.length + 1;
+      		valueEnd = document.cookie.indexOf(";",valueStart);
+      		if (valueEnd == -1)
+      		{
+        		valueEnd = document.cookie.length;
+      		}
+      			cookieValue = document.cookie.substring(valueStart,valueEnd );
+      			returnValue = (cookieValue == '') ? null : unescape(cookieValue);
+    	}
+    
+    	return returnValue;
+	}
 	
 	function deleteCookie (name) 
 	{

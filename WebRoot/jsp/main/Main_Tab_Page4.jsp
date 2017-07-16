@@ -8,6 +8,8 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-utility.tld" prefix="util"%>
 <script language="javascript">
 
+window.onload = addherfListenersToSort;
+
 	function ConfirmChoice()
 	{
 			var answer = confirm("Document will be marked for delete. Do you want to continue?");
@@ -23,7 +25,7 @@
 	
 </script>
 
-<body  onbeforeunload=" runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
+<body  onbeforeunload="runUnloadCloseIasDiary()" onunload="runCloseIasDiaryUnload()">
 <table height="400" width="100%">
 	<tr>
 		<td height="10" colspan="2" class="legend" align="right" width="100%">Back

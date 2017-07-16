@@ -23,12 +23,12 @@ function runUnloadIasValidation()
 
 function setIaspopupcloseToTrue()
 {
-	setCookie('iaspopupclose', 'true', exp, '/acmicc/');
+	setCookie('iaspopupclose', 'open', exp, '/acmicc/');
 }
 
 function setIaspopupcloseToFalse()
 {
-	setCookie('iaspopupclose', 'false', exp, '/acmicc/');
+	setCookie('iaspopupclose', 'close', exp, '/acmicc/');
 }
 
 
