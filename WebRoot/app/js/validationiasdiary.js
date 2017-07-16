@@ -51,12 +51,14 @@ function runPageValidationList()
 		{
 			happen = true;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			return happen;
 			
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			return happen;
 			
 		}
@@ -65,6 +67,7 @@ function runPageValidationList()
 	{
 		happen = true;
 		window.onbeforeunload=null;
+		window.onunload=null;
 		return happen;
 	}
 }
@@ -82,6 +85,7 @@ function runPageValidationHref(linkobject)
 		{
 			happen = true;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			window.location.href = linkobject.href;	
 			return happen;
 		}
@@ -94,6 +98,7 @@ function runPageValidationHref(linkobject)
 	{
 		happen = true;
 		window.onbeforeunload=null;
+		window.onunload=null;
 		window.location.href = linkobject.href;
 		return happen;
 	}
@@ -101,34 +106,12 @@ function runPageValidationHref(linkobject)
 
 function runPageValidation(formobject)
 {
-	var happen = false;
-	
-	var form = getEnclosingForm(formobject);
-
-	//document.getElementById('btnBackHidden').value='';
-
-	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
+	if (checkChangedFeilds(formobject)) 
+		CCUtility.submitEnclosingForm(formobject); 
+	else 
 	{
-		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
-		
-		if (answer)
-		{
-			happen = true;
-			window.onbeforeunload=null;
-			form.submit();
-			return happen;
-		}
-		else{
-			happen = false;
-			return happen;
-		}
-	}
-	else
-	{
-		happen = true;
-		window.onbeforeunload=null;
-		form.submit();
-		return happen;
+	   document.getElementById('btnBackHidden').value=''; 
+	   return false;
 	}
 }
 
@@ -146,6 +129,7 @@ function runPageValidationTwo(formobject)
 		{
 			happen = true;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			//form.submit();
 			return happen;
 		}
@@ -158,6 +142,7 @@ function runPageValidationTwo(formobject)
 	{
 		happen = true;
 		window.onbeforeunload=null;
+		window.onunload=null;
 		//form.submit();
 		return happen;
 	}
@@ -175,12 +160,14 @@ function goDairy()
 		{
 			happen = true;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			window.location.href = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
 			//return happen;
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			//return happen;
 		}
 	
@@ -189,6 +176,7 @@ function goDairy()
 	{
 		happen = true;
 		window.onbeforeunload=null;
+		window.onunload=null;
 		window.location.href = "/acmicc/iuauser/iasdiary.do?intPolicy=true";
 		//return happen;
 	}
@@ -199,6 +187,7 @@ function goDairy()
 function disableunload()
 {
 	window.onbeforeunload=null;
+	window.onunload=null;
 }
 
 function runPageValidationLink()
@@ -215,12 +204,14 @@ function runPageValidationLink()
 		{
 			happen = true;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			closeDeleteCookie();
 			return happen;
 		}
 		else{
 			happen = false;
 			window.onbeforeunload=null;
+			window.onunload=null;
 			return happen;
 		}
 	}
@@ -228,6 +219,7 @@ function runPageValidationLink()
 	{
 		happen = true;
 		window.onbeforeunload=null;
+		window.onunload=null;
 		closeDeleteCookie();
 		return happen;
 	}
@@ -257,3 +249,29 @@ function getFormAsString(form){
  return returnString; 
 }
 
+function checkChangedFeilds()
+{
+		
+	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
+	{
+		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
+		
+		if (answer)
+		{
+			happen = true;
+			window.onbeforeunload=null;
+			window.onunload=null;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	else
+	{
+		window.onbeforeunload=null;
+		window.onunload=null;
+		return true;
+	}		
+
+}

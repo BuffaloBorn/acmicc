@@ -60,7 +60,7 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
+									<ctrl:plaintext  property="recipient_id"/>
 									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
@@ -191,7 +191,7 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIASChangesWereMade=true"/>
+									<ctrl:plaintext  property="recipient_id"/>
 									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
@@ -267,7 +267,7 @@
 						<table border="0" cellspacing="0" cellpadding="5">
 							<tr>
 								<td>
-									<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIASChangesWereMade=true"/>
+									<ctrl:plaintext  property="recipient_id" />
 									<!--<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />-->
 								</td>
 							</tr>
