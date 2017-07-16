@@ -61,6 +61,9 @@ public class EventPortamedicAction extends CCAction  {
 
 		String actiontype = (String)ctx.request().getParameter("actiontype");
 		
+		String method ="doExecute: " ;
+		log.debug(method + "Action: " + action + " ->> Event Code: " + eventCode + " ->> Event Id: " + EventId + " ->> Actiontype: " + actiontype);
+		
 		if (action.equalsIgnoreCase("display"))
 		{
 			displayEventPortRequest(ctx, EventId, "display");
@@ -118,12 +121,12 @@ public class EventPortamedicAction extends CCAction  {
 	
 	private void createEventPortamedicMaint(ActionContext ctx, String eventCode) {
 		
-		log.debug("Prepopulate" + classAction +  ".....");
+		log.debug("Prepopulate Event Portamedic Page.....");
 		
 		EventPortamedicForm form = (EventPortamedicForm) ctx.form();
 		
 		String policyNo = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
-		
+		log.debug("Get " + Constants.IASpolicyNumber + ": " + policyNo); 
 		form.clear();
 		
 		form.setPolicyno(policyNo );
@@ -148,7 +151,7 @@ public class EventPortamedicAction extends CCAction  {
 	    
 	    String remarksTextArea = "Please advise agent prior to setting up appointment.";
 	    form.setRemarksTextArea(remarksTextArea);
-		log.debug("Finish .....prepopulating " + classAction +  ".....");		
+		log.debug("Finish .....prepopulating Event Portamedic Page.....");		
 		
 	}
 
@@ -158,6 +161,7 @@ public class EventPortamedicAction extends CCAction  {
 		String eventid = null;
 		eventid = (String)ctx.request().getParameter("eventid");
 		
+		log.debug("eventid: " + eventid);		
 		if ((eventid == null) || (eventid.trim().length()== 0) || eventid.equalsIgnoreCase("null")) 
 		{
 			log.debug("Event Id is Null");

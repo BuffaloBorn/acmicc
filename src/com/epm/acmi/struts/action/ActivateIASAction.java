@@ -69,7 +69,9 @@ public class ActivateIASAction extends CCAction{
 				String PolicyNo  = (String)ctx.session().getAttribute(Constants.policyNumber);
 				ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
 				ctx.session().setAttribute(Constants.IASModify, "edit");
+				log.debug("Set " + Constants.IASModify + " to edit");
 				ctx.session().setAttribute(Constants.IASDiaryModify, "edit");
+				log.debug("Set " + Constants.IASDiaryModify + " to edit");
 			}
 			
 			if (intPolicy.equalsIgnoreCase("false"))
@@ -77,7 +79,9 @@ public class ActivateIASAction extends CCAction{
 				String PolicyNo  = (String)ctx.request().getParameter("PolicyNo");
 				ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
 				ctx.session().setAttribute(Constants.IASModify, "edit");
+				log.debug("Set " + Constants.IASModify + " to display");
 				ctx.session().setAttribute(Constants.IASDiaryModify, "edit");
+				log.debug("Set " + Constants.IASDiaryModify + " to display");
 			}
 			
 		}	
@@ -148,7 +152,13 @@ public class ActivateIASAction extends CCAction{
 			ctx.forwardToInput();
 			return;
 			
+		}catch (Exception e) {
+			log.error("Exception " + e.getClass().getName() + " caught with message: " + e.getMessage() + " Web Service: " + service + " and Policy Number " + PolicyNo, e);
+			ctx.addGlobalError(DiaryMessages.REGULAR_EXCEPTION, service + " WS",PolicyNo);
+			ctx.forwardToInput();
+			return;
 		}
+		
 		
 	}
 	
@@ -454,15 +464,21 @@ public class ActivateIASAction extends CCAction{
 		{
 			ctx.session().setAttribute(Constants.IASpolicyNumber, PolicyNo);
 			ctx.request().setAttribute("modify", "edit");
+			log.debug("modify: Holds the current of page: edit" );
 			ctx.session().setAttribute(Constants.IASDiaryModify, "edit");
+			log.debug("Set " + Constants.IASDiaryModify + " to edit");
 			ctx.session().setAttribute(Constants.IASModify, "edit");
+			log.debug("Set " + Constants.IASModify + " to edit");
 		}
 		else
 		{	
 			ctx.session().setAttribute(Constants.IASpolicyNumber, policy_id);
 			ctx.request().setAttribute("modify", "display");
+			log.debug("modify: Holds the current of page: display" );
 			ctx.session().setAttribute(Constants.IASDiaryModify, "display");
+			log.debug("Set " + Constants.IASDiaryModify + " to display");
 			ctx.session().setAttribute(Constants.IASModify, "display");
+			log.debug("Set " + Constants.IASModify + " to display");
 		}	
 
 		log.debug("Reload Policy Events List");

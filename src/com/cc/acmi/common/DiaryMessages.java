@@ -12,6 +12,7 @@ public interface DiaryMessages
 	public static final String STD_EVENTS_CODES_INVALID = "std.event.code.invalid.msg";
 	public static final String REMOTE_EXCEPTION = "remote.exception.msg";
 	public static final String SERCIVE_EXCEPTION = "service.exception.msg";
+	public static final String REGULAR_EXCEPTION = "regular.exception.msg";
 	public static final String SERCIVE_EXCEPTION_PERSON_ID = "service.exception.msg.personid";
 	public static final String EVENT_ID_NULL = "event.id.null.msg";
 	public static final String FILL_IN_FORM_EXCEPTION = "fill.in.form.msg";

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.epm.acmi.util.ACMICache;
+import com.epm.acmi.util.MiscellaneousUtils;
 
 public class ReloadIasCache extends HttpServlet {
 
@@ -19,7 +20,7 @@ public class ReloadIasCache extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static Logger log = Logger.getLogger(ReloadIasCache.class);
+	private static Logger log = MiscellaneousUtils.getIASLogger();
 	
 	public ReloadIasCache()	{
 	}

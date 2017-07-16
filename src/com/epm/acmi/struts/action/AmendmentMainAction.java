@@ -132,7 +132,7 @@ public class AmendmentMainAction extends CCAction {
 		form.clear();
 		
 		String modify = (String) ctx.session().getAttribute("modify");
-		 
+		log.debug("modify: " + modify );
 		if(modify != null)
 		  ctx.request().setAttribute("modify", modify);	
 		log.debug("Redirect back previous page");

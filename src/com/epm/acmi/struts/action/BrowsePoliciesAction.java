@@ -52,6 +52,7 @@ public class BrowsePoliciesAction extends CCAction{
 		BrowsePoliciesForm form = (BrowsePoliciesForm) ctx.form();
 			
 		String PolicyNo  = (String)ctx.session().getAttribute(Constants.IASpolicyNumber);
+		log.debug("session policyno:" + PolicyNo);
 		
 		MUPLYBWResponseINOUT_PARM1Holder inoutparms = new MUPLYBWResponseINOUT_PARM1Holder();
 		
@@ -89,8 +90,10 @@ public class BrowsePoliciesAction extends CCAction{
 		comingFrom = null;
 		
 		keyInsured  = (String)ctx.request().getParameter("keyInsured");
+		log.debug("keyInsured:" + keyInsured);
 		
 		comingFrom  = (String)ctx.request().getParameter("comingFrom");
+		log.debug("comingFrom: This instruts where the page is coming from:" + comingFrom);
 		
 		PolicyBrowseDisplayList dspData;
 		try {
@@ -124,7 +127,9 @@ public class BrowsePoliciesAction extends CCAction{
 		BrowsePoliciesForm form = (BrowsePoliciesForm) ctx.form();
 		
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
+		log.debug("IASDiaryModify: " + IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+		log.debug(Constants.IASModify + " is now set to " + IASDiaryModify);
 		form.clear();
 		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
@@ -145,7 +150,10 @@ public class BrowsePoliciesAction extends CCAction{
 		
 		
 		ctx.session().removeAttribute("browsePolicies");
-		ctx.session().removeAttribute("inoutparmsresponse");		
+		ctx.session().removeAttribute("inoutparmsresponse");
+		log.info("removed: browsePolicies and inoutparmsresponse from session");
+		
+		
 		try {
 		PolicyBrowseDisplayList dspData = WSPolicyBrowseCall.backwardFetch(backwardFetch, inoutparms);
 		SimpleListControl browseList = new SimpleListControl();
@@ -153,7 +161,7 @@ public class BrowsePoliciesAction extends CCAction{
 		
 		ctx.session().setAttribute("browsePolicies", browseList);
 		ctx.session().setAttribute("inoutparmsresponse", inoutparms);
-		
+		log.info("set: browsePolicies and inoutparmsresponse to session");
 		log.debug("Redirect backward from the current page");
 		form.clear();
 		ctx.forwardToInput();
@@ -184,7 +192,8 @@ public class BrowsePoliciesAction extends CCAction{
 		log.debug("Key Insured: " +  KeyInsured);
 		
 		ctx.session().removeAttribute("browsePolicies");
-		ctx.session().removeAttribute("inoutparmsresponse");		
+		ctx.session().removeAttribute("inoutparmsresponse");
+		log.info("removed: browsePolicies and inoutparmsresponse from session");
 		try {
 		PolicyBrowseDisplayList dspData = WSPolicyBrowseCall.forwardFetch(forwardFetch, inoutparms);
 		SimpleListControl browseList = new SimpleListControl();
@@ -192,6 +201,7 @@ public class BrowsePoliciesAction extends CCAction{
 		
 		ctx.session().setAttribute("browsePolicies", browseList);
 		ctx.session().setAttribute("inoutparmsresponse", inoutparms);
+		log.info("set: browsePolicies and inoutparmsresponse to session");
 		form.clear();
 		log.debug("Redirect forward from the current page");
 		ctx.forwardToInput();
@@ -212,7 +222,8 @@ public class BrowsePoliciesAction extends CCAction{
 	public void browsePolicies_onDrilldown(ControlActionContext ctx, String key) {
 		
 		
-		log.debug("Selected from key:" + key + " from browse list");
+		log.debug("Selected key value:" + key + " from policy browse list");
+		log.debug("comingFrom: This instruts where the page is coming from:" + comingFrom);
 		
 		BrowsePoliciesForm form = (BrowsePoliciesForm) ctx.form();
 		

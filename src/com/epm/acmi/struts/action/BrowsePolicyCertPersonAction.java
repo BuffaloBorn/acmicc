@@ -79,7 +79,7 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		eventid = (String)ctx.request().getParameter("eventid");
 		modify = (String) ctx.session().getAttribute(Constants.IASModify);
 		
-		log.debug(method + "Coming From: " + comingFrom + " ->> Event Id: " + eventid + " ->> Modify: " + modify);
+		log.debug(method + "Page Coming From: " + comingFrom + " ->> Event Id: " + eventid + " ->> Modify: " + modify);
 		
 		if (comingFrom != null)
 			ctx.session().setAttribute("policyPersonCodesComingForm", comingFrom);
@@ -102,6 +102,8 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		// in this example we go back to the jsp
 		String IASDiaryModify = (String)ctx.session().getAttribute(Constants.IASDiaryModify);
 		ctx.session().setAttribute(Constants.IASModify,IASDiaryModify);
+		log.debug(Constants.IASModify + " is now set to " + IASDiaryModify);
+		
 		log.debug("Redirect back previous page");
 		ctx.forwardByName(Forwards.BACK);
 	}
@@ -122,6 +124,9 @@ public class BrowsePolicyCertPersonAction extends CCAction {
 		
 		String person_seach_address = bpDisplay.getPERSON_SEARCH_NAME1();
 
+		log.debug("modify: Holds the current of page:" + modify );
+		log.debug("comingFrom: This instruts where the page is coming from:" + comingFrom);
+		
 		if (comingFrom != null)
 		{
 			
