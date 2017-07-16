@@ -142,6 +142,7 @@ public class SubStdCoverageMainAction extends CCAction {
 			 
 		ConditionDspData.setData(conditionCodeData);
 		conditionCodeList.setDataModel(ConditionDspData);
+		ctx.request().setAttribute("gIasChangesWereMade", "true");
 		ctx.session().setAttribute("conditionCodeList", conditionCodeList);
 		ctx.forwardToInput();
 	}

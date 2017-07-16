@@ -209,7 +209,7 @@
 						<c:set var="form" value="${letterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
-								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onclick="toggleSet(this)">
 									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 								</forms:select>
 							</c:when>
@@ -285,7 +285,7 @@
 						<c:set var="form" value="${letterForm}"/>
 						<c:choose>
 							<c:when test='${form.second_request == "N"}'>
-								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onchange="gIASChangesWereMade=true">
+								<forms:select id="second_requestid" label="form.iasdiary.letter.second.request" property="second_request" size="1" onchange="gIasChangesWereMade=true">
 									<base:options property="secondRequestOptions" keyProperty="key" labelProperty="value" />
 								</forms:select>	
 							</c:when>

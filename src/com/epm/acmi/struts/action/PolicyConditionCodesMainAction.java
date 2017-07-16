@@ -134,6 +134,7 @@ public class PolicyConditionCodesMainAction extends CCAction {
 		
 		ConditionDspData.setData(conditionCodeData);
 		conditionCodeList.setDataModel(ConditionDspData);
+		ctx.request().setAttribute("gIasChangesWereMade", "true");
 		ctx.session().setAttribute("conditionCodeList", conditionCodeList);
 		ctx.forwardToInput();
 	}

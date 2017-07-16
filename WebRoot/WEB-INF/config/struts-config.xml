@@ -420,18 +420,18 @@
     	<action path="/iuauser/browseRiderCodes" name="riderCodesForm" attribute="riderCodesForm" input=".display.ias.policy.rider.codes"  type="com.epm.acmi.struts.action.RiderCodesAction">
     		<forward name="back" path="/iuauser/riderMain.do" redirect="true" />
     		<forward name="self" path="/iuauser/browseRiderCodes.do?riderPos={0}&amp;personid={1}&amp;actionstatus={2}" redirect="true"/> 
-    		<forward name="riderMaintNoCodeOneCreate" path="/iuauser/riderMain.do?riderPos=One&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
-    		<forward name="riderMaintNoCodeOneEdit" path="/iuauser/riderMain.do?riderPos=One&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
-    		<forward name="riderMaintNoCodeTwoCreate" path="/iuauser/riderMain.do?riderPos=Two&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
-    		<forward name="riderMaintNoCodeTwoEdit" path="/iuauser/riderMain.do?riderPos=Two&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
-			<forward name="riderMaintNoCodeThreeCreate" path="/iuauser/riderMain.do?riderPos=Three&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
-			<forward name="riderMaintNoCodeThreeEdit" path="/iuauser/riderMain.do?riderPos=Three&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
-    		<forward name="riderMaintNoCodeFourCreate" path="/iuauser/riderMain.do?riderPos=Four&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
-    		<forward name="riderMaintNoCodeFourEdit" path="/iuauser/riderMain.do?riderPos=Four&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
-    		<forward name="riderMaintNoCodeFiveCreate" path="/iuauser/riderMain.do?riderPos=Five&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create" redirect="true" />
-    		<forward name="riderMaintNoCodeFiveEdit" path="/iuauser/riderMain.do?riderPos=Five&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit" redirect="true" />
-    		<forward name="riderMaintWithCodeCreate" path="/iuauser/riderMain.do?riderCode={0}&amp;riderPos={1}&amp;personid={2}&amp;textrequired={3}&amp;modify=create" redirect="true" />
-    		<forward name="riderMaintWithCodeEdit" path="/iuauser/riderMain.do?riderCode={0}&amp;riderPos={1}&amp;personid={2}&amp;textrequired={3}&amp;modify=edit" redirect="true" />
+    		<forward name="riderMaintNoCodeOneCreate" path="/iuauser/riderMain.do?riderPos=One&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeOneEdit" path="/iuauser/riderMain.do?riderPos=One&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeTwoCreate" path="/iuauser/riderMain.do?riderPos=Two&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeTwoEdit" path="/iuauser/riderMain.do?riderPos=Two&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit&amp;gIasChangesWereMade=true" redirect="true" />
+			<forward name="riderMaintNoCodeThreeCreate" path="/iuauser/riderMain.do?riderPos=Three&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create&amp;gIasChangesWereMade=true" redirect="true" />
+			<forward name="riderMaintNoCodeThreeEdit" path="/iuauser/riderMain.do?riderPos=Three&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeFourCreate" path="/iuauser/riderMain.do?riderPos=Four&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeFourEdit" path="/iuauser/riderMain.do?riderPos=Four&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeFiveCreate" path="/iuauser/riderMain.do?riderPos=Five&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=create&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintNoCodeFiveEdit" path="/iuauser/riderMain.do?riderPos=Five&amp;personid={0}&amp;personstatus={1}&amp;persondate={2}&amp;modify=edit&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintWithCodeCreate" path="/iuauser/riderMain.do?riderCode={0}&amp;riderPos={1}&amp;personid={2}&amp;textrequired={3}&amp;modify=create&amp;gIasChangesWereMade=true" redirect="true" />
+    		<forward name="riderMaintWithCodeEdit" path="/iuauser/riderMain.do?riderCode={0}&amp;riderPos={1}&amp;personid={2}&amp;textrequired={3}&amp;modify=edit&amp;gIasChangesWereMade=true" redirect="true" />
     	</action>
     	
     	<action path="/iuauser/policyPersonCoverageMain" name="policyPersonCoverageMainForm"  attribute="policyPersonCoverageMainForm" input=".display.ias.policy.person.coverage.main" type="com.epm.acmi.struts.action.PolicyPersonCoverageMainAction">

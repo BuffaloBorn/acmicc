@@ -57,6 +57,13 @@
 	
 %>
 
+<script LANGUAGE="JavaScript" TYPE="text/javascript"> 
+	function setChangeFlag()
+	{
+		gIasChangesWereMade=true;
+	}
+</script>
+
 <c:if test='${pageScope.modifyStatus == "create"}'>
 	<html:form action="/iuauser/amendmentMain"   styleId="frmAmendmentMain">
 		<forms:form formid="amendmentMain"  caption="form.iasdiary.amendment.main.title" type="edit" width="750">
@@ -66,10 +73,10 @@
 					<forms:plaintext label="form.iasdiary.amendment.main.name" property="name"  colspan="1" />
 				</forms:row>   
 	            <forms:row colspan="2">
-					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="75" maxlength="75" colspan="1" onchange="gIASChangesWereMade=true"/>
+					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="75" maxlength="75" colspan="1" onchange="setChangeFlag()"/>
 				</forms:row>
 				<forms:row colspan="2">
-					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
+					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard" onkeydown="setChangeFlag()"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">		
@@ -111,10 +118,10 @@
 					<forms:plaintext label="form.iasdiary.amendment.main.name" property="name"  colspan="1" />
 				</forms:row>  
 	            <forms:row colspan="2">
-					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="50" maxlength="50" colspan="1" onchange="gIASChangesWereMade=true"/>
+					<forms:text label="form.iasdiary.amendment.main.description" property="description" size="50" maxlength="50" colspan="1" onchange="setChangeFlag()"/>
 				</forms:row>
 				<forms:row colspan="2">
-					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
+					<pre><forms:textarea style="font-family: courier new" id="amendmentTextArea" label="form.iasdiary.amendment.main.amendment.text" property="amendmentTextArea"  cols="60" rows="9" maxlength="600" valign="top" wrap="hard" onkeydown="setChangeFlag()"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">

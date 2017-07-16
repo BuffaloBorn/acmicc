@@ -28,6 +28,10 @@ function disableBtnEdit()
 	bar1.showMess();
 }
 
+	<c:if test="${not empty requestScope.gIasChangesWereMade}">
+		gIasChangesWereMade=true;
+	</c:if>
+
 </script>
 
 <html:form action="/iuauser/policyConditionCodesMain" styleId="frmSubStdCoverageMain">

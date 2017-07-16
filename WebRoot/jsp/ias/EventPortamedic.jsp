@@ -91,7 +91,7 @@
 				<forms:section title="form.iasdiary.event.portamedic.general.section.title">
 					<forms:html label="form.iasdiary.event.portamedic.person.id">
 						<ctrl:text  property="person_id" size="9" maxlength="9" onchange="gIasChangesWereMade=true"/>
-						<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" />
+						<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 						<ctrl:plaintext  property="person_name"/>
 					</forms:html>					
 					<forms:row>					
@@ -266,7 +266,7 @@
 				<forms:section title="form.iasdiary.event.portamedic.general.section.title">
 					<forms:html label="form.iasdiary.event.portamedic.person.id">
 						<ctrl:text  property="person_id" size="9" maxlength="9" onchange="gIasChangesWereMade=true"/>
-						<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" />
+						<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 						<ctrl:plaintext  property="person_name"/>
 					</forms:html>
 					<forms:row>
@@ -355,7 +355,7 @@
 				<forms:section title="form.iasdiary.event.portamedic.general.section.title">
 					<forms:html label="form.iasdiary.event.portamedic.person.id">
 						<ctrl:text  property="person_id" size="9" maxlength="9" onchange="gIasChangesWereMade=true"/>
-						<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" />
+						<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 						<ctrl:plaintext  property="person_name"/>
 					</forms:html>
 					<forms:row>

@@ -39,6 +39,37 @@ function getEnclosingForm(node) {
 	}
 }
 
+function runPageValidationList()
+{
+	var happen = new Boolean(false);
+
+	if (gIasChangesWereMade == true && gIasSaveClicked == false) 
+	{
+		var answer = confirm(firstline + "\n\n" + middleline + "\n\n" + lastline);
+		
+		if (answer)
+		{
+			happen = true;
+			window.onbeforeunload=null;
+			return happen;
+			
+		}
+		else{
+			happen = false;
+			window.onbeforeunload=null;
+			return happen;
+			
+		}
+	}
+	else
+	{
+		happen = true;
+		window.onbeforeunload=null;
+		return happen;
+	}
+}
+
+
 function runPageValidation(formobject)
 {
 	var happen = false;
@@ -105,7 +136,7 @@ function runPageValidationLink()
 		closeDeleteCookie();
 		//return happen;
 	}
-window.onbeforeunload = runUnloadIasValidation;	
+//window.onbeforeunload = runUnloadIasValidation;	
 }
 
 function getFormAsString(form){

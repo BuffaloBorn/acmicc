@@ -6,6 +6,53 @@
 <%@ taglib uri="/WEB-INF/tlds/cc-base.tld" prefix="base"%>
 <%@ page import="com.epm.acmi.datamodel.PolicyPersonMainDisplayList" %>
 
+<script><!--
+CCUtility.crtCtrla  = new_crtCtrla;
+
+function new_crtCtrla(node, param, formId, userscript)
+{
+
+	var form = null;
+
+	if (null != userscript) {
+		var rtc = true;
+
+		var userfct = new Function(userscript);
+		var obj = userfct();
+	}
+
+
+	var rtcValue = runPageValidationList();
+	
+	if (!rtcValue)
+	{	
+		return false;
+	}
+
+
+	// first check if the formId was specified
+	if (null != formId && '' != formId) {
+		form = document.getElementById(formId);
+	} else {
+		// try to find the enclosing form
+		form = this.getEnclosingForm(node);
+	}
+
+	if (null != form) {
+		// append the hidden field which contains the 
+		// name of the control, action and additional parameter 
+		if (param.length != 0 && param.substring(0,4) != 'null') {
+			form.appendChild(this.createHidden('ctrla', param));
+		}
+		form.submit();
+	} else {
+		// not found. Do nothing
+	}
+
+}
+
+
+--></script>
 
 <c:if test='${sessionScope.IASModify == "display"}'>
 	<html:form action="/iuauser/policyPersonMain" styleId="frmPolicyPersonMain">
@@ -87,6 +134,15 @@
 </c:if>
 
 <c:if test='${sessionScope.IASModify == "edit"}'>
+
+	<script>
+		function turnOffWarning()
+		{	
+			gIasSaveClicked=true;
+			window.onbeforeunload=null;	
+		}
+	</script>
+
 	<html:form action="/iuauser/policyPersonMain" styleId="frmPolicyPersonMain">
 		<forms:form formid="policyPersonMain" caption="form.iasdiary.policy.person.main.title" type="edit" width="750" noframe="false">
 			<forms:html align="center">
@@ -138,13 +194,13 @@
 	        								<% boolean editable = ((PolicyPersonMainDisplayList) policyPeasonList.getDataModel()).getEditable(); %>
 	
 											<% if (!editable)  { %>
-												<ctrl:columnbutton title="list.iasdiary.policy.person.main.edit.row"  text="list.iasdiary.policy.person.main.edit"     image="fw/def2/image/icons/edit.gif"   align="center"  width="60"  command="edit" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+												<ctrl:columnbutton title="list.iasdiary.policy.person.main.edit.row"  text="list.iasdiary.policy.person.main.edit"     image="fw/def2/image/icons/edit.gif"   align="center"  width="60"  command="edit" />
 											<% } else { %>
-												<ctrl:columnbutton title="list.iasdiary.policy.person.main.save.row"  text="list.iasdiary.policy.person.main.save"     property="editable"  image="app/images/imgSave.gif"           align="center"  width="60"  command="save" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
-												<ctrl:columnbutton title="list.iasdiary.policy.person.main.cancel.row"  text="list.iasdiary.policy.person.main.cancel"   property="editable"  image="fw/def2/image/icons/delete.gif"   align="center"  width="60"  command="cancel" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+												<ctrl:columnbutton title="list.iasdiary.policy.person.main.save.row"  text="list.iasdiary.policy.person.main.save"     property="editable"  image="app/images/imgSave.gif" align="center"  width="60"  command="save" onclick="turnOffWarning()"/>
+												<ctrl:columnbutton title="list.iasdiary.policy.person.main.cancel.row"  text="list.iasdiary.policy.person.main.cancel"   property="editable"  image="fw/def2/image/icons/delete.gif"   align="center"  width="60"  command="cancel" onclick="turnOffWarning()"/> 
 											<% } %>			
 				
-											<ctrl:columndrilldown title="button.iasdiary.policy.person.main.rider" property="RIDER_SHOW" width="10" align="center" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+											<ctrl:columndrilldown title="button.iasdiary.policy.person.main.rider" property="RIDER_SHOW" width="10" align="center"/>
 											
 											<%--<% boolean checkRiderStatus = ((PolicyPersonMainDisplayList) policyPeasonList.getDataModel()).getCheckRiderStatus(); --%>
 											
@@ -154,7 +210,7 @@
 											<%--	<ctrl:columnbutton  title="button.iasdiary.policy.person.main.rider" text="list.iasdiary.policy.person.main.rider.click.open" command="riderOpen" align="center"  />--%>
 											<%--<% } %>--%>
 											
-											<ctrl:columnbutton  title="button.iasdiary.policy.person.main.sub.coverage" text="list.iasdiary.policy.person.main.coverage.click" command="coverage" align="center" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+											<ctrl:columnbutton  title="button.iasdiary.policy.person.main.sub.coverage" text="list.iasdiary.policy.person.main.coverage.click" command="coverage" align="center" />
 										
 										</ctrl:columngroup>
 									</ctrl:list>

@@ -59,7 +59,7 @@
 								<tr>
 									<td>
 										<ctrl:text  property="recipient_id" maxlength="9" size="9" styleId="eventStdMemoRecipientStyleId"/>
-										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" onmouseup="gIasSaveClicked=true"/>
 									</td>
 								</tr>
 								<tr>
@@ -184,7 +184,7 @@
 								<tr>
 									<td>
 										<ctrl:text  property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
-										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" />
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.recipient.help" onmouseup="gIasSaveClicked=true"/>
 									</td>
 								</tr>
 								<tr>

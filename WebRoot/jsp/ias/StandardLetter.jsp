@@ -50,7 +50,7 @@
 								<tr>
 									<td>
 										<ctrl:text property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
-										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" />
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 									</td>
 								</tr>
 								<tr>
@@ -62,7 +62,7 @@
 						</forms:html>
 						<forms:html label="form.iasdiary.std.letter.memoid" join="true">	
 							<ctrl:text property="memoid" size="8" maxlength="8" disabled="true"/>										
-							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help"/>
+							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help" onmouseup="gIasSaveClicked=true"/>
 						</forms:html>
 					</forms:row>
 					<forms:row>					
@@ -173,7 +173,7 @@
 								<tr>
 									<td>
 										<ctrl:text property="recipient_id" maxlength="9" size="9" onchange="gIasChangesWereMade=true"/>
-										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" />
+										<ctrl:button name="btnRecipientHelp" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true" />
 									</td>
 								</tr>
 								<tr>
@@ -185,7 +185,7 @@
 						</forms:html>
 						<forms:html label="form.iasdiary.std.letter.memoid" join="true">	
 							<ctrl:text property="memoid" size="8" maxlength="8" disabled="true"/>										
-							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help"/>
+							<ctrl:button name="btnMemoIdHelp" src="fw/def/image/help.gif" tooltip="form.iasdiary.memo.id.help" onmouseup="gIasSaveClicked=true"/>
 						</forms:html>
 					</forms:row>
 					<forms:row>					

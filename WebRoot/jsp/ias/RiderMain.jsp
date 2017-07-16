@@ -30,7 +30,13 @@ function mask(str,textbox,loc,delim){
 	textbox.value = str
 }
 
+	<c:if test="${not empty param.gIasChangesWereMade}">
+		gIasChangesWereMade=true;
+	</c:if>
+
 </script>
+
+
 
 <c:if test='${sessionScope.IASModify == "create"}'>
 	<html:form action="/iuauser/riderMain" styleId="frmRiderMain">
@@ -56,8 +62,8 @@ function mask(str,textbox,loc,delim){
 	            			<span style="font-family:Arial; font-size:12px;">
 	                				Would you like to attach a rider, but restricted by state law?
 	            			</span>
-	            			<ctrl:select property="RIDER_FLAG" size="1">
-		            			<base:options property="restrictedOptions" keyProperty="key" labelProperty="value" />
+	            			<ctrl:select property="RIDER_FLAG" size="1" onchange="gIasChangesWereMade=true">
+		            			<base:options property="restrictedOptions" keyProperty="key" labelProperty="value"/>
 		        			</ctrl:select>
 	        	    </forms:html>
 						<%--<forms:row>--%>
@@ -69,101 +75,101 @@ function mask(str,textbox,loc,delim){
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_ONE" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_ONE" maxlength="8" size="8" colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderOneHelpCreate" src="fw/def/image/help.gif" />
+								<ctrl:button name="btnRiderOneHelpCreate" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_ONE" maxlength="5" size="5" colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_ONE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_ONE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_ONE" maxlength="5" size="5" colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_ONE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_ONE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_ONE" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_ONE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" /></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_ONE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_TWO" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_TWO" maxlength="8" size="8" colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>						
-								<ctrl:button name="btnRiderTwoHelpCreate" src="fw/def/image/help.gif" />
+								<ctrl:button name="btnRiderTwoHelpCreate" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_TWO" maxlength="5" size="5" colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_TWO" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" />
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_TWO" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" />
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_TWO" maxlength="5" size="5" colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_TWO" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_TWO" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_TWO" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_TWO" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_TWO" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_THREE" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_THREE" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderThreeHelpCreate" src="fw/def/image/help.gif" />	
+								<ctrl:button name="btnRiderThreeHelpCreate" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>	
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_THREE" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" />
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_THREE" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_THREE" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label=""	style="font-family: courier new" property="RIDER_TEXT_THREE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label=""	style="font-family: courier new" property="RIDER_TEXT_THREE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FOUR" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FOUR" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderFourHelpCreate" src="fw/def/image/help.gif" />
+								<ctrl:button name="btnRiderFourHelpCreate" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FOUR" maxlength="5" size="5" colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FOUR" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FOUR" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FOUR" maxlength="5" size="5" colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FOUR" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FOUR" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_FOUR" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FOUR" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FOUR" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FIVE" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FIVE" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderFiveHelpCreate" src="fw/def/image/help.gif" />
+								<ctrl:button name="btnRiderFiveHelpCreate" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FIVE" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FIVE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FIVE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FIVE" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FIVE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FIVE" maxlength="10" size="10" colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_FIVE" colspan="1" />					
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FIVE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FIVE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 			<forms:buttonsection default="btnBack">
-				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" />
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.title.back" />
+				<forms:button base="buttons.src.def2" name="btnSave" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.title.back" onclick="runPageValidation(this)" />
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>
@@ -314,7 +320,7 @@ function mask(str,textbox,loc,delim){
 	            			<span style="font-family:Arial; font-size:12px;">
 	                				Would you like to attach a rider, but restricted by state law?
 	            			</span>
-	            			<ctrl:select property="RIDER_FLAG" size="1">
+	            			<ctrl:select property="RIDER_FLAG" size="1" onchange="gIasChangesWereMade=true">
 		            			<base:options property="restrictedOptions" keyProperty="key" labelProperty="value" />
 		        			</ctrl:select>
 	        	    </forms:html>
@@ -327,101 +333,101 @@ function mask(str,textbox,loc,delim){
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_ONE" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_ONE" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderOneHelpEdit" src="fw/def/image/help.gif" />	
+								<ctrl:button name="btnRiderOneHelpEdit" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>	
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_ONE" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_ONE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_ONE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_ONE" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_ONE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_ONE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_ONE" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_ONE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_ONE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_TWO" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_TWO" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true" />
 							<forms:html>
-								<ctrl:button name="btnRiderTwoHelpEdit" src="fw/def/image/help.gif" />	
+								<ctrl:button name="btnRiderTwoHelpEdit" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>	
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_TWO" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_TWO" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_TWO" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_TWO" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_TWO" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_TWO" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_TWO" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_TWO" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_TWO" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_THREE" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_THREE" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderThreeHelpEdit" src="fw/def/image/help.gif" />								
+								<ctrl:button name="btnRiderThreeHelpEdit" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>								
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_THREE" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');"  onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_THREE" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');"  onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_THREE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_THREE" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label=""	style="font-family: courier new" property="RIDER_TEXT_THREE" cols="50" rows="4" maxlength="250" valign="top"  wrap="hard"/></pre>
+						<pre><forms:textarea  label=""	style="font-family: courier new" property="RIDER_TEXT_THREE" cols="50" rows="4" maxlength="250" valign="top"  wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FOUR" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FOUR" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderFourHelpEdit" src="fw/def/image/help.gif" />
+								<ctrl:button name="btnRiderFourHelpEdit" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FOUR" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FOUR" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FOUR" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FOUR" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FOUR" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FOUR" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_FOUR" colspan="1" />
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FOUR" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FOUR" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 				<forms:section title="form.iasdiary.rider.main.section">
 					<forms:row>
 						<forms:group orientation="horizontal">
-							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FIVE" maxlength="8" size="8"	colspan="1" />
+							<forms:text label="form.iasdiary.rider.main.rider.code" property="RIDER_CODE_FIVE" maxlength="8" size="8"	colspan="1" onchange="gIasChangesWereMade=true"/>
 							<forms:html>
-								<ctrl:button name="btnRiderFiveHelpEdit" src="fw/def/image/help.gif" />
+								<ctrl:button name="btnRiderFiveHelpEdit" src="fw/def/image/help.gif" onmouseup="gIasSaveClicked=true"/>
 							</forms:html>
-							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FIVE" maxlength="5" size="5"	colspan="1" />
-							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FIVE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
-							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FIVE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" />
+							<forms:text label="form.iasdiary.rider.main.rider.time.period" property="RID_TIME_PERIOD_FIVE" maxlength="5" size="5"	colspan="1" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.start.date" property="RIDER_START_DATE_FIVE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
+							<forms:text label="form.iasdiary.rider.main.rider.end.date" property="RIDER_END_DATE_FIVE" maxlength="10" size="10"	colspan="1" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true" />
 						</forms:group>
 					</forms:row>
 					<forms:row>
 						<forms:plaintext label="form.iasdiary.rider.main.rider.description" property="RIDER_DESCRIPTION_FIVE" colspan="1" />					
 					</forms:row>
 					<forms:row>
-						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FIVE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard"/></pre>
+						<pre><forms:textarea  label="" style="font-family: courier new"	property="RIDER_TEXT_FIVE" cols="50" rows="4" maxlength="250" valign="top" wrap="hard" onkeydown="gIasChangesWereMade=true"/></pre>
 					</forms:row>
 				</forms:section>
 			<forms:buttonsection default="btnBack">
-				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" />
-				<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.title.back" />
+				<forms:button base="buttons.src.def2" name="btnEdit" text="button.title.update" title="button.title.update" onmouseup="gIasSaveClicked=true" onclick="runPageValidation(this)"/>
+				<forms:button base="buttons.src.def2" name="btnBack" text="button.policy.person.main.back" title="button.title.back" onclick="runPageValidation(this)"/>
 			</forms:buttonsection>
 		</forms:form>
 	</html:form>

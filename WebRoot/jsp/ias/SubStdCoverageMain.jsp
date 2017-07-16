@@ -39,6 +39,7 @@ textbox.value = str
 
 function selectClicked(pos) 
 {
+	gIasChangesWereMade=true;
 	document.subStdCoverageMainForm.currentPosition.value = pos;
 	subStdCoverageMainForm.submit();
 }
@@ -102,6 +103,13 @@ function disableBtnResetSudStdCodes()
 }
 
 
+	<c:if test="${not empty requestScope.gIasChangesWereMade}">
+		gIasChangesWereMade=true;
+	</c:if>
+
+
+
+
 </script>
 
 
@@ -145,7 +153,7 @@ function disableBtnResetSudStdCodes()
 						<ctrl:plaintext  property="COVERAGE_CODE"  />
 				</forms:html>
 				<forms:html label="form.iasdiary.sub.std.coverage.main.ss.code" join="true">
-					<ctrl:select id="substdreasoncode"  property="SUB_STANDARD_RISK_CODE">
+					<ctrl:select id="substdreasoncode"  property="SUB_STANDARD_RISK_CODE" onchange="gIasChangesWereMade=true">
 						<base:options property="substdreasoncodeOptions" keyProperty="key" labelProperty="value" />
 					</ctrl:select>	
 				</forms:html> 
@@ -234,7 +242,7 @@ function disableBtnResetSudStdCodes()
 					</ctrl:select>
 					<br/>
 					<span id="hippaId"  style="color:red; font-weight:bold;visibility:hidden;">WARNING: This is a HIPAA policy.  You MUST update the HIPAA field on Policy Maintenance directly through IAS</span>
-					<ctrl:button name="btnResetSudStdCodes" text="form.iasdiary.sub.std.coverage.reset" tooltip="form.iasdiary.sub.std.coverage.reset" onmouseup="javascript:disableBtnResetSudStdCodes();" />	
+					<ctrl:button name="btnResetSudStdCodes" text="form.iasdiary.sub.std.coverage.reset" tooltip="form.iasdiary.sub.std.coverage.reset" onmouseup="javascript:disableBtnResetSudStdCodes();gIasSaveClicked=true" />	
 				</forms:html> 
 			</forms:section>
 			<forms:section title="form.iasdiary.sub.std.coverage.main.condition.code.selection">
@@ -256,7 +264,7 @@ function disableBtnResetSudStdCodes()
 			</forms:section>	
 			<forms:section title="form.iasdiary.sub.std.coverage.main.start.date.term.section">
 				<forms:row>	
-					<forms:text label="form.iasdiary.sub.std.coverage.main.start.date" property="SUB_EFF_DATE" size="10"  maxlength="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;"/>
+					<forms:text label="form.iasdiary.sub.std.coverage.main.start.date" property="SUB_EFF_DATE" size="10"  maxlength="10" onkeyup="javascript:return mask(this.value,this,'2,5','/');" onblur="javascript:return mask(this.value,this,'2,5','/');" onkeypress="if ((event.keyCode < 48) || (event.keyCode > 57)) event.returnValue = false;" onchange="gIasChangesWereMade=true"/>
 					<forms:plaintext label="form.iasdiary.sub.std.coverage.main.term.date" property="SUB_EXT_DATE"  colspan="1" />
 					<forms:plaintext label="form.iasdiary.sub.std.coverage.main.time.period" property="SS_CCODE_TIME_PERIOD" colspan="1" />
 				</forms:row>

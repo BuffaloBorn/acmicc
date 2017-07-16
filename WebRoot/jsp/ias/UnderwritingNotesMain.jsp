@@ -54,9 +54,9 @@
 %>
 
 <script LANGUAGE="JavaScript" TYPE="text/javascript">
-	function doOnClick()
+	function setChangeFlag()
 	{
-		gIASSaveClicked=true;
+		gIasChangesWereMade=true;
 	}
 </script>
 
@@ -71,7 +71,7 @@
 					<forms:plaintext label="form.iasdiary.policy.underwriting.notes.main.description" property="description" colspan="1"/>
 				</forms:row>
 				<forms:row>
-					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
+					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="setChangeFlag()"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">
@@ -114,7 +114,7 @@
 					<forms:plaintext label="form.iasdiary.policy.underwriting.notes.main.description" property="description" colspan="1"/>
 				</forms:row>
 				<forms:row>
-					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
+					<pre><forms:textarea id="notesArea" label="form.iasdiary.policy.underwriting.notes.main.notes" style="font-family: courier new" property="notesArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="setChangeFlag()"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">					

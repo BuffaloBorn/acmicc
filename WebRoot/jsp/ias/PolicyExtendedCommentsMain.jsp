@@ -70,7 +70,10 @@
 
     }
 	 
-	
+	function setChangeFlag()
+	{
+		gIasChangesWereMade=true;
+	}
 </script>
 
 
@@ -86,7 +89,7 @@
 					<forms:plaintext label="form.iasdiary.policy.extended.comments.main.description" property="description" colspan="1" />
 				</forms:row>
 				<forms:row>
-					<pre><forms:textarea id="freeTextArea" label="form.iasdiary.policy.extended.comments.main.freetext" style="font-family: courier new" property="freeTextArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
+					<pre><forms:textarea id="freeTextArea" label="form.iasdiary.policy.extended.comments.main.freetext" style="font-family: courier new" property="freeTextArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="setChangeFlag()"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnSave">
@@ -131,6 +134,9 @@
 			document.policyExtendedCommentsMainForm.freeTextArea.focus();
 			SetTextAreaCursor();
 		}
+		
+		
+		
 	</script>
 	
 	<html:form action="/iuauser/policyExtendedCommentsMain" styleId="frmPolicyExtendedCommentsMain">
@@ -144,7 +150,7 @@
 					<forms:plaintext label="form.iasdiary.policy.extended.comments.main.description" property="description" colspan="1" />
 				</forms:row>
 				<forms:row>
-					<pre><forms:textarea id="freeTextArea" label="form.iasdiary.policy.extended.comments.main.freetext" style="font-family: courier new" property="freeTextArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="gIASChangesWereMade=true"/></pre>
+					<pre><forms:textarea id="freeTextArea" label="form.iasdiary.policy.extended.comments.main.freetext" style="font-family: courier new" property="freeTextArea" cols="60" rows="9" maxlength="11460" valign="top" wrap="hard" onkeydown="setChangeFlag()"/></pre>
 				</forms:row>
 			</forms:section>
 			<forms:buttonsection default="btnEdit">
