@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "/WEB-INF/dtd/tiles-config_1_1.dtd">
+<tiles-definitions>
+ <definition name=".acmi.ias.base" path="/jsp/template/MainIAS.jsp">
+  <put name="title" value="ACMI IUA Process System"/>
+  <put name="header" value="/jsp/template/Header.jsp"/>
+  <put name="content" value="/jsp/ias/Blank.jsp"/>
+  <put name="footer" value="/jsp/template/Footer.jsp"/>
+ </definition>
+ <definition name=".acmi.ias.create.base">
+  <put name="title" value="ACMI IUA Process System"/>
+  <put name="header" value="/jsp/template/Header.jsp"/>
+  <put name="selectEvent" value="/jsp/ias/StandardEventCodes.jsp"/>
+  <put name="content" value="/jsp/ias/Blank.jsp"/>
+  <put name="footer" value="/jsp/template/Footer.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.create.base" name=".create.ias.eventportamedic">
+  <put name="content" value="/jsp/ias/EventPortamedic.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.create.base" name=".create.ias.eventstdmemo">
+  <put name="content" value="/jsp/ias/EventStdMemo.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.create.base" name=".create.ias.freetext">
+  <put name="content" value="/jsp/ias/FreeText.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.create.base" name=".create.ias.letter">
+  <put name="content" value="/jsp/ias/Letter.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.create.base" name=".create.ias.stdletter">
+  <put name="content" value="/jsp/ias/StandardLetter.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.base" name=".display.ias.freetext">
+  <put name="content" value="/jsp/ias/FreeText.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.base" name=".main.login">
+  <put name="content" value="/login/LoginContent.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.base" name=".main.secondary">
+  <put name="content" value="/main/SecondaryTabSetBrowseContent.jsp"/>
+ </definition>
+ <definition extends=".acmi.ias.base" name=".display.tab5.worklist">
+  <put name="content" value="/worklist/workListContent.jsp"/>
+ </definition>
+</tiles-definitions>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="acmicc" default="build" basedir=".">
+	<description>acmiepmwebtest Build File</description>
+	<!-- set global properties for this build -->	
+	<target name="build">
+		<echo message="Build acmicc.war for development"/>
+		<ant antfile="build_dev.xml" target="deploy"/>
+		<echo message="Done building acmicc.war for development"/>
+	</target>
+</project>
+

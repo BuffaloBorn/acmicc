@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS ENTITY="StrutsProcess">
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#logon" NAME="action0"
+  PATH="/logon" SHAPE="32,17,0,0" TITLE="logonForm" TYPE="action">
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="success"
+   NAME="forward0" PATH="/main/secondarytabsetBrowse" TARGET="action6"
+   TITLE="success" TYPE="forward"/>
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="failure"
+   NAME="forward1" PATH="/logon" TARGET="action0" TITLE="failure" TYPE="forward"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="logon" NAME="forward0"
+  PATH="/logon" SHAPE="256,289,0,0" TARGET="action0" TITLE="logon" TYPE="forward"/>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#logout" NAME="action5"
+  PATH="/logout" SHAPE="32,385,0,0" TYPE="action">
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="success"
+   NAME="forward0" PATH="/logon.do" TARGET="action0" TITLE="success" TYPE="forward"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem"
+  ID="#main#secondarytabsetBrowse" NAME="action6"
+  PATH="/main/secondarytabsetBrowse" SHAPE="448,17,0,0"
+  TITLE="emptyForm" TYPE="action">
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="tab5"
+   NAME="forward0" PATH="/worklist.do" TARGET="action4" TITLE="tab5" TYPE="forward"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#main" NAME="action1"
+  PATH="/main" SHAPE="32,497,0,0" TITLE="emptyForm" TYPE="action"/>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#worklist" NAME="action4"
+  PATH="/worklist" SHAPE="864,17,0,0" TITLE="workListForm" TYPE="action">
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="success"
+   NAME="forward0" PATH="/main/tabsetBrowse.do" TARGET="action7"
+   TITLE="success" TYPE="forward"/>
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="failure"
+   NAME="forward1" PATH="/logon.do" TARGET="action0" TITLE="failure" TYPE="forward"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#main#tabsetBrowse"
+  NAME="action7" PATH="/main/tabsetBrowse" SHAPE="1280,17,0,0"
+  TITLE="emptyForm" TYPE="action">
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="tab5"
+   NAME="forward0" PATH="/main/iuauser.do" TARGET="action8" TITLE="tab5" TYPE="forward"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#main#iuauser"
+  NAME="action8" PATH="/main/iuauser" SHAPE="1696,17,0,0"
+  TITLE="emptyForm" TYPE="action">
+  <PROCESS-ITEM-OUTPUT ENTITY="StrutsProcessItemOutput" ID="tab6"
+   NAME="forward0" PATH="/iuauser/iasdiary.do" TARGET="action9"
+   TITLE="tab6" TYPE="forward"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="StrutsProcessItem" ID="#iuauser#iasdiary"
+  NAME="action9" PATH="/iuauser/iasdiary" SHAPE="2112,17,0,0"
+  TITLE="activateIASForm" TYPE="action"/>
+</PROCESS>

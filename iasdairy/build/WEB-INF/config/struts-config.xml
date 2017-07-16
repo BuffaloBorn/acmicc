@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean name="emptyForm" type="com.epm.acmi.struts.form.EmptyForm"/>
+  <form-bean name="logonForm" type="com.epm.acmi.struts.form.LogonActionForm"/>
+  <form-bean name="workListForm" type="com.epm.acmi.struts.form.WorkListForm"/>
+  <form-bean name="activateIASForm" type="com.epm.acmi.struts.form.ActivateIASForm"/>
+ </form-beans>
+ <global-exceptions/>
+ <global-forwards>
+  <forward name="logon" path="/logon" redirect="true"/>
+ </global-forwards>
+ <action-mappings>
+  <action input=".acmi.ias.base" name="emptyForm" path="/main"
+   scope="request" type="com.epm.acmi.struts.action.CCForwardAction" validate="false"/>
+  <action name="logonForm" path="/logon" scope="request"
+   type="com.epm.acmi.struts.action.LogonAction" validate="true">
+   <forward name="success" path="/main/secondarytabsetBrowse"/>
+   <forward name="failure" path="/logon"/>
+  </action>
+  <action input=".main.login" path="/logout" type="com.epm.acmi.struts.action.LogoutAction">
+   <forward name="success" path="/logon.do" redirect="true"/>
+  </action>
+  <action input=".main.secondary" name="emptyForm"
+   path="/main/secondarytabsetBrowse" type="com.epm.acmi.struts.action.MainTabSetBrowseAction">
+   <forward name="tab5" path="/worklist.do" redirect="true"/>
+  </action>
+  <action attribute="workListForm" input=".main.secondary"
+   name="workListForm" path="/worklist" scope="session"
+   type="com.epm.acmi.struts.action.WorkListAction" validate="false">
+   <forward name="success" path="/main/tabsetBrowse.do"/>
+   <forward name="failure" path="/logon.do"/>
+  </action>
+  <action input=".acmi.ias.base" name="emptyForm"
+   path="/main/tabsetBrowse" type="com.epm.acmi.struts.action.MainTabSetBrowseAction">
+   <forward name="tab5" path="/main/iuauser.do" redirect="true"/>
+  </action>
+  <action input=".acmi.ias.base" name="emptyForm" path="/main/iuauser" type="com.epm.acmi.struts.action.IUAUserAction">
+   <forward name="tab6" path="/iuauser/iasdiary.do" redirect="true"/>
+  </action>
+  <action attribute="activateIASForm" input=".acmi.ias.base"
+   name="activateIASForm" path="/iuauser/iasdiary" type="com.epm.acmi.struts.action.ActivateIASAction"/>
+ </action-mappings>
+ <!-- RequestProcessor -->
+ <controller nocache="true" processorClass="com.epm.acmi.struts.action.CCRequestProcessor"/>
+ <message-resources parameter="ApplicationResources"/>
+ <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+  <set-property property="pathnames" value="/WEB-INF/config/validator-rules.xml, /WEB-INF/config/validation.xml"/>
+ </plug-in>
+ <plug-in className="org.apache.struts.tiles.TilesPlugin">
+  <set-property property="definitions-config" value="/WEB-INF/config/tiles-defs.xml"/>
+  <set-property property="definitions-parser-validate" value="true"/>
+  <set-property property="definitions-debug" value="2"/>
+  <set-property property="definitions-parser-details" value="2"/>
+ </plug-in>
+</struts-config>

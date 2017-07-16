@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FILESYSTEMS APPLICATION_NAME="iasdairy" ENTITY="FileSystems"
+ VERSION="8.0.0" WORKSPACE_HOME="./WebContent/WEB-INF">
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%exadel.workspace%" NAME="WEB-INF"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" INFO="Content-Type=Web"
+  LOCATION="%exadel.workspace%/.." NAME="WEB-ROOT"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%exadel.workspace%/../../JavaSource" NAME="src"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%exadel.workspace%/classes" NAME="classes"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%exadel.workspace%/../../ant" NAME="build"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/common-annotations.jar" NAME="lib-common-annotations.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-beanutils.jar" NAME="lib-commons-beanutils.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-collections.jar" NAME="lib-commons-collections.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-digester.jar" NAME="lib-commons-digester.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-fileupload.jar" NAME="lib-commons-fileupload.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-lang.jar" NAME="lib-commons-lang.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-logging.jar" NAME="lib-commons-logging.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/commons-validator.jar" NAME="lib-commons-validator.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/jakarta-oro.jar" NAME="lib-jakarta-oro.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/jstl.jar" NAME="lib-jstl.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/standard.jar" NAME="lib-standard.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/struts-legacy.jar" NAME="lib-struts-legacy.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%exadel.workspace%/lib/struts.jar" NAME="lib-struts.jar"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%exadel.workspace%/lib" NAME="lib"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/backport-util-concurrent.jar" NAME="lib-backport-util-concurrent.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/common-controls-1.6.020.jar" NAME="lib-common-controls-1.6.020.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/log4j-1.2.8.jar" NAME="lib-log4j-1.2.8.jar"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%exadel.eclipse.project%" NAME="iasdairy"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/javacsv.jar" NAME="lib-javacsv.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/servlet-api.jar" NAME="lib-servlet-api.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/servlet.jar" NAME="lib-servlet.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar"
+  LOCATION="%exadel.workspace%/lib/axis.jar" NAME="lib-axis.jar"/>
+ <WEB ENTITY="ExadelWeb" MODEL_PATH="/web.xml" SERVLET_VERSION="2.3">
+  <MODULE ENTITY="ExadelWebModule"
+   MODEL_PATH="/config/struts-config.xml" ROOT="WEB-ROOT" SRC="src" URI="/WEB-INF/config/struts-config.xml"/>
+ </WEB>
+</FILESYSTEMS>
